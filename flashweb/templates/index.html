@@ -1,9 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="flashweb">
 <head>
-  <title>starting point</title>
- </head>
- <body>
-     <h1>Hello index</h1>
+  <title>flash! ahhhhhh</title>
+
+  <base href="/" />
+
+</head>
+
+<body>
+    <h1>Hello Index</h1>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 ng-view"></div>
+    </div>
+  </div>
+
+  {% include 'javascripts.html' %}
 </body>
 </html>

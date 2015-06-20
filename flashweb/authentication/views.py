@@ -15,7 +15,9 @@ class AccountViewSet(viewsets.ModelViewSet):
         if self.request == 'POST':
             return (permissions.AllowAny(),)
 
-        return (permissions.IsAuthenticated(), isAccountOwner(),)
+        return (permissions.IsAuthenticated(),
+                # isAccountOwner(),
+        )
 
     def create(self, request):
         serializer = self.serializer_class(data=request.data)

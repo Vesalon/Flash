@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('thinkster.routes')
+    .module('flashweb.routes')
     .config(config);
 
   config.$inject = ['$routeProvider'];

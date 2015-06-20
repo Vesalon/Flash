@@ -1,26 +1,23 @@
-angular
-  .module('flashweb', []);
-
-  (function () {
+(function () {
     'use strict';
 
     angular
-      .module('flashweb', [
-        'flashweb.config',
-        'flashweb.routes',
-        'flashweb.authentication'
+        .module('flashweb', [
+            'flashweb.config',
+            'flashweb.routes',
+            'flashweb.authentication'
       ]);
 
     angular
-      .module('flashweb.routes', ['ngRoute']);
+        .module('flashweb.routes', ['ngRoute']);
 
     angular
         .module('flashweb.config', []);
-  })();
+    })();
 
-  angular
-  .module('thinkster')
-  .run(run);
+angular
+    .module('thinkster')
+    .run(run);
 
 run.$inject = ['$http'];
 
