@@ -22,7 +22,7 @@
    /**
    * @name register
    * @desc Register a new user
-   * @memberOf .authentication.controllers.RegisterController
+   * @memberOf flashweb.authentication.controllers.RegisterController
    */
    function register() {
      Authentication.register(vm.email, vm.password, vm.username);
