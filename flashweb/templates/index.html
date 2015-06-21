@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html ng-app="flashweb">
 <head>
-  <title>flash! ahhhhhh</title>
+  <title>flashweb</title>
 
   <base href="/" />
 
+  {% include 'stylesheets.html' %}
 </head>
 
 <body>
-    <h1>Hello Index</h1>
+  {% include 'navbar.html' %}
+
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 ng-view"></div>
     </div>
   </div>
+
+{% load staticfiles %}
+  <img src="{% static "lock.gif" %}" alt="My image"/>
 
   {% include 'javascripts.html' %}
 </body>

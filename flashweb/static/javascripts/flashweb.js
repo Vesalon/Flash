@@ -16,7 +16,7 @@
     })();
 
 angular
-    .module('thinkster')
+    .module('flashweb')
     .run(run);
 
 run.$inject = ['$http'];

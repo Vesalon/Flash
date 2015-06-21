@@ -22,7 +22,7 @@
    /**
    * @name register
    * @desc Register a new user
-   * @memberOf thinkster.authentication.controllers.RegisterController
+   * @memberOf .authentication.controllers.RegisterController
    */
    function register() {
      Authentication.register(vm.email, vm.password, vm.username);
