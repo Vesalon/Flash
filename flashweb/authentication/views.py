@@ -18,7 +18,8 @@ class AccountViewSet(viewsets.ModelViewSet):
         return (permissions.IsAuthenticated(),
                 # isAccountOwner(),
         )
-
+    
+    @csrf_exepmt
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
 
