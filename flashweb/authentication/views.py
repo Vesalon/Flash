@@ -17,7 +17,7 @@ class AccountViewSet(viewsets.ModelViewSet):
             return (permissions.AllowAny(),)
 
         return (permissions.IsAuthenticated(),
-                # isAccountOwner(),
+                isAccountOwner(),
         )
 
 
