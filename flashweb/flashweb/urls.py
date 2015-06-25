@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 from rest_framework import routers
-from authentication.views import AccountViewSet
+from authentication.views import AccountViewSet, LoginView
 from flashweb.views import IndexView
 
 router = routers.SimpleRouter()
@@ -27,6 +27,7 @@ urlpatterns = [
     # '',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/v1/',  include(router.urls)),
+    url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
 
     url('^.*$', IndexView.as_view(), name='index'),
 ]
