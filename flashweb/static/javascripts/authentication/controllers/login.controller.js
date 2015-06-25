@@ -6,7 +6,7 @@
   'use strict';
 
   angular
-    .module('thinkster.authentication.controllers')
+    .module('flashweb.authentication.controllers')
     .controller('LoginController', LoginController);
 
   LoginController.$inject = ['$location', '$scope', 'Authentication'];
