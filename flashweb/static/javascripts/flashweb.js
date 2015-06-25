@@ -5,7 +5,8 @@
         .module('flashweb', [
             'flashweb.config',
             'flashweb.routes',
-            'flashweb.authentication'
+            'flashweb.authentication',
+            'flashweb.layout'
       ]);
 
     angular
