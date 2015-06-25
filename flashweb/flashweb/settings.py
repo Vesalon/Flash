@@ -102,7 +102,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__),'static'),)
 STATIC_PATH = os.path.join(BASE_DIR,'static')
 
 STATICFILES_DIRS = (
@@ -110,3 +109,13 @@ STATICFILES_DIRS = (
 )
 
 AUTH_USER_MODEL = 'authentication.Account'
+
+
+REST_FRAMEWORK = {
+   """'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+   ),"""
+   'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+   ),
+}

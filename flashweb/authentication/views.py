@@ -1,7 +1,8 @@
-from rest_framework import permissions, viewsets
+from rest_framework import permissions, viewsets, status
 from authentication.models import Account
 from authentication.permissions import IsAccountOwner
 from authentication.serializers import AccountSerializer
+from rest_framework.response import Response
 
 class AccountViewSet(viewsets.ModelViewSet):
     lookup_field = 'username'
@@ -12,14 +13,15 @@ class AccountViewSet(viewsets.ModelViewSet):
         if self.request.method in permissions.SAFE_METHODS:
             return (permissions.AllowAny(),)
 
-        if self.request == 'POST':
+        if self.request.method == 'POST':
             return (permissions.AllowAny(),)
 
         return (permissions.IsAuthenticated(),
                 # isAccountOwner(),
         )
-    
-    @csrf_exepmt
+
+
+
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
 
