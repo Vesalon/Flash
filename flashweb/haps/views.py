@@ -2,12 +2,12 @@ from rest_framework import permissions, viewsets
 from rest_framework.response import Response
 
 from haps.models import Hap
-from haps.permissions import IsAuthorOfPost
-from haps.serializers import PostSerializer
+from haps.permissions import IsAuthorOfHap
+from haps.serializers import HapSerializer
 
 
 class HapViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.order_by('-created_at')
+    queryset = Hap.objects.order_by('-created_at')
     serializer_class = HapSerializer
 
     def get_permissions(self):
