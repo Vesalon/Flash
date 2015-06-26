@@ -6,7 +6,9 @@
             'flashweb.config',
             'flashweb.routes',
             'flashweb.authentication',
-            'flashweb.layout'
+            'flashweb.layout',
+            // 'flashweb.haps',
+            // 'flashweb.utils',
       ]);
 
     angular
