@@ -1,0 +1,15 @@
+.no-haps-here {
+  text-align: center;
+}
+
+.hap {}
+
+.hap .hap__meta {
+  font-weight: bold;
+  text-align: right;
+  padding-bottom: 19px;
+}
+
+.hap .hap__meta a:hover {
+  text-decoration: none;
+}
