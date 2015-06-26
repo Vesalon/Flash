@@ -7,8 +7,8 @@
             'flashweb.routes',
             'flashweb.authentication',
             'flashweb.layout',
-            'flashweb.haps',
-            'flashweb.utils'
+            // 'flashweb.haps',
+            // 'flashweb.utils',
       ]);
 
     angular

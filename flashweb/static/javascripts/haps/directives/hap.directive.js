@@ -22,7 +22,7 @@
     var directive = {
       restrict: 'E',
       scope: {
-        post: '='
+        hap: '='
       },
       templateUrl: '/static/templates/haps/hap.html'
     };

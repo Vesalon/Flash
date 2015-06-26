@@ -20,11 +20,11 @@ from rest_framework import routers
 from authentication.views import AccountViewSet, LoginView, LogoutView
 from flashweb.views import IndexView
 
-# from haps.views import AccountHapsViewSet, HapViewSet
+from haps.views import AccountHapsViewSet, HapViewSet
 
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
-# router.register(r'haps', HapViewSet)
+router.register(r'haps', HapViewSet)
 
 # accounts_router = routers.NestedSimpleRouter(
 #     router, r'accounts', lookup='account'

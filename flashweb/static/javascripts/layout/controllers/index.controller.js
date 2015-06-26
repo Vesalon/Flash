@@ -41,7 +41,7 @@
 
       /**
       * @name hapsSuccessFn
-      * @desc Update posts array on view
+      * @desc Update haps array on view
       */
       function hapsSuccessFn(data, status, headers, config) {
         vm.haps = data.data;

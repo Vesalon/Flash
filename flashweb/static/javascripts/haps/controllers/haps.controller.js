@@ -36,7 +36,7 @@
     /**
     * @name calculateNumberOfColumns
     * @desc Calculate number of columns based on screen width
-    * @returns {Number} The number of columns containing Posts
+    * @returns {Number} The number of columns containing Haps
     * @memberOf flashweb.haps.controllers.HapsControllers
     */
     function calculateNumberOfColumns() {

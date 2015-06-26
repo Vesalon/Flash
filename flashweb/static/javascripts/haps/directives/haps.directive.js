@@ -23,7 +23,7 @@
       controllerAs: 'vm',
       restrict: 'E',
       scope: {
-        posts: '='
+        haps: '='
       },
       templateUrl: '/static/templates/haps/haps.html'
     };
