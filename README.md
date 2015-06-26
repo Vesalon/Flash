@@ -3,8 +3,8 @@
 ## Downloads and Installations
 [Python 2.7.10](https://www.python.org/downloads/) (pip is included)
 
-[set environment variable "PATH" to include for Python27](http://www.computerhope.com/issues/ch000549.htm)
-(C:\Python27) and Python27/Scripts (paths are separated by semicolon)
+[set environment variable "PATH"] (http://www.computerhope.com/issues/ch000549.htm)
+to include for Python27 and Python27/Scripts(C:\Python27;C:\Python27\Scripts)
 
 to install django and rest framework, type (anywhere) in cmd :
 * `pip install django`
