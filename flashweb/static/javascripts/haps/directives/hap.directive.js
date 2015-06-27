@@ -6,7 +6,7 @@
   'use strict';
 
   angular
-    .module('flashweb.hap.directives') //MIGHT BE flashweb.haps,
+    .module('flashweb.haps.directives') //MIGHT BE flashweb.haps,
                                        //not flashweb.hap
     .directive('hap', hap);
 

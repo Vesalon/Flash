@@ -18,7 +18,7 @@
   function Haps($http) {
     var Haps = {
       all: all,
-      create: create,
+    //   create: create,
       get: get
     };
 
@@ -44,15 +44,15 @@
     * @returns {Promise}
     * @memberOf flashweb.haps.services.Haps
     */
-    function create(content) {
-      return $http.post('/api/v1/haps/', {
-        title: title
-        desc: desc
-        time: time
-        location: location
-        // guests: guests
-      });
-    }
+    // function create(content) {
+    //   return $http.post('/api/v1/haps/', {
+    //     title: title
+    //     desc: desc
+    //     time: time
+    //     location: location
+    //     // guests: guests
+    //   });
+    // }
 
     /**
      * @name get

@@ -28,6 +28,7 @@
     * @memberOf flashweb.layout.controllers.IndexController
     */
     function activate() {
+      console.log('HELLO')
       Haps.all().then(hapsSuccessFn, hapsErrorFn);
 
       $scope.$on('hap.created', function (event, hap) {

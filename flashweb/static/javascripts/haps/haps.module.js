@@ -3,8 +3,8 @@
 
   angular
     .module('flashweb.haps', [
-    //   'fashweb.haps.controllers',
-    //   'flashweb.haps.directives',
+      'flashweb.haps.controllers',
+      'flashweb.haps.directives',
       'flashweb.haps.services',
     ]);
 

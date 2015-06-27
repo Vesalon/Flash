@@ -2,7 +2,7 @@
 * Snackbar
 * @namespace flashweb.utils.services
 */
-(function ($, _) {
+(function () {
   'use strict';
 
   angular
@@ -63,4 +63,4 @@
       _snackbar(content, options);
     }
   }
-})($, _);
+})();
