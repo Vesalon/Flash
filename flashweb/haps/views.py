@@ -7,7 +7,7 @@ from haps.serializers import HapSerializer
 
 
 class HapViewSet(viewsets.ModelViewSet):
-    queryset = Hap.objects.order_by('-created_at')
+    queryset = Hap.objects.order_by('-time')
     serializer_class = HapSerializer
 
     def get_permissions(self):

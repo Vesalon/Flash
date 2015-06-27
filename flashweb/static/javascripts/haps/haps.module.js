@@ -3,9 +3,9 @@
 
   angular
     .module('flashweb.haps', [
-      'fashweb.haps.controllers',
-      'flashweb.haps.directives',
-      'flashweb.haps.services'
+    //   'fashweb.haps.controllers',
+    //   'flashweb.haps.directives',
+      'flashweb.haps.services',
     ]);
 
   angular
