@@ -17,8 +17,7 @@
   function HapsController($scope) {
     var vm = this;
 
-    vm.columns = [];
-
+    vm.col = [];
     activate();
 
 
@@ -41,20 +40,11 @@
     */
     function render(current, original) {
       if (current !== original) {
-        vm.columns = [[],];
-
-        // for (var i = 0; i < calculateNumberOfColumns(); ++i) {
-        //   vm.columns.push([]);
-        // }
-
+        vm.col = [];
         for (var i = 0; i < current.length; ++i) {
-          var column = 0;
-        //   var column = approximateShortestColumn();
-        //   console.log(column);
-
-          vm.columns[column].push(current[i]);
+          vm.col.push(current[i]);
         }
-        console.log(vm.columns);
+        console.log(vm.col);
       }
     }
   }
