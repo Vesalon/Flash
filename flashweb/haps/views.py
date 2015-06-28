@@ -16,7 +16,7 @@ class HapViewSet(viewsets.ModelViewSet):
         return (permissions.IsAuthenticated(), IsAuthorOfHap(),)
 
 def perform_create(self, serializer):
-    instance = serializer.save(author=self.request.user)
+    instance = serializer.save(organizer=self.request.user)
 
     return super(HapViewSet, self).perform_create(serializer)
 
@@ -27,7 +27,7 @@ class AccountHapsViewSet(viewsets.ViewSet):
     serializer_class = HapSerializer
 
     def list(self, request, account_username=None):
-        queryset = self.queryset.filter(author__username=account_username)
+        queryset = self.queryset.filter(organizer__username=account_username)
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)
