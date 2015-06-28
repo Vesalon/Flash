@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'authentication',
     'haps',
+    'friends',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -21,10 +21,12 @@ from authentication.views import AccountViewSet, LoginView, LogoutView
 from flashweb.views import IndexView
 
 from haps.views import AccountHapsViewSet, HapViewSet
+from friends.views import AccountFriendsViewSet, FriendViewSet
 
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 router.register(r'haps', HapViewSet)
+router.register(r'friends', FriendViewSet)
 
 # accounts_router = routers.NestedSimpleRouter(
 #     router, r'accounts', lookup='account'
