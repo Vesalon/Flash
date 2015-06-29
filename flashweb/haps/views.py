@@ -9,16 +9,17 @@ from haps.serializers import HapSerializer
 class HapViewSet(viewsets.ModelViewSet):
     queryset = Hap.objects.order_by('-time')
     serializer_class = HapSerializer
-
     def get_permissions(self):
+        print('~~~~~~' + self.request.method + '~~~~~~')
         if self.request.method in permissions.SAFE_METHODS:
             return (permissions.AllowAny(),)
         return (permissions.IsAuthenticated(), IsAuthorOfHap(),)
 
-def perform_create(self, serializer):
-    instance = serializer.save(organizer=self.request.user)
+    def perform_create(self, serializer):
+        print('^^^^^^' + self.request.method + '^^^^^^')
+        instance = serializer.save(organizer=self.request.user)
 
-    return super(HapViewSet, self).perform_create(serializer)
+        return super(HapViewSet, self).perform_create(serializer)
 
 
 
