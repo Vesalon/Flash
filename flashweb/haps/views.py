@@ -11,9 +11,14 @@ class HapViewSet(viewsets.ModelViewSet):
     serializer_class = HapSerializer
     def get_permissions(self):
         print('~~~~~~' + self.request.method + '~~~~~~')
+        print(self.request.data)
         if self.request.method in permissions.SAFE_METHODS:
             return (permissions.AllowAny(),)
-        return (permissions.IsAuthenticated(), IsAuthorOfHap(),)
+        x = (permissions.IsAuthenticated(),
+                IsAuthorOfHap(),
+            )
+        print(x[1])
+        return x
 
     def perform_create(self, serializer):
         print('^^^^^^' + self.request.method + '^^^^^^')
