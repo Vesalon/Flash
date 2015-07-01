@@ -32,12 +32,12 @@ class HapViewSet(viewsets.ModelViewSet):
             serializer = self.serializer_class(data=request.data)
 
             print('hello1')
-            # if serializer.is_valid():
-            Hap.objects.create(organizer=request.user,
-                **serializer.initial_data)
-            print('hello2')
-            return Response(serializer.initial_data,
-                    status=status.HTTP_201_CREATED)
+            if serializer.is_valid():
+                Hap.objects.create(organizer=request.user,
+                    **serializer.validated_data)
+                print('hello2')
+                return Response(serializer.validated_data,
+                        status=status.HTTP_201_CREATED)
         except Exception, e:
             print('---------------')
             print(e)

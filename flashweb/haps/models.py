@@ -9,4 +9,3 @@ class Hap(models.Model):
     desc = models.TextField()
     time = models.DateTimeField()
     location = models.CharField(max_length=200)
-    guests = models.ManyToManyField(Account, related_name='guests')
