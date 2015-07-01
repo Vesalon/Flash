@@ -1,4 +1,4 @@
-from rest_framework import permissions, viewsets
+from rest_framework import permissions, viewsets, status, views
 from rest_framework.response import Response
 
 from haps.models import Hap
@@ -20,12 +20,27 @@ class HapViewSet(viewsets.ModelViewSet):
         print(x[1])
         return x
 
-    def perform_create(self, serializer):
+    # def perform_create(self, serializer):
+    #     print('^^^^^^' + self.request.method + '^^^^^^')
+    #     instance = serializer.save(organizer=self.request.user)
+    #
+    #     return super(HapViewSet, self).perform_create(serializer)
+
+    def create(self, request):
         print('^^^^^^' + self.request.method + '^^^^^^')
-        instance = serializer.save(organizer=self.request.user)
+        try:
+            serializer = self.serializer_class(data=request.data)
 
-        return super(HapViewSet, self).perform_create(serializer)
-
+            print('hello1')
+            # if serializer.is_valid():
+            Hap.objects.create(organizer=request.user,
+                **serializer.initial_data)
+            print('hello2')
+            return Response(serializer.initial_data,
+                    status=status.HTTP_201_CREATED)
+        except Exception, e:
+            print('---------------')
+            print(e)
 
 
 class AccountHapsViewSet(viewsets.ViewSet):
