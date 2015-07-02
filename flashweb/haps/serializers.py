@@ -11,7 +11,7 @@ class HapSerializer(serializers.ModelSerializer):
         model = Hap
 
         fields = ('id', 'organizer', 'title', 'desc', 'time',
-                    'location', 'guests')
+                    'location')
         read_only_fields = ('id')
 
     def get_validation_exclusions(self, *args, **kwargs):

@@ -4,7 +4,7 @@
       <div class="hap">
         <div class="hap__meta">
           <a href="/+{{ hap.organizer.username }}">
-            +{{ hap.organizer.username }}
+            {{ hap.organizer.username }}
           </a>
         </div>
 
@@ -12,6 +12,10 @@
           {{ hap.title }}
           <br>
           {{ hap.desc }}
+          <br>
+          {{ hap.location }}
+          <br>
+          {{ hap.time }}
         </div>
       </div>
     </div>

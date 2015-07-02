@@ -13,3 +13,9 @@
 .hap .hap__meta a:hover {
   text-decoration: none;
 }
+
+.btn-add-new-hap {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
