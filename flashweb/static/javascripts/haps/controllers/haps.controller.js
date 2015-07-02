@@ -28,7 +28,7 @@
     */
     function activate() {
       $scope.$watchCollection(function () { return $scope.haps; }, render);
-      $scope.$watch(function () { return $(window).width(); }, render);
+    //   $scope.$watch(function () { return $(window).width(); }, render);
     }
 
     /**
@@ -40,6 +40,8 @@
     */
     function render(current, original) {
       if (current !== original) {
+        console.log(original);
+        console.log(current);
         vm.col = [];
         for (var i = 0; i < current.length; ++i) {
           vm.col.push(current[i]);
