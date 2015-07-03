@@ -39,6 +39,9 @@
     */
     function destroy(profile) {
       return $http.delete('/api/v1/accounts/' + profile.id + '/');
+      //should be profile.username
+      //but since we might change api to look aat id, not username
+      //won't change for now
     }
 
 

@@ -70,7 +70,7 @@
         + '/')
           .then(function(result) {
             if(result.data.include_signature){
-                vm.desc = '\n' + result.data.signature;
+                vm.desc = '\n\n' + result.data.signature;
             }
           });
     }
