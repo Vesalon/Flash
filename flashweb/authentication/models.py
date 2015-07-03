@@ -42,7 +42,7 @@ class Account(AbstractBaseUser):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    signature = models.CharField(max_length=50, default='')
+    signature = models.TextField(default='')
     include_signature = models.BooleanField(default=False)
 
     objects = AccountManager()

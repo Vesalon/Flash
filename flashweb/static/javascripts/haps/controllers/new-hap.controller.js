@@ -9,15 +9,16 @@
     .module('flashweb.haps.controllers')
     .controller('NewHapController', NewHapController);
 
-  NewHapController.$inject = ['$rootScope', '$scope', 'Authentication', 'Snackbar', 'Haps'];
+  NewHapController.$inject = ['$http', '$rootScope', '$scope', 'Authentication', 'Snackbar', 'Haps'];
 
   /**
   * @namespace NewHapController
   */
-  function NewHapController($rootScope, $scope, Authentication, Snackbar, Haps) {
+  function NewHapController($http, $rootScope, $scope, Authentication, Snackbar, Haps) {
     var vm = this;
 
     vm.submit = submit;
+    includeSignature();
 
     /**
     * @name submit
@@ -25,7 +26,6 @@
     * @memberOf flashweb.haps.controllers.NewHapController
     */
     function submit() {
-        console.log('SUBMIT STARTED');
       $rootScope.$broadcast('hap.created', {
         title: vm.title,
         desc: vm.desc,
@@ -61,6 +61,18 @@
           $rootScope.$broadcast('hap.created.error');
         Snackbar.error(data.error);
       }
+    }
+
+    function includeSignature() {
+      $http.get(
+        '/api/v1/accounts/'
+        + Authentication.getAuthenticatedAccount().username
+        + '/')
+          .then(function(result) {
+            if(result.data.include_signature){
+                vm.desc = '\n' + result.data.signature;
+            }
+          });
     }
   }
 })();
