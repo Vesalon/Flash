@@ -9,6 +9,7 @@
             'flashweb.layout',
             'flashweb.haps',
             'flashweb.utils',
+            'flashweb.profiles',
       ]);
 
     angular

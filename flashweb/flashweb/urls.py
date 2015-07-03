@@ -17,6 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 from rest_framework import routers
+from rest_framework_nested import routers
+
 from authentication.views import AccountViewSet, LoginView, LogoutView
 from flashweb.views import IndexView
 
@@ -28,10 +30,10 @@ router.register(r'accounts', AccountViewSet)
 router.register(r'haps', HapViewSet)
 router.register(r'friends', FriendViewSet)
 
-# accounts_router = routers.NestedSimpleRouter(
-#     router, r'accounts', lookup='account'
-# )
-# accounts_router.register(r'haps', AccountHapsViewSet)
+accounts_router = routers.NestedSimpleRouter(
+    router, r'accounts', lookup='account'
+)
+accounts_router.register(r'haps', AccountHapsViewSet)
 
 urlpatterns = [
     # '',
@@ -39,8 +41,7 @@ urlpatterns = [
     url(r'^api/v1/',  include(router.urls)),
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
-    # url(r'^api/v1/', include(router.urls)),
-    # url(r'^api/v1/', include(accounts_routher.urls)),
+    url(r'^api/v1/', include(accounts_router.urls)),
 
     url('^.*$', IndexView.as_view(), name='index'),
 ]
