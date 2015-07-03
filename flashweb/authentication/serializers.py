@@ -12,7 +12,8 @@ class AccountSerializer(serializers.ModelSerializer):
         model = Account
         fields = ('id', 'email', 'username', 'created_at', 'updated_at',
                     'first_name', 'last_name', 'password', 'attended',
-                    'organized', 'confirm_password', 'signature',)
+                    'organized', 'confirm_password', 'signature',
+                    'include_signature',)
         read_only_fields = ('created_at', 'updated_at', 'attended',
                             'organized',)
 
@@ -25,6 +26,9 @@ class AccountSerializer(serializers.ModelSerializer):
 
             instance.signature = validated_data.get('signature',
                 istance.signature)
+
+            instance.include_signature = validated_data.get(
+                'include_signature', istance.include_signature)
 
             instance.save()
 

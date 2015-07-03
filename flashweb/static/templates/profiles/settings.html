@@ -27,6 +27,13 @@
       </div>
 
       <div class="form-group">
+        <label for="settings__include_signature">
+          <input type="checkbox" id="settings__include_signature" ng-model="vm.profile.include_signature" value="">
+          Include signature by defualt
+        </label>
+      </div>
+
+      <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="button" class="btn btn-danger pull-right" ng-click="vm.destroy()">Delete Account</button>
       </div>
