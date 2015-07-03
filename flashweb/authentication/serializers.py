@@ -12,7 +12,7 @@ class AccountSerializer(serializers.ModelSerializer):
         model = Account
         fields = ('id', 'email', 'username', 'created_at', 'updated_at',
                     'first_name', 'last_name', 'password', 'attended',
-                    'organized', 'confirm_password',)
+                    'organized', 'confirm_password', 'signature',)
         read_only_fields = ('created_at', 'updated_at', 'attended',
                             'organized',)
 
@@ -23,6 +23,8 @@ class AccountSerializer(serializers.ModelSerializer):
             instance.username = validated_data.get('username',
                 instance.username)
 
+            instance.signature = validated_data.get('signature',
+                istance.signature)
 
             instance.save()
 

@@ -103,6 +103,7 @@
     * @memberOf thinkster.profiles.controllers.ProfileSettingsController
     */
     function update() {
+      console.log(vm.profile);
       Profile.update(vm.profile).then(profileSuccessFn, profileErrorFn);
 
       /**
