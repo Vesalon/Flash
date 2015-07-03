@@ -42,6 +42,8 @@ class Account(AbstractBaseUser):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    signature = models.CharField(max_length=50, default='')
+
     objects = AccountManager()
 
     USERNAME_FIELD = 'email'
