@@ -10,6 +10,7 @@ to install django:
 * `pip install django`
 * `pip install django-filter`
 * `pip install djangorestframework`
+* `pip install drf-nested-routers`
 
 optional:
 * `pip install markdown`
