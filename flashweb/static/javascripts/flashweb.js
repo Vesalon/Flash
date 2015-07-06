@@ -10,6 +10,7 @@
             'flashweb.haps',
             'flashweb.utils',
             'flashweb.profiles',
+            'flashweb.friends',
       ]);
 
     angular

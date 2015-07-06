@@ -1,0 +1,23 @@
+
+
+<div class="row" ng-cloak>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <div ng-repeat="friend in vm.list">
+      <friend friend="friend"></friend>
+    </div>
+  </div>
+
+  <div class="row">
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="friend in vm.list">
+            {{friend.alias}}
+          </li>
+        </ul>
+  </div>
+
+  <div ng-hide="vm.list && vm.list.length">
+    <div class="col-sm-12 no-friends-here">
+      <em>You have no friends yet. You are a loser!</em>
+    </div>
+  </div>
+</div>
