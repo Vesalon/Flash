@@ -11,6 +11,7 @@
             'flashweb.utils',
             'flashweb.profiles',
             'flashweb.friends',
+            'ngResource'
       ]);
 
     angular
@@ -24,7 +25,7 @@ angular
     .module('flashweb')
     .run(run);
 
-run.$inject = ['$http'];
+run.$inject = ['$http', '$resource'];
 
 /**
 * @name run
