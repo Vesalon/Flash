@@ -33,7 +33,7 @@
         Haps.get(authenticatedAccount.username)
             .then(hapsSuccessFn, hapsErrorFn);
       } else {
-        Haps.all().then(hapsSuccessFn, hapsErrorFn);
+        // Haps.all().then(hapsSuccessFn, hapsErrorFn);
       }
       $scope.$on('hap.created', function (event, hap) {
         vm.haps.unshift(hap);
@@ -60,6 +60,14 @@
       function hapsErrorFn(data, status, headers, config) {
         Snackbar.error(data.error);
       }
+    }
+
+    function login() {
+        window.location = '/login';
+    }
+
+    function register() {
+        window.location = '/register';
     }
   }
 })();
