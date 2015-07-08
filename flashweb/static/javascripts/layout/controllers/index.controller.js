@@ -28,9 +28,13 @@
     * @memberOf flashweb.layout.controllers.IndexController
     */
     function activate() {
-      console.log('HELLO')
-      Haps.all().then(hapsSuccessFn, hapsErrorFn);
-
+      if (vm.isAuthenticated) {
+        var authenticatedAccount = Authentication.getAuthenticatedAccount();
+        Haps.get(authenticatedAccount.username)
+            .then(hapsSuccessFn, hapsErrorFn);
+      } else {
+        Haps.all().then(hapsSuccessFn, hapsErrorFn);
+      }
       $scope.$on('hap.created', function (event, hap) {
         vm.haps.unshift(hap);
       });
