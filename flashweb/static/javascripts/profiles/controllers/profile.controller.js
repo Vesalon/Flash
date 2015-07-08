@@ -18,7 +18,7 @@
     var vm = this;
 
     vm.profile = undefined;
-    vm.posts = [];
+    vm.haps = [];
 
     activate();
 
