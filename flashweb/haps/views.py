@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from haps.models import Hap
 from haps.permissions import IsAuthorOfHap
 from haps.serializers import HapSerializer
+from datetime import datetime, timedelta
 
 
 class HapViewSet(viewsets.ModelViewSet):
@@ -27,7 +28,10 @@ class HapViewSet(viewsets.ModelViewSet):
 
 
 class AccountHapsViewSet(viewsets.ViewSet):
-    queryset = Hap.objects.select_related('organizer').all()
+    queryset = Hap.objects.select_related('organizer').filter(
+    time__range=[datetime.now(),
+    datetime.now()+timedelta(days=365)]).order_by('time')
+
     serializer_class = HapSerializer
 
     def list(self, request, account_username=None):
