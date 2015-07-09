@@ -4,6 +4,7 @@
 from authentication.models import Account
 from friends.models import Friend
 from friends.serializers import FriendSerializer
+
 account = Account.objects.latest('created_at')
 account
 Account.objects.all()
@@ -16,3 +17,7 @@ serialized_friend.data
 account3=Account.objects.get(username='nina13')
 account3
 friend = Friend.objects.create(orig=account, select=account3 )
+
+account4=Account.objects.get(username='nina1')
+account4
+friend = Friend.objects.create(orig=account2, select=account4 )

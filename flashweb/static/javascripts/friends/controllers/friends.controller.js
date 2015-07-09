@@ -9,14 +9,14 @@
     .module('flashweb.friends.controllers')
     .controller('FriendsController', FriendsController);
 
-  FriendsController.$inject = ['$scope', 'Friends'];
+  FriendsController.$inject = ['$scope', 'Authentication', 'Friends'];
 
   /**
   * @namespace FriendsController
   */
-  function FriendsController($scope, Friends) {
+  function FriendsController($scope, Authentication, Friends) {
     var vm = this;
-
+    vm.isAuthenticated = Authentication.isAuthenticated();
     vm.list = [];
     //vm.list = ["Tom", "Dick", "Harry"];
     //vm.list = $scope.list;

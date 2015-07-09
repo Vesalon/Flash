@@ -9,7 +9,7 @@
     .module('flashweb.friends.controllers')
     .controller('NewFriendController', NewFriendController);
 
-  NewFriendController.$inject = ['$http', '$rootScope', '$scope', 'Authentication', 'Snackbar', 'Haps'];
+  NewFriendController.$inject = ['$http', '$rootScope', '$scope', 'Authentication', 'Snackbar', 'Friends'];
 
   /**
   * @namespace NewFriendController
