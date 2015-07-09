@@ -10,22 +10,36 @@
     .module('flashweb.friends.controllers')
     .controller('FriendsController', FriendsController);
 
-  FriendsController.$inject = ['$scope', 'Friends'];
+  FriendsController.$inject = ['$scope',  'Authentication', 'Friends'];
 
   /**
   * @namespace FriendsController
   */
-  function FriendsController($scope, Friends) {
+  function FriendsController($scope, Authentication, Friends) {
     var vm = this;
-    //console.log('friendscontroller');
+    vm.isAuthenticated = Authentication.isAuthenticated();
     vm.list = [];
     //vm.list = ["Tom", "Dick", "Harry"];
     //vm.list = $scope.list;
+    console.log('before calling all');
+    //vm.list = Friends.all();
+    /*
+    vm.list = Friends.all(function(callbackdata){
+      console.log(callbackdata);
+      console.log(vm.list);
+    });*/
+    Friends.query(function(response) {
+      vm.list = response;
+      console.log(response);
+      console.log('after calling query');
+    });
 
-    //vm.list = Friends.query();
-    activate();
+    console.log('after calling all');
+  /*  Friends.all().$promise.then(function(data){
+      vm.list = data;
+    });*/
 
-
+  //  activate();
     /**
     * @name activate
     * @desc Actions to be performed when this controller is instantiated
@@ -33,13 +47,24 @@
     */
     function activate() {
       // used with $http
-    //  Friends.all().success(function(data) {
-    //    vm.list = data;
-    //  });
+      /*Friends.all().success(function(data) {
+        vm.list = data;
+      });*/
+
+    console.log('in friends activate() -- 1');
 
     //used with $resource
     //  $scope.friends = Friend.query();
       vm.list = Friends.query();
+
+    //vm.list = Friends.all();
+
+/*
+      Friends.all().$promise.then(function(data) {
+        vm.list = data;
+      });
+*/
+      console.log('in friends activate() -- 2');
 
       $scope.$watchCollection(function () { return $scope.friends; }, render);
       $scope.$watch(function () { return $(window).width(); }, render);

@@ -1,0 +1,18 @@
+
+# create friend
+
+from authentication.models import Account
+from friends.models import Friend
+from friends.serializers import FriendSerializer
+account = Account.objects.latest('created_at')
+account
+Account.objects.all()
+account2=Account.objects.get(username='catwoman')
+account2
+friend = Friend.objects.create(orig=account, select=account2 )
+serialized_friend = FriendSerializer(friend)
+serialized_friend.data
+
+account3=Account.objects.get(username='nina13')
+account3
+friend = Friend.objects.create(orig=account, select=account3 )
