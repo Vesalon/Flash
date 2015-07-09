@@ -28,7 +28,7 @@ class AccountFriendsViewSet(viewsets.ViewSet):
     queryset = Friend.objects.select_related('orig').all()
     serializer_class = FriendSerializer
 
-    def list(self, request, orig_username=None):
+    def list(self, request, account_username=None):
         queryset = self.queryset.filter(orig__username=account_username)
         serializer = self.serializer_class(queryset, many=True)
 

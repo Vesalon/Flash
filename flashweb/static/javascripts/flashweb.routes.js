@@ -32,6 +32,10 @@
       controller: 'ProfileSettingsController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/profiles/settings.html'
+    }).when('/+:username/friends', {
+      controller: 'FriendsController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/friends/friends.html'
     }).otherwise('/');
   }
 })();

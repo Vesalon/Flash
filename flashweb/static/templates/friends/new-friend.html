@@ -1,0 +1,23 @@
+<form role="form" ng-submit="vm.submit()">
+  <div class="form-group">
+    <label for="friend__alias">New Friend</label>
+    <input  type="text"
+            class="input-medium search-query"
+            id="search__username"
+            placeholder="enter username"
+            ng-model="vm.orig.username">
+
+    <button type="search"
+            class="btn"
+            ng-click="search()">Search</button>
+
+    <i class="material-icons">face</i>
+
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  </div>
+</form>
