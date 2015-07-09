@@ -34,6 +34,7 @@ accounts_router = routers.NestedSimpleRouter(
     router, r'accounts', lookup='account'
 )
 accounts_router.register(r'haps', AccountHapsViewSet)
+accounts_router.register(r'friends', AccountFriendsViewSet)
 
 urlpatterns = [
     # '',
