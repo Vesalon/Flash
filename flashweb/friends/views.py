@@ -23,33 +23,19 @@ class FriendViewSet(viewsets.ModelViewSet):
 
 
     def create(self, request):
-        # instance = serializer.save(orig=self.request.user)
-        #
-        # return super(FriendViewSet, self).perform_create(serializer)
-        # print('^^^^^^' + self.request.method + '^^^^^^')
-        # serializer = self.serializer_class(data=request.data)
-        #
-        # if serializer.is_valid():
-        #     Hap.objects.create(orig=request.user,
-        #         **serializer.validated_data)
-        #     return Response(serializer.validated_data,
-        #             status=status.HTTP_201_CREATED)
-        print('^^^^^^' + self.request.method + '^^^^^^')
-        try:
-            serializer = self.serializer_class(data=request.data)
+        serializer = self.serializer_class(data=request.data)
 
-            print('hello1')
-            print(serializer.initial_data)
+        print(serializer.initial_data)
+        try:
             sel = Account.objects.get(username=serializer.initial_data.get('select'))
-            print(sel)
-            Friend.objects.create(orig=request.user,
-                select=sel)
-            print('hello2')
-            return Response(serializer.initial_data,
-                    status=status.HTTP_201_CREATED)
         except Exception, e:
-            print('---------------')
-            print(e)
+            print('no account with that username')
+            #tell user that adding friend did not
+            # work - in future
+        Friend.objects.create(orig=request.user,
+            select=sel)
+        return Response(serializer.initial_data,
+                status=status.HTTP_201_CREATED)
 
 
 
