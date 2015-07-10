@@ -1,5 +1,3 @@
-#from django.shortcuts import render
-
 from rest_framework import permissions, viewsets, status, views
 from rest_framework.response import Response
 
@@ -9,18 +7,15 @@ from friends.serializers import FriendSerializer
 
 from authentication.models import Account
 
-
 class FriendViewSet(viewsets.ModelViewSet):
     queryset = Friend.objects.order_by('-alias')
     serializer_class = FriendSerializer
-
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
             return (permissions.AllowAny(),)
-        x = (permissions.IsAuthenticated(), IsOrigOfFriend(),)
-        print(x[1])
-        return x
-
+        return (permissions.IsAuthenticated(),
+            IsOrigOfFriend(),
+        )
 
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
@@ -30,8 +25,8 @@ class FriendViewSet(viewsets.ModelViewSet):
             sel = Account.objects.get(username=serializer.initial_data.get('select'))
         except Exception, e:
             print('no account with that username')
-            #tell user that adding friend did not
-            # work - in future
+            return Response(serializer.initial_data,
+                    status=status.HTTP_400_BAD_REQUEST)
         Friend.objects.create(orig=request.user,
             select=sel)
         return Response(serializer.initial_data,

@@ -35,14 +35,15 @@
        Friends.get(authenticatedAccount.username)
            .then(friendsSuccessFn, friendsErrorFn);
      }
-     /*
-     $scope.$on('hap.created', function (event, hap) {
-       vm.haps.unshift(hap);
-     });
 
-     $scope.$on('hap.created.error', function () {
-       vm.haps.shift();
-     });*/
+        $scope.$on('friend.created', function (event, friend) {
+          vm.friends.unshift(friend);
+        });
+
+        $scope.$on('friend.created.error', function () {
+          console.log('error!!!!');
+          vm.friend.shift();
+        });
 
      /**
       * @name friendsSuccessFn
@@ -78,6 +79,8 @@
     * @memberOf flashweb.friends.controllers.FriendsController
     */
     function render(current, original) {
+      console.log(original);
+      console.log(current);
       if (current !== original) {
         vm.list = [];
         for (var i = 0; i < current.length; ++i) {
