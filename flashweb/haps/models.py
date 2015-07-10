@@ -17,3 +17,4 @@ class Guest(models.Model):
     friend = models.ForeignKey(Friend)
     hap = models.ForeignKey(Hap)
     comment = models.CharField(max_length=30)
+    status = models.IntegerField(default=0)

@@ -9,7 +9,7 @@
     ]);
 
   angular
-    .module('flashweb.haps.controllers', []);
+    .module('flashweb.haps.controllers', ['checklist-model']);
 
   angular
     .module('flashweb.haps.directives', ['ngDialog']);
