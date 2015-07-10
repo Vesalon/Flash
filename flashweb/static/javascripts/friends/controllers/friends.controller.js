@@ -31,18 +31,18 @@
     function activate() {
       if (vm.isAuthenticated) {
        var authenticatedAccount = Authentication.getAuthenticatedAccount();
-
        Friends.get(authenticatedAccount.username)
            .then(friendsSuccessFn, friendsErrorFn);
      }
 
         $scope.$on('friend.created', function (event, friend) {
-          vm.friends.unshift(friend);
+          console.log(friend);
+          vm.list.unshift(friend);
         });
 
         $scope.$on('friend.created.error', function () {
           console.log('error!!!!');
-          vm.friend.shift();
+          vm.list.shift();
         });
 
      /**
@@ -68,7 +68,7 @@
         vm.list = data;
       });
 */
-      $scope.$watchCollection(function () { return $scope.friends; }, render);
+    //   $scope.$watchCollection(function () { return $scope.friends; }, render);
     //  $scope.$watch(function () { return $(window).width(); }, render);
     }
 
@@ -78,15 +78,15 @@
     * @param {Array} original The value of `vm.friends` before it was updated
     * @memberOf flashweb.friends.controllers.FriendsController
     */
-    function render(current, original) {
-      console.log(original);
-      console.log(current);
-      if (current !== original) {
-        vm.list = [];
-        for (var i = 0; i < current.length; ++i) {
-          vm.list.push(current[i]);
-        }
-      }
-    }
+    // function render(current, original) {
+    //   console.log(original);
+    //   console.log(current);
+    //   if (current !== original) {
+    //     vm.list = [];
+    //     for (var i = 0; i < current.length; ++i) {
+    //       vm.list.push(current[i]);
+    //     }
+    //   }
+    // }
   }
 })();
