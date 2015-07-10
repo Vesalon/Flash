@@ -59,6 +59,7 @@
       * @desc Show snackbar with error
       */
       function friendsErrorFn(data, status, headers, config) {
+        sonsole.log(data.error);
         Snackbar.error(data.error);
       }
 
