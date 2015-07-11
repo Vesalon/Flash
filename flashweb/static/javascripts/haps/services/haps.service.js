@@ -44,14 +44,14 @@
     * @returns {Promise}
     * @memberOf flashweb.haps.services.Haps
     */
-    function create(title, desc, location, time, guests) {
-      console.log(title, desc, location, time, guests);
+    function create(title, desc, location, time, friendIds) {
+      console.log(title, desc, location, time, friendIds);
       return $http.post('/api/v1/haps/', {
         title: title,
         desc: desc,
         location: location,
         time: time,
-        guest_list: guests
+        friend_ids: friendIds
       });
     }
 

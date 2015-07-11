@@ -7,7 +7,6 @@ from haps.models import Hap
 
 class HapSerializer(serializers.ModelSerializer):
     organizer = AccountSerializer(read_only=True, required=False)
-    guest_list = FriendSerializer(many=True)
 
     class Meta:
         model = Hap
@@ -21,4 +20,4 @@ class HapSerializer(serializers.ModelSerializer):
         exclusions = super(FriendSerializer, self).get_validation_exclusions()
         exclusions = super(AccountSerializer, self).get_validation_exclusions()
 
-        return exclusions + ['organizer', 'guest_list']
+        return exclusions + ['organizer']
