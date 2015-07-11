@@ -13,12 +13,24 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-12 ng-view"></div>
+      <div class="col-xs-12 ng-view">
+
+      </div>
     </div>
   </div>
 
+  <!-- Snackbar Directive -->
+  <div class="snackbar-container"
+      data-snackbar="true"
+      data-snackbar-duration="2000"
+      data-snackbar-remove-delay="500">
+  </div>     
+
 {% load staticfiles %}
 
-  {% include 'javascripts.html' %}
+{% include 'javascripts.html' %}
+
+
+
 </body>
 </html>
