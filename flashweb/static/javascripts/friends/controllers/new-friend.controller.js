@@ -56,7 +56,6 @@
       function createFriendErrorFn(data, status, headers, config) {
         //  console.log('SUBMIT ERROR');
           $rootScope.$broadcast('friend.created.error');
-        //Snackbar.error(data.error);
           snackbar.create('problem adding a new friend');
       }
     }

@@ -9,12 +9,12 @@
     .module('flashweb.profiles.controllers')
     .controller('ProfileController', ProfileController);
 
-  ProfileController.$inject = ['$location', '$routeParams', 'Haps', 'Profile', 'Snackbar'];
+  ProfileController.$inject = ['$location', '$routeParams', 'Haps', 'Profile', 'snackbar'];
 
   /**
   * @namespace ProfileController
   */
-  function ProfileController($location, $routeParams, Haps, Profile, Snackbar) {
+  function ProfileController($location, $routeParams, Haps, Profile, snackbar) {
     var vm = this;
 
     vm.profile = undefined;
@@ -48,7 +48,7 @@
       */
       function profileErrorFn(data, status, headers, config) {
         $location.url('/');
-        Snackbar.error('That user does not exist.');
+        snackbar.create('That user does not exist.');
       }
 
 
@@ -57,7 +57,7 @@
         * @desc Update `haps` on viewmodel
         */
       function hapsSuccessFn(data, status, headers, config) {
-        console.log('loaded haps');
+        //console.log('loaded haps');
         vm.haps = data.data;
       }
 
@@ -67,8 +67,8 @@
         * @desc Show error snackbar
         */
       function hapsErrorFn(data, status, headers, config) {
-        console.log('could not load haps');
-        Snackbar.error(data.data.error);
+        //console.log('could not load haps');
+        snackbar.create(data.data.error);
       }
     }
   }

@@ -40,13 +40,13 @@
     */
     function render(current, original) {
       if (current !== original) {
-        console.log(original);
-        console.log(current);
+        //console.log(original);
+      //  console.log(current);
         vm.col = [];
         for (var i = 0; i < current.length; ++i) {
           vm.col.push(current[i]);
         }
-        console.log(vm.col);
+        //console.log(vm.col);
       }
     }
   }
