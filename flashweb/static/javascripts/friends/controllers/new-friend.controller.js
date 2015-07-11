@@ -22,14 +22,12 @@
     /**
     * @name submit
     * @desc Create a new Friend
-    * @memberOf flashweb.haps.controllers.NewHapController
+    * @memberOf flashweb.haps.controllers.NewFriendController
     */
     function submit() {
       $rootScope.$broadcast('friend.created', {
-        alias: vm.alias,
-        select: {
-          username: vm.select.username
-        }
+        select: vm.select,
+        alias: vm.select,
         orig: {
           username: Authentication.getAuthenticatedAccount().username
         }
@@ -38,7 +36,7 @@
       $scope.closeThisDialog();
       console.log('friend SUBMIT ALMOST DONE');
 
-      Friends.create(vm.alias, vm.select.username).then(createFriendSuccessFn, createFriendErrorFn);
+      Friends.create(vm.select.username, vm.alias).then(createFriendSuccessFn, createFriendErrorFn);
       console.log('SUBMIT SENT');
 
       /**

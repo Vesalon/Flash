@@ -1,26 +1,38 @@
-#from django.shortcuts import render
-
-from rest_framework import permissions, viewsets
+from rest_framework import permissions, viewsets, status, views
 from rest_framework.response import Response
 
 from friends.models import Friend
 from friends.permissions import IsOrigOfFriend
 from friends.serializers import FriendSerializer
 
+from authentication.models import Account
 
 class FriendViewSet(viewsets.ModelViewSet):
     queryset = Friend.objects.order_by('-alias')
     serializer_class = FriendSerializer
-
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
             return (permissions.AllowAny(),)
-        return (permissions.IsAuthenticated(), IsOrigOfFriend(),)
+        return (permissions.IsAuthenticated(),
+            IsOrigOfFriend(),
+        )
 
-def perform_create(self, serializer):
-    instance = serializer.save(orig=self.request.user)
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
 
-    return super(FriendViewSet, self).perform_create(serializer)
+        print(serializer.initial_data)
+        try:
+            sel = Account.objects.get(username=serializer.initial_data.get('select'))
+        except Exception, e:
+            print('no account with that username')
+            return Response(serializer.initial_data,
+                    status=status.HTTP_400_BAD_REQUEST)
+        Friend.objects.create(orig=request.user,
+            select=sel)
+        return Response(serializer.initial_data,
+                status=status.HTTP_201_CREATED)
+
+
 
 
 

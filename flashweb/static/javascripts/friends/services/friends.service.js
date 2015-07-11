@@ -18,7 +18,7 @@
   function Friends($http) {
     var Friends = {
       all: all,
-    //   create: create,
+      create: create,
       get: get
     };
     //console.log('CALLING function Friends($http)');
@@ -44,15 +44,12 @@
         * @returns {Promise}
         * @memberOf flashweb.haps.services.Haps
         */
-        // function create(content) {
-        //   return $http.post('/api/v1/haps/', {
-        //     title: title
-        //     desc: desc
-        //     time: time
-        //     location: location
-        //     // guests: guests
-        //   });
-        // }
+        function create(select, alias) {
+          return $http.post('/api/v1/friends/', {
+              select: select,
+              alias: alias,
+          });
+        }
         /**
      * @name get
      * @desc Get the Friend of a given user

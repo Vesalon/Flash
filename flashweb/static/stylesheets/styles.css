@@ -35,3 +35,9 @@
 .friend .friend__meta a:hover {
   text-decoration: none;
 }
+
+.btn-add-new-friend {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
