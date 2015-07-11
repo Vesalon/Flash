@@ -21,7 +21,7 @@
 
     vm.friends = [];
 
-    vm.guestlist = [];
+    vm.guests = [];
 
     activate();
 
@@ -59,7 +59,7 @@
     */
     function submit() {
       $rootScope.$broadcast('guestlist.created', {
-        guestlist: vm.guestlist,
+        guests: vm.guests,
       });
     //   console.log(title, desc, location, time);
       $scope.closeThisDialog();

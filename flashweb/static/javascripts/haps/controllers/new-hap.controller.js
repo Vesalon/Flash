@@ -19,6 +19,22 @@
 
     vm.submit = submit;
     includeSignature();
+    vm.guests = [];
+    activate();
+
+
+
+    function activate() {
+        $scope.$on('guestlist.created', function (event, guests) {
+          console.log(guests);
+          vm.guests = guests;
+          console.log(vm.guests);
+        });
+
+        $scope.$on('guestlist.created.error', function () {
+            console.log('error selecting guestlist');
+        });
+    }
 
     /**
     * @name submit
@@ -26,11 +42,13 @@
     * @memberOf flashweb.haps.controllers.NewHapController
     */
     function submit() {
+      console.log(vm.guests);
       $rootScope.$broadcast('hap.created', {
         title: vm.title,
         desc: vm.desc,
         location: vm.location,
         time: vm.time,
+        guests: vm.guests,
         organizer: {
           username: Authentication.getAuthenticatedAccount().username
         }
@@ -39,7 +57,7 @@
       $scope.closeThisDialog();
       console.log('SUBMIT ALMOST DONE');
 
-      Haps.create(vm.title, vm.desc, vm.location, vm.time).then(createHapSuccessFn, createHapErrorFn);
+      Haps.create(vm.title, vm.desc, vm.location, vm.time, vm.guests).then(createHapSuccessFn, createHapErrorFn);
       console.log('SUBMIT SENT');
 
       /**
