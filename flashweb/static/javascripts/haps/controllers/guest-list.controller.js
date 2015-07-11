@@ -58,6 +58,7 @@
     * @memberOf flashweb.haps.controllers.GuestListController
     */
     function submit() {
+      console.log(vm.guests);
       $rootScope.$broadcast('guestlist.created', {
         guests: vm.guests,
       });

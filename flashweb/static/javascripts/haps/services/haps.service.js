@@ -51,7 +51,7 @@
         desc: desc,
         location: location,
         time: time,
-        // guests: guests
+        guest_list: guests
       });
     }
 

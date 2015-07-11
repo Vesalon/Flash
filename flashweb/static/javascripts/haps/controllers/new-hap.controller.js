@@ -25,9 +25,8 @@
 
 
     function activate() {
-        $scope.$on('guestlist.created', function (event, guests) {
-          console.log(guests);
-          vm.guests = guests;
+        $scope.$on('guestlist.created', function (event, content) {
+          vm.guests = content.guests;
           console.log(vm.guests);
         });
 
