@@ -9,12 +9,12 @@
     .module('flashweb.layout.controllers')
     .controller('IndexController', IndexController);
 
-  IndexController.$inject = ['$scope', 'Authentication', 'Haps', 'Snackbar'];
+  IndexController.$inject = ['$scope', 'Authentication', 'Haps', 'snackbar'];
 
   /**
   * @namespace IndexController
   */
-  function IndexController($scope, Authentication, Haps, Snackbar) {
+  function IndexController($scope, Authentication, Haps, snackbar) {
     var vm = this;
 
     vm.isAuthenticated = Authentication.isAuthenticated();
@@ -30,8 +30,10 @@
     function activate() {
       if (vm.isAuthenticated) {
         var authenticatedAccount = Authentication.getAuthenticatedAccount();
+
         Haps.get(authenticatedAccount.username)
             .then(hapsSuccessFn, hapsErrorFn);
+            
       } else {
         // Haps.all().then(hapsSuccessFn, hapsErrorFn);
       }
@@ -58,7 +60,7 @@
       * @desc Show snackbar with error
       */
       function hapsErrorFn(data, status, headers, config) {
-        Snackbar.error(data.error);
+        snackbar.create('there was a problem getting your haps')
       }
     }
 

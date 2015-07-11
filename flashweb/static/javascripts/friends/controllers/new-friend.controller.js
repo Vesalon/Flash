@@ -9,12 +9,12 @@
     .module('flashweb.friends.controllers')
     .controller('NewFriendController', NewFriendController);
 
-  NewFriendController.$inject = ['$http', '$rootScope', '$scope', 'Authentication', 'Snackbar', 'Friends'];
+  NewFriendController.$inject = ['$http', '$rootScope', '$scope', 'Authentication', 'snackbar', 'Friends'];
 
   /**
   * @namespace NewFriendController
   */
-  function NewFriendController($http, $rootScope, $scope, Authentication, Snackbar, Friends) {
+  function NewFriendController($http, $rootScope, $scope, Authentication, snackbar, Friends) {
     var vm = this;
 
     vm.submit = submit;
@@ -34,18 +34,18 @@
       });
     //   console.log(title, desc, location, time);
       $scope.closeThisDialog();
-      console.log('friend SUBMIT ALMOST DONE');
+      //console.log('friend SUBMIT ALMOST DONE');
 
       Friends.create(vm.select.username, vm.alias).then(createFriendSuccessFn, createFriendErrorFn);
-      console.log('SUBMIT SENT');
+      //console.log('SUBMIT SENT');
 
       /**
       * @name createHapSuccessFn
       * @desc Show snackbar with success message
       */
       function createFriendSuccessFn(data, status, headers, config) {
-          console.log('SUBMIT SUCCESS');
-          Snackbar.show('Success! Friend added.');
+          //console.log('SUBMIT SUCCESS');
+          //Snackbar.show('Success! Friend added.');
       }
 
 
@@ -54,9 +54,9 @@
       * @desc Propogate error event and show snackbar with error message
       */
       function createFriendErrorFn(data, status, headers, config) {
-          console.log('SUBMIT ERROR');
+        //  console.log('SUBMIT ERROR');
           $rootScope.$broadcast('friend.created.error');
-        Snackbar.error(data.error);
+          snackbar.create('problem adding a new friend');
       }
     }
 

@@ -10,13 +10,13 @@
     .controller('ProfileSettingsController', ProfileSettingsController);
 
   ProfileSettingsController.$inject = [
-    '$location', '$routeParams', 'Authentication', 'Profile', 'Snackbar'
+    '$location', '$routeParams', 'Authentication', 'Profile', 'snackbar'
   ];
 
   /**
   * @namespace ProfileSettingsController
   */
-  function ProfileSettingsController($location, $routeParams, Authentication, Profile, Snackbar) {
+  function ProfileSettingsController($location, $routeParams, Authentication, Profile, snackbar) {
     var vm = this;
 
     vm.destroy = destroy;
@@ -37,12 +37,12 @@
       // Redirect if not logged in
       if (!authenticatedAccount) {
         $location.url('/');
-        Snackbar.error('You are not authorized to view this page.');
+        snackbar.create('You are not authorized to view this page.');
       } else {
         // Redirect if logged in, but not the owner of this profile.
         if (authenticatedAccount.username !== username) {
           $location.url('/');
-          Snackbar.error('You are not authorized to view this page.');
+          snackbar.create('You are not authorized to view this page.');
         }
       }
 
@@ -62,7 +62,7 @@
       */
       function profileErrorFn(data, status, headers, config) {
         $location.url('/');
-        Snackbar.error('That user does not exist.');
+        snackbar.create('That user does not exist.');
       }
     }
 
@@ -92,7 +92,7 @@
       * @desc Display error snackbar
       */
       function profileErrorFn(data, status, headers, config) {
-        Snackbar.error(data.error);
+        snackbar.create(data.error);
       }
     }
 
@@ -103,7 +103,7 @@
     * @memberOf thinkster.profiles.controllers.ProfileSettingsController
     */
     function update() {
-      console.log(vm.profile);
+      //console.log(vm.profile);
       Profile.update(vm.profile).then(profileSuccessFn, profileErrorFn);
 
       /**
@@ -111,7 +111,7 @@
       * @desc Show success snackbar
       */
       function profileSuccessFn(data, status, headers, config) {
-        Snackbar.show('Your profile has been updated.');
+        snackbar.create('Your profile has been updated.');
       }
 
 
@@ -120,7 +120,7 @@
       * @desc Show error snackbar
       */
       function profileErrorFn(data, status, headers, config) {
-        Snackbar.error(data.error);
+        snackbar.create(data.error);
       }
     }
   }

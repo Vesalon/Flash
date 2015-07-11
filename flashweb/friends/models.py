@@ -10,9 +10,12 @@ class Friend(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        unique_together = ('orig', 'select')
+        #ordering = ['alias']
 
     def __unicode__(self):
-        return '{0} {1}'.format(self.alias, self.select.username)
+        return '{0} : {1}'.format(self.orig.username, self.select.username)
 
     def __init__(self, *args, **kwargs):
         super(Friend, self).__init__(*args, **kwargs)

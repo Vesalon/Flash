@@ -1,5 +1,5 @@
 /**
-* FriendsController
+* `FriendsController`
 * @namespace flashweb.friends.controllers
 */
 (function () {
@@ -9,17 +9,20 @@
     .module('flashweb.friends.controllers')
     .controller('FriendsController', FriendsController);
 
-  FriendsController.$inject = ['$scope', 'Authentication', 'Friends', 'Snackbar'];
+  FriendsController.$inject = ['$scope', 'Authentication', 'Friends', 'snackbar'];
 
   /**
   * @namespace FriendsController
   */
-  function FriendsController($scope, Authentication, Friends, Snackbar) {
+  function FriendsController($scope, Authentication, Friends, snackbar) {
     var vm = this;
     vm.isAuthenticated = Authentication.isAuthenticated();
     vm.list = [];
     //vm.list = ["Tom", "Dick", "Harry"];
     //vm.list = $scope.list;
+
+
+
     activate();
 
 
@@ -31,17 +34,18 @@
     function activate() {
       if (vm.isAuthenticated) {
        var authenticatedAccount = Authentication.getAuthenticatedAccount();
+
        Friends.get(authenticatedAccount.username)
            .then(friendsSuccessFn, friendsErrorFn);
      }
 
         $scope.$on('friend.created', function (event, friend) {
-          console.log(friend);
+          //console.log(friend);
           vm.list.unshift(friend);
         });
 
         $scope.$on('friend.created.error', function () {
-          console.log('error!!!!');
+          //console.log('error!!!!');
           vm.list.shift();
         });
 
@@ -59,7 +63,12 @@
       * @desc Show snackbar with error
       */
       function friendsErrorFn(data, status, headers, config) {
-        Snackbar.error(data.error);
+        //sonsole.log(data.error);
+        //Snackbar.error(data.error);
+         //snackbar.create(data.error);
+        //  $scope.snackbar = function () {
+        //    snackbar.create('Oops!');
+        //  }
       }
 
 

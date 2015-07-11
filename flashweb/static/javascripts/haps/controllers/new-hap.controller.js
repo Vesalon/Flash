@@ -9,12 +9,12 @@
     .module('flashweb.haps.controllers')
     .controller('NewHapController', NewHapController);
 
-  NewHapController.$inject = ['$http', '$rootScope', '$scope', 'Authentication', 'Snackbar', 'Haps'];
+  NewHapController.$inject = ['$http', '$rootScope', '$scope', 'Authentication', 'snackbar', 'Haps'];
 
   /**
   * @namespace NewHapController
   */
-  function NewHapController($http, $rootScope, $scope, Authentication, Snackbar, Haps) {
+  function NewHapController($http, $rootScope, $scope, Authentication, snackbar, Haps) {
     var vm = this;
 
     vm.submit = submit;
@@ -57,18 +57,18 @@
       });
     //   console.log(title, desc, location, time);
       $scope.closeThisDialog();
-      console.log('SUBMIT ALMOST DONE');
+      //console.log('SUBMIT ALMOST DONE');
 
       Haps.create(vm.title, vm.desc, vm.location, vm.time, vm.friendIds).then(createHapSuccessFn, createHapErrorFn);
-      console.log('SUBMIT SENT');
+    //   console.log('SUBMIT SENT');
 
       /**
       * @name createHapSuccessFn
       * @desc Show snackbar with success message
       */
       function createHapSuccessFn(data, status, headers, config) {
-          console.log('SUBMIT SUCCESS');
-          Snackbar.show('Success! Hap created.');
+          //console.log('SUBMIT SUCCESS');
+          snackbar.create('Success! Hap created.');
       }
 
 
@@ -77,9 +77,9 @@
       * @desc Propogate error event and show snackbar with error message
       */
       function createHapErrorFn(data, status, headers, config) {
-          console.log('SUBMIT ERROR');
+          //console.log('SUBMIT ERROR');
           $rootScope.$broadcast('hap.created.error');
-        Snackbar.error(data.error);
+        snackbar.create(data.error);
       }
     }
 

@@ -8,10 +8,10 @@
             'flashweb.authentication',
             'flashweb.layout',
             'flashweb.haps',
-            'flashweb.utils',
             'flashweb.profiles',
             'flashweb.friends',
-            'ngResource'
+            'ngResource',
+            'angular.snackbar'
       ]);
 
     angular
