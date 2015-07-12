@@ -8,8 +8,11 @@
           </a>
         </div>
 
-        <div class="friend__alias">
-          {{ friend.select.username }}
+        <div class="friend__meta">
+          <a href="/+{{ friend.select.username }}">
+            +{{ friend.select.username }}
+          </a>
+          {{ friend.select.alias }}
         </div>
       </div>
     </div>
