@@ -6,10 +6,18 @@
             id="search__username"
             placeholder="enter username"
             ng-model="vm.select.username">
-
     <button type="search"
             class="btn"
             ng-click="search()">Search</button>
+
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search for username">
+      </div>
+      <button type="search" class="btn btn-default">SEARCH</button>
+    </form>
+
+
 
     <i class="material-icons">face</i>
 
