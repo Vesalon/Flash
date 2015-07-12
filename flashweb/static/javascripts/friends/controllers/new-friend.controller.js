@@ -54,9 +54,13 @@
       * @desc Propogate error event and show snackbar with error message
       */
       function createFriendErrorFn(data, status, headers, config) {
-        //  console.log('SUBMIT ERROR');
-          $rootScope.$broadcast('friend.created.error');
+        //console.log(data.status);
+        $rootScope.$broadcast('friend.created.error');
+        if(data.status === 400){
+          snackbar.create('the entered username is not valid');
+        }else{
           snackbar.create('problem adding a new friend');
+        }
       }
     }
 
