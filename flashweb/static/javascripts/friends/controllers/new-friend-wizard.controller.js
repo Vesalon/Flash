@@ -43,7 +43,7 @@
     };
 
     modal.getCurrentStep = function () {
-        return modal.steps[vm.step];
+        return modal.steps[modal.step];
     };
 
     modal.getNextLabel = function () {

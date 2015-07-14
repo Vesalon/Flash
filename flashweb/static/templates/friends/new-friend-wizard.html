@@ -1,8 +1,8 @@
 <div class="modal-header">
-	<button type="button" class="close" ng-click="modal.dismiss('No bueno!')" aria-hidden="true">&times;</button>
+	<button type="button" class="close" data-dismiss="modal" ng-click="modal.dismiss('No bueno!')"  aria-hidden="true">&times;</button>
 	<h3>Add a new friend</h3>
 </div>
-<!-- <div class="modal-body">
+<div class="modal-body">
 	<div>
 		<div class="btn-group">
 			<button class="btn" ng-class="{'btn-primary':modal.isCurrentStep(0)}" ng-click="modal.setCurrentStep(0)">Source</button>
@@ -51,7 +51,7 @@
 			</div>
 		</div>
 	</div>
-</div> -->
+</div>
 <div class="modal-footer">
 	<a class="btn btn-default" ng-click="modal.handlePrevious()" ng-show="!modal.isFirstStep()">Back</a>
 	<a class="btn btn-primary" ng-click="modal.handleNext()">{{modal.getNextLabel()}}</a>

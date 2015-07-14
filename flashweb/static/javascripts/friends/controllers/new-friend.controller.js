@@ -19,6 +19,8 @@
 
     vm.submit = submit;
     vm.openNewFriendWizard = openNewFriendWizard;
+    vm.closeNewFriendWizard = closeNewFriendWizard;
+
 
     /**
     * @name submit
@@ -37,7 +39,7 @@
       $scope.closeThisDialog();
       //console.log('friend SUBMIT ALMOST DONE');
 
-      Friends.create(vm.select.username, vm.alias).then(createFriendSuccessFn, createFriendErrorFn);
+      Friends.create(vm.data.username, vm.data.alias).then(createFriendSuccessFn, createFriendErrorFn);
       //console.log('SUBMIT SENT');
 
       /**
@@ -65,28 +67,39 @@
       }
     }
 
-    function openNewFriendWizard () {
+
+
+
+    function openNewFriendWizard (source) {
       console.log('entering openNewFriendWizard()');
+
+      vm.source = source;
+      console.log(vm.source);
+
             var modalInstance = $modal.open({
                 templateUrl: '/static/templates/friends/new-friend-wizard.html',
                 controller: 'NewFriendWizardController',
                 controllerAs: 'modal'
             });
+
       console.log('loaded');
       $scope.closeThisDialog();
-      
+
             modalInstance.result
                 .then(function (data) {
                     closeNewFriendWizard();
+                    console.log(data);
                     vm.data = data;
                     vm.submit();
                 }, function (reason) {
                     vm.reason = reason;
                 });
       }
-    //
-    //   function closeNewFriendWizard () {
-    //         app.reason = null;
-    //     };
+
+      function closeNewFriendWizard () {
+            vm.reason = null;
+      };
+
+
   }
 })();
