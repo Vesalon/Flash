@@ -28,7 +28,6 @@
     */
     function activate() {
       $scope.$watchCollection(function () { return $scope.haps; }, render);
-    //   $scope.$watch(function () { return $(window).width(); }, render);
     }
 
     /**

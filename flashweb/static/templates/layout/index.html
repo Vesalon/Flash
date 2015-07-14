@@ -1,10 +1,12 @@
 <div ng-show="vm.isAuthenticated">
 <h1>Upcoming:</h1>
 <haps haps="vm.haps" ng-show="vm.haps && vm.haps.length"></haps>
-<a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-hap"
-  href="javascript:void(0)"
-  ng-dialog="/static/templates/haps/new-hap.html"
-  ng-dialog-controller="NewHapController as vm"></a>
+  <div>
+    <button type="button"
+      class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-hap"
+      ng-click="vm.openNewHapWizard()">
+    </button>
+  </div>
 </div>
 
 <div ng-show="!vm.isAuthenticated">

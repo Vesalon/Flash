@@ -82,8 +82,8 @@
                 controllerAs: 'modal'
             });
 
-      console.log('loaded');
-      $scope.closeThisDialog();
+            console.log('loaded');
+            $scope.closeThisDialog();
 
             modalInstance.result
                 .then(function (data) {

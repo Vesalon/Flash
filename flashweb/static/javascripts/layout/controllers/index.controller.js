@@ -9,17 +9,18 @@
     .module('flashweb.layout.controllers')
     .controller('IndexController', IndexController);
 
-  IndexController.$inject = ['$scope', 'Authentication', 'Haps', 'snackbar'];
+  IndexController.$inject = ['$scope', '$modal', 'Authentication', 'Haps', 'snackbar'];
 
   /**
   * @namespace IndexController
   */
-  function IndexController($scope, Authentication, Haps, snackbar) {
+  function IndexController($scope, $modal, Authentication, Haps, snackbar) {
     var vm = this;
 
     vm.isAuthenticated = Authentication.isAuthenticated();
+    vm.openNewHapWizard = openNewHapWizard;
     vm.haps = [];
-
+    vm.friendIds = [];
     activate();
 
     /**
@@ -33,7 +34,7 @@
 
         Haps.get(authenticatedAccount.username)
             .then(hapsSuccessFn, hapsErrorFn);
-            
+
       } else {
         // Haps.all().then(hapsSuccessFn, hapsErrorFn);
       }
@@ -70,6 +71,64 @@
 
     function register() {
         window.location = '/register';
+    }
+
+    function submit() {
+      for(var index in vm.guests){
+          vm.friendIds[index] = vm.guests[index].id;
+      }
+
+      $scope.$broadcast('hap.created', {
+        title: vm.title,
+        desc: vm.desc,
+        location: vm.location,
+        time: vm.time,
+        friendIds: vm.friendIds,
+        organizer: {
+          username: Authentication.getAuthenticatedAccount().username
+        }
+      });
+
+      Haps.create(vm.title, vm.desc, vm.location, vm.time, vm.friendIds)
+        .then(createHapSuccessFn, createHapErrorFn);
+
+        function createHapSuccessFn(data, status, headers, config) {
+            //console.log('SUBMIT SUCCESS');
+            snackbar.create('Success! Hap created.');
+        }
+
+        function createHapErrorFn(data, status, headers, config) {
+            //console.log('SUBMIT ERROR');
+            $rootScope.$broadcast('hap.created.error');
+          snackbar.create(data.error);
+        }
+    }
+
+    function openNewHapWizard() {
+      console.log('something or other');
+      var modalInstance = $modal.open({
+          templateUrl: '/static/templates/haps/new-hap-wizard.html',
+          controller: 'NewHapWizardController',
+          controllerAs: 'modal'
+      });
+
+      modalInstance.result
+          .then(function (data) {
+              closeNewHapWizard();
+              console.log(data);
+              vm.title = data.title;
+              vm.desc = data.desc;
+              vm.location = data.location;
+              vm.time = data.time;
+              vm.guests = data.guests;
+              submit();
+          }, function (reason) {
+              vm.reason = reason;
+          });
+    }
+
+    function closeNewHapWizard () {
+          vm.reason = null;
     }
   }
 })();

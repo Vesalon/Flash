@@ -9,12 +9,12 @@
     .module('flashweb.haps.controllers')
     .controller('GuestListController', GuestListController);
 
-  GuestListController.$inject = ['$http', '$rootScope', '$scope', 'Authentication', 'Snackbar', 'Haps', 'Friends'];
+  GuestListController.$inject = ['$http', '$rootScope', '$scope', 'Authentication', 'Haps', 'Friends'];
 
   /**
   * @namespace GuestListController
   */
-  function GuestListController($http, $rootScope, $scope, Authentication, Snackbar, Haps, Friends) {
+  function GuestListController($http, $rootScope, $scope, Authentication, Haps, Friends) {
     var vm = this;
 
     vm.submit = submit;
@@ -46,7 +46,7 @@
       */
       function friendsErrorFn(data, status, headers, config) {
           console.log('friends failure');
-          Snackbar.error(data.error);
+          // Snackbar.error(data.error);
       }
 
 
@@ -84,7 +84,7 @@
       function createHapErrorFn(data, status, headers, config) {
           console.log('SUBMIT ERROR');
           $rootScope.$broadcast('hap.created.error');
-        Snackbar.error(data.error);
+        // Snackbar.error(data.error);
       }
     }
   }

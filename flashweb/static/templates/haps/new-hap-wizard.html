@@ -1,0 +1,86 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" ng-click="modal.dismiss('No bueno!')"  aria-hidden="true">&times;</button>
+	<h3>Add a new hap</h3>
+</div>
+<div class="modal-body">
+	<div>
+		<div class="btn-group">
+			<button class="btn" ng-class="{'btn-primary':modal.isCurrentStep(0)}" ng-click="modal.setCurrentStep(0)">Title and Desc</button>
+			<button class="btn" ng-class="{'btn-primary':modal.isCurrentStep(1)}" ng-click="modal.setCurrentStep(1)">Location</button>
+			<button class="btn" ng-class="{'btn-primary':modal.isCurrentStep(2)}" ng-click="modal.setCurrentStep(2)">Date and Time</button>
+			<button class="btn" ng-class="{'btn-primary':modal.isCurrentStep(3)}" ng-click="modal.setCurrentStep(3)">Guests</button>
+		</div>
+		<div ng-switch="modal.getCurrentStep()" class="slide-frame">
+
+			<div ng-switch-when="one" class="wave">
+				<fieldset>
+					<div class="form-group">
+						<div>
+							<input  class="form-control"
+											type="text"
+											class="input-xlarge"
+											id="title"
+											ng-model="modal.wizard.title"
+											placeholder="Title">
+
+							<textarea class="form-control"
+					            id="desc"
+					            rows="5"
+					            placeholder="Description"
+					            ng-model="modal.wizard.desc">
+					    </textarea>
+						</div>
+					</div>
+				</fieldset>
+      </div>
+
+			<div ng-switch-when="two" class="wave">
+				<fieldset>
+					<div class="form-group">
+						<div>
+							<input  type="text"
+					            class="form-control"
+					            id="location"
+					            placeholder="Location"
+					            ng-model="modal.wizard.location">
+						</div>
+					</div
+				</fieldset>
+			</div>
+
+			<div ng-switch-when="three" class="wave">
+				<fieldset>
+          <div class="form-group">
+						<div>
+							<input type="datetime-local"
+					            class="form-control"
+					            id="time"
+					            placeholder="Date and Time"
+					            ng-model="modal.wizard.time">
+						</div>
+					</div>
+				</fieldset>
+			</div>
+
+			<div ng-switch-when="four" class="wave">
+				<fieldset>
+					<div class="form-group">
+				    <label for="hap__content">Guest List</label>
+				      <div ng-repeat="friend in modal.friends">
+				        <input type="checkbox"
+				            id="{{ friend.select.username }}"
+				            checklist-model="modal.wizard.guests"
+				            checklist-value="friend">
+				        {{ friend.select.username }}
+				      </div>
+				  </div>
+				</fieldset>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<a class="btn btn-default" ng-click="modal.handlePrevious()" ng-show="!modal.isFirstStep()">Back</a>
+	<a class="btn btn-primary" ng-click="modal.handleNext()">{{modal.getNextLabel()}}</a>
+</div>
