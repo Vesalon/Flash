@@ -41,3 +41,9 @@
   bottom: 20px;
   right: 20px;
 }
+
+.btn-add-new-friend-wizard {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}

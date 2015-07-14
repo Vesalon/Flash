@@ -13,7 +13,7 @@
 
   <div ng-hide="vm.list && vm.list.length">
     <div class="col-sm-12 no-friends-here">
-      <em>You have no friends yet. You are a loser!</em>
+      <em>You have no friends yet. Use the plus button to add some.</em>
     </div>
   </div>
 </div>
@@ -23,3 +23,8 @@
   ng-show="vm.isAuthenticated"
   ng-dialog="/static/templates/friends/new-friend.html"
   ng-dialog-controller="NewFriendController as vm"></a>
+
+
+  <!-- <button type="button" ng-click="vm.openNewFriendWizard()" class="btn btn-large btn-primary ng-scope">
+    Select
+  </button> -->

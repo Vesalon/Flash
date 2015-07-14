@@ -11,7 +11,9 @@
             'flashweb.profiles',
             'flashweb.friends',
             'ngResource',
-            'angular.snackbar'
+            'angular.snackbar',
+            'ngAnimate',
+            'ui.bootstrap'
       ]);
 
     angular

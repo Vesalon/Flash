@@ -15,13 +15,14 @@
   * @namespace FriendsController
   */
   function FriendsController($scope, Authentication, Friends, snackbar) {
+
+    console.log('entering FriendsController');
+
     var vm = this;
     vm.isAuthenticated = Authentication.isAuthenticated();
     vm.list = [];
     //vm.list = ["Tom", "Dick", "Harry"];
     //vm.list = $scope.list;
-
-
 
     activate();
 
@@ -97,5 +98,25 @@
     //     }
     //   }
     // }
+
+    // function openNewFriendWizard () {
+    //   console.log('entering openNewFriendWizard()');
+    //         var modalInstance = $modal.open({
+    //             templateUrl: '/static/templates/friends/new-friend-wizard.html',
+    //             controller: 'NewFriendWizardController',
+    //             controllerAs: 'modal'
+    //         });
+    //   console.log('loaded');
+    //         modalInstance.result
+    //             .then(function (data) {
+    //                 closeNewFriendWizard();
+    //                 vm.data = data;
+    //                 vm.submit();
+    //             }, function (reason) {
+    //                 vm.reason = reason;
+    //             });
+    //   }
+
+
   }
 })();

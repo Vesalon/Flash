@@ -23,9 +23,31 @@
 
   </div>
 
+
+
   <div class="form-group">
     <button type="submit" class="btn btn-primary">
       Submit
     </button>
   </div>
+
+
 </form>
+
+<fieldset>
+  <div class="form-group">
+    <label class="control-label" for="source">From where?</label>
+    <div class="controls">
+      <select class="form-control" id="source" ng-model="modal.source">
+        <option selected>hapin</option>
+        <option>contacts</option>
+        <option>facebook</option>
+        <option>google plus</option>
+        <option>linkedin</option>
+      </select>
+    </div>
+  </div>
+</fieldset>
+<button type="button" ng-click="vm.openNewFriendWizard()" class="btn btn-large btn-primary ng-scope">
+  Select
+</button>

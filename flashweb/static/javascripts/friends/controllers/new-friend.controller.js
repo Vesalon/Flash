@@ -9,15 +9,16 @@
     .module('flashweb.friends.controllers')
     .controller('NewFriendController', NewFriendController);
 
-  NewFriendController.$inject = ['$http', '$rootScope', '$scope', 'Authentication', 'snackbar', 'Friends'];
+  NewFriendController.$inject = ['$http', '$rootScope', '$scope', '$modal', 'Authentication', 'snackbar', 'Friends'];
 
   /**
   * @namespace NewFriendController
   */
-  function NewFriendController($http, $rootScope, $scope, Authentication, snackbar, Friends) {
+  function NewFriendController($http, $rootScope, $scope, $modal, Authentication, snackbar, Friends) {
     var vm = this;
 
     vm.submit = submit;
+    vm.openNewFriendWizard = openNewFriendWizard;
 
     /**
     * @name submit
@@ -64,5 +65,28 @@
       }
     }
 
+    function openNewFriendWizard () {
+      console.log('entering openNewFriendWizard()');
+            var modalInstance = $modal.open({
+                templateUrl: '/static/templates/friends/new-friend-wizard.html',
+                controller: 'NewFriendWizardController',
+                controllerAs: 'modal'
+            });
+      console.log('loaded');
+      $scope.closeThisDialog();
+      
+            modalInstance.result
+                .then(function (data) {
+                    closeNewFriendWizard();
+                    vm.data = data;
+                    vm.submit();
+                }, function (reason) {
+                    vm.reason = reason;
+                });
+      }
+    //
+    //   function closeNewFriendWizard () {
+    //         app.reason = null;
+    //     };
   }
 })();
