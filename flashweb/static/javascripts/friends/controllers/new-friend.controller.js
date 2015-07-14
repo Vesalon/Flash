@@ -29,8 +29,8 @@
     */
     function submit() {
       $rootScope.$broadcast('friend.created', {
-        select: vm.select,
-        alias: vm.select,
+        select: vm.data.username,
+        alias: vm.data.alias,
         orig: {
           username: Authentication.getAuthenticatedAccount().username
         }

@@ -24,7 +24,7 @@ class FriendViewSet(viewsets.ModelViewSet):
         try:
             sel = Account.objects.get(username=serializer.initial_data.get('select'))
         except Exception, e:
-            print('no account with that username')
+            print(e)
             return Response(serializer.initial_data,
                     status=status.HTTP_400_BAD_REQUEST)
         Friend.objects.create(orig=request.user,

@@ -21,7 +21,7 @@
     var modal = this;
     //vm.submit = submit;
 
-    modal.steps = ['one', 'two', 'three'];
+    modal.steps = ['one', 'two'];
     modal.step = 0;
     console.log(modal.steps);
   //  modal.wizard = {tacos: 2};
