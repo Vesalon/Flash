@@ -7,6 +7,7 @@ from haps.permissions import IsAuthorOfHap
 from haps.serializers import HapSerializer
 from datetime import datetime, timedelta
 
+from django.db.models import Q
 
 class HapViewSet(viewsets.ModelViewSet):
     queryset = Hap.objects.order_by('-time')
@@ -60,7 +61,26 @@ class AccountHapsViewSet(viewsets.ViewSet):
     serializer_class = HapSerializer
 
     def list(self, request, account_username=None):
-        queryset = self.queryset.filter(organizer__username=account_username)
-        serializer = self.serializer_class(queryset, many=True)
-
+        try:
+            # queryset = self.queryset.filter(
+            #     organizer__username=account_username)
+            #     # | Q(guest_list__friend__username=account_username))
+            # queryset = self.queryset.filter(
+            #     guest_list__friend__select__username=account_username)
+            queryset = self.queryset.raw(
+            '''select h.*
+            		from haps_hap h
+            		join haps_guest g on h.id = g.hap_id
+            		join friends_friend f on g.friend_id = f.id
+            		join authentication_account a on f.select_id  = a.id
+            		where a.username = %s
+            	union
+            	select h.*
+            		from haps_hap h
+            		join authentication_account a on h.organizer_id  = a.id
+            		where a.username = %s''',
+            	[account_username, account_username])
+            serializer = self.serializer_class(queryset, many=True)
+        except Exception, e:
+            print(e)
         return Response(serializer.data)

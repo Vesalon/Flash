@@ -53,6 +53,9 @@
       */
       function hapsSuccessFn(data, status, headers, config) {
         vm.haps = data.data;
+        for(var index in vm.haps){
+          vm.haps[index].isHost = vm.haps[index].organizer.username === authenticatedAccount.username;
+        }
       }
 
 
