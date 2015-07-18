@@ -3,13 +3,14 @@ from rest_framework.response import Response
 
 from haps.models import Hap, Guest
 from friends.models import Friend
-from haps.permissions import IsAuthorOfHap
-from haps.serializers import HapSerializer
+from haps.permissions import IsAuthorOfHap, IsGuestOfHap
+from haps.serializers import HapSerializer, GuestSerializer
 from datetime import datetime, timedelta
 
 from django.db.models import Q
 
 class HapViewSet(viewsets.ModelViewSet):
+    lookup_field = 'id'
     queryset = Hap.objects.order_by('-time')
     serializer_class = HapSerializer
     def get_permissions(self):
@@ -84,3 +85,47 @@ class AccountHapsViewSet(viewsets.ViewSet):
         except Exception, e:
             print(e)
         return Response(serializer.data)
+
+class HapGuestViewSet(viewsets.ViewSet):
+    queryset = Guest.objects.all()
+
+    serializer_class = GuestSerializer
+
+    def get_permissions(self):
+        # if self.request.method in permissions.SAFE_METHODS:
+        #     return (permissions.AllowAny(),)
+        #
+        # if self.request.method == 'PUT':
+        return (permissions.IsAuthenticated(),
+                IsGuestOfHap(),
+            )
+
+    def list(self, request, hap_id=None):
+        hap = Hap.objects.get(id=hap_id)
+        queryset=self.queryset.filter(hap=hap)
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data)
+
+    def put(self, request, hap_id=None):
+        print('update started')
+        print('\n\n\n')
+        print(request.method)
+        print(request.user)
+        print(request.data)
+        print('\n\n\n')
+        try:
+            acc = request.user
+            print('creating instances')
+            h = Hap.objects.get(id=request.data.get('hap_id'))
+            f = Friend.objects.get(orig=h.organizer, select=acc)
+            guest = Guest.objects.get(hap=h, friend=f)
+            print('finished creating instances')
+            guest.status = request.data.get('status')
+            guest.comment = request.data.get('comment')
+            print('just need to save')
+            guest.save()
+            print('everything passed')
+            return Response(request.data,
+                    status=status.HTTP_201_CREATED)
+        except Exception, e:
+            print(e)

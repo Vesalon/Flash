@@ -19,6 +19,8 @@
     * @memberOf flashweb.hap.directives.Hap
     */
     var directive = {
+      controller: 'HapController',
+      controllerAs: 'vm',
       restrict: 'E',
       scope: {
         hap: '='

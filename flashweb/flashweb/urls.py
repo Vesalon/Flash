@@ -22,7 +22,7 @@ from rest_framework_nested import routers
 from authentication.views import AccountViewSet, LoginView, LogoutView
 from flashweb.views import IndexView
 
-from haps.views import AccountHapsViewSet, HapViewSet
+from haps.views import AccountHapsViewSet, HapViewSet, HapGuestViewSet
 from friends.views import AccountFriendsViewSet, FriendViewSet
 
 router = routers.SimpleRouter()
@@ -36,6 +36,12 @@ accounts_router = routers.NestedSimpleRouter(
 accounts_router.register(r'haps', AccountHapsViewSet)
 accounts_router.register(r'friends', AccountFriendsViewSet)
 
+haps_router = routers.NestedSimpleRouter(
+    router, r'haps', lookup='hap'
+)
+
+haps_router.register(r'guests', HapGuestViewSet)
+
 urlpatterns = [
     # '',
     url(r'^admin/', include(admin.site.urls)),
@@ -43,6 +49,7 @@ urlpatterns = [
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
     url(r'^api/v1/', include(accounts_router.urls)),
+    url(r'^api/v1/', include(haps_router.urls)),
 
     url('^.*$', IndexView.as_view(), name='index'),
 ]

@@ -19,7 +19,8 @@
     var Haps = {
       all: all,
       create: create,
-      get: get
+      get: get,
+      accept: accept,
     };
 
     return Haps;
@@ -64,6 +65,15 @@
      */
     function get(username) {
       return $http.get('/api/v1/accounts/' + username + '/haps/');
+    }
+
+    function accept(hapId, status, comment) {
+      console.log(hapId, status, comment);
+      return $http.put('/api/v1/haps/' + hapId + '/guests/', {
+        hap_id: hapId,
+        status: status,
+        comment: comment
+      });
     }
   }
 })();
