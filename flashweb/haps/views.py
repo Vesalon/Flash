@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from haps.models import Hap, Guest
 from friends.models import Friend
 from haps.permissions import IsAuthorOfHap, IsGuestOfHap
-from haps.serializers import HapSerializer, GuestSerializer
+from haps.serializers import HapSerializer, GuestSerializer, GuestHelperSerializer
 from datetime import datetime, timedelta
 
 from django.db.models import Q
@@ -14,8 +14,8 @@ class HapViewSet(viewsets.ModelViewSet):
     queryset = Hap.objects.order_by('-time')
     serializer_class = HapSerializer
     def get_permissions(self):
-        if self.request.method in permissions.SAFE_METHODS:
-            return (permissions.AllowAny(),)
+        # if self.request.method in permissions.SAFE_METHODS:
+        #     return (permissions.AllowAny(),)
         return (permissions.IsAuthenticated(),
                 IsAuthorOfHap(),
             )
@@ -86,27 +86,31 @@ class AccountHapsViewSet(viewsets.ViewSet):
             print(e)
         return Response(serializer.data)
 
-class HapGuestViewSet(viewsets.ViewSet):
-    queryset = Guest.objects.all()
-
+class HapGuestViewSet(viewsets.ModelViewSet):
+    print('working1')
+    queryset = Guest.objects.none() #.all()
+    print('working2')
     serializer_class = GuestSerializer
+    print('working3')
+
 
     def get_permissions(self):
-        # if self.request.method in permissions.SAFE_METHODS:
-        #     return (permissions.AllowAny(),)
-        #
-        # if self.request.method == 'PUT':
-        return (permissions.IsAuthenticated(),
-                IsGuestOfHap(),
+        print('HapGuestViewSet: reached get_permissions')
+        x = (permissions.IsAuthenticated(),
+                IsGuestOfHap()
             )
+        #print(x)
+        return x
 
     def list(self, request, hap_id=None):
         hap = Hap.objects.get(id=hap_id)
-        queryset=self.queryset.filter(hap=hap)
+        #queryset=self.queryset.filter(hap=hap)
+        queryset = Guest.objects.filter(hap=hap)
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
 
     def put(self, request, hap_id=None):
+        # serializer = self.serializer_class(data=request.data)
         print('update started')
         print('\n\n\n')
         print(request.method)
@@ -115,16 +119,13 @@ class HapGuestViewSet(viewsets.ViewSet):
         print('\n\n\n')
         try:
             acc = request.user
-            print('creating instances')
-            h = Hap.objects.get(id=request.data.get('hap_id'))
+            h = Hap.objects.get(id=hap_id)
             f = Friend.objects.get(orig=h.organizer, select=acc)
             guest = Guest.objects.get(hap=h, friend=f)
-            print('finished creating instances')
+            self.check_object_permissions(request, guest)
             guest.status = request.data.get('status')
             guest.comment = request.data.get('comment')
-            print('just need to save')
             guest.save()
-            print('everything passed')
             return Response(request.data,
                     status=status.HTTP_201_CREATED)
         except Exception, e:

@@ -70,7 +70,6 @@
     function accept(hapId, status, comment) {
       console.log(hapId, status, comment);
       return $http.put('/api/v1/haps/' + hapId + '/guests/', {
-        hap_id: hapId,
         status: status,
         comment: comment
       });

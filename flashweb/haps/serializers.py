@@ -23,6 +23,8 @@ class HapSerializer(serializers.ModelSerializer):
         return exclusions + ['organizer']
 
 class GuestSerializer(serializers.ModelSerializer):
+    friend = FriendSerializer(required=True)
+    hap = HapSerializer(required=True)
 
     class Meta:
         model = Guest
@@ -37,3 +39,8 @@ class GuestSerializer(serializers.ModelSerializer):
         exclusions = super(AccountSerializer, self).get_validation_exclusions()
 
         return exclusions + ['friend', 'hap']
+
+
+class GuestHelperSerializer(serializers.ModelSerializer):
+    status = serializers.IntegerField()
+    comment = serializers.CharField(max_length=30)
