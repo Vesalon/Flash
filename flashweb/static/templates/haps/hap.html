@@ -20,9 +20,26 @@
         <div ng-show="{{ hap.isHost }}">
           <button type="button" class="btn btn-primary" ng-click="vm.editHap()">Edit</button>
         </div>
-        <div ng-show="!{{ hap.isHost }}">
-          <button type="button" class="btn btn-primary" ng-click="vm.acceptInvite()">Accept</button>
-          <button type="button" class="btn btn-primary" ng-click="vm.declineInvite()">Decline</button>
+        <div ng-show="!{{ hap.isHost }}" ng-switch="vm.currentStep()">
+          <div ng-switch-when="status">
+            <button type="button" class="btn btn-primary" ng-click="vm.going=true;vm.nextStep()">Accept</button>
+            <button type="button" class="btn btn-primary" ng-click="vm.going=false;vm.nextStep()">Decline</button>
+          </div>
+          <div ng-switch-when="comment">
+            <form role="form" ng-submit="vm.submit();vm.nextStep()">
+              <div>
+                <input type="text"
+                       class="input-large"
+                       ng-model="vm.comment"
+                       placeholder="Reason">
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Submit
+              </button>
+            </form>
+          </div>
+          <div ng-switch-when="done">
+          </div>
         </div>
       </div>
     </div>
