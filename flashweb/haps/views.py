@@ -87,25 +87,24 @@ class AccountHapsViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
 class HapGuestViewSet(viewsets.ModelViewSet):
-    print('working1')
-    queryset = Guest.objects.none() #.all()
-    print('working2')
+    queryset = Guest.objects.none()
     serializer_class = GuestSerializer
-    print('working3')
 
+    def get_queryset(self):
+        hap_id = self.kwargs['hap_id']
+        return Guest.objects.filter(hap = Hap.objects.get(id=hap_id))
+
+    # def pre_save(self, obj):
+    #     obj.hap_id = self.kwargs['hap_id']
 
     def get_permissions(self):
-        print('HapGuestViewSet: reached get_permissions')
-        x = (permissions.IsAuthenticated(),
+        return (permissions.IsAuthenticated(),
                 IsGuestOfHap()
             )
-        #print(x)
-        return x
 
     def list(self, request, hap_id=None):
-        hap = Hap.objects.get(id=hap_id)
-        #queryset=self.queryset.filter(hap=hap)
-        queryset = Guest.objects.filter(hap=hap)
+        # hap = Hap.objects.get(id=hap_id)
+        queryset=self.get_queryset()
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
 
