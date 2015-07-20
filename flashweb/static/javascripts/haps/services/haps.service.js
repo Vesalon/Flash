@@ -20,6 +20,7 @@
       all: all,
       create: create,
       get: get,
+      getSingle: getSingle,
       accept: accept,
     };
 
@@ -65,6 +66,10 @@
      */
     function get(username) {
       return $http.get('/api/v1/accounts/' + username + '/haps/');
+    }
+
+    function getSingle(hapId) {
+      return $http.get('/api/v1/haps/' + hapId + '/');
     }
 
     function accept(hapId, status, comment) {

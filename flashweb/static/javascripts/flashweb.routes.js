@@ -36,6 +36,10 @@
       controller: 'FriendsController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/friends/friends.html'
+    }).when('/+:username/haps/:hapId', {
+      controller: 'HapDetailedController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/haps/hap-detailed.html'
     }).otherwise('/');
   }
 })();

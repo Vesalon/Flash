@@ -1,0 +1,30 @@
+<div ng-show="vm.hap" class="row" ng-cloak>
+  <div class="col-md-6 col-md-offset-3">
+    <div class="well">
+      <div class="hap">
+        <div class="hap__meta">
+          <a href="/+{{ vm.hap.organizer.username }}">
+            {{ vm.hap.organizer.username }}
+          </a>
+        </div>
+        <div class="hap__content">
+          {{ vm.hap.title }}
+          <br>
+          {{ vm.hap.desc }}
+          <br>
+          {{ vm.hap.location }}
+          <br>
+          {{ vm.hap.time }}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div ng-hide="vm.hap">
+    <div class="col-sm-12 no-haps-here">
+      <em>The are no haps here.</em>
+    </div>
+  </div>
+</div>
