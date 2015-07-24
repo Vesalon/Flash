@@ -24,7 +24,7 @@ var/
 *.egg
 
 # PyInstaller
-#  Usually these files are written by a python script from a template 
+#  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
@@ -55,3 +55,15 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Ionic gitignore
+node_modules
+.tmp
+.sass-cache
+**/bower_components or sometimes it is lib/**
+platforms
+plugins
+*.swp
+*.swo
+*.log
+*.DS_Store
