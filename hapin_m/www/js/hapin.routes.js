@@ -22,6 +22,7 @@
         controllerAs: 'vm',
         templateUrl: "/templates/authentication/register.html"
       })
+
       .state('friends', {
         url: "/friends",
         views: {
@@ -31,14 +32,10 @@
             templateUrl: "templates/friends/friends.html"
           }
         },
-        data: {
-          authorizedRoles: [USER_ROLES.account]
-        }
+        // data: {
+        //   authorizedRoles: [USER_ROLES.account]
+        // }
       })
-        // controller: 'FriendsController',
-        // controllerAs: 'vm',
-        // templateUrl: "/templates/friends/friends.html"
-
       .state('haps', {
         url: "/haps",
         views: {

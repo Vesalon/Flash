@@ -28,7 +28,7 @@
     <!-- // <script src="js/authentication/controllers/register.controller.js"></script> -->
     <script src="js/authentication/controllers/login.controller.js"></script>
     <script src="js/layout/hapin.layout.js"></script>
-    <script src="js/layout/controllers/sidebar.controller.js"></script>
+    <script src="js/layout/controllers/sidemenu.controller.js"></script>
 
     <script src="js/friends/friends.module.js"></script>
     <script src="js/friends/controllers/friends.controller.js"></script>
@@ -39,6 +39,12 @@
 
     <!-- <div ng-include src="'/templates/navbar.html'"></div> -->
     <!-- <div ng-include src="'sidebar.html'"></div> -->
+
+    <!-- <ion-nav-bar class="bar-balanced">
+      </ion-nav-bar> -->
+    <!-- <ion-nav-view></ion-nav-view> -->
+
+
     <ion-side-menus enable-menu-with-back-views="false">
 
         <ion-side-menu-content>
@@ -48,7 +54,6 @@
             <ion-nav-buttons side="left">
               <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
               </button>
-              <!-- <h1 class="title">placeholder</h1> -->
             </ion-nav-buttons>
           </ion-nav-bar>
 
@@ -61,7 +66,7 @@
           </ion-header-bar>
           <ion-content>
             <ul class="list">
-              <!-- Note each link has the 'menu-close' attribute so the menu auto closes when clicking on one of these links -->
+
               <a href="#/haps" class="item" menu-close>Haps</a>
               <a href="#/friends" class="item" menu-close>Friends</a>
               <a href="#/event/attendees" class="item" menu-close>Me</a>
@@ -70,7 +75,6 @@
         </ion-side-menu>
 
       </ion-side-menus>
-
 
 
   </body>
