@@ -22,8 +22,21 @@
         controllerAs: 'vm',
         templateUrl: "/templates/authentication/register.html"
       })
-
-      .state('friends', {
+      .state('nav', {
+        url: "/nav",
+        abstract: true,
+        templateUrl: "templates/menu.html",
+        //controller: 'NavCtrl'
+      })
+      .state('nav.haps', {
+        url: "/haps",
+        views: {
+          'menuContent' :{
+            templateUrl: "templates/haps/haps.html"
+          }
+        }
+      })
+      .state('nav.friends', {
         url: "/friends",
         views: {
           'menuContent' :{
@@ -35,15 +48,7 @@
         // data: {
         //   authorizedRoles: [USER_ROLES.account]
         // }
-      })
-      .state('haps', {
-        url: "/haps",
-        views: {
-          'menuContent' :{
-            templateUrl: "templates/haps/haps.html"
-          }
-        }
-      });
+      })   ;
 
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise('/nav/haps');
  }
