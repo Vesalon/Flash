@@ -24,9 +24,14 @@
       })
       .state('friends', {
         url: "/friends",
-        controller: 'FriendsController',
-        controllerAs: 'vm',
-        templateUrl: "/templates/friends/friends.html"
+        views: {
+          'menuContent' :{
+            templateUrl: "templates/friends/friends.html"
+          }
+        }
+        // controller: 'FriendsController',
+        // controllerAs: 'vm',
+        // templateUrl: "/templates/friends/friends.html"
       });
 
     $urlRouterProvider.otherwise("/");

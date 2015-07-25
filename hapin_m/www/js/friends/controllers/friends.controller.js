@@ -11,5 +11,6 @@
   * @namespace FriendsController
   */
   function FriendsController($scope) {
+    
   }
 })();
