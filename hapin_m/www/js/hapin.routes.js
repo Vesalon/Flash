@@ -6,9 +6,9 @@
    .config(config);
 
 
-  config.$inject = ['$stateProvider', '$urlRouterProvider'];
+  config.$inject = ['$stateProvider', '$urlRouterProvider', 'USER_ROLES'];
 
-  function config($stateProvider, $urlRouterProvider) {
+  function config($stateProvider, $urlRouterProvider, USER_ROLES) {
     $stateProvider
       .state('login', {
         url: "/login",
@@ -26,8 +26,13 @@
         url: "/friends",
         views: {
           'menuContent' :{
+            //controller: 'FriendsController',
+            // controllerAs: 'vm',
             templateUrl: "templates/friends/friends.html"
           }
+        },
+        data: {
+          authorizedRoles: [USER_ROLES.account]
         }
       })
         // controller: 'FriendsController',

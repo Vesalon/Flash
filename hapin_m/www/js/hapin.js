@@ -3,9 +3,10 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('hapin', [
         'ionic',
+        'hapin.constants',
+        'hapin.routes',
         'hapin.authentication',
         'hapin.layout',
-        'hapin.routes',
         'hapin.friends',
 ])
 
