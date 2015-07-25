@@ -29,9 +29,18 @@
             templateUrl: "templates/friends/friends.html"
           }
         }
+      })
         // controller: 'FriendsController',
         // controllerAs: 'vm',
         // templateUrl: "/templates/friends/friends.html"
+
+      .state('haps', {
+        url: "/haps",
+        views: {
+          'menuContent' :{
+            templateUrl: "templates/haps/haps.html"
+          }
+        }
       });
 
     $urlRouterProvider.otherwise("/");
