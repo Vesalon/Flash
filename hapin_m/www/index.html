@@ -29,6 +29,8 @@
     <script src="js/authentication/services/authentication.service.js"></script>
     <script src="js/authentication/controllers/register.controller.js"></script>
     <script src="js/authentication/controllers/login.controller.js"></script>
+    <script src="js/layout/hapin.layout.js"></script>
+    <script src="js/layout/controllers/sidebar.controller.js"></script>
 
   </head>
   <body ng-app="hapin">
@@ -37,11 +39,14 @@
     <!-- <div ng-include src="'sidebar.html'"></div> -->
 
 
-    <ion-side-menus>
+    <ion-side-menus ng-controller="MenuCtrl">
 
       <!-- Center content -->
       <ion-side-menu-content>
         <ion-header-bar class="bar-dark">
+          <button class="button button-icon" ng-click="showMenu()">
+            <i class="icon ion-navicon"></i>
+          </button>
           <h1 class="title">Friends List sidebar</h1>
         </ion-header-bar>
         <ion-content>

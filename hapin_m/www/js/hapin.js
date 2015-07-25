@@ -3,7 +3,8 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('hapin', [
         'ionic',
-        'hapin.authentication'
+        'hapin.authentication',
+        'hapin.layout',
 ])
 
 .run(function($ionicPlatform) {
