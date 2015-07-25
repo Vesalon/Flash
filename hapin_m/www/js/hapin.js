@@ -5,6 +5,8 @@ angular.module('hapin', [
         'ionic',
         'hapin.authentication',
         'hapin.layout',
+      //  'hapin.routes',
+      //  'hapin.friends',
 ])
 
 .run(function($ionicPlatform) {
