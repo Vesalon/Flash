@@ -3,7 +3,7 @@
 
   angular
     .module('hapin.friends', [
-      'hapin.friends.controllers',
+      'hapin.friends.controllers'
     ]);
 
   angular
