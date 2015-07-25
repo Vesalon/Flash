@@ -6,7 +6,7 @@ angular.module('hapin', [
         'hapin.constants',
         'hapin.routes',
         'hapin.authentication',
-        'hapin.layout',
+        //'hapin.layout',
         'hapin.friends',
 ])
 
