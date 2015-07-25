@@ -14,7 +14,7 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-    <div ng-include src="'javascripts.html'"></div>
+
 
   <!-- <script src="lib/ionic/js/angular/angular.min.js"></script> -->
 
@@ -23,10 +23,42 @@
 
     <!-- your app's js -->
     <script src="js/hapin.js"></script>
+    <!-- <div ng-include src="'javascripts.html'"></div> -->
+
+    <script src="js/authentication/authentication.module.js"></script>
+    <script src="js/authentication/services/authentication.service.js"></script>
+    <script src="js/authentication/controllers/register.controller.js"></script>
+    <script src="js/authentication/controllers/login.controller.js"></script>
+
   </head>
   <body ng-app="hapin">
 
     <!-- <div ng-include src="'/templates/navbar.html'"></div> -->
-    <div ng-include src="'sidebar.html'"></div>
+    <!-- <div ng-include src="'sidebar.html'"></div> -->
+
+
+    <ion-side-menus>
+
+      <!-- Center content -->
+      <ion-side-menu-content>
+        <ion-header-bar class="bar-dark">
+          <h1 class="title">Friends List sidebar</h1>
+        </ion-header-bar>
+        <ion-content>
+        </ion-content>
+      </ion-side-menu-content>
+
+      <!-- Left menu -->
+      <ion-side-menu side="left">
+        <ion-header-bar class="bar-dark">
+          <h1 class="title">Friends</h1>
+        </ion-header-bar>
+      </ion-side-menu>
+
+
+
+    </ion-side-menus>
+
+
   </body>
 </html>
