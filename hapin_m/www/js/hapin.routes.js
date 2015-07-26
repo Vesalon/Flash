@@ -51,4 +51,15 @@
       })   ;
 
     $urlRouterProvider.otherwise('/nav/haps');
+
+    // $urlRouterProvider.otherwise(function($injector, $location){
+    //    var state = $injector.get('$state');
+    //    if(....)
+    //      state.go('core');
+    //    else(...)
+    //      state.go('dashboard');
+    //    ...
+    //    return $location.path();
+    // });
+
  }
