@@ -45,9 +45,9 @@
             templateUrl: "templates/friends/friends.html"
           }
         },
-        // data: {
-        //   authorizedRoles: [USER_ROLES.account]
-        // }
+        data: {
+          authorizedRoles: [USER_ROLES.account]
+        }
       })   ;
 
     $urlRouterProvider.otherwise('/nav/haps');

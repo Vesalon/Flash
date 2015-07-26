@@ -6,11 +6,11 @@ angular.module('hapin', [
         'hapin.constants',
         'hapin.routes',
         'hapin.authentication',
-        //'hapin.layout',
         'hapin.friends',
 ])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, $state, Authentication, AUTH_EVENTS) {
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -21,4 +21,27 @@ angular.module('hapin', [
       StatusBar.styleDefault();
     }
   });
+
+
+  // $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
+  //
+  //   if ('data' in next && 'authorizedRoles' in next.data) {
+  //     var authorizedRoles = next.data.authorizedRoles;
+  //     if (!AuthService.isAuthorized(authorizedRoles)) {
+  //       event.preventDefault();
+  //       $state.go($state.current, {}, {reload: true});
+  //       $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+  //     }
+  //   }
+  //
+  //   if (!AuthService.isAuthenticated()) {
+  //     if (next.name !== 'login') {
+  //       event.preventDefault();
+  //       $state.go('login');
+  //     }
+  //   }
+
+
+  //});
+
 })

@@ -11,5 +11,5 @@
     .module('hapin.authentication.controllers', []);
 
   angular
-    .module('hapin.authentication.services', []);
+    .module('hapin.authentication.services', ['ngCookies']);
 })();
