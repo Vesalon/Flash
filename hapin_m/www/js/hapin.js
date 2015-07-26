@@ -34,12 +34,12 @@ angular.module('hapin', [
     //   }
     // }
 
-    // if (!Authentication.isAuthenticated()) {
-    //   if (next.name !== 'login') {
-    //     event.preventDefault();
-    //     $state.go('login');
-    //   }
-    // }
+    if (!Authentication.isAuthenticated()) {
+      if (next.name !== 'login') {
+        event.preventDefault();
+        $state.go('login');
+      }
+    }
 
 
   });
