@@ -50,7 +50,11 @@
         }
       })   ;
 
-    $urlRouterProvider.otherwise('/nav/haps');
+    //$urlRouterProvider.otherwise('/nav/haps');
+    $urlRouterProvider.otherwise(function ($injector, $location) {
+      var $state = $injector.get("$state");
+      $state.go("nav.haps");
+    });
 
     // $urlRouterProvider.otherwise(function($injector, $location){
     //    var state = $injector.get('$state');
