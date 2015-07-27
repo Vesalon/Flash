@@ -77,7 +77,8 @@ function logout() {
     }
 
     function isAuthenticated() {
-      return !!$cookies.authenticatedAccount;
+      return false;
+    //  return !!$cookies.authenticatedAccount;
     }
 
     function setAuthenticatedAccount(account) {

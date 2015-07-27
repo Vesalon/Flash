@@ -13,13 +13,13 @@
       .state('login', {
         url: "/login",
         controller: 'LoginController',
-        controllerAs: 'vm',
+        controllerAs: 'hi',
         templateUrl: "/templates/authentication/login.html"
       })
       .state('register', {
         url: "/register",
         controller: 'RegisterController',
-        controllerAs: 'vm',
+        controllerAs: 'hi',
         templateUrl: "/templates/authentication/register.html"
       })
       .state('nav', {
