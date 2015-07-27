@@ -8,9 +8,10 @@
   LoginController.$inject = ['$location', '$scope', 'Authentication'];
 
   function LoginController($location, $scope, Authentication) {
-    var vm = this;
+    var hi = this;
 console.log("entering login function 1")
-    vm.login = login;
+    hi.login = login;
+    hi.register = register;
 
     activate();
 
@@ -20,11 +21,18 @@ console.log("entering login function 1")
       if (Authentication.isAuthenticated()) {
         $location.url('/');
       }
+        console.log("exiting login function 3");
     }
 
     function login() {
-      console.log("entering login function 2")
-      Authentication.login(vm.email, vm.password);
+      console.log("entering login function 2");
+      Authentication.login(hi.email, hi.password);
+    }
+
+    function register() {
+      console.log("entering login.register function")
+      $location.url('/register');
+
     }
   }
 })();

@@ -37,13 +37,13 @@ angular.module('hapin', [
     //   }
     // }
 
-    if (!Authentication.isAuthenticated()) {
-      console.log("entering watcher, want to go to ", next.name)
-      if (next.name !== 'login') {
-        event.preventDefault();
-        $state.go('login');
-      }
-    }
+    // if (!Authentication.isAuthenticated()) {
+    //   console.log("entering watcher, want to go to ", next.name)
+    //   if (next.name !== 'login') {
+    //     event.preventDefault();
+    //     $state.go('login');
+    //   }
+    // }
 
 
   });
