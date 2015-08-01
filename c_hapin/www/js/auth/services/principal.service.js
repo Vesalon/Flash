@@ -4,14 +4,14 @@
     .module('hapin.auth.services')
     .factory('Principal', Principal);
 
-  // Principal.$inject = ['$q', '$http', '$timeout'];
   Principal.$inject = ['$http', '$q', '$timeout'];
 
-  // function Principal($q, $http, $timeout) {
   function Principal($http, $q, $timeout) {
 
     var _identity = undefined,
       _authenticated = false;
+
+    var LOCAL_IDENTITY_KEY = 'social.hapin.identity';
 
     return {
       isIdentityResolved: function() {
@@ -19,6 +19,11 @@
       },
       isAuthenticated: function() {
         return _authenticated;
+      },
+      username: function() {
+        if (!_authenticated || !_identity.username) return '';
+
+        return _identity.username;
       },
       isInRole: function(role) {
         if (!_authenticated || !_identity.roles) return false;
@@ -39,8 +44,8 @@
         _authenticated = identity != null;
 
         // for this demo, we'll store the identity in localStorage. For you, it could be a cookie, sessionStorage, whatever
-        if (identity) localStorage.setItem("social.hapin.identity", angular.toJson(identity));
-        else localStorage.removeItem("social.hapin.identity");
+        if (identity) localStorage.setItem(LOCAL_IDENTITY_KEY, angular.toJson(identity));
+        else localStorage.removeItem(LOCAL_IDENTITY_KEY);
       },
       identity: function(force) {
         var deferred = $q.defer();
@@ -71,7 +76,8 @@
         // i put it in a timeout to illustrate deferred resolution
         var self = this;
         $timeout(function() {
-          _identity = angular.fromJson(localStorage.getItem("social.hapin.identity"));
+          _identity = angular.fromJson(localStorage.getItem(LOCAL_IDENTITY_KEY));
+          console.log("identity = ", _identity);
           self.authenticate(_identity);
           deferred.resolve(_identity);
         }, 1000);

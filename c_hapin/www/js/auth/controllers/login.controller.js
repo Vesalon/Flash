@@ -28,13 +28,13 @@
 
       // here, we fake authenticating and give a fake user
       Principal.authenticate({
-        name: 'catwoman',
+        username: 'catwoman',
         roles: ['Account']
       });
       //
-      // if ($scope.returnToState)
-      //    $state.go($scope.returnToState.name, $scope.returnToStateParams);
-      // else $state.go('public.index');
+      if ($scope.returnToState)
+         $state.go($scope.returnToState.name, $scope.returnToStateParams);
+      else $state.go('public.index');
     }
 
     function gotoRegister() {
