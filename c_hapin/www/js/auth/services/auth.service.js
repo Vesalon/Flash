@@ -1,21 +1,25 @@
 'use strict';
 
   angular
-    .module('hapin.auth.services', ['ngCookies'])
+    .module('hapin.auth.services', [])
     .factory('Auth', Auth);
 
-  Auth.$inject = ['$cookies', '$http'];
+  Auth.$inject = ['$http'];
 
-  function Auth($cookies, $http) {
+  function Auth($http) {
+
+    var LOCAL_IDENTITY_KEY = 'social.hapin.identity';
 
     var Auth = {
-      //  getAuthenticatedAccount: getAuthenticatedAccount,
-        isAuthenticated: isAuthenticated,
-      //  login: login,
-      //  logout: logout,
-      //  register: register,
-      //  setAuthenticatedAccount: setAuthenticatedAccount,
-      //  unauthenticate: unauthenticate
+         login: login,
+         logout: logout,
+         register: register,
+         getIdentity: getIdentity,
+         isAuthenticated: isAuthenticated,
+         setIdentity: setIdentity,
+         username: username,
+         role: role,
+         unauthenticate: unauthenticate
     };
 
     return Auth;
@@ -29,7 +33,7 @@
       }).then(registerSuccessFn, registerErrorFn);
 
       function registerSuccessFn(data, status, headers, config) {
-        Authentication.login(email, password);
+        Auth.login(email, password);
       }
 
       function registerErrorFn(data, status, headers, config) {
@@ -38,54 +42,71 @@
     }
 
     function login(email, password) {
-        return $http.post('/api/v1/auth/login/', {
-          email: email, password: password
-        }).then(loginSuccessFn, loginErrorFn);
+        // return $http.post('/api/v1/auth/login/', {
+        //   email: email, password: password
+        // }).then(loginSuccessFn, loginErrorFn);
+        Auth.setIdentity({
+          username: 'catwoman',
+          roles: ['Account']
+        });
 
         function loginSuccessFn(data, status, headers, config) {
-          Authentication.setAuthenticatedAccount(data.data);
-          window.location = '/';
+          Auth.setIdentity(data.data);
+          //window.location = '/';
         }
 
         function loginErrorFn(data, status, headers, config) {
-          console.error('Epic failure!');
+          console.error('failure trying to login!');
         }
     }
 
 
     function logout() {
-      return $http.post('/api/v1/auth/logout/')
-        .then(logoutSuccessFn, logoutErrorFn);
+      // return $http.post('/api/v1/auth/logout/')
+      //   .then(logoutSuccessFn, logoutErrorFn);
+      Auth.unauthenticate();
 
       function logoutSuccessFn(data, status, headers, config) {
-        Authentication.unauthenticate();
-        window.location = '/login';
+        Auth.unauthenticate();
+      //  window.location = '/login';
       }
 
       function logoutErrorFn(data, status, headers, config) {
-        console.error('Epic failure!');
+        console.error('Failure trying to logout!');
       }
     }
 
-    function getAuthenticatedAccount() {
-      if (!$cookies.authenticatedAccount) {
+    function getIdentity() {
+      if (!localStorage.getItem(LOCAL_IDENTITY_KEY)) {
         return;
       }
-
-      return JSON.parse($cookies.authenticatedAccount);
+      return JSON.parse(localStorage.getItem(LOCAL_IDENTITY_KEY));
     }
 
     function isAuthenticated() {
-      return false;
-    //  return !!$cookies.authenticatedAccount;
+      return !!localStorage.getItem(LOCAL_IDENTITY_KEY);
     }
 
-    function setAuthenticatedAccount(account) {
-      $cookies.authenticatedAccount = JSON.stringify(account);
+    function setIdentity(identity) {
+    //  $cookies.authenticatedAccount = JSON.stringify(account);
+      localStorage.setItem(LOCAL_IDENTITY_KEY, JSON.stringify(identity));
     }
 
     function unauthenticate() {
-      delete $cookies.authenticatedAccount;
+      //delete $cookies.authenticatedAccount;
+      localStorage.removeItem(LOCAL_IDENTITY_KEY);
+    }
+
+    function username() {
+      if (!isAuthenticated()) return '';
+
+      return getIdentity().username;
+    }
+
+    function role() {
+      if (!isAuthenticated()) return '';
+
+      return getIdentity().role;
     }
 
   }

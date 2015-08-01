@@ -54,7 +54,9 @@
         // data: {
         //   roles: ['Account']
         // },
-        templateUrl: 'templates/private/sidebar.html'
+        templateUrl: 'templates/private/sidebar.html',
+        controller: "SidebarController",
+        controllerAs: "hi"
       })
       .state('temp', {
         parent: 'sidebar',

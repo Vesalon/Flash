@@ -4,9 +4,9 @@
     .module('hapin.auth.controllers', [])
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$scope', '$state', 'Principal'];
+  LoginController.$inject = ['$scope', '$state', 'Auth'];
 
-  function LoginController($scope, $state, Principal) {
+  function LoginController($scope, $state, Auth) {
     var hi = this;
     hi.login = login;
     hi.gotoRegister = gotoRegister;
@@ -24,17 +24,17 @@
 
     function login() {
       console.log("login() entered.")
-      //Authentication.login(vm.email, vm.password);
+      Auth.login(hi.email, hi.password);
 
-      // here, we fake authenticating and give a fake user
-      Principal.authenticate({
-        username: 'catwoman',
-        roles: ['Account']
-      });
-      //
-      if ($scope.returnToState)
-         $state.go($scope.returnToState.name, $scope.returnToStateParams);
-      else $state.go('public.index');
+      // // here, we fake authenticating and give a fake user
+      // Principal.authenticate({
+      //   username: 'catwoman',
+      //   roles: ['Account']
+      // });
+      // //
+      // if ($scope.returnToState)
+      //    $state.go($scope.returnToState.name, $scope.returnToStateParams);
+      // else $state.go('public.index');
     }
 
     function gotoRegister() {

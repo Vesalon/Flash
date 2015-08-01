@@ -1,11 +1,12 @@
-function TestCtrl($scope, Principal) {
-    $scope.status = "It works!";
 
-    // $scope.username = Principal.identity()
-    //   .then(function() {
-    //     return
-    //   }
-}
+angular
+  .module('hapin')
+  .controller('TestCtrl', ['$scope', 'Auth', function($scope, Auth) {
+
+    $scope.username = Auth.username();
+
+}]);
+
 
 function ViewCtrl($scope) {
     $scope.status = "Also totally works!";

@@ -10,20 +10,21 @@ angular.module('hapin', [
          'hapin.routes',
          'hapin.config',
          'hapin.auth',
+         'hapin.layout'
         //// 'hapin.friends',
 
 ])
 
-.run(['$rootScope', '$state', '$stateParams', 'Authorization', 'Principal',
-    function($rootScope, $state, $stateParams, Authorization, Principal) {
-      $rootScope.$on('$stateChangeStart', function(event, toState, toStateParams) {
-        $rootScope.toState = toState;
-        $rootScope.toStateParams = toStateParams;
-
-        if (Principal.isIdentityResolved()) Authorization.authorize();
-      });
-    }
-  ]);
+// .run(['$rootScope', '$state', '$stateParams', 'Authorization', 'Principal',
+//     function($rootScope, $state, $stateParams, Authorization, Principal) {
+//       $rootScope.$on('$stateChangeStart', function(event, toState, toStateParams) {
+//         $rootScope.toState = toState;
+//         $rootScope.toStateParams = toStateParams;
+//
+//         if (Principal.isIdentityResolved()) Authorization.authorize();
+//       });
+//     }
+//   ]);
 
 // .run(function($rootScope, $state, Auth, AUTH_EVENTS) {
 //   $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
