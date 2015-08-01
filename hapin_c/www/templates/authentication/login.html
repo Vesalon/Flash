@@ -1,0 +1,23 @@
+
+<ion-view view-title="Sign-In" name="login-view">
+  <ion-content class="padding">
+    <form role="form" ng-submit="hi.login()">
+
+      <div class="list list-inset">
+          <label class="item item-input">
+              <input type="email" placeholder="email" ng-model="hi.email">
+          </label>
+          <label class="item item-input">
+              <input type="password" placeholder="password" ng-model="hi.password">
+          </label>
+      </div>
+      <!-- <button class="button button-block button-positive" ng-click="hi.login()">Login</button> -->
+      <button type="submit"  class="button button-block button-positive" >Login</button>
+
+      <div> or </div>
+
+      <button class="button button-block button-positive" ng-click="hi.register()">Register</button>
+
+    </form>
+  </ion-content>
+</ion-view>
