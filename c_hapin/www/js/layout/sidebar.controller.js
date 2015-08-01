@@ -9,6 +9,7 @@
   function SidebarController($scope, $state, Auth) {
     var hi = this;
     hi.logout = logout;
+    $scope.username = Auth.username();
 
     function logout() {
       Auth.logout();

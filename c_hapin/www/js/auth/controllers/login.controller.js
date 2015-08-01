@@ -19,6 +19,9 @@
       // if (Authentication.isAuthenticated()) {
       //   $location.url('/');
       // }
+      // if (Authentication.isAuthenticated()) {
+      //   $location.url('/');
+      // }
     }
 
 
@@ -35,6 +38,9 @@
       // if ($scope.returnToState)
       //    $state.go($scope.returnToState.name, $scope.returnToStateParams);
       // else $state.go('public.index');
+
+      $state.go('haps');
+
     }
 
     function gotoRegister() {

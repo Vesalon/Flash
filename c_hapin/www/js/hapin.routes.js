@@ -64,11 +64,18 @@
         templateUrl: "templates/private/temp.html",
         //controller: "TestCtrl"
       })
+      .state('haps', {
+        parent: 'sidebar',
+        url: "/haps",
+        templateUrl: "templates/private/haps/haps.html",
+        controller: "HapsController",
+        controllerAs: "hi"
+      })
       .state('public', {
-        parent: 'site', 'abstract': true, url: '', templateUrl: 'templates/public/index.html'
+        parent: 'site', 'abstract': true, url: '', template: '<ui-view/>'
       })
       .state('public.index', {
-        parent: 'public', url: "/index", templateUrl: "templates/public/index.html"
+        parent: 'public', url: "", templateUrl: "templates/public/index.html"
       })
       .state('accessdenied', {
         parent: 'private',

@@ -10,8 +10,8 @@ angular.module('hapin', [
          'hapin.routes',
          'hapin.config',
          'hapin.auth',
-         'hapin.layout'
-        //// 'hapin.friends',
+         'hapin.layout',
+         'hapin.haps',
 
 ])
 
