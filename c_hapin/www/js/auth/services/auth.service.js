@@ -4,11 +4,9 @@
     .module('hapin.auth.services', [])
     .factory('Auth', Auth);
 
-  Auth.$inject = ['$http'];
+  Auth.$inject = ['$http', 'AuthStorage'];
 
-  function Auth($http) {
-
-    var LOCAL_IDENTITY_KEY = 'social.hapin.identity';
+  function Auth($http, AuthStorage) {
 
     var Auth = {
          login: login,
@@ -77,24 +75,19 @@
     }
 
     function getIdentity() {
-      if (!localStorage.getItem(LOCAL_IDENTITY_KEY)) {
-        return;
-      }
-      return JSON.parse(localStorage.getItem(LOCAL_IDENTITY_KEY));
+      return AuthStorage.getIdentity();
     }
 
     function isAuthenticated() {
-      return !!localStorage.getItem(LOCAL_IDENTITY_KEY);
+      return AuthStorage.isIdentityPresent();
     }
 
     function setIdentity(identity) {
-    //  $cookies.authenticatedAccount = JSON.stringify(account);
-      localStorage.setItem(LOCAL_IDENTITY_KEY, JSON.stringify(identity));
+      AuthStorage.setIdentity(identity);
     }
 
     function unauthenticate() {
-      //delete $cookies.authenticatedAccount;
-      localStorage.removeItem(LOCAL_IDENTITY_KEY);
+      AuthStorage.removeIdentity();
     }
 
     function username() {

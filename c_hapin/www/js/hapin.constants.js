@@ -13,3 +13,7 @@
     account: 'account_role',
     public: 'public_role'
   })
+
+  .constant('AUTH_STORAGE', {
+  
+  })
