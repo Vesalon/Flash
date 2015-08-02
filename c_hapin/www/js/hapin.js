@@ -4,7 +4,7 @@
 angular.module('hapin', [
         //  'ionic',
         'ngMaterial',
-        // 'ng-mfb',
+        'ng-mfb',
          'ui.router',
          'hapin.constants',
          'hapin.routes',
