@@ -1,12 +1,13 @@
-'use strict';
+'use strict'
 
-  angular
-    .module('devHapin', [])
-    .factory('devAuth', devAuth);
+angular.module('devAuth', [
+          'hapin',
+          'ngMockE2E',
+])
 
-  devAuth.$inject = ['$httpBackend'];
+  .run(function($httpBackend) {
 
-  function devAuth($httpBackend) {
+    var accounts;
 
     //login
     $httpBackend.whenPOST('/api/v1/auth/login')
@@ -19,11 +20,8 @@
     $httpBackend.whenPOST('/api/v1/accounts')
       .respond(function(method, url, data) {
         var account = angular.fromJson(data);
-        accounts.push(account);
-        return [200, account, {}];
+        var identity = {account: username, role: 'Account'};
+        return [200, identity, {}];
     });
 
-
-
-
-  }
+  });
