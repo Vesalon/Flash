@@ -4,12 +4,18 @@ angular.module('hapin')
 
   .run(function($httpBackend, DevAuthData) {
 
+// format function(function(method, url, [data], [headers])
+// data and header are optionl
+
+//respond
+// function([status,] data[, headers, statusText])
+
     //login
     $httpBackend.whenPOST('/api/v1/auth/login/')
       .respond(function(method, url, data) {
         var o = angular.fromJson(data);
         //console.log(o); // {"email":"geo@a.com","password":"pass"}
-        var account = DevAuthData.getByEmail(o.email);
+        var account = DevAuthData.getByLogin(o.email, o.password);
         return [200, account, {}];
     });
 
@@ -22,6 +28,13 @@ angular.module('hapin')
         return [200, account, {}];
     });
 
-  //  $httpBackend.whenGET(/templates\/\w+.*/).passThrough();
+    //logout
+    $httpBackend.whenPOST('/api/v1/auth/logout/')
+      .respond(function(method, url, data) {
+        console.log('mock logout')
+        return [200, {}, {}];
+    });
+
+
 
   });

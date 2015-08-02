@@ -63,9 +63,8 @@
 
 
     function logout() {
-      // return $http.post('/api/v1/auth/logout/')
-      //   .then(logoutSuccessFn, logoutErrorFn);
-      Auth.unauthenticate();
+      return $http.post('/api/v1/auth/logout/')
+        .then(logoutSuccessFn, logoutErrorFn);
 
       function logoutSuccessFn(data, status, headers, config) {
         Auth.unauthenticate();

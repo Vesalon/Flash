@@ -13,7 +13,7 @@
     var DevAuthData = {
          accounts: accounts,
          create: create,
-         getByEmail: getByEmail
+         getByLogin: getByLogin
     };
 
     return DevAuthData;
@@ -27,9 +27,10 @@
       console.log(accounts);
     }
 
-    function getByEmail(email) {
+    function getByLogin(email, password) {
       var account = accounts.filter(function (a) {
-          return a.email === email;
+          return a.email === email
+                & a.password === password;
         })[0];
 
       console.log("account = ", account);
