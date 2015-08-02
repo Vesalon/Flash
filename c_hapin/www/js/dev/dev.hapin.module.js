@@ -2,11 +2,12 @@
 
 angular.module('hapin.dev', [
             'ngMockE2E',
+            'hapin.dev.data'
 
 ]);
 
 angular
-  .module('hapin.dev.data.services', []);
+  .module('hapin.dev.data', []);
 
   // .run(function($httpBackend) {
   //

@@ -1,10 +1,8 @@
 'use strict'
 
-angular.module('hapin') 
+angular.module('hapin')
 
   .run(function($httpBackend, DevAuthData) {
-
-    //var accounts = [{"username":"Geo","password":"pass","email":"geo@a.com"}];
 
     //login
     $httpBackend.whenPOST('/api/v1/auth/login/')
@@ -24,6 +22,6 @@ angular.module('hapin')
         return [200, account, {}];
     });
 
-    $httpBackend.whenGET(/templates\/\w+.*/).passThrough();
+  //  $httpBackend.whenGET(/templates\/\w+.*/).passThrough();
 
   });

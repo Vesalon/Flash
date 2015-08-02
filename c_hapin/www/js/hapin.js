@@ -13,10 +13,15 @@ angular.module('hapin', [
          'hapin.layout',
          'hapin.haps',
          'hapin.navbar',
+
          'ngMockE2E',
-         'hapin.dev.data',
+         'hapin.dev',
 
 ])
+
+  .run(function($httpBackend) {
+    $httpBackend.whenGET(/templates\/\w+.*/).passThrough();
+  });
 
 // .run(['$rootScope', '$state', '$stateParams', 'Authorization', 'Principal',
 //     function($rootScope, $state, $stateParams, Authorization, Principal) {
@@ -53,7 +58,3 @@ angular.module('hapin', [
 //   });
 //
 // })
-
-.run(function($httpBackend) {
-  $httpBackend.whenGET(/templates\/\w+.*/).passThrough();
-});
