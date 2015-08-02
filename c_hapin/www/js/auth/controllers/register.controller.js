@@ -4,12 +4,9 @@
     .module('hapin.auth.controllers')
     .controller('RegisterController', RegisterController);
 
-  RegisterController.$inject = ['$scope'];
+  RegisterController.$inject = ['$scope', '$state', 'Auth'];
 
-  /**
-  * @namespace RegisterController
-  */
-  function RegisterController($scope) {
+  function RegisterController($scope, $state, Auth) {
     var hi = this;
     hi.register = register;
     activate();
@@ -24,6 +21,6 @@
 
    function register() {
      console.log("register() entered")
-    //  Authentication.register(vm.email, vm.password, vm.username);
+     Auth.register(hi.email, hi.password, hi.username);
    }
  }

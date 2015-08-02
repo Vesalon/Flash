@@ -1,29 +1,19 @@
 'use strict'
 
-angular.module('devHapin', [
-          'hapin',
-          'ngMockE2E',
-])
+angular.module('hapin.dev', [
+            'ngMockE2E',
+            'hapin.dev.data'
 
-  .run(function($httpBackend) {
-    phones = [{name: 'phone1'}, {name: 'phone2'}];
+]);
 
-    // returns the current list of phones
-    $httpBackend.whenGET('/phones').respond(phones);
+angular
+  .module('hapin.dev.data', []);
 
-    // adds a new phone to the phones array
-    $httpBackend.whenPOST('/phones').respond(function(method, url, data) {
-      var phone = angular.fromJson(data);
-      phones.push(phone);
-      return [200, phone, {}];
-    });
+  // .run(function($httpBackend) {
+  //
+  //   // phones = [{name: 'phone1'}, {name: 'phone2'}];
+  //   //
+  //   // // returns the current list of phones
+  //   // $httpBackend.whenGET('/phones').respond(phones);
 
-    // don't mock - for html views
-    $httpBackend.whenGET(/^\/templates\//).passThrough();
-
-    // don't mock - for everything else
-    // $httpBackend.whenGET(/^\w+.*/).passThrough();
-    // $httpBackend.whenPOST(/^\w+.*/).passThrough();
-
-    //...
-  });
+  // });

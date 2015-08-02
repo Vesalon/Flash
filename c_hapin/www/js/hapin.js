@@ -2,7 +2,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('hapin', [
-      //  'ionic',
+        //  'ionic',
         'ngMaterial',
         // 'ng-mfb',
          'ui.router',
@@ -14,7 +14,14 @@ angular.module('hapin', [
          'hapin.haps',
          'hapin.navbar',
 
+         'ngMockE2E',
+         'hapin.dev',
+
 ])
+
+  .run(function($httpBackend) {
+    $httpBackend.whenGET(/templates\/\w+.*/).passThrough();
+  });
 
 // .run(['$rootScope', '$state', '$stateParams', 'Authorization', 'Principal',
 //     function($rootScope, $state, $stateParams, Authorization, Principal) {

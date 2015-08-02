@@ -44,8 +44,8 @@ var app = {
 
         console.log('Start event received, bootstrapping application setup.');
         angular.bootstrap($('html'), ['hapin']);
-
-        //angular.bootstrap($('body'), ['hapin']);
+        // mocking
+      //  angular.bootstrap($('html'), ['devHapin']);
     }
 };
 

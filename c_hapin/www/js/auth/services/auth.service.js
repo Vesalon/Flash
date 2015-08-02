@@ -40,15 +40,18 @@
     }
 
     function login(email, password) {
-        // return $http.post('/api/v1/auth/login/', {
-        //   email: email, password: password
-        // }).then(loginSuccessFn, loginErrorFn);
-        Auth.setIdentity({
-          username: 'catwoman',
-          roles: ['Account']
-        });
+        return $http.post('/api/v1/auth/login/', {
+          email: email, password: password
+        }).then(loginSuccessFn, loginErrorFn);
+
+        // Auth.setIdentity({
+        //   username: 'catwoman',
+        //   roles: ['Account']
+        // });
 
         function loginSuccessFn(data, status, headers, config) {
+          //Auth.setIdentity(data.data);
+          console.log(data.data);
           Auth.setIdentity(data.data);
           //window.location = '/';
         }
@@ -60,9 +63,8 @@
 
 
     function logout() {
-      // return $http.post('/api/v1/auth/logout/')
-      //   .then(logoutSuccessFn, logoutErrorFn);
-      Auth.unauthenticate();
+      return $http.post('/api/v1/auth/logout/')
+        .then(logoutSuccessFn, logoutErrorFn);
 
       function logoutSuccessFn(data, status, headers, config) {
         Auth.unauthenticate();
@@ -82,8 +84,11 @@
       return AuthStorage.isIdentityPresent();
     }
 
-    function setIdentity(identity) {
-      AuthStorage.setIdentity(identity);
+    function setIdentity(account) {
+      AuthStorage.setIdentity({
+        username: account.username,
+        role: 'Account'
+      });
     }
 
     function unauthenticate() {
