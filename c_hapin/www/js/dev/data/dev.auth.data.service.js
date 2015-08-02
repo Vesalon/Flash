@@ -1,7 +1,7 @@
 'use strict';
 
   angular
-    .module('hapin.dev.data.services')
+    .module('hapin.dev.data', [])
     .factory('DevAuthData', DevAuthData);
 
   DevAuthData.$inject = [];
@@ -12,31 +12,30 @@
 
     var DevAuthData = {
          accounts: accounts,
-         getIdentity: getIdentity,
-         removeIdentity: removeIdentity,
-         isIdentityPresent: isIdentityPresent
+         create: create,
+         getByEmail: getByEmail
     };
 
     return DevAuthData;
 
     function accounts() {
       return accounts;
+    };
+
+    function create(account){
+      accounts.push(account);
+      console.log(accounts);
     }
 
-    function getIdentity() {
-      if (!localStorage.getItem(LOCAL_IDENTITY_KEY)) {
-        return;
-      }
-      return JSON.parse(localStorage.getItem(LOCAL_IDENTITY_KEY));
+    function getByEmail(email) {
+      var account = accounts.filter(function (a) {
+          return a.email === email;
+        })[0];
+
+      console.log("account = ", account);
+      //identity = {username: account.username, role: 'Account'}
+      return account;
     }
 
-    function removeIdentity() {
-      //delete $cookies.authenticatedAccount;
-      localStorage.removeItem(LOCAL_IDENTITY_KEY);
-    }
-
-    function isIdentityPresent() {
-      return !!localStorage.getItem(LOCAL_IDENTITY_KEY);
-    }
 
   }

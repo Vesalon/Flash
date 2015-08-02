@@ -14,6 +14,7 @@ angular.module('hapin', [
          'hapin.haps',
          'hapin.navbar',
          'ngMockE2E',
+         'hapin.dev.data',
 
 ])
 
