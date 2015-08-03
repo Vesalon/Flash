@@ -152,6 +152,7 @@
     };
 
     function create(friend){
+      //arr[arr.length - 1]
       friends.push(friend);
       console.log(friends);
     }
