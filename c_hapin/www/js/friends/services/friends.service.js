@@ -25,7 +25,7 @@ function Friends($http) {
     });
   }
 
-  function get(username) {
+  function get() {
     // return $http.get('/api/v1/accounts/' + username + '/friends/');
     return $http.get('/api/v1/accounts/me/friends/');
   }

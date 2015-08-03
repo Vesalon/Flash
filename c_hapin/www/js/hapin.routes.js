@@ -71,6 +71,13 @@
         controller: "HapsController",
         controllerAs: "hi"
       })
+      .state('friends', {
+        parent: 'sidebar',
+        url: "/friends",
+        templateUrl: "templates/private/friends/friends.html",
+        controller: "FriendsController",
+        controllerAs: "hi"
+      })
       .state('public', {
         parent: 'site', 'abstract': true, url: '', template: '<ui-view/>'
       })
