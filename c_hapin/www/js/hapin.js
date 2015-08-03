@@ -11,12 +11,13 @@ angular.module('hapin', [
          'hapin.config',
          'hapin.auth',
          'hapin.layout',
-         'hapin.haps',
          'hapin.navbar',
+         'hapin.haps',
+         'hapin.friends',
 
+         // add/remove for mock backend
          'ngMockE2E',
          'hapin.dev',
-
 ])
 
   .run(function($httpBackend) {

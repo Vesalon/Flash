@@ -2,31 +2,26 @@
 
 angular.module('hapin')
 
-  .run(function($httpBackend, DevFriendsData) {
+  .run(function($httpBackend, DevFriendsData, Auth) {
 
-    // //login
-    // $httpBackend.whenPOST('/api/v1/auth/login/')
-    //   .respond(function(method, url, data) {
-    //     var o = angular.fromJson(data);
-    //     //console.log(o); // {"email":"geo@a.com","password":"pass"}
-    //     var account = DevAuthData.getByLogin(o.email, o.password);
-    //     return [200, account, {}];
-    // });
-    //
-    // //register
-    // $httpBackend.whenPOST('/api/v1/accounts/')
-    //   .respond(function(method, url, data) {
-    //     console.log(data); // {"username":"Nina","password":"pass","email":"nina@a.com"}
-    //     var account = angular.fromJson(data);
-    //     DevAuthData.create(account);
-    //     return [200, account, {}];
-    // });
-    //
-    // //logout
-    // $httpBackend.whenPOST('/api/v1/auth/logout/')
-    //   .respond(function(method, url, data) {
-    //     console.log('mock logout')
-    //     return [200, {}, {}];
-    // });
+    //all
+    $httpBackend.whenGET('/api/v1/friends/').respond(DevFriendsData.all());
+
+    //create
+    $httpBackend.whenPOST('/api/v1/friends/')
+      .respond(function(method, url, data) {
+        console.log(data);
+        var friend = angular.fromJson(data);
+        DevFriendsData.create(friend);
+        return [200, friend, {}];
+    });
+
+    //get
+    $httpBackend.whenGET('/api/v1/accounts/me/friends/')
+      .respond(function (method, url, data) {
+        console.log(data);
+        DevFriendsData.getAccountFriends(Auth.username());
+        return [200];
+    });
 
   });
