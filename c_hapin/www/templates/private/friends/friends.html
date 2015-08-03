@@ -1,9 +1,6 @@
-<dvi>
-  FRIEnds , feiends
-</div>
-
-
-<!-- <div class="row" ng-cloak>
+<div class="row" ng-cloak>
+  
+  <h1>my friends</h1>
 
   <div class="col-md-2">
 
@@ -12,7 +9,8 @@
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
     <div ng-repeat="friend in hi.list | filter:query">
-      <friend friend="friend"></friend>
+      <!-- <friend friend="friend"></friend> -->
+      {{friend.alias}}: {{friend.select.email}}
     </div>
   </div>
 
@@ -21,4 +19,4 @@
       <em>You have no friends yet. Use the plus button to add some.</em>
     </div>
   </div>
-</div> -->
+</div>

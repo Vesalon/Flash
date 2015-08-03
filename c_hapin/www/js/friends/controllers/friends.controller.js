@@ -14,28 +14,28 @@ function FriendsController($scope, Auth, Friends) {
   activate();
 
   function activate() {
-    // if (hi.isAuthenticated) {
-    //  Friends.get()
-    //     .then(friendsSuccessFn, friendsErrorFn);
-    // }
-    //
-    //  $scope.$on('friend.created', function (event, friend) {
-    //    console.log('friend.created ' + friend);
-    //    hi.list.unshift(friend);
-    //  });
-    //
-    //  $scope.$on('friend.created.error', function () {
-    //    console.log('friend.created.erro!!!!');
-    //    hi.list.shift();
-    //  });
-    //
-    // function friendsSuccessFn(data, status, headers, config) {
-    //   hi.list = data.data;
-    // }
-    //
-    // function friendsErrorFn(data, status, headers, config) {
-    //   console.log(data.error);
-    // }
+    if (hi.isAuthenticated) {
+     Friends.get()
+        .then(friendsSuccessFn, friendsErrorFn);
+    }
+
+     $scope.$on('friend.created', function (event, friend) {
+       console.log('friend.created ' + friend);
+       hi.list.unshift(friend);
+     });
+
+     $scope.$on('friend.created.error', function () {
+       console.log('friend.created.erro!!!!');
+       hi.list.shift();
+     });
+
+    function friendsSuccessFn(data, status, headers, config) {
+      hi.list = data.data;
+    }
+
+    function friendsErrorFn(data, status, headers, config) {
+      console.log(data.error);
+    }
 
   }
 }

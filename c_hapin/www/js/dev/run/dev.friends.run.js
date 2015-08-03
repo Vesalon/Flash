@@ -20,8 +20,8 @@ angular.module('hapin')
     $httpBackend.whenGET('/api/v1/accounts/me/friends/')
       .respond(function (method, url, data) {
         console.log(data);
-        DevFriendsData.getAccountFriends(Auth.username());
-        return [200];
+        var friends = DevFriendsData.getAccountFriends(Auth.username());
+        return [200, friends];
     });
 
   });
