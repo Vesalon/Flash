@@ -8,7 +8,7 @@ angular
   ]);
 
 angular
-  .module('hapin.friends.controllers', []);
+  .module('hapin.friends.controllers', ['ngDialog']);
 
 // angular
 //   .module('hapin.friends.directives', ['ngDialog']);

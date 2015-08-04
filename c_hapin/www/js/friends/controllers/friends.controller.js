@@ -1,12 +1,12 @@
 'use strict';
 
 angular
-  .module('hapin.friends.controllers', [])
+  .module('hapin.friends.controllers')
   .controller('FriendsController', FriendsController);
 
-FriendsController.$inject = ['$scope', 'Auth', 'Friends'];
+FriendsController.$inject = ['$scope', 'ngDialog', 'Auth', 'Friends'];
 
-function FriendsController($scope, Auth, Friends) {
+function FriendsController($scope, ngDialog, Auth, Friends) {
   console.log('entering FriendsController');
   var hi = this;
   hi.isAuthenticated = Auth.isAuthenticated();
