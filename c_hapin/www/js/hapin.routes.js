@@ -78,6 +78,13 @@
         controller: "FriendsController",
         controllerAs: "hi"
       })
+      .state('friends.new-friend-account', {
+        parent: 'sidebar',
+        url: "/friends/new-friend-account",
+        templateUrl: "templates/private/friends/new-friend-account.html",
+        controller: "NewFriendAccountController",
+        controllerAs: "hi"
+      })
       .state('public', {
         parent: 'site', 'abstract': true, url: '', template: '<ui-view/>'
       })
