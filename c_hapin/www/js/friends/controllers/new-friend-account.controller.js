@@ -5,9 +5,9 @@
     .module('hapin.friends.controllers')
     .controller('NewFriendAccountController', NewFriendAccountController);
 
-  NewFriendAccountController.$inject = ['$rootScope', '$scope', '$state', 'Auth', 'snackbar', 'Friends'];
+  NewFriendAccountController.$inject = ['$rootScope', '$scope', '$state', 'Auth', 'snackbar', 'Friends', 'Profiles'];
 
-  function NewFriendAccountController($rootScope, $scope, $state, Auth, snackbar, Friends) {
+  function NewFriendAccountController($rootScope, $scope, $state, Auth, snackbar, Friends, Profiles) {
     console.log("entered NewFriendAccountController");
     var hi = this;
     hi.submit = submit;
@@ -57,7 +57,8 @@
     function search () {
       console.log('entered NewFriendAccountController.search');
       console.log('search value = ' + hi.searchValue);
-      Friends.find(hi.searchValue).then(createFriendSuccessFn, createFriendErrorFn);
+
+      Profiles.get(hi.searchValue).then(createFriendSuccessFn, createFriendErrorFn);
 
       function createFriendSuccessFn(data, status, headers, config) {
           console.log('SUBMIT SUCCESS');

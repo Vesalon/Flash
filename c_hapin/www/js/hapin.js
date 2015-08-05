@@ -18,8 +18,7 @@ angular.module('hapin', [
          'hapin.navbar',
          'hapin.haps',
          'hapin.friends',
-
-
+         'hapin.profiles',
 
          // add/remove for mock backend
          'ngMockE2E',

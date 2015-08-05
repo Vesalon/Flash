@@ -80,7 +80,9 @@
     var DevAccountData = {
          accounts: accounts,
          create: create,
-         getByLogin: getByLogin
+         getByLogin: getByLogin,
+         getByUsername: getByUsername,
+         getBySearchValue: getBySearchValue
     };
 
     return DevAccountData;
@@ -102,6 +104,23 @@
 
       console.log("account = ", account);
       //identity = {username: account.username, role: 'Account'}
+      return account;
+    }
+
+    function getByUsername(username) {
+      var account = accounts.filter(function (a) {
+          return a.username === username
+        })[0];
+      console.log("account = ", account);
+      return account;
+    }
+
+    function getBySearchValue(searchValue) {
+      var account = accounts.filter(function (a) {
+          return a.username === searchValue
+              || a.emial === searchValue
+        })[0];
+      console.log("account = ", account);
       return account;
     }
 
