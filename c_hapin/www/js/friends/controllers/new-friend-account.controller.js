@@ -5,32 +5,20 @@
     .module('hapin.friends.controllers')
     .controller('NewFriendAccountController', NewFriendAccountController);
 
-  NewFriendAccountController.$inject = ['$rootScope', '$scope', 'Auth', 'snackbar', 'Friends'];
+  NewFriendAccountController.$inject = ['$rootScope', '$scope', '$state', 'Auth', 'snackbar', 'Friends'];
 
-  function NewFriendAccountController($rootScope, $scope, Auth, snackbar, Friends) {
+  function NewFriendAccountController($rootScope, $scope, $state, Auth, snackbar, Friends) {
     console.log("entered NewFriendAccountController");
     var hi = this;
-    var findIsOpen, aliasIsOpen, submitIsOpen;
     hi.submit = submit;
     hi.cancel = cancel;
-    // hi.gotoAlias = gotoAlias;
-    // hi.gotoSubmit = gotoSubmit;
-    // hi.gotoFind = gotoFind;
 
     hi.status = {
-      isFindOpen: {
-        value: true,
-        writable: true
-      },
-      isAliasOpen: {
-        value: false,
-        writable: true
-      },
-      isSubmitOpen: {
-        value: false,
-        writable: true
-      }
+      isFindOpen: true,
+      isAliasOpen: false,
+      isSubmitOpen: false
     };
+
 
     function submit() {
       $rootScope.$broadcast('friend.created', {
@@ -60,24 +48,10 @@
       }
     }
 
-      function cancel () {
-            console.log('entered NewFriendAccountController.cancel');
-      };
-
-      // function gotoAlias () {
-      //       console.log('entered NewFriendAccountController.gotoAlias');
-      //       status.isAliasOpen = true;
-      // };
-      //
-      // function gotoSubmit () {
-      //       console.log('entered NewFriendAccountController.gotoSubmit');
-      //       status.isSubmitOpen = true;
-      // };
-      //
-      // function gotoFind () {
-      //       console.log('entered NewFriendAccountController.gotoFind');
-      //       status.isFindOpen = true;
-      // };
+    function cancel () {
+      console.log('entered NewFriendAccountController.cancel');
+      $state.go("friends");
+    };
 
 
   }
