@@ -12,6 +12,7 @@
     var hi = this;
     hi.submit = submit;
     hi.cancel = cancel;
+    hi.search = search;
 
     hi.status = {
       isFindOpen: true,
@@ -19,7 +20,7 @@
       isSubmitOpen: false
     };
 
-
+    
     function submit() {
       $rootScope.$broadcast('friend.created', {
         select: hi.data.username,
@@ -51,6 +52,11 @@
     function cancel () {
       console.log('entered NewFriendAccountController.cancel');
       $state.go("friends");
+    };
+
+    function search () {
+      console.log('entered NewFriendAccountController.search');
+      console.log('search value = ' + hi.searchValue);
     };
 
 

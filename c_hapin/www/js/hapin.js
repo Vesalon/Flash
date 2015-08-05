@@ -28,6 +28,7 @@ angular.module('hapin', [
 
   .run(function($httpBackend) {
     $httpBackend.whenGET(/templates\/\w+.*/).passThrough();
+    $httpBackend.whenGET(/img\/\w+.*/).passThrough();
   });
 
 // .run(['$rootScope', '$state', '$stateParams', 'Authorization', 'Principal',

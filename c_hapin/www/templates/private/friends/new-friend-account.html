@@ -1,7 +1,19 @@
 <div>
 
   <accordion close-others="true">
-    <accordion-group id="accordion-group-find" heading="Find a friend in hapin" is-open="hi.status.isFindOpen" >
+    <accordion-group  heading="Find a friend in hapin" is-open="hi.status.isFindOpen" >
+      <md-content layout-padding="" >
+        <md-input-container class="md-icon-float">
+          <!-- Use floating label instead of placeholder -->
+          <label>username or email</label>
+          <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
+          <input ng-model="searchValue" type="text">
+        </md-input-container>
+      </md-content>
+      <p>
+        <button class="btn btn-default btn-sm" ng-click="hi.search()">Search</button>
+      </p>
+
       <p>
         search hapin directory
         <br>
@@ -12,13 +24,13 @@
     </accordion-group>
 
 
-    <accordion-group id="accordion-group-alias" heading="give alias" is-open="hi.status.isAliasOpen">
+    <accordion-group  heading="give alias" is-open="hi.status.isAliasOpen">
       <p>textbox to enter alias</p>
         <button class="btn btn-default btn-sm" ng-click="hi.status.isSubmitOpen=true;">Next</button>
         <button class="btn btn-default btn-sm" ng-click="hi.cancel()">Cancel</button>
     </accordion-group>
 
-    <accordion-group id="accordion-group-submit"  is-open="hi.status.isSubmitOpen">
+    <accordion-group   is-open="hi.status.isSubmitOpen">
         <accordion-heading>
             almost done! >
         </accordion-heading>
