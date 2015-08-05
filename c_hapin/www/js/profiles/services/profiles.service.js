@@ -25,7 +25,7 @@
     }
 
     function get(username) {
-      return $http.get('/api/v1/accounts/' + username + '/');
+      return $http.get('/api/v1/accounts/:' + username + '/');
     }
 
     function update(profile) {

@@ -26,14 +26,24 @@
       //     return [200, friends];
       // });
 
-      $httpBackend.whenGET(new RegExp('\\/api/v1/accounts\\/^[a-z0-9_-]{3,16}$/')).respond(
-        function(method, url){
-            var regexp = new RegExp('\\/api/v1/accounts\\/^[a-z0-9_-]{3,16}$/');
-            var username = url.match(regexp)[1];
-            console.log("dev.profiles get username=" + username);
-            var account = DevProfilesData.getBySearchValue(username)
+      //$httpBackend.whenGET(/\/api\/v1\/accounts\/^[a-zA-Z0-9_-]{3,16}$\//).respond(
+      //http://www.codeorbits.com/blog/2013/12/20/rapid-angularjs-prototyping-without-real-backend
+
+       //$httpBackend.whenGET(/\/api\/v1\/accounts\/\w+.*\//).respond(
+       $httpBackend.whenGET(/\/api\/v1\/accounts\/:[a-zA-Z0-9_-]{1,20}\//).respond(
+         function(method, url){
+            console.log("dev.profiles get by username");
+            //var matches = url.match(/:[a-zA-Z0-9]{1,20}/);
+            var match = url.match(/:[a-zA-Z0-9]{1,20}\//)[0]; // ":Dogman/"
+            var username = match.substring(1, match.length-1); // "Dogman"
+
+            console.log( match, username);
+            // var account = DevProfilesData.getBySearchValue(username)
+            var account = DevProfilesData.get(username)
             console.log("dev.profiles get account=" + account);
             return [200, account];
+
+
 
       });
 
