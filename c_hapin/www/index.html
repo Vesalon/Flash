@@ -22,8 +22,8 @@
         <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css" />
         <link rel="stylesheet" type="text/css" href="lib/bootstrap-material-design/dist/css/material.css" />
         <link rel="stylesheet" type="text/css" href="lib/bootstrap-material-design/dist/css/ripples.min.css" />
-        <link rel="stylesheet" type="text/css" href="lib/ngDialog/css/ngDialog.css" />
-        <link rel="stylesheet" type="text/css" href="lib/ngDialog/css/ngDialog-theme-default.css" />
+        <!-- <link rel="stylesheet" type="text/css" href="lib/ngDialog/css/ngDialog.css" /> -->
+        <!-- <link rel="stylesheet" type="text/css" href="lib/ngDialog/css/ngDialog-theme-default.css" /> -->
         <link rel="stylesheet" type="text/css" href="lib/angular.snackbar/css/angular.snackbar.css" />
 
         <title>hapin</title>
@@ -61,13 +61,13 @@
             <section layout="row" flex="">
               <md-sidenav class="md-sidenav-left md-whiteframe-z2 menubar" md-component-id="left">
                   <ul id="side-menu">
-                    <li ui-sref="haps" ng-click="toggleLeft()">
+                    <li ui-sref="site.private.content.haps" ng-click="toggleLeft()">
                       Haps
                     </li>
-                    <li ui-sref="friends" ng-click="toggleLeft()">
+                    <li ui-sref="site.private.content.friends" ng-click="toggleLeft()">
                       Friends
                     </li>
-                    <li ui-sref="public.index" ng-click="toggleLeft()">
+                    <li ui-sref="site.public.index" ng-click="toggleLeft()">
                       public
                     </li>
                   </ul>
@@ -94,9 +94,10 @@
         <script src="lib/node_modules/angular-aria/angular-aria.js"></script>
         <script src="lib/node_modules/angular-material/angular-material.js"></script>
         <script src="lib/node_modules/ng-material-floating-button/src/mfb-directive.js"></script>
+        <script src="lib/node_modules/angular-ui-router.statehelper/statehelper.js"></script>
 
         <script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
-        <script type="text/javascript" src="lib/ngDialog/js/ngDialog.js"></script>
+        <!-- <script type="text/javascript" src="lib/ngDialog/js/ngDialog.js"></script> -->
         <script type="text/javascript" src="lib/angular.snackbar/angular.snackbar.min.js"></script>
         <script type="text/javascript" src="lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
         <!-- <script type="text/javascript" src="{% static 'lib/jquery-locationpicker-plugin/dist/locationpicker.jquery.min.js' %}"></script> -->

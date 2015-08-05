@@ -1,112 +1,105 @@
 'use strict';
 
   angular
-    .module('hapin.routes', [])
+    .module('hapin.routes', ['ui.router.stateHelper'])
    .config(config);
 
 
-  config.$inject = ['$stateProvider', '$urlRouterProvider'];
+  config.$inject = ['$stateProvider', '$urlRouterProvider', 'stateHelperProvider'];
 
-  function config($stateProvider, $urlRouterProvider) {
+  function config($stateProvider, $urlRouterProvider, stateHelperProvider) {
 
-    //  $urlRouterProvider.otherwise('/login');
-
-    $stateProvider
-      .state('site', {
-        'abstract': true,
+    stateHelperProvider
+      .state({
+        name: 'site',
+        'abstract':true,
+        template: '<ui-view/>',
         url: '',
-        template: '<ui-view/>'
-      // resolve: {
-      //   authorize: ['authorization',
-      //     function(authorization) {
-      //       return authorization.authorize();
-      //     }
-      //   ]
-      // }
-      })
-      .state('login', {
-        parent: 'site',
-        url: "/login",
-        templateUrl: "templates/auth/login.html",
-        controller: "LoginController",
-        controllerAs: "hi"
-      })
-      .state('register', {
-        parent: 'site',
-        url: "/register",
-        templateUrl: "templates/auth/register.html",
-        controller: "RegisterController",
-        controllerAs: "hi"
-      })
-      .state('private', {
-        parent: 'site',
-        'abstract': true,
-        url: '/private',
-        // data: {
-        //   roles: ['Account']
-        // },
-        templateUrl: 'templates/private/index.html'
-      })
-      .state('sidebar', {
-        parent: 'private',
-        'abstract': true,
-        url: '/sidebar',
-        // data: {
-        //   roles: ['Account']
-        // },
-        templateUrl: 'templates/private/sidebar.html',
-        controller: "SidebarController",
-        controllerAs: "hi"
-      })
-      .state('temp', {
-        parent: 'sidebar',
-        url: "/temp",
-        templateUrl: "templates/private/temp.html",
-        //controller: "TestCtrl"
-      })
-      .state('haps', {
-        parent: 'sidebar',
-        url: "/haps",
-        templateUrl: "templates/private/haps/haps.html",
-        controller: "HapsController",
-        controllerAs: "hi"
-      })
-      .state('friends', {
-        parent: 'sidebar',
-        url: "/friends",
-        templateUrl: "templates/private/friends/friends.html",
-        controller: "FriendsController",
-        controllerAs: "hi"
-      })
-      .state('friends.new-friend-account', {
-        parent: 'sidebar',
-        url: "/friends/new-friend-account",
-        templateUrl: "templates/private/friends/new-friend-account.html",
-        controller: "NewFriendAccountController",
-        controllerAs: "hi"
-      })
-      .state('public', {
-        parent: 'site', 'abstract': true, url: '', template: '<ui-view/>'
-      })
-      .state('public.index', {
-        parent: 'public', url: "", templateUrl: "templates/public/index.html"
-      })
-      .state('accessdenied', {
-        parent: 'private',
-        url: '/denied',
-        templateUrl: 'templates/private/denied.html'
-        // data: {
-        //   roles: []
-        // },
-        // views: {
-        //   'content@': {
-        //     templateUrl: 'denied.html'
-        //   }
-        // }
-      })
-    ;
-
-
+        children: [
+          {
+            name: 'public',
+            'abstract': true,
+            template: '<ui-view/>',
+            url: '',
+            children: [
+              {
+                name: 'index',
+                templateUrl: 'templates/public/index.html',
+                url: '',
+              },
+              {
+                name: 'login',
+                templateUrl: 'templates/auth/login.html',
+                url: '/login',
+                controller: 'LoginController',
+                controllerAs: 'hi',
+              },
+              {
+                name: 'register',
+                templateUrl: 'templates/auth/register.html',
+                url: '/register',
+                controller: 'RegisterController',
+                controllerAs: 'hi',
+              },
+            ],
+          },
+          {
+            name: 'private',
+            'abstract': true,
+            templateUrl: 'templates/private/index.html',
+            url: '/private',
+            children: [
+              {
+                name: 'sidebar',
+                templateUrl: 'templates/private/sidebar.html',
+                controller: 'NavCtrl',
+                controllerAs: 'hi',
+                url: '/sidebar',
+              },
+              {
+                name: 'content',
+                'abstract': true,
+                template: '<ui-view/>',
+                url: '',
+                children: [
+                  {
+                    name: 'haps',
+                    templateUrl: 'templates/private/haps/haps.html',
+                    controller: 'HapsController',
+                    controllerAs: 'hi',
+                    url: '/haps',
+                    // children: [
+                    //   {
+                    //     name: 'new-hap',
+                    //     templateUrl: 'templates/private/haps/new-hap.html',
+                    //     controller: 'NewHapController',
+                    //     controllerAs: 'hi',
+                    //     url: '/newhap',
+                    //   },
+                    // ],
+                  },
+                  {
+                    name: 'friends',
+                    templateUrl: 'templates/private/friends/friends.html',
+                    controller: 'FriendsController',
+                    controllerAs: 'hi',
+                    url: '/friends',
+                    children: [
+                      {
+                        name: 'new-friend',
+                        templateUrl: 'templates/private/friends/new-friend-account.html',
+                        controller: 'NewFriendAccountController',
+                        controllerAs: 'hi',
+                        url: '/newfriendaccount',
+                      },
+                    ],
+                  },
+                ],
+              },
+          ],
+          },
+        ],
+      });
   }
 
   // angular

@@ -6,7 +6,8 @@ angular.module('hapin', [
         'ngMaterial',
         'ng-mfb',
          'ui.router',
-         'ngDialog',
+         'ui.router.stateHelper',
+
          'hapin.constants',
          'hapin.routes',
          'hapin.config',
@@ -15,6 +16,8 @@ angular.module('hapin', [
          'hapin.navbar',
          'hapin.haps',
          'hapin.friends',
+
+
 
          // add/remove for mock backend
          'ngMockE2E',
