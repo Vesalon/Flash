@@ -6,7 +6,9 @@ angular.module('hapin', [
         'ngMaterial',
         'ng-mfb',
          'ui.router',
-         'ngDialog',
+
+         'angular.snackbar',
+         'ui.bootstrap',
          'hapin.constants',
          'hapin.routes',
          'hapin.config',
