@@ -58,7 +58,7 @@
       console.log('entered NewFriendAccountController.search');
       console.log('search value = ' + hi.searchValue);
 
-      Profiles.get(hi.searchValue).then(createFriendSuccessFn, createFriendErrorFn);
+      Profiles.getBySearchValue(hi.searchValue).then(createFriendSuccessFn, createFriendErrorFn);
 
       function createFriendSuccessFn(data, status, headers, config) {
           console.log('SUBMIT SUCCESS');

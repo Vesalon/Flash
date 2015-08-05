@@ -109,16 +109,18 @@
 
     function getByUsername(username) {
       var account = accounts.filter(function (a) {
-          return a.username === username
+          return a.username.toLowerCase()  === username.toLowerCase()
         })[0];
       console.log("account = ", account);
       return account;
     }
 
     function getBySearchValue(searchValue) {
+      console.log("searchValue = ", searchValue);
       var account = accounts.filter(function (a) {
-          return a.username === searchValue
-              || a.emial === searchValue
+          return a.username.toLowerCase() === searchValue.toLowerCase()
+            // ((typeof a.username != 'undefined') && a.username.toLowerCase() === searchValue.toLowerCase())
+            // || ((typeof a.emial != 'undefined') && a.emial.toLowerCase()  === searchValue.toLowerCase() )
         })[0];
       console.log("account = ", account);
       return account;

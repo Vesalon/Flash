@@ -12,7 +12,8 @@
     var Profiles = {
       destroy: destroy,
       get: get,
-      update: update
+      update: update,
+      getBySearchValue: getBySearchValue
     };
 
     return Profiles;
@@ -26,6 +27,10 @@
 
     function get(username) {
       return $http.get('/api/v1/accounts/:' + username + '/');
+    }
+
+    function getBySearchValue(searchValue) {
+      return $http.get('/api/v1/accounts/search/:' + searchValue + '/');
     }
 
     function update(profile) {

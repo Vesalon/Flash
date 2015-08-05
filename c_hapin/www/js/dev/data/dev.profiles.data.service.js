@@ -143,7 +143,8 @@
     var DevProfilesData = {
       destroy: destroy,
       get: get,
-      update: update
+      update: update,
+      getBySearchValue: getBySearchValue
     };
 
     return DevProfilesData;
@@ -156,6 +157,10 @@
 
     function get(username) {
       return DevAccountData.getByUsername(username);
+    }
+
+    function getBySearchValue(searchValue) {
+      return DevAccountData.getBySearchValue(searchValue);
     }
 
     function update(profle){
