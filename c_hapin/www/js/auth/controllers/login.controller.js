@@ -39,13 +39,13 @@
       //    $state.go($scope.returnToState.name, $scope.returnToStateParams);
       // else $state.go('public.index');
 
-      $state.go('haps');
+      $state.go('site.private.content.haps');
 
     }
 
     function gotoRegister() {
       console.log("entering login.register function")
-      $state.go("register");
+      $state.go("site.public.register");
     }
 
 }
