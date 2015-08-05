@@ -20,7 +20,7 @@
       isSubmitOpen: false
     };
 
-    
+
     function submit() {
       $rootScope.$broadcast('friend.created', {
         select: hi.data.username,
@@ -57,6 +57,20 @@
     function search () {
       console.log('entered NewFriendAccountController.search');
       console.log('search value = ' + hi.searchValue);
+      Friends.find(hi.searchValue).then(createFriendSuccessFn, createFriendErrorFn);
+
+      function createFriendSuccessFn(data, status, headers, config) {
+          console.log('SUBMIT SUCCESS');
+      }
+
+      function createFriendErrorFn(data, status, headers, config) {
+        $rootScope.$broadcast('friend.created.error');
+        if(data.status === 400){
+          snackbar.create('the entered username is not valid');
+        }else{
+          snackbar.create('problem adding a new friend');
+        }
+      }
     };
 
 

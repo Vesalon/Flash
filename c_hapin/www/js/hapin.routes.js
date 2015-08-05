@@ -84,16 +84,15 @@
                     controller: 'FriendsController',
                     controllerAs: 'hi',
                     url: '/friends',
-                    children: [
-                      {
-                        name: 'new-friend',
-                        templateUrl: 'templates/private/friends/new-friend-account.html',
-                        controller: 'NewFriendAccountController',
-                        controllerAs: 'hi',
-                        url: '/newfriendaccount',
-                      },
-                    ],
                   },
+                  {
+                    name: 'newfriend',
+                    templateUrl: 'templates/private/friends/new-friend-account.html',
+                    controller: 'NewFriendAccountController',
+                    controllerAs: 'hi',
+                    url: '/newfriend',
+                  },
+
                 ],
               },
           ],

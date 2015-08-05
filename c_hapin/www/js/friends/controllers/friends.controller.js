@@ -4,9 +4,9 @@ angular
   .module('hapin.friends.controllers')
   .controller('FriendsController', FriendsController);
 
-FriendsController.$inject = ['$scope', 'Auth', 'Friends'];
+FriendsController.$inject = ['$scope', '$state', 'Auth', 'Friends'];
 
-function FriendsController($scope, Auth, Friends) {
+function FriendsController($scope, $state, Auth, Friends) {
   console.log('entering FriendsController');
   var hi = this;
   hi.isAuthenticated = Auth.isAuthenticated();
