@@ -1,0 +1,31 @@
+<div>
+
+  <accordion close-others="true">
+    <accordion-group id="accordion-group-find" heading="Find a friend in hapin" is-open="hi.status.isFindOpen" >
+      <p>
+        search hapin directory
+        <br>
+        if an account is found: display info and enable button Next
+      </p>
+        <button class="btn btn-default btn-sm" ng-click="hi.status.isAliasOpen=true;">Next</button>
+        <button class="btn btn-default btn-sm" ng-click="hi.cancel()">Cancel</button>
+    </accordion-group>
+
+
+    <accordion-group id="accordion-group-alias" heading="give alias" is-open="hi.status.isAliasOpen">
+      <p>textbox to enter alias</p>
+        <button class="btn btn-default btn-sm" ng-click="hi.status.isSubmitOpen=true;">Next</button>
+        <button class="btn btn-default btn-sm" ng-click="hi.cancel()">Cancel</button>
+    </accordion-group>
+
+    <accordion-group id="accordion-group-submit"  is-open="hi.status.isSubmitOpen">
+        <accordion-heading>
+            almost done! >
+        </accordion-heading>
+        displays friend info and given alias
+        <button class="btn btn-default btn-sm" ng-click="hi.submit()">submit</button>
+        <button class="btn btn-default btn-sm" ng-click="hi.status.isFindOpen=true;">start over</button>
+        <button class="btn btn-default btn-sm" ng-click="hi.cancel()">Cancel</button>
+    </accordion-group>
+  </accordion>
+</div>

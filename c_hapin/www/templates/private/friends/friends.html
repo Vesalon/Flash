@@ -21,8 +21,6 @@
   </div>
 </div>
 
-<a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-friend"
-  href
-  ng-show="hi.isAuthenticated"
-  ng-dialog="new-friend.html"
-  ng-dialog-controller="NewFriendController as hi"></a>
+<div class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-friend"
+  ui-sref="friends.new-friend-account"
+  ng-show="hi.isAuthenticated"></div>

@@ -8,6 +8,8 @@ angular.module('hapin', [
          'ui.router',
          'ui.router.stateHelper',
 
+         'angular.snackbar',
+         'ui.bootstrap',
          'hapin.constants',
          'hapin.routes',
          'hapin.config',
