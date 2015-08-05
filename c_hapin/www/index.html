@@ -29,58 +29,8 @@
         <title>hapin</title>
     </head>
     <body>
-        <!-- <div class="app">
-            <h1>hapin</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div> -->
-
-        <!-- <a href="#/">Main View</a>
-        <a href="#/view">New View</a>
-        <div ng-view></div> -->
-
-        <div ng-controller="NavCtrl">
-          <div class="toolbardemoBasicUsage">
-            <md-content>
-              <md-toolbar>
-                <div class="md-toolbar-tools">
-                  <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
-                    btn
-                    <!-- <md-icon md-svg-icon="ion-android-menu"></md-icon> -->
-                  </md-button>
-                  <h2 style="color:white;">
-                    <span>Toolbar with Icon Buttons</span>
-                  </h2>
-                </div>
-              </md-toolbar>
-            </md-content>
-          </div>
-          <div id="sidebar" layout="column">
-            <section layout="row" flex="">
-              <md-sidenav class="md-sidenav-left md-whiteframe-z2 menubar" md-component-id="left">
-                  <ul id="side-menu">
-                    <li ui-sref="site.private.content.haps" ng-click="toggleLeft()">
-                      Haps
-                    </li>
-                    <li ui-sref="site.private.content.friends" ng-click="toggleLeft()">
-                      Friends
-                    </li>
-                    <li ui-sref="site.public.index" ng-click="toggleLeft()">
-                      public
-                    </li>
-                  </ul>
-                </md-content>
-              </md-sidenav>
-            </section>
-          </div>
-        </div>
-
 
         <div ui-view></div>
-        THIS IS IN MAIN INDEX
-
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
@@ -152,7 +102,6 @@
         <script src="js/dev/run/dev.profiles.run.js"></script>
         <script src="js/dev/data/dev.profiles.data.service.js"></script>
 
-        <script src="js/controllers.js"></script>
         <!-- !!! END - MOCKING - REMOVE/ADD !!! -->
 
     </body>

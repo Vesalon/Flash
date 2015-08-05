@@ -47,6 +47,8 @@
             name: 'private',
             'abstract': true,
             templateUrl: 'templates/private/index.html',
+            controller: 'NavCtrl',
+            controllerAs: 'hi',
             url: '/private',
             children: [
               {
