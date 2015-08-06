@@ -25,6 +25,8 @@
               {
                 name: 'index',
                 templateUrl: 'templates/public/index.html',
+                controller: 'PublicIndexCtrl',
+                controllerAs: 'hi',
                 url: '',
               },
               {

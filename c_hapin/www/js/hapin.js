@@ -19,6 +19,7 @@ angular.module('hapin', [
          'hapin.haps',
          'hapin.friends',
          'hapin.profiles',
+         'hapin.public',
 
          // add/remove for mock backend
          'ngMockE2E',
