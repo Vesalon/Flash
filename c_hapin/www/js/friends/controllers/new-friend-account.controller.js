@@ -61,7 +61,10 @@
       Profiles.getBySearchValue(hi.searchValue).then(createFriendSuccessFn, createFriendErrorFn);
 
       function createFriendSuccessFn(data, status, headers, config) {
-          console.log('SUBMIT SUCCESS');
+          console.log('SEARCH SUCCESS' );
+          console.log( data);
+          hi.userinfo = data.data.first_name + ' ' + data.data.username + ' ' + data.data.email;
+          console.log( hi.userinfo);
       }
 
       function createFriendErrorFn(data, status, headers, config) {

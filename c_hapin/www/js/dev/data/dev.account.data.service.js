@@ -119,7 +119,8 @@
       console.log("searchValue = ", searchValue);
       var account = accounts.filter(function (a) {
           return a.username.toLowerCase() === searchValue.toLowerCase()
-            // ((typeof a.username != 'undefined') && a.username.toLowerCase() === searchValue.toLowerCase())
+              || a.email.toLowerCase()  === searchValue.toLowerCase() 
+            // (typeof a.username != 'undefined') && a.username.toLowerCase() === searchValue.toLowerCase()
             // || ((typeof a.emial != 'undefined') && a.emial.toLowerCase()  === searchValue.toLowerCase() )
         })[0];
       console.log("account = ", account);
