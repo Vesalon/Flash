@@ -10,6 +10,7 @@
   function PublicIndexCtrl($scope, $state, Auth) {
     var hi = this;
     hi.isAuthenticated = Auth.isAuthenticated();
+  
     activate();
 
     function activate() {
@@ -19,5 +20,7 @@
             $state.go('site.public.login');
         }
     }
+
+
   }
 })();

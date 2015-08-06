@@ -24,8 +24,14 @@
             <li ui-sref="site.private.content.friends" ng-click="toggleLeft()">
               Friends
             </li>
-            <li ui-sref="site.public.index" ng-click="toggleLeft()">
-              public
+            <li>
+              +{{username}}
+            </li>
+            <!-- <li ui-sref="site.public.index" ng-click="toggleLeft()">
+              logout
+            </li> -->
+            <li>
+              <a href ng-click="logout()">Logout</a>
             </li>
           </ul>
         </md-content>

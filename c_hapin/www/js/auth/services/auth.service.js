@@ -68,6 +68,7 @@
 
       function logoutSuccessFn(data, status, headers, config) {
         Auth.unauthenticate();
+        console.log('called Auth.unauthenticate()');
       //  window.location = '/login';
       }
 

@@ -3,9 +3,13 @@
 
 angular
   .module('hapin.navbar')
-  .controller('NavCtrl', function ($scope, $timeout, $mdSidenav, $mdUtil, $log) {
+  .controller('NavCtrl', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $state, Auth) {
 
-$scope.toggleLeft = buildToggler('left');
+    $scope.toggleLeft = buildToggler('left');
+  //  $scope.getUsername = getUsername;
+    $scope.logout = logout;
+    $scope.username = Auth.username();
+
 
 /**
  * Build handler to open/close a SideNav; when animation finishes
@@ -20,6 +24,16 @@ $scope.toggleLeft = buildToggler('left');
         });
     },100);
     return debounceFn;
+  }
+
+  // function getUsername() {
+  //   return Auth.username();
+  // }
+
+  function logout() {
+    Auth.logout();
+    console.log('logged out');
+    $state.go('site.public.login');
   }
 
 })

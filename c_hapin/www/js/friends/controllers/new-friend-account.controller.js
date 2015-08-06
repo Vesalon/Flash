@@ -51,7 +51,7 @@
 
     function cancel () {
       console.log('entered NewFriendAccountController.cancel');
-      $state.go("friends");
+      $state.go("site.private.content.friends");
     };
 
     function search () {
