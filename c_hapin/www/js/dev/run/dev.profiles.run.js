@@ -28,31 +28,29 @@
 
       //http://www.codeorbits.com/blog/2013/12/20/rapid-angularjs-prototyping-without-real-backend
 
+      //username
        $httpBackend.whenGET(/\/api\/v1\/accounts\/:[a-zA-Z0-9_-]{1,20}\//).respond(
          function(method, url){
             console.log("dev.profiles get by username");
-            //var matches = url.match(/:[a-zA-Z0-9]{1,20}/);
             var match = url.match(/:[a-zA-Z0-9]{1,20}\//)[0]; // ":Dogman/"
             var username = match.substring(1, match.length-1); // "Dogman"
 
             console.log( match, username);
-            // var account = DevProfilesData.getBySearchValue(username)
             var account = DevProfilesData.get(username)
             console.log("dev.profiles get account=" + account);
             return [200, account];
       });
 
-      $httpBackend.whenGET(/\/api\/v1\/accounts\/search\/:[a-zA-Z0-9_-]{1,20}\//).respond(
+      // search by username or email
+      $httpBackend.whenGET(/\/api\/v1\/accounts\/search\/:[@.a-zA-Z0-9_-]{1,30}\//).respond(
         function(method, url){
            console.log("dev.profiles get by username");
-           //var matches = url.match(/:[a-zA-Z0-9]{1,20}/);
-           var match = url.match(/:[a-zA-Z0-9]{1,20}\//)[0]; // ":Dogman/"
+           var match = url.match(/:[@.a-zA-Z0-9_-]{1,30}\//)[0]; // ":Dogman/"
            var username = match.substring(1, match.length-1); // "Dogman"
 
            console.log( match, username);
-           // var account = DevProfilesData.getBySearchValue(username)
            var account = DevProfilesData.getBySearchValue(username)
-           console.log("dev.profiles get account=" + account);
+           console.log( account);
            return [200, account];
      });
 
