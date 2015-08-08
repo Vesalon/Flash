@@ -1,0 +1,26 @@
+<div class="row" ng-cloak>
+
+  <h1>my friends</h1>
+
+  <div class="col-md-2">
+
+    <input ng-model="query" placeholder="Search for...">
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <div ng-repeat="friend in hi.list | filter:query">
+      <!-- <friend friend="friend"></friend> -->
+      {{friend.alias}}: {{friend.select.email}}
+    </div>
+  </div>
+
+  <div ng-hide="hi.list && hi.list.length">
+    <div class="col-sm-12 no-friends-here">
+      <em>You have no friends yet. Use the plus button to add some.</em>
+    </div>
+  </div>
+</div>
+
+<div class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-friend"
+  ui-sref="site.private.content.newfriend"
+  ng-show="hi.isAuthenticated"></div>

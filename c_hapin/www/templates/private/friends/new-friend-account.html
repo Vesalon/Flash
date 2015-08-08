@@ -1,0 +1,51 @@
+<div>
+
+  <accordion close-others="true">
+    <accordion-group  heading="Find a friend in hapin" is-open="hi.status.isFindOpen" >
+
+      <md-content layout-padding="" >
+        <md-input-container class="md-icon-float">
+          <!-- Use floating label instead of placeholder -->
+          <label>username or email</label>
+          <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
+          <input ng-model="hi.searchValue" type="text" autocapitalize="off" autocorrect="off">
+        </md-input-container>
+      </md-content>
+
+      <p>
+        <!-- <button class="btn btn-default btn-sm" ng-click="hi.search()">Search</button> -->
+        <md-button class="md-raised md-primary" ng-click="hi.search()">Search</md-button>
+      </p>
+
+      <md-content layout-padding="" >
+        <md-input-container class="md-icon-float">
+          <label>friend</label>
+          <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
+          <input ng-readonly="true" ng-model="hi.userinfo" type="text">
+        </md-input-container>
+      </md-content>
+
+        <!-- <button class="btn btn-default btn-sm" ng-click="hi.status.isAliasOpen=true;">Next</button> -->
+      <md-button ng-disabled="true" class="md-raised md-primary" ng-click="hi.status.isAliasOpen=true;">Next</md-button>
+        <!-- <button class="btn btn-default btn-sm" ng-click="hi.cancel()">Cancel</button> -->
+      <md-button class="md-raised" ng-click="hi.cancel()">>Cancel</md-button>
+    </accordion-group>
+
+
+    <accordion-group  heading="give alias" is-open="hi.status.isAliasOpen">
+      <p>textbox to enter alias</p>
+        <button class="btn btn-default btn-sm" ng-click="hi.status.isSubmitOpen=true;">Next</button>
+        <button class="btn btn-default btn-sm" ng-click="hi.cancel()">Cancel</button>
+    </accordion-group>
+
+    <accordion-group   is-open="hi.status.isSubmitOpen">
+        <accordion-heading>
+            almost done! >
+        </accordion-heading>
+        displays friend info and given alias
+        <button class="btn btn-default btn-sm" ng-click="hi.submit()">submit</button>
+        <button class="btn btn-default btn-sm" ng-click="hi.status.isFindOpen=true;">start over</button>
+        <button class="btn btn-default btn-sm" ng-click="hi.cancel()">Cancel</button>
+    </accordion-group>
+  </accordion>
+</div>
