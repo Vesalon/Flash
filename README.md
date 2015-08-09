@@ -21,6 +21,8 @@ optional:
 (there is no need to set path environment variable, node does this automatically)
 * `npm install -g cordova`
 
+[android sdk](https://developer.android.com/sdk/index.html) - android studio not necessary
+
 [atom](https://atom.io/) - preferred text editor
 (if you use an IDE, **__change gitignore file__**)
 
