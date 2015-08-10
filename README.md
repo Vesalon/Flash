@@ -34,6 +34,38 @@ git clone https://github.com/Vesalon/Flash.git
 download lib with angular, jquery, etc. from dropbox (check email) and put in project
 in directory ```Flash\flashweb\static``` and ```Flash\c_hapin\www\lib``` (make sure you get the right libs for each one)
 
+
+## Cordova CLI  - Platforms must be ibstalled
+https://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html
+
+## Setting up android
+Android SDK must be installed: http://cordova.apache.org/docs/en/2.5.0/guide_getting-started_android_index.md.html
+We installed Android Studio.
+Define environmental variable ANDROID_HOME to point to Android SDK.
+Define more env vars ????
+
+(Mac:
+Ninas-MacBook-Pro:~ Nina$ export ANDROID_HOME=/Library/Android/sdk
+Ninas-MacBook-Pro:~ Nina$ export PATH=$PATH:$ANDROID_HOME/bin
+  )
+
+## Setting up iOS
+http://cordova.apache.org/docs/en/2.5.0/guide_getting-started_ios_index.md.html
+install Xcode from AppStore
+(to check if the full Xcode package is already installed:
+$ xcode-select -p
+If you see:
+/Applications/Xcode.app/Contents/Developer
+then xcode is installed already)
+
+to check if Command Line Tools are installed:
+$ gcc --version
+
+if not, follow http://railsapps.github.io/xcode-command-line-tools.html
+
+
+
+
 ## Learning
 [django](https://docs.djangoproject.com/en/1.8/intro/tutorial01/) - skim
 
