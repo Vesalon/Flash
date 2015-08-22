@@ -23,6 +23,13 @@
 
 }
 
+a:focus {
+  /*outline: 0;
+  outline: 0px auto -webkit-focus-ring-color;
+  outline-offset: 0px;*/
+  outline: none;
+}
+
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
