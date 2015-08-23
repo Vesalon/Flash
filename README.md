@@ -85,5 +85,6 @@ if not, go [here](http://railsapps.github.io/xcode-command-line-tools.html)
 3. run: `cordova run android`
 
 for running in browser (in c_hapin again):
+
 1. `npm start`
 2. open browser and go to `localhost:8000/www`
