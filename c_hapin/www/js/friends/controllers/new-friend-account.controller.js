@@ -20,22 +20,28 @@
       isSubmitOpen: false
     };
 
+    hi.notFound = true;
+    hi.isExisting = false;
 
     function submit() {
+      console.log('hi.alias = ', hi.alias);
+
+
       $rootScope.$broadcast('friend.created', {
-        select: hi.data.username,
-        alias: hi.data.alias,
+        select: hi.username,
+        alias: hi.alias,
         orig: {
           username: Auth.username()
         }
       });
 
-      Friends.create(hi.data.username, hi.data.alias).then(createFriendSuccessFn, createFriendErrorFn);
-      //console.log('SUBMIT SENT');
+      Friends.create(hi.username, hi.alias).then(createFriendSuccessFn, createFriendErrorFn);
+      console.log('SUBMIT SENT');
 
       function createFriendSuccessFn(data, status, headers, config) {
           console.log('SUBMIT SUCCESS');
           //Snackbar.show('Success! Friend added.');
+          $state.go('site.private.content.friends');
       }
 
       function createFriendErrorFn(data, status, headers, config) {
@@ -57,17 +63,43 @@
     function search () {
       console.log('entered NewFriendAccountController.search');
       console.log('search value = ' + hi.searchValue);
+      //first, check if this person is already my Friend
+      Friends.getFriend(hi.searchValue).then(searchExistingFriendSuccessFn, searchExistingFriendErrorFn);
+      //Profiles.getBySearchValue(hi.searchValue).then(searchFriendSuccessFn, searchFriendErrorFn);
 
-      Profiles.getBySearchValue(hi.searchValue).then(createFriendSuccessFn, createFriendErrorFn);
+      function searchExistingFriendSuccessFn(data, status, headers, config) {
+        console.log('data = ' + data);
+        if(data.data !== undefined){
+          console.log( data);
+          hi.userinfo = hi.searchValue + ' is already your friend.';
+          hi.notFound = true;
+        }else{
+          //this person is not my friend yet. try to find matching account
+          Profiles.getBySearchValue(hi.searchValue).then(searchFriendSuccessFn, searchFriendErrorFn);
+        }
+      }
 
-      function createFriendSuccessFn(data, status, headers, config) {
+      function searchExistingFriendErrorFn(data, status, headers, config) {
+        console.log('error in searchExistingFriendErrorFn');
+        $rootScope.$broadcast('friend.created.error');
+        // if(data.status === 400){
+        //   snackbar.create('the entered username is not valid');
+        // }else{
+        //   snackbar.create('problem adding a new friend');
+        // }
+      }
+
+      function searchFriendSuccessFn(data, status, headers, config) {
           console.log('SEARCH SUCCESS' );
           console.log( data);
           hi.userinfo = data.data.first_name + ' ' + data.data.username + ' ' + data.data.email;
+          hi.notFound = false;
+          hi.username = data.data.username;
+        //  console.log( hi.username);
           console.log( hi.userinfo);
       }
 
-      function createFriendErrorFn(data, status, headers, config) {
+      function searchFriendErrorFn(data, status, headers, config) {
         $rootScope.$broadcast('friend.created.error');
         if(data.status === 400){
           snackbar.create('the entered username is not valid');
@@ -75,6 +107,7 @@
           snackbar.create('problem adding a new friend');
         }
       }
+
     };
 
 

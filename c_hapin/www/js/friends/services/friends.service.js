@@ -10,7 +10,8 @@ function Friends($http) {
   var Friends = {
     all: all,
     create: create,
-    get: get
+    get: get,
+    getFriend: getFriend
   };
   return Friends;
 
@@ -29,4 +30,10 @@ function Friends($http) {
     // return $http.get('/api/v1/accounts/' + username + '/friends/');
     return $http.get('/api/v1/accounts/me/friends/');
   }
+
+  function getFriend(searchValue) {
+    // return $http.get('/api/v1/accounts/' + username + '/friends/');
+    return $http.get('/api/v1/accounts/me/friends/:' + searchValue + '/');
+  }
+
 }

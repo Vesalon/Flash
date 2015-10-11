@@ -44,7 +44,7 @@
       // search by username or email
       $httpBackend.whenGET(/\/api\/v1\/accounts\/search\/:[@.a-zA-Z0-9_-]{1,30}\//).respond(
         function(method, url){
-           console.log("dev.profiles get by username");
+           console.log("dev.profiles get by search value");
            var match = url.match(/:[@.a-zA-Z0-9_-]{1,30}\//)[0]; // ":Dogman/"
            var username = match.substring(1, match.length-1); // "Dogman"
 

@@ -4,9 +4,9 @@
     .module('hapin.dev.data')
     .factory('DevFriendsData', DevFriendsData);
 
-  DevFriendsData.$inject = [];
+  DevFriendsData.$inject = ['Auth'];
 
-  function DevFriendsData() {
+  function DevFriendsData(Auth) {
 
     var friends = [
     {
@@ -142,7 +142,9 @@
     var DevFriendsData = {
           all: all,
           create: create,
-          getAccountFriends: getAccountFriends
+          getAccountFriends: getAccountFriends,
+          getAccountFriendBySearchValue: getAccountFriendBySearchValue,
+        //  getAccountFriendByUsername: getAccountFriendByUsername
     };
 
     return DevFriendsData;
@@ -166,5 +168,25 @@
       return aFriends;
     }
 
+    function getAccountFriendBySearchValue(searchValue) {
+      console.log("getAccountFriendBySearchValue searchValue = ", searchValue);
+      var aFriend = friends.filter(function (a) {
+          return  a.orig.username.toLowerCase() === Auth.getIdentity().username.toLowerCase()
+                  && (a.select.username.toLowerCase() === searchValue.toLowerCase()
+                      || a.select.email.toLowerCase() === searchValue.toLowerCase());
+        })[0];
+      console.log("aFriend = ", aFriend);
+      return aFriend;
+    }
+
+    // function getAccountFriendByUsername(username, friendUsername) {
+    //   var aFriend = friends.filter(function (a) {
+    //       return a.orig.username === username
+    //         && a.select.username === friendUsername;
+    //     })[0];
+    //
+    //   console.log("aFriend = ", aFriend);
+    //   return aFriend;
+    // }
 
   }

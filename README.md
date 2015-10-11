@@ -88,3 +88,8 @@ for running in browser (in c_hapin again):
 
 1. `npm start`
 2. open browser and go to `localhost:8000/www`
+
+for running django:
+
+1. 'python manage.py runserver'
+2. open browser and go to 'http://127.0.0.1:8000/'
