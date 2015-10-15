@@ -87,6 +87,7 @@
 
     function setIdentity(account) {
       AuthStorage.setIdentity({
+        id: account.id,
         username: account.username,
         role: 'Account'
       });

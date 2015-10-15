@@ -40,13 +40,13 @@ angular.module('hapin')
         return [200, friends];
     });
 
-    //get a friend of mine - by username
-    $httpBackend.whenGET('/api/v1/accounts/me/friends/')
-      .respond(function (method, url, data) {
-        console.log(data);
-        var friends = DevFriendsData.getAccountFriends(Auth.username());
-        return [200, friends];
-    });
+    // //get a friend of mine - by username
+    // $httpBackend.whenGET('/api/v1/accounts/me/friends/')
+    //   .respond(function (method, url, data) {
+    //     console.log(data);
+    //     var friends = DevFriendsData.getAccountFriends(Auth.username());
+    //     return [200, friends];
+    // });
 
     //username
     //  $httpBackend.whenGET(/\/api\/v1\/accounts\/me\/friends\/:[a-zA-Z0-9_-]{1,20}\//).respond(
