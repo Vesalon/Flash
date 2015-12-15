@@ -9,100 +9,77 @@
 
   function config($stateProvider, $urlRouterProvider, stateHelperProvider) {
 
-    stateHelperProvider
-      .state({
-        name: 'site',
-        'abstract':true,
-        template: '<ui-view/>',
-        url: '',
-        children: [
-          {
-            name: 'public',
+    $stateProvider
+     .state({
+       name: 'site',
+       'abstract':true,
+       template: '<ui-view/>',
+       url: '',
+     })
+     .state ('site.public',{
+           'abstract': true,
+           template: '<ui-view/>',
+           url: '',
+         })
+       .state ('site.public.index',{
+               templateUrl: 'templates/public/index.html',
+               controller: 'PublicIndexCtrl',
+               controllerAs: 'hi',
+               url: '',
+             })
+         .state(  'site.public.login',  {
+               templateUrl: 'templates/auth/login.html',
+               url: '/login',
+               controller: 'LoginController',
+               controllerAs: 'hi',
+             })
+         .state(  'site.public.register',  {
+               templateUrl: 'templates/auth/register.html',
+               url: '/register',
+               controller: 'RegisterController',
+               controllerAs: 'hi',
+             })
+             .state( 'site.private',{
             'abstract': true,
-            template: '<ui-view/>',
-            url: '',
-            children: [
-              {
-                name: 'index',
-                templateUrl: 'templates/public/index.html',
-                controller: 'PublicIndexCtrl',
-                controllerAs: 'hi',
-                url: '',
-              },
-              {
-                name: 'login',
-                templateUrl: 'templates/auth/login.html',
-                url: '/login',
-                controller: 'LoginController',
-                controllerAs: 'hi',
-              },
-              {
-                name: 'register',
-                templateUrl: 'templates/auth/register.html',
-                url: '/register',
-                controller: 'RegisterController',
-                controllerAs: 'hi',
-              },
-            ],
-          },
-          {
-            name: 'private',
-            'abstract': true,
-            templateUrl: 'templates/private/index.html',
-            controller: 'NavCtrl',
-            controllerAs: 'hi',
+        //    templateUrl: 'templates/private/index.html',
+          //  controller: 'NavCtrl',
+          //  controllerAs: 'hi',
             url: '/private',
-            children: [
-              {
-                name: 'sidebar',
-                templateUrl: 'templates/private/sidebar.html',
-                controller: 'NavCtrl',
-                controllerAs: 'hi',
-                url: '/sidebar',
-              },
-              {
-                name: 'content',
-                'abstract': true,
-                template: '<ui-view/>',
-                url: '',
-                children: [
-                  {
-                    name: 'haps',
-                    templateUrl: 'templates/private/haps/haps.html',
-                    controller: 'HapsController',
-                    controllerAs: 'hi',
-                    url: '/haps',
-                    // children: [
-                    //   {
-                    //     name: 'new-hap',
-                    //     templateUrl: 'templates/private/haps/new-hap.html',
-                    //     controller: 'NewHapController',
-                    //     controllerAs: 'hi',
-                    //     url: '/newhap',
-                    //   },
-                    // ],
-                  },
-                  {
-                    name: 'friends',
-                    templateUrl: 'templates/private/friends/friends.html',
-                    controller: 'FriendsController',
-                    controllerAs: 'hi',
-                    url: '/friends',
-                  },
-                  {
-                    name: 'newfriend',
-                    templateUrl: 'templates/private/friends/new-friend-account.html',
-                    controller: 'NewFriendAccountController',
-                    controllerAs: 'hi',
-                    url: '/newfriend',
-                  },
+            views: {
+              '': {templateUrl: 'templates/private/index.html'
+            },
+            'sidebar@site.private': {templateUrl: 'templates/private/sidebar.html',
+            controller: 'SidebarController', //'NavCtrl', 
+            controllerAs: 'hi',
+          }
 
-                ],
-              },
-          ],
-          },
-        ],
-      });
+            }
+
+          })
+      .state( 'site.private.content', {
+          'abstract': true,
+          template: '<ui-view/>',
+          url: '',
+        })
+
+      .state('site.private.content.haps', {
+              templateUrl: 'templates/private/haps/haps.html',
+              controller: 'HapsController',
+              controllerAs: 'hi',
+              url: '/haps',
+            })
+            .state( 'site.private.content.friends', {
+               templateUrl: 'templates/private/friends/friends.html',
+               controller: 'FriendsController',
+               controllerAs: 'hi',
+               url: '/friends',
+             })
+             .state( 'site.private.content.newfriend', {
+                      templateUrl: 'templates/private/friends/new-friend-account.html',
+                      controller: 'NewFriendAccountController',
+                      controllerAs: 'hi',
+                      url: '/newfriend',
+                    })
   }
 
   // angular

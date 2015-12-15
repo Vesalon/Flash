@@ -1,20 +1,41 @@
-
 <div>
-  ------------------------------------
-  <br>
-  THIS IS PRIVATE.SIDEBAR
-  <br>
-
-  <a href ng-click="hi.logout()">Logout</a>
-  <br>
-  <a ui-sref="haps">HAPS</a>
-  <br>
-  user: {{username}}
-  <br>
-  ------------------------------------
-  <ui-view/>
-  <br>
-
-  THIS IN NOT BEING SHOWED - WHY ?????
-
+  <div class="toolbardemoBasicUsage">
+    <md-content>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <md-button class="md-icon-button" aria-label="Settings" ng-click="hi.toggleLeft()">
+            btn
+            <!-- <md-icon md-svg-icon="ion-android-menu"></md-icon> -->
+          </md-button>
+          <h2 style="color:white;">
+            <span>Toolbar with Icon Buttons</span>
+          </h2>
+        </div>
+      </md-toolbar>
+    </md-content>
+  </div>
+  <div id="sidebar" layout="column">
+    <section layout="row" flex="">
+      <md-sidenav class="md-sidenav-left md-whiteframe-z2 menubar" md-component-id="left">
+          <ul id="side-menu">
+            <li ui-sref="site.private.content.haps" ng-click="hi.toggleLeft()">
+              Haps
+            </li>
+            <li ui-sref="site.private.content.friends" ng-click="hi.toggleLeft()">
+              Friends
+            </li>
+            <li>
+              +{{username}}
+            </li>
+            <!-- <li ui-sref="site.public.index" ng-click="toggleLeft()">
+              logout
+            </li> -->
+            <li>
+              <a href ng-click="hi.logout()">Logout</a>
+            </li>
+          </ul>
+        </md-content>
+      </md-sidenav>
+    </section>
+  </div>
 </div>

@@ -3,8 +3,8 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('hapin', [
         //  'ionic',
-        'ngMaterial',
-        'ng-mfb',
+         'ngMaterial',
+         'ng-mfb',
          'ui.router',
          'ui.router.stateHelper',
 
@@ -15,7 +15,7 @@ angular.module('hapin', [
          'hapin.config',
          'hapin.auth',
          'hapin.layout',
-         'hapin.navbar',
+         //'hapin.navbar',
          'hapin.haps',
          'hapin.friends',
          'hapin.profiles',
