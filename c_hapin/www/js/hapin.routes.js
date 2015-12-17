@@ -70,6 +70,12 @@ function config($stateProvider, $urlRouterProvider, stateHelperProvider) {
       controllerAs: 'hi',
       url: '/haps',
     })
+    .state('site.private.content.newhap', {
+        templateUrl: 'templates/private/haps/new-hap.html',
+        // controller: 'HapsController',
+        // controllerAs: 'hi',
+        url: '/newhap',
+      })
     .state('site.private.content.friends', {
       templateUrl: 'templates/private/friends/friends.html',
       controller: 'FriendsController',
