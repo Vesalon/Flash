@@ -1,8 +1,17 @@
 <div class="card">
 
   <div class="content">
-    <span class="title">Haps</span>
+    <span class="title">My Haps</span>
     <p>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div ng-repeat="hap in hi.list | filter:query">
+          <!-- <friend friend="friend"></friend> -->
+          <p>
+          {{hap.title}}: {{hap.desc}}
+        </p>
+        <br>        
+        </div>
+      </div>
       I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
       I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
     </p>

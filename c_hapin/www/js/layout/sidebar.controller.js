@@ -10,7 +10,7 @@
     var hi = this;
     hi.logout = logout;
     hi.toggleLeft = buildToggler('left');
-    $scope.username = Auth.username();
+    hi.username = Auth.username();
 
     /**
      * Build handler to open/close a SideNav; when animation finishes

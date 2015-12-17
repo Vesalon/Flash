@@ -150,6 +150,8 @@
     //
     function getAccountHaps() {
       var aHaps = haps.filter(function (a) {
+        // console.log("a.organizer.username = ", a.organizer.username);
+        // console.log("Auth.getIdentity().username = ", Auth.getIdentity().username);
           return a.organizer.username === Auth.getIdentity().username
             || a.guest_list.indexOf(Auth.getIdentity().id) !== -1  ;
         });

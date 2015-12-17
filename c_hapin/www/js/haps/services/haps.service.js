@@ -33,12 +33,14 @@ function Haps($http) {
     // });
   }
 
-  function get(username) {
+  function get() {
     //return $http.get('/api/v1/accounts/' + username + '/haps/');
+    return $http.get('/api/v1/accounts/me/haps/');
   }
 
   function getSingle(hapId) {
   //  return $http.get('/api/v1/haps/' + hapId + '/');
+  return $http.get('/api/v1/accounts/me/haps/:' + hapId + '/');
   }
 
   function accept(hapId, status, comment) {
