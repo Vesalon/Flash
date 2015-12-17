@@ -1,6 +1,6 @@
 <div class="card">
 
-  <div class="content">
+  <div class="content1">
     <span class="title">My Haps</span>
     <p>
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -9,14 +9,14 @@
           <p>
           {{hap.title}}: {{hap.desc}}
         </p>
-        <br>        
+        <br>
         </div>
       </div>
       I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
       I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
     </p>
   </div>
-  <div class="content">
+  <div class="content2">
     <span class="title">Haps</span>
     <p>
       I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
@@ -35,3 +35,18 @@
   <mfb-button bgcolor="#BF55EC" label="invited" icon="ion-help"></mfb-button>
   <mfb-button bgcolor="#F4B350" label="open" icon="ion-android-locate"></mfb-button>
 </mfb-menu>
+
+
+<script>
+    var a2 = Swiped.init({
+        query: '.content1',
+        right: 400,
+        left: 400,
+        onOpen: function() {
+            this.destroy(true)
+        },
+        onClose: function() {
+            console.log('close')
+        }
+    });
+</script>
