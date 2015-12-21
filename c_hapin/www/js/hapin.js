@@ -19,6 +19,7 @@ angular.module('hapin', [
         // 'uiGmapgoogle-maps',
          'hapin.haps',
          'hapin.friends',
+         'hapin.places',
          'hapin.profiles',
          'hapin.public',
 
