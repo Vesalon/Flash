@@ -59,7 +59,11 @@
             {{ location }}
           </p> -->
           <p>
-            <ui-gmap-google-map center="map.center" options="options" zoom="map.zoom"></ui-gmap-google-map>
+
+            <ui-gmap-google-map center="map.center" options="options" zoom="map.zoom" draggable="true">
+              <ui-gmap-search-box template="searchbox.template" events="searchbox.events">
+              </ui-gmap-search-box>
+            </ui-gmap-google-map>
 
           </p>
         </md-content>

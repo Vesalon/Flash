@@ -11,7 +11,7 @@ angular
     uiGmapGoogleMapApiProvider.configure({
     //  key: 'THIS-IS-WHERE-YOU-PASTE-THE-MAP-API-KEY-YOU-COPIED-EARLIER',
       v: '3.17',
-      libraries: 'weather,geometry,visualization'
+      libraries: 'places,geometry,visualization'
     });
   });
 
