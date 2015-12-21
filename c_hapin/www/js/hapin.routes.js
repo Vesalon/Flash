@@ -72,8 +72,8 @@ function config($stateProvider, $urlRouterProvider, stateHelperProvider) {
     })
     .state('site.private.content.newhap', {
         templateUrl: 'templates/private/haps/new-hap.html',
-        // controller: 'HapsController',
-        // controllerAs: 'hi',
+        controller: 'NewHapController',
+        controllerAs: 'hi',
         url: '/newhap',
       })
     .state('site.private.content.friends', {

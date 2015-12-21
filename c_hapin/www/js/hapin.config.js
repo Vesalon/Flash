@@ -22,4 +22,6 @@ function config($locationProvider, $compileProvider) {
 
   $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
 
+
+
 }
