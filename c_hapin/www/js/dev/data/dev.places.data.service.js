@@ -9,7 +9,7 @@
 
     function DevPlacesData(Auth) {
 
-      var palces = [
+      var places = [
       {
           "id": 2,
           "orig": {

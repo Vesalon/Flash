@@ -13,7 +13,7 @@
       create: create,
       get: get,
       getSingle: getSingle,
-      accept: accept,
+    //  accept: accept,
     };
 
     return Places;
