@@ -19,7 +19,7 @@ function Haps($http) {
 
 
   function all() {
-    //return $http.get('/api/v1/haps/');
+    return $http.get('/api/v1/haps/');
   }
 
   function create(title, desc, location, time, friendIds) {

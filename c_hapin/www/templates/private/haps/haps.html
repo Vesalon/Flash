@@ -2,26 +2,27 @@
 
   <div class="content1">
     <span class="title">My Haps</span>
-    <p>
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
         <div ng-repeat="hap in hi.list | filter:query">
-          <!-- <friend friend="friend"></friend> -->
           <p>
           {{hap.title}}: {{hap.desc}}
         </p>
-        <br>
         </div>
-      </div>
-      I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-      I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-    </p>
-  </div>
-  <div class="content2">
-    <span class="title">Haps</span>
-    <p>
-      I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-      I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-    </p>
+      </div> -->
+
+
+  <md-content>
+    <md-list>
+      <md-list-item class="md-3-line" ng-repeat="hap in hi.list | filter:query">
+        <div class="id{{hap.id}}">
+          <p>{{hap.title}}: {{hap.desc}}</p>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+    </md-list>
+  </md-content>
+
+
   </div>
 </div>
 
@@ -39,7 +40,7 @@
 
 <script>
     var a2 = Swiped.init({
-        query: '.content1',
+        query: '.id5',
         right: 400,
         left: 400,
         onOpen: function() {
