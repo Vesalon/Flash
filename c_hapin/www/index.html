@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 
-<html >
-    <head>
-        <!--
+<html>
+
+<head>
+  <!--
         Customize this policy to fit your own app's needs. For more guidance, see:
             https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
         Some notes:
@@ -11,105 +12,133 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link href="lib/node_modules/angular-material/angular-material.css" rel="stylesheet">
-        <link href="lib/node_modules/ng-material-floating-button/mfb/dist/custommfb.css" rel="stylesheet">
+  <!-- http://www.html5rocks.com/en/tutorials/security/content-security-policy/ -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' https://maps.google.com data: gap: https://ssl.gstatic.com ;
+            style-src 'self' 'unsafe-inline' https://fonts.googleapis.com ;
+            media-src * ;
+            script-src 'self' 'unsafe-eval' https://maps.google.com https://maps.googleapis.com https://*.googleapis.com ;
+            img-src 'self' https://csi.gstatic.com https://maps.gstatic.com https://*.googleapis.com data: ;
+            font-src 'self' https://fonts.gstatic.com
+            ">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <link href="lib/node_modules/angular-material/angular-material.css" rel="stylesheet">
+  <link href="lib/node_modules/ng-material-floating-button/mfb/dist/custommfb.css" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css" />
-        <link rel="stylesheet" type="text/css" href="lib/bootstrap-material-design/dist/css/material.css" />
-        <link rel="stylesheet" type="text/css" href="lib/bootstrap-material-design/dist/css/ripples.min.css" />
-        <!-- <link rel="stylesheet" type="text/css" href="lib/ngDialog/css/ngDialog.css" /> -->
-        <!-- <link rel="stylesheet" type="text/css" href="lib/ngDialog/css/ngDialog-theme-default.css" /> -->
-        <link rel="stylesheet" type="text/css" href="lib/angular.snackbar/css/angular.snackbar.css" />
-        <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-material-design/dist/css/material.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-material-design/dist/css/ripples.min.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="lib/ngDialog/css/ngDialog.css" /> -->
+  <!-- <link rel="stylesheet" type="text/css" href="lib/ngDialog/css/ngDialog-theme-default.css" /> -->
+  <link rel="stylesheet" type="text/css" href="lib/angular.snackbar/css/angular.snackbar.css" />
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel='stylesheet' href='lib/sc-date-time/dist/sc-date-time.css'>
 
-        <title>hapin</title>
-    </head>
-    <body>
+  <title>hapin</title>
+</head>
 
-        <div ui-view></div>
+<body>
 
-        <!-- <script type="text/javascript" src="cordova.js"></script> -->
-        <!-- <script type="text/javascript" src="js/index.js"></script> -->
+  <div ui-view></div>
 
-        <script src="lib/jquery/jquery.js"></script>
+  <!-- <script type="text/javascript" src="cordova.js"></script> -->
+  <!-- <script type="text/javascript" src="js/index.js"></script> -->
 
-        <script src="lib/modernizr/modernizr.js"></script>
-        <script src="lib/require/require.min.js" data-main="js/appconfig/loader"></script>
+  <script src="lib/jquery/jquery.js"></script>
 
-        <!-- <script src="lib/jquery/jquery.js"></script> -->
-        <script src="lib/angular/angular.js"></script>
-        <script src="lib/angular/angular-route.js"></script>
-        <script src="lib/angular-ui/angular-ui-router.js"></script>
-        <script src="lib/angular/angular-cookies.js"></script>
-        <script src="lib/angular/angular-animate.js"></script>
-        <script src="lib/node_modules/angular-aria/angular-aria.js"></script>
-        <script src="lib/node_modules/angular-material/angular-material.js"></script>
-        <script src="lib/node_modules/ng-material-floating-button/src/mfb-directive.js"></script>
-        <script src="lib/node_modules/angular-ui-router.statehelper/statehelper.js"></script>
+  <script src="lib/modernizr/modernizr.js"></script>
+  <script src="lib/require/require.min.js" data-main="js/appconfig/loader"></script>
 
-        <script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
-        <!-- <script type="text/javascript" src="lib/ngDialog/js/ngDialog.js"></script> -->
-        <script type="text/javascript" src="lib/angular.snackbar/angular.snackbar.min.js"></script>
-        <script type="text/javascript" src="lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
-        <!-- <script type="text/javascript" src="{% static 'lib/jquery-locationpicker-plugin/dist/locationpicker.jquery.min.js' %}"></script> -->
-        <!-- // <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
+  <!-- <script src="lib/jquery/jquery.js"></script> -->
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-route.js"></script>
+  <script src="lib/angular-ui/angular-ui-router.js"></script>
+  <script src="lib/angular/angular-cookies.js"></script>
+  <script src="lib/angular/angular-animate.js"></script>
+  <script src="lib/node_modules/angular-aria/angular-aria.js"></script>
+  <script src="lib/node_modules/angular-material/angular-material.js"></script>
+  <script src="lib/node_modules/ng-material-floating-button/src/mfb-directive.js"></script>
+  <script src="lib/node_modules/angular-ui-router.statehelper/statehelper.js"></script>
+
+  <script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
+  <!-- <script type="text/javascript" src="lib/ngDialog/js/ngDialog.js"></script> -->
+  <script type="text/javascript" src="lib/angular.snackbar/angular.snackbar.min.js"></script>
+  <script type="text/javascript" src="lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+  <!-- <script type="text/javascript" src="{% static 'lib/jquery-locationpicker-plugin/dist/locationpicker.jquery.min.js' %}"></script> -->
+  <!-- // <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
         // <script type="text/javascript" src='http://rawgit.com/Logicify/jquery-locationpicker-plugin/master/dist/locationpicker.jquery.js'></script>
         //  -->
+  <!-- <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=places&language=en-US"></script> -->
+  <script src="lib/angular-google-maps/angular-google-maps.min.js"></script>
+  <script src="lib/lodash/lodash.min.js"></script>
+  <script src="lib/angular-simple-logger/angular-simple-logger.min.js"></script>
 
+  <script src="lib/node_modules/swiped/dist/swiped.js"></script>
+  <script src='lib/sc-date-time/dist/sc-date-time.js'></script>
 
-        <script src="js/hapin.js"></script>
-        <script src="js/hapin.routes.js"></script>
-        <script src="js/hapin.config.js"></script>
-        <script src="js/hapin.constants.js"></script>
+  <script src="js/hapin.js"></script>
+  <script src="js/hapin.routes.js"></script>
+  <script src="js/hapin.config.js"></script>
+  <script src="js/hapin.constants.js"></script>
 
-        <script src="js/auth/auth.module.js"></script>
-        <script src="js/auth/services/auth.service.js"></script>
-        <script src="js/auth/services/auth.storage.service.js"></script>
-        <script src="js/auth/services/principal.service.js"></script>
-        <script src="js/auth/services/authorization.service.js"></script>
-        <script src="js/auth/controllers/login.controller.js"></script>
-        <script src="js/auth/controllers/register.controller.js"></script>
+  <script src="js/auth/auth.module.js"></script>
+  <script src="js/auth/services/auth.service.js"></script>
+  <script src="js/auth/services/auth.storage.service.js"></script>
+  <script src="js/auth/services/principal.service.js"></script>
+  <script src="js/auth/services/authorization.service.js"></script>
+  <script src="js/auth/controllers/login.controller.js"></script>
+  <script src="js/auth/controllers/register.controller.js"></script>
 
-        <script src="js/layout/layout.module.js"></script>
-        <script src="js/layout/sidebar.controller.js"></script>
+  <script src="js/layout/layout.module.js"></script>
+  <script src="js/layout/sidebar.controller.js"></script>
 
-        <script src="js/haps/haps.module.js"></script>
-        <script src="js/haps/services/haps.service.js"></script>
-        <script src="js/haps/controllers/haps.controller.js"></script>
+  <script src="js/haps/haps.module.js"></script>
+  <script src="js/haps/services/haps.service.js"></script>
+  <script src="js/haps/controllers/haps.controller.js"></script>
+  <script src="js/haps/controllers/new-hap.controller.js"></script>
 
-        <script src="js/friends/friends.module.js"></script>
-        <script src="js/friends/services/friends.service.js"></script>
-        <script src="js/friends/controllers/friends.controller.js"></script>
-        <script src="js/friends/controllers/new-friend-account.controller.js"></script>
+  <script src="js/places/places.module.js"></script>
+  <script src="js/places/services/places.service.js"></script>
+  <script src="js/places/controllers/places.controller.js"></script>
+  <script src="js/places/controllers/place.controller.js"></script>
+  <script src="js/places/directives/places.directive.js"></script>
+  <script src="js/places/directives/place.directive.js"></script>
 
-        <script src="js/profiles/profiles.module.js"></script>
-        <script src="js/profiles/services/profiles.service.js"></script>
-        <script src="js/profiles/controllers/profiles.controller.js"></script>
-        <script src="js/profiles/controllers/profile-settings.controller.js"></script>
+  <script src="js/friends/friends.module.js"></script>
+  <script src="js/friends/services/friends.service.js"></script>
+  <script src="js/friends/controllers/friends.controller.js"></script>
+  <script src="js/friends/controllers/new-friend-account.controller.js"></script>
 
-        <script src="js/public/public.index.js"></script>
-        <script src="js/public/controllers/public-index.controller.js"></script>
+  <script src="js/profiles/profiles.module.js"></script>
+  <script src="js/profiles/services/profiles.service.js"></script>
+  <script src="js/profiles/controllers/profiles.controller.js"></script>
+  <script src="js/profiles/controllers/profile-settings.controller.js"></script>
 
-        <script src="lib/node_modules/swiped/dist/swiped.js"></script>
+  <script src="js/public/public.index.js"></script>
+  <script src="js/public/controllers/public-index.controller.js"></script>
 
-        <!-- !!! MOCKING - REMOVE/ADD !!! -->
-        <script src="lib/angular/angular-mocks.js"></script>
-        <script src="js/dev/dev.hapin.module.js"></script>
-        <script src="js/dev/run/dev.auth.run.js"></script>
-        <script src="js/dev/data/dev.account.data.service.js"></script>
-        <script src="js/dev/data/dev.auth.data.service.js"></script>
-        <script src="js/dev/run/dev.haps.run.js"></script>
-        <script src="js/dev/data/dev.haps.data.service.js"></script>
-        <script src="js/dev/run/dev.friends.run.js"></script>
-        <script src="js/dev/data/dev.friends.data.service.js"></script>
-        <script src="js/dev/run/dev.profiles.run.js"></script>
-        <script src="js/dev/data/dev.profiles.data.service.js"></script>
+  <script src="js/utils/utils.module.js"></script>
+  <script src="js/utils/map/directives/location-picker.directive.js"></script>
 
-        <!-- !!! END - MOCKING - REMOVE/ADD !!! -->
+  <!-- !!! MOCKING - REMOVE/ADD !!! -->
+  <script src="lib/angular/angular-mocks.js"></script>
+  <script src="js/dev/dev.hapin.module.js"></script>
+  <script src="js/dev/run/dev.auth.run.js"></script>
+  <script src="js/dev/data/dev.account.data.service.js"></script>
+  <script src="js/dev/data/dev.auth.data.service.js"></script>
+  <script src="js/dev/run/dev.haps.run.js"></script>
+  <script src="js/dev/data/dev.haps.data.service.js"></script>
+  <script src="js/dev/run/dev.friends.run.js"></script>
+  <script src="js/dev/data/dev.friends.data.service.js"></script>
+  <script src="js/dev/run/dev.profiles.run.js"></script>
+  <script src="js/dev/data/dev.profiles.data.service.js"></script>
+  <script src="js/dev/run/dev.places.run.js"></script>
+  <script src="js/dev/data/dev.places.data.service.js"></script>
 
-    </body>
+  <!-- !!! END - MOCKING - REMOVE/ADD !!! -->
+
+</body>
+
 </html>

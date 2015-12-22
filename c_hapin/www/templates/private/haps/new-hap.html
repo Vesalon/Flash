@@ -1,0 +1,107 @@
+<div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="what">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">what</h1>
+          <md-content layout-padding="">
+            <p>
+              <md-input-container class="md-icon-float">
+                <label>name</label>
+                <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
+                <input ng-model="hi.title" type="text" autocapitalize="off" autocorrect="off">
+              </md-input-container>
+            </p>
+            <p>
+              <md-input-container class="md-icon-float">
+                <label>description</label>
+                <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
+                <input ng-model="hi.desc" type="text" autocapitalize="off" autocorrect="off">
+              </md-input-container>
+            </p>
+          </md-content>
+        </md-content>
+      </md-tab>
+
+      <md-tab label="when">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">when</h1>
+          <md-content layout-padding="">
+
+            <p>
+              <!-- <p> http://simeonc.github.io/sc-date-time/index.html -->
+              <time-date-picker ng-model="dateValue" data-display-mode="full" orientation="true" autosave="true" class="modal-content"></time-date-picker>
+            </p>
+            <!-- <md-content>
+              <h4>With ngMessages</h4>
+              <form name="myForm">
+                <md-datepicker name="dateField" ng-model="myDate" md-placeholder="Enter date" required md-min-date="minDate" md-max-date="maxDate" md-date-filter="onlyWeekendsPredicate"></md-datepicker>
+                <div class="validation-messages" ng-messages="myForm.dateField.$error">
+                  <div ng-message="valid">The entered value is not a date!</div>
+                  <div ng-message="required">This date is required!</div>
+                  <div ng-message="mindate">Date is too early!</div>
+                  <div ng-message="maxdate">Date is too late!</div>
+                  <div ng-message="filtered">Only weekends are allowed!</div>
+                </div>
+              </form>
+            </md-content> -->
+            </p>
+          </md-content>
+        </md-content>
+      </md-tab>
+
+      <md-tab label="where">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">where</h1>
+
+          <div class="row" ng-cloak>
+            <h1>my places</h1>
+            <div class="col-md-2">
+              <input ng-model="query" placeholder="Search for...">
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div ng-repeat="place in hi.placesList | filter:query">
+                <place place="place"></place>
+                <!-- {{place.nickname}}: {{place.address}} -->
+              </div>
+            </div>
+            <div ng-hide="hi.placesList && hi.placesList.length">
+              <div class="col-sm-12 no-places-here">
+                <em>You have no places yet. Use the plus button to add some.</em>
+              </div>
+            </div>
+          </div>
+
+
+          <div >
+          <h1>my places with places directive</h1>
+          length in new-hap =  {{hi.placesList.length}}
+          <places places="hi.placesList" ></places>
+          </div>
+
+          <!-- <p>
+            <location-picker id="location" ng-model="location" class="form-control" placeholder="Hap location" ng-required="true"></location-picker>
+            <button ng-click="hi.clear()">Clear</button>
+            {{ location }}
+          </p> -->
+          <p>
+
+            <ui-gmap-google-map center="map.center" options="options" zoom="map.zoom" draggable="true">
+              <ui-gmap-search-box template="searchbox.template" events="searchbox.events">
+              </ui-gmap-search-box>
+            </ui-gmap-google-map>
+
+          </p>
+        </md-content>
+      </md-tab>
+      <md-tab label="who">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">who</h1>
+          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu
+            orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>

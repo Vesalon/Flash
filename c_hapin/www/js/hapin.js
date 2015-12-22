@@ -15,9 +15,11 @@ angular.module('hapin', [
          'hapin.config',
          'hapin.auth',
          'hapin.layout',
-         //'hapin.navbar',
+         //'hapin.utils',
+        // 'uiGmapgoogle-maps',
          'hapin.haps',
          'hapin.friends',
+         'hapin.places',
          'hapin.profiles',
          'hapin.public',
 

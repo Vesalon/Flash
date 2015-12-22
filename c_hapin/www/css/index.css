@@ -183,3 +183,8 @@ h1 {
 .inputdemoIcons md-input-container.md-input-invalid > md-icon.email, .inputdemoIcons md-input-container.md-input-invalid > md-icon.name {
   color: red; }
   /*end eangular material, input box*/
+
+/*angular-goofle-maps container for the map*/
+.angular-google-map-container {
+  height: 300px; // Or whatever pixel value you require :)
+}

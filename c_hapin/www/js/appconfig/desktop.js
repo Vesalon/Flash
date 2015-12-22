@@ -15,3 +15,6 @@ var app = {
 };
 
 app.initialize();
+
+
+// angular.bootstrap(document.getElementById('app'), ['MyApp']);

@@ -1,0 +1,15 @@
+<div class="row" ng-cloak>
+  length in places directive =  {{hi.places.length}}
+  <div class="col-md-6 col-md-offset-3">
+    <div ng-repeat="place in hi.places">
+      <place place="place"></place>
+      <!-- {{place.nickname}}: {{place.address}} -->
+    </div>
+  </div>
+
+  <!-- <div ng-hide="hi.places && hi.places.length">
+    <div class="col-sm-12 no-places-here">
+      <em>You have not saved any places length =  {{hi.places.length}} </em>
+    </div>
+  </div> -->
+</div>
