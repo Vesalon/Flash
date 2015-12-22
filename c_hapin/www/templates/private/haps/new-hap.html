@@ -55,26 +55,28 @@
           <h1 class="md-display-2">where</h1>
 
           <div class="row" ng-cloak>
-
             <h1>my places</h1>
-
             <div class="col-md-2">
-
               <input ng-model="query" placeholder="Search for...">
             </div>
-
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div ng-repeat="place in hi.myPlacesList | filter:query">
+              <div ng-repeat="place in hi.placesList | filter:query">
                 <!-- <friend friend="friend"></friend> -->
                 {{place.nickname}}: {{place.address}}
               </div>
             </div>
-
-            <div ng-hide="hi.myPlacesList && hi.myPlacesList.length">
+            <div ng-hide="hi.placesList && hi.placesList.length">
               <div class="col-sm-12 no-places-here">
                 <em>You have no places yet. Use the plus button to add some.</em>
               </div>
             </div>
+          </div>
+
+
+          <div >
+          <h1>Upcoming:</h1>
+          <places places="hi.placesList" ng-show="hi.placesList && hi.placesList.length"></haps>
+
           </div>
 
           <!-- <p>

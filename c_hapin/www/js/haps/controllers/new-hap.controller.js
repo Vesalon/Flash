@@ -18,7 +18,7 @@
     //   lng: null
     // };
 
-    hi.myPlacesList = [];
+    hi.placesList = [];
     activate();
 
     function activate() {
@@ -29,16 +29,16 @@
 
        $scope.$on('place.created', function (event, place) {
          console.log('place.created ' + place);
-         hi.myPlacesList.unshift(place);
+         hi.placesList.unshift(place);
        });
 
        $scope.$on('place.created.error', function () {
          console.log('place.created.erro!!!!');
-         hi.myPlacesList.shift();
+         hi.placesList.shift();
        });
 
       function placesSuccessFn(data, status, headers, config) {
-        hi.myPlacesList = data.data;
+        hi.placesList = data.data;
       }
 
       function placesErrorFn(data, status, headers, config) {

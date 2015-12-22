@@ -4,7 +4,7 @@
   angular
     .module('hapin.places', [
       'hapin.places.controllers',
-      //'hapin.haps.directives',
+      'hapin.places.directives',
       'hapin.places.services',
       //'uiGmapgoogle-maps',
     ])
@@ -21,8 +21,8 @@
   angular
     .module('hapin.places.controllers', []); //, ['checklist-model']);
 
-  // angular
-  //   .module('hapin.haps.directives', ['ngDialog']);
+  angular
+    .module('hapin.places.directives', []);
 
   angular
     .module('hapin.places.services', []);
