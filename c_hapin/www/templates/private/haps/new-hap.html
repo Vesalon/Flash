@@ -59,10 +59,11 @@
             <div class="col-md-2">
               <input ng-model="query" placeholder="Search for...">
             </div>
+
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
               <div ng-repeat="place in hi.placesList | filter:query">
-                <!-- <friend friend="friend"></friend> -->
-                {{place.nickname}}: {{place.address}}
+                <place place="place"></place>
+                <!-- {{place.nickname}}: {{place.address}} -->
               </div>
             </div>
             <div ng-hide="hi.placesList && hi.placesList.length">
@@ -74,9 +75,9 @@
 
 
           <div >
-          <h1>Upcoming:</h1>
-          <places places="hi.placesList" ng-show="hi.placesList && hi.placesList.length"></haps>
-
+          <h1>my places with places directive</h1>
+          length in new-hap =  {{hi.placesList.length}}
+          <places places="hi.placesList" ></places>
           </div>
 
           <!-- <p>

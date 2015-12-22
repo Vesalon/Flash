@@ -11,6 +11,7 @@
     var hi = this;
 
     hi.places = [];
+
     activate();
 
     function activate() {
@@ -32,8 +33,9 @@
         hi.places = [];
         for (var i = 0; i < current.length; ++i) {
           hi.places.push(current[i]);
+          console.log('PlacesController.render: pushing=', current[i]);
         }
-        console.log('PlacesController.render()');
+        console.log('PlacesController.render: hi.places.length=', hi.places.length);
       }
     }
   }

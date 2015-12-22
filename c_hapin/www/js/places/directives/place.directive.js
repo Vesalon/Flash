@@ -12,7 +12,7 @@
       controllerAs: 'hi',
       restrict: 'E',
       scope: {
-        hap: '='
+        place: '='
       },
       templateUrl: 'templates/private/places/place.html'
     };
