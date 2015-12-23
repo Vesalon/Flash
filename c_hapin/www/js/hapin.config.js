@@ -4,13 +4,13 @@ angular
   .module('hapin.config', [])
   .config(config);
 
-config.$inject = ['$locationProvider', '$compileProvider'];
+config.$inject = ['$locationProvider', '$compileProvider', '$mdIconProvider'];
 
 /**
 * @name config
 * @desc Enable HTML5 routing
 */
-function config($locationProvider, $compileProvider) {
+function config($locationProvider, $compileProvider, $mdIconProvider) {
 //   //$locationProvider.html5Mode(true);
 //   //  $locationProvider.hashPrefix('!');
 // // http://stackoverflow.com/questions/19974097/angularjs-and-phonegap-location-path-causes-subsequent-tempateurl-lookup-to-fa
@@ -22,6 +22,25 @@ function config($locationProvider, $compileProvider) {
 
   $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
 
+  $mdIconProvider
+      // .defaultFontSet( 'fontawesome' )
+      //  .defaultIconSet('img/icons.svg')       // Register a default set of SVG icons
+ 				.iconSet('action', 'img/icons/material-design/action-icons.svg', 24)
+ 				.iconSet('alert', 'img/icons/material-design/alert-icons.svg', 24)
+ 				.iconSet('av', 'img/icons/material-design/av-icons.svg', 24)
+ 				.iconSet('communication', 'img/icons/material-design/communication-icons.svg', 24)
+ 				.iconSet('content', 'img/icons/material-design/content-icons.svg', 24)
+ 				.iconSet('device', 'img/icons/material-design/device-icons.svg', 24)
+ 				.iconSet('editor', 'img/icons/material-design/editor-icons.svg', 24)
+ 				.iconSet('file', 'img/icons/material-design/file-icons.svg', 24)
+ 				.iconSet('hardware', 'img/icons/material-design/hardware-icons.svg', 24)
+ 				.iconSet('icons', 'img/icons/material-design/icons-icons.svg', 24)
+ 				.iconSet('image', 'img/icons/material-design/image-icons.svg', 24)
+ 				.iconSet('maps', 'img/icons/material-design/maps-icons.svg', 24)
+ 				.iconSet('navigation', 'img/icons/material-design/navigation-icons.svg', 24)
+ 				.iconSet('notification', 'img/icons/material-design/notification-icons.svg', 24)
+ 				.iconSet('social', 'img/icons/material-design/social-icons.svg', 24)
+ 				.iconSet('toggle', 'img/icons/material-design/toggle-icons.svg', 24)
 
 
 }

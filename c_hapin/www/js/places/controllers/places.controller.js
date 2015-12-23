@@ -9,9 +9,7 @@
 
   function PlacesController($scope) {
     var hi = this;
-
     hi.places = [];
-
     activate();
 
     function activate() {

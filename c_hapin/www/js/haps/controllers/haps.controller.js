@@ -15,10 +15,11 @@ function HapsController($scope, $state, Auth, Haps) {
   activate();
 
   function activate() {
-    // if (hi.isAuthenticated) {
+    //  if (hi.isAuthenticated) {
+    //   Haps.get()
       Haps.all()
         .then(hapsSuccessFn, hapsErrorFn);
-    // }
+      //}
 
     $scope.$on('hap.created', function(event, hap) {
       console.log('hap.created ' + friend);
