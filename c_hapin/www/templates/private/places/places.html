@@ -14,9 +14,16 @@
   </div>
 </div> -->
 
+<!-- <div class="col-md-2">
+  <input ng-model="query" placeholder="Search for...">
+</div> -->
+<md-input-container class="md-icon-float">
+  <input ng-model="query" placeholder="Search for...">
+</md-input-container>
+
 <md-list  ng-cloak>
-  <md-subheader class="md-no-sticky">Clickable Items with Secondary Controls</md-subheader>
-  <md-list-item ng-click="navigateTo(setting.extraScreen, $event)" ng-repeat="place in hi.places">
+  <md-subheader class="md-no-sticky">My Places</md-subheader>
+  <md-list-item ng-click="navigateTo(setting.extraScreen, $event)" ng-repeat="place in hi.places | filter:query">
     <p> {{ place.nickname }} </p>
     <md-icon md-svg-icon='editor:mode_edit'></md-icon>
     <!-- <md-switch class="md-secondary" ng-model="setting.enabled"></md-switch> -->
