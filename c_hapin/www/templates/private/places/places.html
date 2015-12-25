@@ -25,8 +25,7 @@
   <md-subheader class="md-no-sticky">My Places</md-subheader>
   <md-list-item ng-click="navigateTo(setting.extraScreen, $event)" ng-repeat="place in hi.places | filter:query">
     <p> {{ place.nickname }} </p>
-    <md-icon md-svg-icon='editor:mode_edit'></md-icon>
-    <!-- <md-switch class="md-secondary" ng-model="setting.enabled"></md-switch> -->
+    <md-icon class="md-secondary" ng-click="hi.editPlace($event)" aria-label="Edit" md-svg-icon='editor:mode_edit'></md-icon>
     <md-divider></md-divider>
   </md-list-item>
 
