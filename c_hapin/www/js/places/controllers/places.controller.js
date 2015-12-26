@@ -5,9 +5,9 @@
     .module('hapin.places.controllers')
     .controller('PlacesController', PlacesController);
 
-  PlacesController.$inject = ['$scope', '$mdDialog'];
+  PlacesController.$inject = ['$scope', '$mdDialog', '$mdMedia']
 
-  function PlacesController($scope, $mdDialog) {
+  function PlacesController($scope, $mdDialog, $mdMedia) {
     var hi = this;
     hi.places = [];
     hi.editPlace = editPlace;
@@ -41,15 +41,26 @@
       }
     }
 
-    function editPlace(event) {
-      $mdDialog.show(
-        $mdDialog.alert()
-        .title('Secondary Action')
-        .textContent('Secondary actions can be used for one click actions')
-        .ariaLabel('Secondary click demo')
-        .ok('Neat!')
-        .targetEvent(event)
-      );
+    function editPlace(ev, place) {
+      console.log('PlacesController: selected place=', place);
+      var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+      $mdDialog.show({
+        controller: 'EditPlaceController',
+        controllerAs: 'hi',
+        // controller: ['$scope', 'place', function($scope, place) {
+        //   $scope.place = place;
+        //   console.log('inline controller: place=', $scope.place);
+        // }],
+        templateUrl: 'templates/private/places/editplace.html',
+        // template: '',
+        locals: {
+          place: place,
+        },
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        fullscreen: useFullScreen,
+      })
     };
 
   }

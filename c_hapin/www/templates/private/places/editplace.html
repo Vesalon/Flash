@@ -1,0 +1,22 @@
+<md-dialog aria-label="Edit a Place" ng-cloak>
+  <md-dialog-content>  <!-- <place place="place"></place> -->
+    <div >
+      {{ place.nickname }} :    {{ place.address }}
+    </div>
+
+    <div>
+      <p>
+        <ui-gmap-google-map center="map.center" options="options" zoom="map.zoom" draggable="true">
+          <ui-gmap-search-box template="searchbox.template" events="searchbox.events">
+          </ui-gmap-search-box>
+        </ui-gmap-google-map>
+      </p>
+    </div>
+  </md-dialog-content>
+
+  <md-dialog-actions>
+    <md-button ng-click="closeDialog()" class="md-primary"> Cancel </md-button>
+    <md-button ng-click="closeDialog()" class="md-primary"> Save </md-button>
+ </md-dialog-actions>
+
+</md-dialog>

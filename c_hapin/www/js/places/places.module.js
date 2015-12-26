@@ -1,4 +1,4 @@
-(function(){
+//(function(){
   'use strict';
 
   angular
@@ -6,9 +6,10 @@
       'hapin.places.controllers',
       'hapin.places.directives',
       'hapin.places.services',
-      //'uiGmapgoogle-maps',
+      // 'uiGmapgoogle-maps',
     ])
     // .config(function(uiGmapGoogleMapApiProvider) {
+    //   console.log('places.module config');
     //   uiGmapGoogleMapApiProvider.configure({
     //   //  key: 'THIS-IS-WHERE-YOU-PASTE-THE-MAP-API-KEY-YOU-COPIED-EARLIER',
     //     v: '3.17',
@@ -27,4 +28,4 @@
   angular
     .module('hapin.places.services', []);
 
-})();
+//})();

@@ -7,9 +7,11 @@
 
   PlaceController.$inject = ['$scope', 'Auth', 'Places'];
 
-  function PlaceController($scope, Auth, Places) {
+  function PlaceController($scope, Auth, Places, place) {
     var hi = this;
-    hi.place = $scope.place;
+    console.log('PlaceController: place=', place);
+    hi.place = place;
+    console.log('PlaceController: place=', hi.place);
     // vm.editHap = editHap;
     // vm.submit = submit;
     // vm.going;
