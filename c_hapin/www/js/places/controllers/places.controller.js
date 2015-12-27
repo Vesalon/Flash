@@ -5,9 +5,9 @@
     .module('hapin.places.controllers')
     .controller('PlacesController', PlacesController);
 
-  PlacesController.$inject = ['$scope', '$mdDialog', '$mdMedia', 'uiGmapGoogleMapApi']
+  PlacesController.$inject = ['$scope', '$mdDialog', '$mdMedia']
 
-  function PlacesController($scope, $mdDialog, $mdMedia, uiGmapGoogleMapApi) {
+  function PlacesController($scope, $mdDialog, $mdMedia) {
     var hi = this;
     hi.places = [];
     hi.editPlace = editPlace;

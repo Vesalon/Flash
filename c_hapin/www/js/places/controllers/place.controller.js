@@ -5,30 +5,30 @@
     .module('hapin.places.controllers')
     .controller('PlaceController', PlaceController);
 
-  PlaceController.$inject = ['$scope', 'Auth', 'Places', 'uiGmapGoogleMapApi'];
+  PlaceController.$inject = ['$scope', 'Auth', 'Places'];
 
-  function PlaceController($scope, Auth, Places, uiGmapGoogleMapApi) {
+  function PlaceController($scope, Auth, Places) {
     var hi = this;
      console.log('PlaceController: place=', $scope.place);
 
-     // Define variables for our Map object
-   var areaLat      = 44.2126995,
-       areaLng      = -100.2471641,
-       areaZoom     = 12;
-
-
-    dispalyMap();
-
-   function dispalyMap(){
-     uiGmapGoogleMapApi.then(function(maps) {
-       $scope.map     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
-       $scope.options = { scrollwheel: false };
-       var events = {
-             places_changed: function (searchBox) {}
-           }
-       $scope.searchbox = { template:"searchbox.template", events:events};
-     });
-   }
+  //    // Define variables for our Map object
+  //  var areaLat      = 44.2126995,
+  //      areaLng      = -100.2471641,
+  //      areaZoom     = 12;
+   //
+   //
+  //   dispalyMap();
+   //
+  //  function dispalyMap(){
+  //    uiGmapGoogleMapApi.then(function(maps) {
+  //      $scope.map     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
+  //      $scope.options = { scrollwheel: false };
+  //      var events = {
+  //            places_changed: function (searchBox) {}
+  //          }
+  //      $scope.searchbox = { template:"searchbox.template", events:events};
+  //    });
+  //  }
 
     // hi.place = place;
     // console.log('PlaceController: place=', hi.place);
