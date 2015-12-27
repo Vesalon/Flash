@@ -1,15 +1,28 @@
-<div class="row">
-  <div class="col-sm-12">
-    <div class="well">
-      <div class="place">
-        <div class="place__meta">
-        </div>
-        <div class="place__content">
-          {{ place.nickname }}
-          <br>
-          {{ place.address }}
-        </div>
-      </div>
+<div>
+  <md-content layout-padding="">
+    <p>
+      <md-input-container class="md-icon-float">
+        <label>nickname</label>
+        <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
+        <input ng-model="place.nickname" type="text" autocapitalize="off" autocorrect="off">
+      </md-input-container>
+    </p>
+    <p>
+      <md-input-container class="md-icon-float">
+        <label>address</label>
+        <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
+        <input ng-model="place.address" type="text" autocapitalize="off" autocorrect="off">
+      </md-input-container>
+    </p>
+
+    <div>
+      <p>
+        <ui-gmap-google-map center="map.center" options="options" zoom="map.zoom" draggable="true">
+          <ui-gmap-search-box template="searchbox.template" events="searchbox.events">
+          </ui-gmap-search-box>
+        </ui-gmap-google-map>
+      </p>
     </div>
-  </div>
+
+  </md-content>
 </div>
