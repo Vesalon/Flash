@@ -18,10 +18,9 @@
     };
 
     $scope.$on('location-picker:location-picked', function() {
-      console.log('PlaceController: location-picker:location-picked was caught');
-      console.log('$scope.location = ', $scope.location);
+       $scope.place.address = $scope.location.address;
+      console.log('$scope.place.address = ', $scope.place.address);
       var adjustedLocation = adjustLocation($scope.location);
-      console.log('PlaceController: adjustedLocation = ', adjustedLocation);
 
       $timeout(function() {
         console.log('PlaceController: about to get the map');
