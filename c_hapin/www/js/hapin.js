@@ -7,7 +7,6 @@ angular.module('hapin', [
          'ng-mfb',
          'ui.router',
          'ui.router.stateHelper',
-         'uiGmapgoogle-maps',
 		 'ngAria',
 		 'ngAnimate',
     //     'uiGmapgoogle-maps',
