@@ -17,15 +17,33 @@
       lng: null
     };
 
-    $scope.$watchCollection('$scope.location', function() {
+    $scope.$on('location-picker:location-picked', function() {
+      console.log('PlaceController: location-picker:location-picked was caught');
+      console.log('$scope.location = ', $scope.location);
       var adjustedLocation = adjustLocation($scope.location);
+      console.log('PlaceController: adjustedLocation = ', adjustedLocation);
 
       $timeout(function() {
+        console.log('PlaceController: about to get the map');
         if(adjustedLocation && adjustedLocation.length){
+          console.log('PlaceController: starting to get the map');
           getMap(adjustedLocation)
-        }        
+        }
       }, 2000)
-    }, true)
+      });
+
+    // $scope.$watchCollection('$scope.location', function() {
+    //   var adjustedLocation = adjustLocation($scope.location);
+    //   console.log('PlaceController: adjustedLocation = ', adjustedLocation);
+    //
+    //   $timeout(function() {
+    //     console.log('PlaceController: about to get the map');
+    //     if(adjustedLocation && adjustedLocation.length){
+    //       console.log('PlaceController: starting to get the map');
+    //       getMap(adjustedLocation)
+    //     }
+    //   }, 2000)
+    // }, true)
 
 
 
@@ -59,19 +77,20 @@
 
 
     // http://stackoverflow.com/questions/24459787/google-embeded-map-renders-broken-sometimes
-    function getMap(location) {
+    function getMap(adjustedLocation) {
       $scope.map = {
         url: $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=" + "AIzaSyChSSPsXPDeKLpm0-iYoeRq5Gdm2NoYwuo" + "&q=" + adjustedLocation + "&zoom=16")
       }
     }
 
     function adjustLocation(location) {
-      if(location && location.length){
-        var adjustedLocation = location.replace(/ /g, "+");
+      console.log('location = ', location);
+       if(location && location.address){
+        var adjustedLocation = location.address.replace(/ /g, "+");
       }else{
 
       };
-
+      return adjustedLocation;
     }
 
   }
