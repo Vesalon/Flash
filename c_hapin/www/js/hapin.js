@@ -7,7 +7,7 @@ angular.module('hapin', [
          'ng-mfb',
          'ui.router',
          'ui.router.stateHelper',
-    //     'uiGmapgoogle-maps',        
+    //     'uiGmapgoogle-maps',
 
 
          'angular.snackbar',
@@ -17,7 +17,7 @@ angular.module('hapin', [
          'hapin.config',
          'hapin.auth',
          'hapin.layout',
-         //'hapin.utils',
+         'hapin.utils',
 
          'hapin.haps',
          'hapin.friends',

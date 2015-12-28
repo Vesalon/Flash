@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-//http://plnkr.co/edit/5HPFelbDFUrzeccGfgYx?p=preview
+//http://plnkr.co/edit/5HPFelbDFUrzeccGfgYx
 
   angular
     .module('hapin.utils.directives')
