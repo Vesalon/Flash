@@ -31,7 +31,8 @@
             <p>
               <!-- <p> http://simeonc.github.io/sc-date-time/index.html -->
               <!-- <time-date-picker ng-model="dateValue" data-display-mode="full" orientation="true" autosave="true" class="modal-content"></time-date-picker> -->
-			  <md-button class="md-raised md-warn" ng-click="ctrl.showDatePicker($event)" aria-label="show picker">show picker</md-button>
+			  <md-button class="md-raised md-warn" ng-click="hi.showDatePicker($event)" aria-label="show picker">show picker</md-button>
+			  <div>{{ currentDate | date:'fullDate' }}</div>
             </p>
             <!-- <md-content>
               <h4>With ngMessages</h4>
