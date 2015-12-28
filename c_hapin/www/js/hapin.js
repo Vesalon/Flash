@@ -10,6 +10,7 @@ angular.module('hapin', [
          'uiGmapgoogle-maps',
 		 'ngAria',
 		 'ngAnimate',
+    //     'uiGmapgoogle-maps',
 
 
          'angular.snackbar',
@@ -19,7 +20,7 @@ angular.module('hapin', [
          'hapin.config',
          'hapin.auth',
          'hapin.layout',
-         //'hapin.utils',
+         'hapin.utils',
 
          'hapin.haps',
          'hapin.friends',

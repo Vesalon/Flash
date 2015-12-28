@@ -1,15 +1,54 @@
-<div class="row">
-  <div class="col-sm-12">
-    <div class="well">
-      <div class="place">
-        <div class="place__meta">
-        </div>
-        <div class="place__content">
-          {{ place.nickname }}
-          <br>
-          {{ place.address }}
-        </div>
-      </div>
-    </div>
-  </div>
+<div>
+  <md-content layout-padding="">
+    <p>
+      <md-input-container class="md-icon-float">
+        <!-- <label>nickname</label> -->
+        <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
+        <input ng-model="place.nickname" type="text" autocapitalize="off" autocorrect="off" placeholder="nickname" >
+      </md-input-container>
+
+      <md-input-container class="md-icon-float">
+        <!-- <label>address</label> -->
+        <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
+        <input ng-model="place.address" placeholder="address" type="text" autocapitalize="off" autocorrect="off">
+      </md-input-container>
+    </p>
+
+    <p>
+      <location-picker id="location" ng-model="location" class="form-control" placeholder="Hap location" ng-required="true"></location-picker>
+      <button ng-click="hi.clear()">Clear</button>
+      {{ location }}
+    </p>
+
+    <!-- <div>
+      <p>
+        <ui-gmap-google-map center="map.center" options="options" zoom="map.zoom" draggable="true">
+          <ui-gmap-search-box template="searchbox.template" events="searchbox.events">
+          </ui-gmap-search-box>
+        </ui-gmap-google-map>
+      </p>
+    </div> -->
+
+<!-- using Google Maps Embed API -->
+<!-- https://developers.google.com/maps/documentation/embed/guide -->
+<!-- <div style="width: 100%; overflow: hidden; height: 300px;">
+  <iframe
+    width="100%"
+    height="600"
+    style="border:0; margin-top: -150px;"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyChSSPsXPDeKLpm0-iYoeRq5Gdm2NoYwuo
+      &q=Space+Needle,Seattle+WA" allowfullscreen>
+  </iframe>
+</div> -->
+
+<div>
+  <iframe
+    width="100%"
+    height="100%"
+    frameborder="0" style="border:0"
+    ng-src={{map.url}}
+    allowfullscreen>
+  </iframe>
+</div>
+  </md-content>
 </div>

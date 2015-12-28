@@ -1,71 +1,97 @@
-(function () {
+(function() {
   'use strict';
 
   angular
     .module('hapin.places.controllers')
     .controller('PlaceController', PlaceController);
 
-  PlaceController.$inject = ['$scope', 'Auth', 'Places'];
+  PlaceController.$inject = ['$scope', 'Auth', 'Places', '$sce', '$timeout'];
 
-  function PlaceController($scope, Auth, Places, place) {
+  function PlaceController($scope, Auth, Places, $sce, $timeout) {
     var hi = this;
-    console.log('PlaceController: place=', place);
-    hi.place = place;
-    console.log('PlaceController: place=', hi.place);
-    // vm.editHap = editHap;
-    // vm.submit = submit;
-    // vm.going;
-    // vm.comment='';
-    //
-    // vm.steps = ['status', 'comment', 'done'];
-    // vm.step = 0;
-    // vm.currentStep = currentStep;
-    // vm.nextStep = nextStep;
+    console.log('PlaceController: place=', $scope.place);
 
-    // function currentStep() {
-    //   return vm.steps[vm.step];
-    // }
-    //
-    // function nextStep() {
-    //   vm.step += 1;
-    // }
+    $scope.location = {
+      name: null,
+      lat: null,
+      lng: null
+    };
 
-    // function submit() {
-    //   giveanswer(vm.going)
-    // }
+    $scope.$on('location-picker:location-picked', function() {
+      console.log('PlaceController: location-picker:location-picked was caught');
+      console.log('$scope.location = ', $scope.location);
+      var adjustedLocation = adjustLocation($scope.location);
+      console.log('PlaceController: adjustedLocation = ', adjustedLocation);
+
+      $timeout(function() {
+        console.log('PlaceController: about to get the map');
+        if(adjustedLocation && adjustedLocation.length){
+          console.log('PlaceController: starting to get the map');
+          getMap(adjustedLocation)
+        }
+      }, 2000)
+      });
+
+    // $scope.$watchCollection('$scope.location', function() {
+    //   var adjustedLocation = adjustLocation($scope.location);
+    //   console.log('PlaceController: adjustedLocation = ', adjustedLocation);
     //
-    // function giveanswer(going) {
-    //   if(going){
-    //     acceptInvite()
-    //   } else {
-    //     declineInvite()
+    //   $timeout(function() {
+    //     console.log('PlaceController: about to get the map');
+    //     if(adjustedLocation && adjustedLocation.length){
+    //       console.log('PlaceController: starting to get the map');
+    //       getMap(adjustedLocation)
+    //     }
+    //   }, 2000)
+    // }, true)
+
+
+
+    //    // Define variables for our Map object
+    //  var areaLat      = 44.2126995,
+    //      areaLng      = -100.2471641,
+    //      areaZoom     = 12;
+    //
+    //
+    //   dispalyMap();
+    //
+    //  function dispalyMap(){
+    //    uiGmapGoogleMapApi.then(function(maps) {
+    //      $scope.map     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
+    //      $scope.options = { scrollwheel: false };
+    //      var events = {
+    //            places_changed: function (searchBox) {}
+    //          }
+    //      $scope.searchbox = { template:"searchbox.template", events:events};
+    //    });
+    //  }
+
+    // $scope.getMap = function() {
+    //       $http.get("/src/json/map-keys.json").success(function(data){
+    //           $scope.keys = data
+    //           $scope.map = {
+    //               url:$sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key="+$scope.keys.google.google_key+"&q="+$scope.getPreAddress()+"&zoom=16")
+    //           }
+    //       })
     //   }
-    // }
-    //
-    // function acceptInvite() {
-    //   var hapId = $scope.hap.id;
-    //   var status = 1;
-    //   var comment = vm.comment;
-    //   Haps.accept(
-    //     hapId,
-    //     status,
-    //     comment
-    //   );
-    // }
 
-    // function declineInvite() {
-    //   var hapId = $scope.hap.id;
-    //   var status = 2;
-    //   var comment = vm.comment;
-    //   Haps.accept(
-    //     hapId,
-    //     status,
-    //     comment
-    //   );
-    // }
 
-    // function editHap() {
-    //   console.log('edit hap');
-    // }
+    // http://stackoverflow.com/questions/24459787/google-embeded-map-renders-broken-sometimes
+    function getMap(adjustedLocation) {
+      $scope.map = {
+        url: $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=" + "AIzaSyChSSPsXPDeKLpm0-iYoeRq5Gdm2NoYwuo" + "&q=" + adjustedLocation + "&zoom=16")
+      }
+    }
+
+    function adjustLocation(location) {
+      console.log('location = ', location);
+       if(location && location.address){
+        var adjustedLocation = location.address.replace(/ /g, "+");
+      }else{
+
+      };
+      return adjustedLocation;
+    }
+
   }
 })();

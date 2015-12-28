@@ -1,14 +1,17 @@
 (function() {
   'use strict';
 
-//http://plnkr.co/edit/5HPFelbDFUrzeccGfgYx?p=preview
+//http://plnkr.co/edit/5HPFelbDFUrzeccGfgYx
 
   angular
     .module('hapin.utils.directives')
     .directive('locationPicker', locationPicker);
 
-    function locationPicker() {
+    locationPicker.$inject = ['$rootScope'];
+
+    function locationPicker($rootScope) {
        return {
+         controller: 'LocationPickerController',
          restrict: 'E',
          require: 'ngModel',
          template: '<input id="{{ id }}" type="text" class="{{ class }}" placeholder="{{ placeholder }}" />',
@@ -40,8 +43,8 @@
 
            google.maps.event.addListener(autocomplete, 'place_changed', function() {
              var place = autocomplete.getPlace();
-             var lat = place.geometry.location.lat();
-             var lng = place.geometry.location.lng();
+            //  var lat = place.geometry.location.lat();
+            //  var lng = place.geometry.location.lng();
 
              var name = "";
 
@@ -58,26 +61,30 @@
              }
 
              scope.$applyAsync(function() {
+               console.log('Location-picker-directive: entered scope.$applyAsync')
                controller.$setViewValue({
+                // place: place,
+                 address: input.value,
                  name: name,
-                 lat: lat,
-                 lng: lng
+                //  lat: lat,
+                //  lng: lng
                });
+              //  http://stackoverflow.com/questions/26383507/listen-for-form-submit-event-in-directive
+               $rootScope.$broadcast('location-picker:location-picked');
              });
            });
          }
        };
      }
 
-
-
+    //
     //  .controller('MyController', ['$scope', function($scope) {
     //    $scope.location = {
     //      name: null,
     //      lat: null,
     //      lng: null
     //    };
-     //
+    //
     //    $scope.clear = function () {
     //      $scope.location = {
     //        name: null,
@@ -85,7 +92,7 @@
     //        lng: null
     //      };
     //    };
-    //  }]);
+    // //  }]);
 
 
 })();

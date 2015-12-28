@@ -4,13 +4,13 @@ angular
   .module('hapin.config', [])
   .config(config);
 
-config.$inject = ['$locationProvider', '$compileProvider', '$mdIconProvider', 'uiGmapGoogleMapApiProvider'];
+config.$inject = ['$locationProvider', '$compileProvider', '$mdIconProvider'];
 
 /**
  * @name config
  * @desc Enable HTML5 routing
  */
-function config($locationProvider, $compileProvider, $mdIconProvider, uiGmapGoogleMapApiProvider) {
+function config($locationProvider, $compileProvider, $mdIconProvider) {
   //   //$locationProvider.html5Mode(true);
   //   //  $locationProvider.hashPrefix('!');
   // // http://stackoverflow.com/questions/19974097/angularjs-and-phonegap-location-path-causes-subsequent-tempateurl-lookup-to-fa
@@ -23,11 +23,11 @@ function config($locationProvider, $compileProvider, $mdIconProvider, uiGmapGoog
   $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
 
 
-  uiGmapGoogleMapApiProvider.configure({
-    //  key: 'THIS-IS-WHERE-YOU-PASTE-THE-MAP-API-KEY-YOU-COPIED-EARLIER',
-    v: '3.17',
-    libraries: 'places,geometry,visualization'
-  });
+  // uiGmapGoogleMapApiProvider.configure({
+  //   //  key: 'THIS-IS-WHERE-YOU-PASTE-THE-MAP-API-KEY-YOU-COPIED-EARLIER',
+  //   v: '3.17',
+  //   libraries: 'places,geometry,visualization'
+  // });
 
 
   $mdIconProvider
