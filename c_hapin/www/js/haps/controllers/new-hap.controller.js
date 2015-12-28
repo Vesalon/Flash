@@ -5,9 +5,9 @@
     .module('hapin.haps.controllers')
     .controller('NewHapController', NewHapController);
 
-  NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places', 'uiGmapGoogleMapApi'];
+  NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places', 'uiGmapGoogleMapApi','$mdpTimePicker'];
 
-  function NewHapController($scope, $state, Auth, Haps, Places, uiGmapGoogleMapApi) {
+  function NewHapController($scope, $state, Auth, Haps, Places, uiGmapGoogleMapApi, $mdpTimePicker) {
     var hi = this;
     hi.isAuthenticated = Auth.isAuthenticated();
     // hi.clear = clear;
