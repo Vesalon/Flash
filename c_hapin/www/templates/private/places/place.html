@@ -2,16 +2,17 @@
   <md-content layout-padding="">
     <p>
       <md-input-container class="md-icon-float">
-        <label>nickname</label>
+        <!-- <label>nickname</label> -->
         <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
-        <input ng-model="place.nickname" type="text" autocapitalize="off" autocorrect="off">
+        <input ng-model="place.nickname" type="text" autocapitalize="off" autocorrect="off" placeholder="nickname" >
       </md-input-container>
-    </p>
-    <p>
+    <!-- </p>
+    <p> -->
+    <br>
       <md-input-container class="md-icon-float">
-        <label>address</label>
+        <!-- <label>address</label> -->
         <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
-        <input ng-model="place.address" type="text" autocapitalize="off" autocorrect="off">
+        <input ng-model="place.address" placeholder="address" type="text" autocapitalize="off" autocorrect="off">
       </md-input-container>
     </p>
 
@@ -26,15 +27,24 @@
 
 <!-- using Google Maps Embed API -->
 <!-- https://developers.google.com/maps/documentation/embed/guide -->
-<div>
+<!-- <div style="width: 100%; overflow: hidden; height: 300px;">
   <iframe
-    width="600"
-    height="450"
-    frameborder="0" style="border:0"
+    width="100%"
+    height="600"
+    style="border:0; margin-top: -150px;"
     src="https://www.google.com/maps/embed/v1/place?key=AIzaSyChSSPsXPDeKLpm0-iYoeRq5Gdm2NoYwuo
       &q=Space+Needle,Seattle+WA" allowfullscreen>
   </iframe>
-</div>
+</div> -->
 
+<div>
+  <iframe
+    width="100%"
+    height="100%"
+    frameborder="0" style="border:0"
+    ng-src={{map.url}}
+    allowfullscreen>
+  </iframe>
+</div>
   </md-content>
 </div>

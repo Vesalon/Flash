@@ -5,11 +5,21 @@
     .module('hapin.places.controllers')
     .controller('PlaceController', PlaceController);
 
-  PlaceController.$inject = ['$scope', 'Auth', 'Places'];
+  PlaceController.$inject = ['$scope', 'Auth', 'Places', '$sce', '$timeout'];
 
-  function PlaceController($scope, Auth, Places) {
+  function PlaceController($scope, Auth, Places, $sce, $timeout) {
     var hi = this;
      console.log('PlaceController: place=', $scope.place);
+
+     $scope.$watchCollection('place.address', function() {
+    //  $scope.getPreAddress()
+
+      $timeout(function() {
+          getMap()
+      },2000)
+   },true)
+
+
 
   //    // Define variables for our Map object
   //  var areaLat      = 44.2126995,
@@ -30,63 +40,23 @@
   //    });
   //  }
 
-    // hi.place = place;
-    // console.log('PlaceController: place=', hi.place);
+  // $scope.getMap = function() {
+  //       $http.get("/src/json/map-keys.json").success(function(data){
+  //           $scope.keys = data
+  //           $scope.map = {
+  //               url:$sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key="+$scope.keys.google.google_key+"&q="+$scope.getPreAddress()+"&zoom=16")
+  //           }
+  //       })
+  //   }
 
-    // vm.editHap = editHap;
-    // vm.submit = submit;
-    // vm.going;
-    // vm.comment='';
-    //
-    // vm.steps = ['status', 'comment', 'done'];
-    // vm.step = 0;
-    // vm.currentStep = currentStep;
-    // vm.nextStep = nextStep;
 
-    // function currentStep() {
-    //   return vm.steps[vm.step];
-    // }
-    //
-    // function nextStep() {
-    //   vm.step += 1;
-    // }
+// http://stackoverflow.com/questions/24459787/google-embeded-map-renders-broken-sometimes
+  function getMap() {
+    var adjustedAddress = $scope.place.address.replace(/ /g, "+");
+            $scope.map = {
+                url:$sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key="+"AIzaSyChSSPsXPDeKLpm0-iYoeRq5Gdm2NoYwuo"+"&q="+adjustedAddress+"&zoom=16")
+            }
+    }
 
-    // function submit() {
-    //   giveanswer(vm.going)
-    // }
-    //
-    // function giveanswer(going) {
-    //   if(going){
-    //     acceptInvite()
-    //   } else {
-    //     declineInvite()
-    //   }
-    // }
-    //
-    // function acceptInvite() {
-    //   var hapId = $scope.hap.id;
-    //   var status = 1;
-    //   var comment = vm.comment;
-    //   Haps.accept(
-    //     hapId,
-    //     status,
-    //     comment
-    //   );
-    // }
-
-    // function declineInvite() {
-    //   var hapId = $scope.hap.id;
-    //   var status = 2;
-    //   var comment = vm.comment;
-    //   Haps.accept(
-    //     hapId,
-    //     status,
-    //     comment
-    //   );
-    // }
-
-    // function editHap() {
-    //   console.log('edit hap');
-    // }
   }
 })();
