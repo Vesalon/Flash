@@ -25,14 +25,14 @@
 
       <md-tab label="when">
         <md-content class="md-padding">
-          <h1 class="md-display-2">when</h1>
           <md-content layout-padding="">
 
             <p>
               <!-- <p> http://simeonc.github.io/sc-date-time/index.html -->
               <!-- <time-date-picker ng-model="dateValue" data-display-mode="full" orientation="true" autosave="true" class="modal-content"></time-date-picker> -->
-			  <md-button class="md-raised md-warn" ng-click="hi.showDatePicker($event)" aria-label="show picker">show picker</md-button>
-			  <div>{{ currentDate | date:'fullDate' }}</div>
+              <md-button ng-click="hi.showTimePicker($event)" aria-label="{{$scope.currentDate}}">{{ currentDate | date:'shortTime' }}</md-button>
+              <md-button ng-click="hi.showDatePicker($event)" aria-label="{{ currentDate | date:'fullDate' }}">{{ currentDate | date:'fullDate' }}</md-button>
+
             </p>
             <!-- <md-content>
               <h4>With ngMessages</h4>
@@ -47,7 +47,7 @@
                 </div>
               </form>
             </md-content> -->
-            </p>
+
           </md-content>
         </md-content>
       </md-tab>
