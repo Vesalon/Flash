@@ -5,12 +5,24 @@
     .module('hapin.places.controllers')
     .controller('EditPlaceController', EditPlaceController);
 
-  EditPlaceController.$inject = ['$scope', 'place', '$mdDialog'];
+  EditPlaceController.$inject = ['$scope', 'editedPlace', '$mdDialog'];
 
-  function EditPlaceController($scope, place, $mdDialog) {
-    $scope.place = place;
-    var hi = this;
-    hi.place = place;
+  function EditPlaceController($scope, editedPlace, $mdDialog) {
+  //  $scope.place = place;
+   $scope.editedPlace = editedPlace;
+   console.log('editedPlace=',$scope.editedPlace );
+
+    $scope.save = function() {
+      // $scope.place = angular.copy(placeCopy);
+      // console.log('save: $scope.place=',$scope.place );
+       $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+
 
   //  console.log('EditPlaceController: place=', hi.place);
 

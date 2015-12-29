@@ -43,6 +43,7 @@
 
     function editPlace(ev, place) {
       console.log('PlacesController: selected place=', place);
+      var editedPlace = angular.copy(place);
       var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
       $mdDialog.show({
           controller: 'EditPlaceController',
@@ -67,18 +68,27 @@
           templateUrl: 'templates/private/places/editplace.html',
           // template: '',
           locals: {
-            place: place,
+            //  place: place,
+            editedPlace: editedPlace
           },
           parent: angular.element(document.body),
           targetEvent: ev,
           clickOutsideToClose: true,
           fullscreen: useFullScreen,
         })
-        // .then(function(answer) {
-        //   $scope.status = 'You said the information was "' + answer + '".';
-        // }, function() {
-        //   $scope.status = 'You cancelled the dialog.';
-        // });
+        .then(function(answer) {
+          $scope.status = 'Your change is: "' + editedPlace.nickname + '".';
+          // refresh model
+          for (var i = 0; i < hi.places.length; ++i) {
+            if (hi.places[i].id == editedPlace.id) {
+              hi.places[i] = editedPlace;
+              break;
+            }
+          }
+          activate();
+        }, function() {
+          $scope.status = 'You cancelled the dialog.';
+        });
     };
 
     //   // Define variables for our Map object

@@ -1,5 +1,6 @@
 <div>
   <md-content layout-padding="">
+    <!-- <form ng-submit="hi.submit()" name="formName" ng-model-options="{updateOn: 'submit'}"> -->
     <p>
       <md-input-container class="md-icon-float">
         <!-- <label>nickname</label> -->
@@ -14,7 +15,7 @@
       </md-input-container>
     </p>
 
-    <p>
+    <p> 
       <location-picker id="location" ng-model="location" place="place" class="form-control" placeholder="Hap location" ng-required="true"></location-picker>
       <button ng-click="hi.clear()">Clear</button>
       {{ location }}

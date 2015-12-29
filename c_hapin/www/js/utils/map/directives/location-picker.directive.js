@@ -2,7 +2,7 @@
   'use strict';
 
   //http://plnkr.co/edit/5HPFelbDFUrzeccGfgYx
-
+  // http://stackoverflow.com/questions/14115701/angularjs-create-a-directive-that-uses-ng-model
   angular
     .module('hapin.utils.directives')
     .directive('locationPicker', locationPicker);
@@ -22,10 +22,11 @@
         place: '='
       },
       // compile: function(element, attrs) {
-      //   if (!location) {
-      //     location = place.address;
-      //     console.log('location = '. location);
-      //   }
+      //   // if (!location) {
+      //     attrs[location] = angular.copy(place.address);
+      //     consoe.log('attrs = ', attrs);
+      //     consoe.log('attrs[location] = ', attrs[location]);
+      //   // }
       // },
       link: function(scope, element, attrs, controller) {
         var input = element.find('input')[0];
