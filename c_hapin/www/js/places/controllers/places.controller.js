@@ -45,58 +45,63 @@
       console.log('PlacesController: selected place=', place);
       var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
       $mdDialog.show({
-        controller: 'EditPlaceController',
-      //  controllerAs: 'hi',
-        // controller: ['$scope', 'place', 'uiGmapGoogleMapApi', function($scope, place, uiGmapGoogleMapApi) {
-        //   $scope.place = place;
-        //   console.log('inline controller: place=', $scope.place);
-        //     // Define variables for our Map object
-        //   var areaLat      = 44.2126995,
-        //       areaLng      = -100.2471641,
-        //       areaZoom     = 12;
-        //
-        //   uiGmapGoogleMapApi.then(function(maps) {
-        //     $scope.map     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
-        //     $scope.options = { scrollwheel: false };
-        //     var events = {
-        //           places_changed: function (searchBox) {}
-        //         }
-        //     $scope.searchbox = { template:"searchbox.template", events:events};
-        //   });
-        // }],
-        templateUrl: 'templates/private/places/editplace.html',
-        // template: '',
-        locals: {
-          place: place,
-        },
-        parent: angular.element(document.body),
-        targetEvent: ev,
-        clickOutsideToClose: true,
-        fullscreen: useFullScreen,
-      })
+          controller: 'EditPlaceController',
+          //  controllerAs: 'hi',
+          // controller: ['$scope', 'place', 'uiGmapGoogleMapApi', function($scope, place, uiGmapGoogleMapApi) {
+          //   $scope.place = place;
+          //   console.log('inline controller: place=', $scope.place);
+          //     // Define variables for our Map object
+          //   var areaLat      = 44.2126995,
+          //       areaLng      = -100.2471641,
+          //       areaZoom     = 12;
+          //
+          //   uiGmapGoogleMapApi.then(function(maps) {
+          //     $scope.map     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
+          //     $scope.options = { scrollwheel: false };
+          //     var events = {
+          //           places_changed: function (searchBox) {}
+          //         }
+          //     $scope.searchbox = { template:"searchbox.template", events:events};
+          //   });
+          // }],
+          templateUrl: 'templates/private/places/editplace.html',
+          // template: '',
+          locals: {
+            place: place,
+          },
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose: true,
+          fullscreen: useFullScreen,
+        })
+        // .then(function(answer) {
+        //   $scope.status = 'You said the information was "' + answer + '".';
+        // }, function() {
+        //   $scope.status = 'You cancelled the dialog.';
+        // });
     };
 
-  //   // Define variables for our Map object
-  // var areaLat      = 45.2126995,
-  //     areaLng      = -100.2471641,
-  //     areaZoom     = 12;
-  //
-  // uiGmapGoogleMapApi.then(function(maps) {
-  //   $scope.map     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
-  //   $scope.options = { scrollwheel: false };
-  //   var events = {
-  //         places_changed: function (searchBox) {}
-  //       }
-  //   $scope.searchbox = { template:"searchbox.template", events:events};
-  // });
-  //
-  //   function clear() {
-  //     $scope.location = {
-  //       name: null,
-  //       lat: null,
-  //       lng: null
-  //     };
-  //   };
+    //   // Define variables for our Map object
+    // var areaLat      = 45.2126995,
+    //     areaLng      = -100.2471641,
+    //     areaZoom     = 12;
+    //
+    // uiGmapGoogleMapApi.then(function(maps) {
+    //   $scope.map     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
+    //   $scope.options = { scrollwheel: false };
+    //   var events = {
+    //         places_changed: function (searchBox) {}
+    //       }
+    //   $scope.searchbox = { template:"searchbox.template", events:events};
+    // });
+    //
+    //   function clear() {
+    //     $scope.location = {
+    //       name: null,
+    //       lat: null,
+    //       lng: null
+    //     };
+    //   };
 
   }
 })();
