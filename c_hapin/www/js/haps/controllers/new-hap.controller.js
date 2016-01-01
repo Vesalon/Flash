@@ -5,15 +5,21 @@
     .module('hapin.haps.controllers')
     .controller('NewHapController', NewHapController);
 
-  NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places','$mdpDatePicker'];
+  NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places','$mdpDatePicker', '$mdpTimePicker'];
 
-  function NewHapController($scope, $state, Auth, Haps, Places, $mdpDatePicker) {
+  function NewHapController($scope, $state, Auth, Haps, Places, $mdpDatePicker, $mdpTimePicker) {
     var hi = this;
     hi.isAuthenticated = Auth.isAuthenticated();
+<<<<<<< HEAD
     var theHap = new Object();
     hi.theHap = theHap;
     hi.resetTheLocation = resetTheLocation;
 
+=======
+    hi.showDatePicker = showDatePicker;
+    hi.showTimePicker = showTimePicker;
+    $scope.currentDate = new Date();
+>>>>>>> origin/c_hapin1
     // hi.clear = clear;
     //
     // $scope.location = {
@@ -69,6 +75,12 @@
     function resetTheLocation(){
       hi.theHap.location = undefined;
     };
+
+    function showTimePicker(ev) {
+     	$mdpTimePicker(ev, $scope.currentDate).then(function(selectedDate) {
+         $scope.currentDate = selectedDate;
+       });;
+     }
 
   //   // Define variables for our Map object
   // var areaLat      = 44.2126995,
