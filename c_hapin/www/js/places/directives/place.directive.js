@@ -12,7 +12,8 @@
       controllerAs: 'hi',
       restrict: 'E',
       scope: {
-        place: '='
+        place: '=',
+        mode: '@'
       },
       templateUrl: 'templates/private/places/place.html'
     };

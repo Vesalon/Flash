@@ -10,6 +10,7 @@
   function PlaceController($scope, Auth, Places, $sce, $timeout) {
     var hi = this;
     console.log('PlaceController: place=', $scope.place);
+    console.log('PlaceController: mode=', $scope.mode);
 
     $scope.location = {
       name: null,

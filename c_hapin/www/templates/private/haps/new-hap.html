@@ -9,14 +9,14 @@
               <md-input-container class="md-icon-float">
                 <label>name</label>
                 <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
-                <input ng-model="hi.title" type="text" autocapitalize="off" autocorrect="off">
+                <input ng-model="hi.theHap.name" type="text" autocapitalize="off" autocorrect="off">
               </md-input-container>
             </p>
             <p>
               <md-input-container class="md-icon-float">
                 <label>description</label>
                 <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
-                <input ng-model="hi.desc" type="text" autocapitalize="off" autocorrect="off">
+                <input ng-model="hi.theHap.desc" type="text" autocapitalize="off" autocorrect="off">
               </md-input-container>
             </p>
           </md-content>
@@ -28,11 +28,12 @@
           <h1 class="md-display-2">when</h1>
           <md-content layout-padding="">
 
+
             <p>
               <!-- <p> http://simeonc.github.io/sc-date-time/index.html -->
               <!-- <time-date-picker ng-model="dateValue" data-display-mode="full" orientation="true" autosave="true" class="modal-content"></time-date-picker> -->
-			  <md-button class="md-raised md-warn" ng-click="hi.showDatePicker($event)" aria-label="show picker">show picker</md-button>
-			  <div>{{ currentDate | date:'fullDate' }}</div>
+              <md-button class="md-raised md-warn" ng-click="hi.showDatePicker($event)" aria-label="show picker">show picker</md-button>
+              <div>{{ currentDate | date:'fullDate' }}</div>
             </p>
             <!-- <md-content>
               <h4>With ngMessages</h4>
@@ -75,9 +76,30 @@
             </div>
           </div> -->
 
+          <div ng-show="hi.theHap.location != undefined" flex="50" flex-sm="100" flex-xs="100" layout="column">
+            <md-card>
+              <!-- <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">hi.theHap.nickname</span>
+                  <span class="md-subhead">hi.theHap.address</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                  <div class="md-media-sm card-media"></div>
+                </md-card-title-media>
+              </md-card-title> -->
+              <md-card-content>
+                <place place="hi.theHap.location"></place>
+              </md-card-content>
+              <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button" aria-label="Favorite">
+            <md-icon md-svg-icon="content:clear" ng-click="hi.resetTheLocation();"></md-icon>
+          </md-button>
+              </md-card-actions>
+            </md-card>
+          </div>
 
-          <div >
-          <places places="hi.placesList" ></places>
+          <div ng-hide="hi.theHap.location != undefined">
+            <places places="hi.placesList"></places>
           </div>
 
           <!-- <p>

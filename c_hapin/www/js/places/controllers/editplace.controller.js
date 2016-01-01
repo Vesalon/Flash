@@ -10,6 +10,7 @@
   function EditPlaceController($scope, editedPlace, $mdDialog) {
   //  $scope.place = place;
    $scope.editedPlace = editedPlace;
+   $scope.mode = 'edit';
    console.log('editedPlace=',$scope.editedPlace );
 
     $scope.save = function() {
