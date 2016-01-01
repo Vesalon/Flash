@@ -11,6 +11,7 @@
     var hi = this;
     hi.isAuthenticated = Auth.isAuthenticated();
 <<<<<<< HEAD
+<<<<<<< HEAD
     var theHap = new Object();
     hi.theHap = theHap;
     hi.resetTheLocation = resetTheLocation;
@@ -20,6 +21,11 @@
     hi.showTimePicker = showTimePicker;
     $scope.currentDate = new Date();
 >>>>>>> origin/c_hapin1
+=======
+    hi.showDatePicker = showDatePicker;
+    hi.showTimePicker = showTimePicker;
+    $scope.currentDate = new Date();
+>>>>>>> 5bd861c6fec54dc410e82e42c3ad4c47edde4b33
     // hi.clear = clear;
     //
     // $scope.location = {
@@ -75,6 +81,12 @@
     function resetTheLocation(){
       hi.theHap.location = undefined;
     };
+
+    function showTimePicker(ev) {
+     	$mdpTimePicker(ev, $scope.currentDate).then(function(selectedDate) {
+         $scope.currentDate = selectedDate;
+       });;
+     }
 
     function showTimePicker(ev) {
      	$mdpTimePicker(ev, $scope.currentDate).then(function(selectedDate) {
