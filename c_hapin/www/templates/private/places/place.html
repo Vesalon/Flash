@@ -8,22 +8,25 @@
       <md-input-container class="md-icon-float">
         <!-- <label>nickname</label> -->
         <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
-        <input ng-model="place.nickname" type="text" autocapitalize="off" autocorrect="off" placeholder="nickname" >
+        <input ng-model="place.nickname" ng-readonly="mode == 'display';" type="text" autocapitalize="off" autocorrect="off" placeholder="nickname" >
       </md-input-container>
 
-      <md-input-container class="md-icon-float">
+<div ng-show="mode == 'display';">
+      <md-input-container  class="md-icon-float">
         <!-- <label>address</label> -->
         <!-- <md-icon md-svg-src="img/ionicons-2.0.1/png/512/android-social-user.png" class="name"></md-icon> -->
-        <input ng-model="place.address" placeholder="address" type="text" autocapitalize="off" autocorrect="off">
+        <input  ng-model="place.address" ng-readonly="true" placeholder="address" type="text" autocapitalize="off" autocorrect="off">
       </md-input-container>
     </p>
+</div>
 
+<div ng-hide="mode == 'display';">
     <p>
       <location-picker id="location" ng-model="location" place="place" class="form-control" placeholder="Hap location" ng-required="true"></location-picker>
       <button ng-click="hi.clear()">Clear</button>
       {{ location }}
     </p>
-
+</div>
     <!-- <div>
       <p>
         <ui-gmap-google-map center="map.center" options="options" zoom="map.zoom" draggable="true">
