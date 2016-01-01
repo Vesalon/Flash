@@ -36,15 +36,15 @@
         hi.places = [];
         for (var i = 0; i < current.length; ++i) {
           hi.places.push(current[i]);
-          console.log('PlacesController.render: pushing=', current[i]);
+        //  console.log('PlacesController.render: pushing=', current[i]);
         }
         console.log('PlacesController.render: hi.places.length=', hi.places.length);
       }
     }
 
     function fireSelectedPlaceEvent($event, place) {
-      console.log('PlacesController: $event.target =', $event.target);
-      console.log('PlacesController: selected place=', place);
+      // console.log('PlacesController: $event.target =', $event.target);
+      // console.log('PlacesController: selected place=', place);
       // ngModel.$setViewValue({
       //   selectedPlace: place
       // });
@@ -81,7 +81,8 @@
           // template: '',
           locals: {
             //  place: place,
-            editedPlace: editedPlace
+            editedPlace: editedPlace,
+            // mode: 'edit'
           },
           parent: angular.element(document.body),
           targetEvent: ev,
