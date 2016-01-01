@@ -11,6 +11,7 @@
     var hi = this;
     hi.places = [];
     hi.editPlace = editPlace;
+    hi.fireSelectedPlaceEvent = fireSelectedPlaceEvent;
 
     activate();
 
@@ -40,6 +41,17 @@
         console.log('PlacesController.render: hi.places.length=', hi.places.length);
       }
     }
+
+    function fireSelectedPlaceEvent($event, place) {
+      console.log('PlacesController: $event.target =', $event.target);
+      console.log('PlacesController: selected place=', place);
+      // ngModel.$setViewValue({
+      //   selectedPlace: place
+      // });
+      $scope.$emit('places:place-selected', {
+        place: place
+      });
+    };
 
     function editPlace(ev, place) {
       console.log('PlacesController: selected place=', place);

@@ -10,7 +10,8 @@
   function NewHapController($scope, $state, Auth, Haps, Places, $mdpDatePicker) {
     var hi = this;
     hi.isAuthenticated = Auth.isAuthenticated();
-	hi.showDatePicker = showDatePicker;
+    
+
     // hi.clear = clear;
     //
     // $scope.location = {
@@ -23,6 +24,8 @@
     activate();
 
     function activate() {
+    //  hi.showDatePicker();
+
       if (hi.isAuthenticated) {
        Places.get()
           .then(placesSuccessFn, placesErrorFn);
@@ -46,8 +49,14 @@
         console.log(data.error);
       }
 
+      $scope.$on('places:place-selected', function (event, arg) {
+        console.log('event places:place-selected was filer for ' );
+        console.log( arg.place);
+      //  hi.placesList.unshift(place);
+      });
+
     }
-	
+
 	 function showDatePicker(ev) {
     	$mdpDatePicker(ev, $scope.currentDate).then(function(selectedDate) {
         $scope.currentDate = selectedDate;

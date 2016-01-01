@@ -11,10 +11,19 @@
       controller: 'PlacesController',
       controllerAs: 'hi',
       restrict: 'E',
+      require: 'ngModel',
       scope: {
-        places: '='
+        places: '=',
+        selectedPlace: '='
       },
-      templateUrl: 'templates/private/places/places.html'
+      templateUrl: 'templates/private/places/places.html',
+      // link: function (scope, element, attr) {
+      //       if (scope.$last === true) {
+      //           $timeout(function () {
+      //               scope.$emit('ngRepeatFinished');
+      //           });
+      //       }
+      //   }
     };
 
     return directive;
