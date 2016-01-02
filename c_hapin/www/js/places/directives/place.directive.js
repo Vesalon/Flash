@@ -37,12 +37,12 @@
 
 
 
-        // scope.$watch('address', function(address) {
-        //   console.log("ADDRESS changed");
-        //   if (address && address.length)
-        //     console.log("there is a vailid address");
-        //     controller.loadMap()
-        // }, true);
+        scope.$watch('address', function(address) {
+          console.log("ADDRESS changed");
+          if (address && address.length)
+            console.log("there is a vailid address");
+            controller.loadMap()
+        }, true);
 
         // scope.$applyAsync(function() {
         //   console.log('$scope.$applyAsync');
