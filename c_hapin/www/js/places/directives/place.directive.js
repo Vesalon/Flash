@@ -44,9 +44,11 @@
 
         scope.$watch('address', function(address) {
           console.log("ADDRESS changed");
-          if (address && address.length)
+          console.log("place.address = ", scope.place);
+          if (scope.place && scope.place.address && scope.place.address.length){
             console.log("there is a vailid address");
-          controller.loadMap()
+          controller.loadMap(scope.place.address);
+        };
         }, true);
 
         // scope.$applyAsync(function() {

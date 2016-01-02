@@ -35,35 +35,39 @@
     };
 
     $scope.$on('location-picker:location-picked', function() {
-      //$scope.place.address = $scope.location.address;
-      //  console.log('$scope.place.address = ', $scope.place.address);
-      var adjustedLocation = adjustLocation($scope.location);
+      $scope.place.address = $scope.location.address;
+       console.log('$scope.place.address = ', $scope.place.address);
 
-      $timeout(function() {
-        console.log('PlaceController: about to get the map');
-        if (adjustedLocation && adjustedLocation.length) {
-          console.log('PlaceController: starting to get the map');
-          getMap(adjustedLocation)
-        }
-      })
+      // var adjustedLocation = adjustLocation($scope.location);
+      //
+      // $timeout(function() {
+      //   console.log('PlaceController: about to get the map');
+      //   if (adjustedLocation && adjustedLocation.length) {
+      //     console.log('PlaceController: starting to get the map');
+      //     getMap(adjustedLocation)
+      //   }
+      // })
+
+    //  loadMap($scope.location);
+
     });
 
     $scope.$on('places:place-selected', function() {
       $timeout(function() {
-        loadMap();
+        loadMap($scope.place.address);
       })
     });
 
-    function loadMap() {
+    function loadMap(address) {
       $timeout(function() {
           hi.loadingMap = true;
         })
         .then(function() {
-          console.log('PlaceController.loadMap()')
-          if ($scope.place && $scope.place.address) {
-            var adjustedLocation = $scope.place.address.replace(/ /g, "+");
-            console.log('PlaceController.adjustedLocatin=' + adjustedLocation);
-            getMap(adjustedLocation);
+          console.log('PlaceController.loadMap() for address=', address)
+         if (address && address.length) {
+            var adjustedAddress = address.replace(/ /g, "+");
+            console.log('PlaceController.adjustedAddress=' + adjustedAddress);
+            getMap(adjustedAddress);
 
           }
         });
