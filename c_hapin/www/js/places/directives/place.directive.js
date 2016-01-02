@@ -5,7 +5,7 @@
     .module('hapin.places.directives')
     .directive('place', place);
 
-//  place.$inject = ['$timeout'];
+  //  place.$inject = ['$timeout'];
 
   function place() {
 
@@ -20,6 +20,11 @@
       templateUrl: 'templates/private/places/place.html',
 
       link: function(scope, element, attrs, controller) {
+
+        element.find("iframe")[0].onload = function() {
+          console.log('directive: iframe loaded');
+          scope["onIframeLoaded"]();
+        };
 
         // element.bind("ready", function(){
         //         controller.loadMap();
@@ -41,7 +46,7 @@
           console.log("ADDRESS changed");
           if (address && address.length)
             console.log("there is a vailid address");
-            controller.loadMap()
+          controller.loadMap()
         }, true);
 
         // scope.$applyAsync(function() {
