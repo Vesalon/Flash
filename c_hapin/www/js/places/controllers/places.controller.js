@@ -5,9 +5,9 @@
     .module('hapin.places.controllers')
     .controller('PlacesController', PlacesController);
 
-  PlacesController.$inject = ['$scope', '$mdDialog', '$mdMedia']
+  PlacesController.$inject = ['$scope', '$mdDialog', '$mdMedia', '$rootScope']
 
-  function PlacesController($scope, $mdDialog, $mdMedia) {
+  function PlacesController($scope, $mdDialog, $mdMedia, $rootScope) {
     var hi = this;
     hi.places = [];
     hi.editPlace = editPlace;
@@ -43,12 +43,10 @@
     }
 
     function fireSelectedPlaceEvent($event, place) {
-      // console.log('PlacesController: $event.target =', $event.target);
-      // console.log('PlacesController: selected place=', place);
-      // ngModel.$setViewValue({
-      //   selectedPlace: place
+      // $scope.$emit('places:place-selected', {
+      //   place: place
       // });
-      $scope.$emit('places:place-selected', {
+      $rootScope.$broadcast('places:place-selected', {
         place: place
       });
     };
