@@ -36,13 +36,13 @@
             console.log('PlaceController: starting to get the map');
             getMap(adjustedLocation)
           }
-        }, 2000)
+        })
       });
 
       $scope.$on('places:place-selected', function() {
           $timeout(function() {
             loadMap();
-          }, 2000)
+          })
         });
 
         function loadMap() {
