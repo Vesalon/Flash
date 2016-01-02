@@ -34,23 +34,26 @@
       $scope.$apply();
     };
 
-    $scope.$on('location-picker:location-picked', function() {
-      $scope.place.address = $scope.location.address;
-       console.log('$scope.place.address = ', $scope.place.address);
-
-      // var adjustedLocation = adjustLocation($scope.location);
-      //
-      // $timeout(function() {
-      //   console.log('PlaceController: about to get the map');
-      //   if (adjustedLocation && adjustedLocation.length) {
-      //     console.log('PlaceController: starting to get the map');
-      //     getMap(adjustedLocation)
-      //   }
-      // })
-
-    //  loadMap($scope.location);
-
-    });
+    // $scope.$on('location-picker:location-picked', function() {
+    //   $timeout(function() {
+    //   console.log('location-picker:location-picked $scope.place = ', $scope.place);
+    //   console.log('location-picker:location-picked $scope.place.nickname = ', $scope.place.nickname);
+    //   $scope.place.address = $scope.location.address;
+    //    console.log('location-picker:location-picked $scope.place.address = ', $scope.place.address);
+    //
+    //   // var adjustedLocation = adjustLocation($scope.location);
+    //   //
+    //   // $timeout(function() {
+    //   //   console.log('PlaceController: about to get the map');
+    //   //   if (adjustedLocation && adjustedLocation.length) {
+    //   //     console.log('PlaceController: starting to get the map');
+    //   //     getMap(adjustedLocation)
+    //   //   }
+    //   // })
+    //
+    //   loadMap($scope.place.address);
+    // });
+    // });
 
     $scope.$on('places:place-selected', function() {
       $timeout(function() {

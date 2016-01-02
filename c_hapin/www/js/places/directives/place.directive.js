@@ -51,6 +51,11 @@
         };
         }, true);
 
+        scope.$on('location-picker:location-picked', function() {
+          console.log('directive caugth location-picker:location-picked location== ', scope.location);
+          controller.loadMap(scope.location.address);
+        });
+
         // scope.$applyAsync(function() {
         //   console.log('$scope.$applyAsync');
         //   controller.loadMap();
