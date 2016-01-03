@@ -1,7 +1,12 @@
 <div ng-cloak>
   <md-content>
     <md-tabs md-dynamic-height md-border-bottom>
-      <md-tab label="what">
+      <md-tab>
+        <md-tab-label>
+          <md-icon md-svg-icon='action:label' aria-label="what"></md-icon>
+          <!-- <div>what</div> -->
+        </md-tab-label>
+        <md-tab-body>
         <md-content class="md-padding">
           <h1 class="md-display-2">what</h1>
           <md-content layout-padding="">
@@ -21,9 +26,15 @@
             </p>
           </md-content>
         </md-content>
+      </md-tab-body>
       </md-tab>
 
-      <md-tab label="when">
+      <md-tab>
+      <md-tab-label>
+        <md-icon md-svg-icon='action:schedule' aria-label="when"></md-icon>
+        <!-- <div>when</div> -->
+      </md-tab-label>
+      <md-tab-body>
         <md-content class="md-padding">
           <md-content layout-padding="">
 
@@ -50,10 +61,17 @@
 
           </md-content>
         </md-content>
+      </md-tab-body>
       </md-tab>
 
 
-      <md-tab label="where">
+      <!-- <md-tab label="where"> -->
+        <md-tab>
+        <md-tab-label>
+          <md-icon md-svg-icon='maps:place' aria-label="where"></md-icon>
+          <!-- <div>where</div> -->
+        </md-tab-label>
+        <md-tab-body>
         <md-content class="md-padding">
 
 
@@ -115,14 +133,40 @@
           </p> -->
 
         </md-content>
+      </md-tab-body>
       </md-tab>
-      <md-tab label="who">
+
+
+      <!-- <md-tab label="who"> -->
+      <md-tab>
+      <md-tab-label>
+        <md-icon md-svg-icon='social:people' aria-label="who"></md-icon>
+        <!-- <div>where</div> -->
+      </md-tab-label>
+      <md-tab-body>
         <md-content class="md-padding">
           <h1 class="md-display-2">who</h1>
           <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu
             orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
         </md-content>
+      </md-tab-body>
       </md-tab>
+
+      <md-tab>
+      <md-tab-label>
+        <md-icon md-svg-icon='notification:more' aria-label="options"></md-icon>
+        <!-- <div>where</div> -->
+      </md-tab-label>
+      <md-tab-body>
+        <md-content class="md-padding">
+          <h1 class="md-display-2">options</h1>
+          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu
+            orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+        </md-content>
+      </md-tab-body>
+      </md-tab>
+
     </md-tabs>
   </md-content>
+
 </div>
