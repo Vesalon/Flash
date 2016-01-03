@@ -65,11 +65,16 @@
 
         scope.$watch('place', function(place) {
            console.log("scope.place CHANGED");
-           console.log("place.address = ", scope.place);
-          scope.map = undefined; // necessary for the iframe to reload and spinner to hide
-           if (scope.place && scope.place.address && scope.place.address.length) {
-             controller.loadMap(scope.place.address);
-           };
+          //  console.log("place.address = ", scope.place);
+           $timeout(function(){
+             scope.map = undefined; // necessary for the iframe to reload so the spinner is removed
+             scope.$apply();
+           })
+           .then(function(){
+             if (scope.place && scope.place.address && scope.place.address.length) {
+               controller.loadMap(scope.place.address);
+             };
+           })
         }, true);
 
         scope.$on('location-picker:location-picked', function() {
