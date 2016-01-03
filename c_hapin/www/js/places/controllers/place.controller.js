@@ -9,8 +9,11 @@
 
   function PlaceController($scope, Auth, Places, $sce, $timeout) {
     var hi = this;
+    //  var hi.mapPromise;
     hi.loadingMap = false;
     hi.loadMap = loadMap;
+    hi.handleDestroyEvent = handleDestroyEvent;
+    hi.distroyForTesting = distroyForTesting;
     //  hi.showMapSpinner = showMapSpinner;
     // console.log('PlaceController: place=', $scope.place);
     // console.log('PlaceController: mode=', $scope.mode);
@@ -20,6 +23,7 @@
       lat: null,
       lng: null
     };
+
 
     //hi.showMapSpinner(true);
 
@@ -77,25 +81,59 @@
     //   $scope.map.url = "";
     // });
 
+
+    // // cleanup : #12 in http://www.toptal.com/angular-js/top-18-most-common-angularjs-developer-mistakes
+    // $scope.$on('$destroy', function(event) {
+    //   console.log('place caught destroy event');
+    //   $timeout.cancel(mapPromise);
+    //   // nullify the DOM-bound model
+    //   $scope.domElement = null;
+    // });
+
+
     function loadMap(address) {
       $timeout(function() {
           hi.loadingMap = true;
         })
         .then(function() {
-          $timeout(function() {
-            if (address && address.length) {
-              var adjustedAddress = address.replace(/ /g, "+");
-              //  getMap(adjustedAddress);
-              $scope.map = {
-                url: $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=" + "AIzaSyChSSPsXPDeKLpm0-iYoeRq5Gdm2NoYwuo" + "&q=" + adjustedAddress + "&zoom=16")
+          $scope.mapPromise = $timeout(function() {
+              console.log('executing the promise');
+              if (address && address.length) {
+                var adjustedAddress = address.replace(/ /g, "+");
+                //  getMap(adjustedAddress);
+                $scope.map = {
+                  url: $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=" + "AIzaSyChSSPsXPDeKLpm0-iYoeRq5Gdm2NoYwuo" + "&q=" + adjustedAddress + "&zoom=16")
+                }
               }
-            }
-          })
+            })
+            $scope.mapPromise.then(function() {
+                // console.log("Timer resolved!", Date.now());
+                null;
+              },
+              function() {
+                console.log("Timer rejected!", Date.now());
+              }
+            );
         });
-
-
-
     };
+
+
+
+    function handleDestroyEvent() {
+      console.log('cleanup in handleDestroyEvent');
+      $timeout.cancel($scope.mapPromise);
+      // // nullify the DOM-bound model
+      // scope.domElement = null;
+    };
+
+    function distroyForTesting() {
+      $timeout(function() {
+        console.log('calling $destroy manually for testing purposes');
+        $scope.$destroy();
+      });
+    }
+
+
 
     // $scope.$watchCollection('$scope.location', function() {
     //   var adjustedLocation = adjustLocation($scope.location);
