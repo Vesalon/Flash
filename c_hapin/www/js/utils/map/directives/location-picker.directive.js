@@ -3,6 +3,9 @@
 
   //http://plnkr.co/edit/5HPFelbDFUrzeccGfgYx
   // http://stackoverflow.com/questions/14115701/angularjs-create-a-directive-that-uses-ng-model
+
+  // https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete
+
   angular
     .module('hapin.utils.directives')
     .directive('locationPicker', locationPicker);
@@ -40,7 +43,7 @@
         };
 
         var autocomplete = new google.maps.places.Autocomplete(input, {
-          types: ['geocode']
+          types: [] // all
         });
 
         var componentForm = {
