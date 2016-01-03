@@ -21,10 +21,20 @@
 
       link: function(scope, element, attrs, controller) {
 
-        element.find("iframe")[0].onload = function() {
+        var iframe = element.find("iframe")[0];
+        iframe.onload = function() {
           // console.log('directive: iframe loaded');
-          scope["onIframeLoaded"]();
+          // scope["onIframeLoaded"]();
+          scope.$broadcast('iframeLoaded');
         };
+
+        scope.$on('new-hap:place-deselected', function() {
+          // console.log('caught new-hap:place-deselected');
+          scope.map.url = "";
+        });
+
+      
+        // myIframe.addEventListener('load', function () { console.log(this.contentWindow.location); });
 
         // element.bind("ready", function(){
         //         controller.loadMap();
@@ -40,11 +50,9 @@
         //   controller.loadMap()
         // }, 2000);
 
-
-
         scope.$watch('address', function(address) {
-          // console.log("ADDRESS changed");
-          // console.log("place.address = ", scope.place);
+           console.log("ADDRESS changed");
+           console.log("place.address = ", scope.place);
           if (scope.place && scope.place.address && scope.place.address.length) {
             // console.log("there is a vailid address");
             controller.loadMap(scope.place.address);

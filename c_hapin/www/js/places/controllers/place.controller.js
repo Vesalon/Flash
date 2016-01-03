@@ -28,11 +28,22 @@
     //        loadMap(adjustedLocation)
     //}, 2000)
 
-    $scope["onIframeLoaded"] = function() {
-      // console.log('controller: iframe loaded')
+    // $scope["onIframeLoaded"] = function() {
+    //   // console.log('controller: iframe loaded')
+    //   hi.loadingMap = false;
+    //   $scope.$apply();
+    // };
+    $scope.$on('iframeLoaded', function() {
+      console.log('caught iframeLoaded')
       hi.loadingMap = false;
       $scope.$apply();
-    };
+    })
+
+    // $scope.$on('new-hap:place-deselected', function() {
+    //   console.log('caught new-hap:place-deselected')
+    //   // hi.loadingMap = false;
+    //   // $scope.$apply();
+    // })
 
     // $scope.$on('location-picker:location-picked', function() {
     //   $timeout(function() {
@@ -66,13 +77,15 @@
           hi.loadingMap = true;
         })
         .then(function() {
-          // console.log('PlaceController.loadMap() for address=', address)
-         if (address && address.length) {
-            var adjustedAddress = address.replace(/ /g, "+");
-            // console.log('PlaceController.adjustedAddress=' + adjustedAddress);
-            getMap(adjustedAddress);
-
-          }
+          $timeout(function() {
+            if (address && address.length) {
+              var adjustedAddress = address.replace(/ /g, "+");
+              //  getMap(adjustedAddress);
+              $scope.map = {
+                url: $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=" + "AIzaSyChSSPsXPDeKLpm0-iYoeRq5Gdm2NoYwuo" + "&q=" + adjustedAddress + "&zoom=16")
+              }
+            }
+          })
         });
 
 
@@ -123,26 +136,12 @@
     //   }
 
 
-    // http://stackoverflow.com/questions/24459787/google-embeded-map-renders-broken-sometimes
-    function getMap(adjustedLocation) {
-      $scope.map = {
-        url: $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=" + "AIzaSyChSSPsXPDeKLpm0-iYoeRq5Gdm2NoYwuo" + "&q=" + adjustedLocation + "&zoom=16")
-      }
-    }
-
-    function adjustLocation(location) {
-      console.log('location = ', location);
-      if (location && location.address) {
-        var adjustedLocation = location.address.replace(/ /g, "+");
-      } else {
-
-      };
-
-
-      return adjustedLocation;
-    };
-
-
+    // // http://stackoverflow.com/questions/24459787/google-embeded-map-renders-broken-sometimes
+    // function getMap(adjustedLocation) {
+    //   $scope.map = {
+    //     url: $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=" + "AIzaSyChSSPsXPDeKLpm0-iYoeRq5Gdm2NoYwuo" + "&q=" + adjustedLocation + "&zoom=16" )
+    //   }
+    // }
 
   }
 })();

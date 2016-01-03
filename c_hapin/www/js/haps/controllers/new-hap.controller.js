@@ -67,7 +67,9 @@
     };
 
     function resetTheLocation(){
+      // console.log('firing new-hap:place-deselected');
       hi.theHap.location = undefined;
+      $scope.$broadcast("new-hap:place-deselected");
     };
 
   //   // Define variables for our Map object
