@@ -66,11 +66,16 @@
     // });
     // });
 
-    $scope.$on('places:place-selected', function() {
-      $timeout(function() {
-        loadMap($scope.place.address);
-      })
-    });
+    // $scope.$on('places:place-selected', function() {
+    //   $timeout(function() {
+    //     loadMap($scope.place.address);
+    //   })
+    // });
+
+    // $scope.$on('new-hap:place-deselected', function() {
+    //   // console.log('caught new-hap:place-deselected');
+    //   $scope.map.url = "";
+    // });
 
     function loadMap(address) {
       $timeout(function() {

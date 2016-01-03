@@ -7,7 +7,7 @@
 
   //  place.$inject = ['$timeout'];
 
-  function place() {
+  function place($timeout) {
 
     var directive = {
       controller: 'PlaceController',
@@ -23,17 +23,21 @@
 
         var iframe = element.find("iframe")[0];
         iframe.onload = function() {
-          // console.log('directive: iframe loaded');
-          // scope["onIframeLoaded"]();
           scope.$broadcast('iframeLoaded');
         };
 
-        scope.$on('new-hap:place-deselected', function() {
-          // console.log('caught new-hap:place-deselected');
-          scope.map.url = "";
-        });
+        // scope.$on('new-hap:place-deselected', function() {
+        //   // console.log('caught new-hap:place-deselected');
+        //   scope.map.url = "";
+        // });
 
-      
+        // scope.$on('places:place-selected', function() {
+        //   $timeout(function() {
+        //     controller.loadMap(scope.place.address);
+        //   })
+        // });
+
+
         // myIframe.addEventListener('load', function () { console.log(this.contentWindow.location); });
 
         // element.bind("ready", function(){
@@ -50,13 +54,22 @@
         //   controller.loadMap()
         // }, 2000);
 
-        scope.$watch('address', function(address) {
-           console.log("ADDRESS changed");
+        // scope.$watch('address', function(address) {
+        //    console.log("ADDRESS changed");
+        //    console.log("place.address = ", scope.place);
+        //   if (scope.place && scope.place.address && scope.place.address.length) {
+        //     // console.log("there is a vailid address");
+        //     controller.loadMap(scope.place.address);
+        //   };
+        // }, true);
+
+        scope.$watch('place', function(place) {
+           console.log("scope.place CHANGED");
            console.log("place.address = ", scope.place);
-          if (scope.place && scope.place.address && scope.place.address.length) {
-            // console.log("there is a vailid address");
-            controller.loadMap(scope.place.address);
-          };
+          scope.map = undefined; // necessary for the iframe to reload and spinner to hide
+           if (scope.place && scope.place.address && scope.place.address.length) {
+             controller.loadMap(scope.place.address);
+           };
         }, true);
 
         scope.$on('location-picker:location-picked', function() {
