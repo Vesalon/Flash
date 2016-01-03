@@ -69,7 +69,7 @@
           }
 
           scope.$applyAsync(function() {
-            console.log('Location-picker-directive: entered scope.$applyAsync')
+            // console.log('Location-picker-directive: entered scope.$applyAsync')
             controller.$setViewValue({
               // place: place,
               address: input.value,

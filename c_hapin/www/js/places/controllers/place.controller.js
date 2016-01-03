@@ -29,7 +29,7 @@
     //}, 2000)
 
     $scope["onIframeLoaded"] = function() {
-      console.log('controller: iframe loaded')
+      // console.log('controller: iframe loaded')
       hi.loadingMap = false;
       $scope.$apply();
     };
@@ -66,10 +66,10 @@
           hi.loadingMap = true;
         })
         .then(function() {
-          console.log('PlaceController.loadMap() for address=', address)
+          // console.log('PlaceController.loadMap() for address=', address)
          if (address && address.length) {
             var adjustedAddress = address.replace(/ /g, "+");
-            console.log('PlaceController.adjustedAddress=' + adjustedAddress);
+            // console.log('PlaceController.adjustedAddress=' + adjustedAddress);
             getMap(adjustedAddress);
 
           }

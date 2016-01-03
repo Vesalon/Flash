@@ -52,9 +52,9 @@
       }
 
       $scope.$on('places:place-selected', function (event, arg) {
-        console.log('event places:place-selected was fired for ' );
+        // console.log('event places:place-selected was fired for ' );
         hi.theHap.location = arg.place;
-        console.log( hi.theHap);
+        // console.log( hi.theHap);
       //  hi.placesList.unshift(place);
       });
 

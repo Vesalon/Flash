@@ -22,7 +22,7 @@
       link: function(scope, element, attrs, controller) {
 
         element.find("iframe")[0].onload = function() {
-          console.log('directive: iframe loaded');
+          // console.log('directive: iframe loaded');
           scope["onIframeLoaded"]();
         };
 
@@ -43,16 +43,16 @@
 
 
         scope.$watch('address', function(address) {
-          console.log("ADDRESS changed");
-          console.log("place.address = ", scope.place);
-          if (scope.place && scope.place.address && scope.place.address.length){
-            console.log("there is a vailid address");
-          controller.loadMap(scope.place.address);
-        };
+          // console.log("ADDRESS changed");
+          // console.log("place.address = ", scope.place);
+          if (scope.place && scope.place.address && scope.place.address.length) {
+            // console.log("there is a vailid address");
+            controller.loadMap(scope.place.address);
+          };
         }, true);
 
         scope.$on('location-picker:location-picked', function() {
-          console.log('directive caugth location-picker:location-picked location== ', scope.location);
+          // console.log('directive caugth location-picker:location-picked location== ', scope.location);
           controller.loadMap(scope.location.address);
         });
 

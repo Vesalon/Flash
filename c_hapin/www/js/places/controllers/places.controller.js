@@ -16,7 +16,7 @@
     activate();
 
     function activate() {
-      console.log('PlacesController.activate()');
+      // console.log('PlacesController.activate()');
       $scope.$watchCollection(function() {
         return $scope.places;
       }, render);
@@ -38,7 +38,7 @@
           hi.places.push(current[i]);
         //  console.log('PlacesController.render: pushing=', current[i]);
         }
-        console.log('PlacesController.render: hi.places.length=', hi.places.length);
+        // console.log('PlacesController.render: hi.places.length=', hi.places.length);
       }
     }
 
@@ -52,7 +52,6 @@
     };
 
     function editPlace(ev, place) {
-      console.log('PlacesController: selected place=', place);
       var editedPlace = angular.copy(place);
       var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
       $mdDialog.show({
@@ -88,7 +87,7 @@
           fullscreen: useFullScreen,
         })
         .then(function(answer) {
-          $scope.status = 'Your change is: "' + editedPlace.nickname + '".';
+          // $scope.status = 'Your change is: "' + editedPlace.nickname + '".';
           // refresh model
           for (var i = 0; i < hi.places.length; ++i) {
             if (hi.places[i].id == editedPlace.id) {
@@ -98,7 +97,7 @@
           }
           activate();
         }, function() {
-          $scope.status = 'You cancelled the dialog.';
+          // $scope.status = 'You cancelled the dialog.';
         });
     };
 
