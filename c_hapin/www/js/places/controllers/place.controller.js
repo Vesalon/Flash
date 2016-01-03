@@ -12,11 +12,9 @@
     //  var hi.mapPromise;
     hi.loadingMap = false;
     hi.loadMap = loadMap;
-    hi.handleDestroyEvent = handleDestroyEvent;
-    hi.distroyForTesting = distroyForTesting;
+    // hi.handleDestroyEvent = handleDestroyEvent;
+    // hi.distroyForTesting = distroyForTesting;
     //  hi.showMapSpinner = showMapSpinner;
-    // console.log('PlaceController: place=', $scope.place);
-    // console.log('PlaceController: mode=', $scope.mode);
 
     $scope.location = {
       name: null,
@@ -25,61 +23,11 @@
     };
 
 
-    //hi.showMapSpinner(true);
-
-    //  $timeout(function() {
-    //    console.log('PlaceController: about to get the map');
-    //        loadMap(adjustedLocation)
-    //}, 2000)
-
-    // $scope["onIframeLoaded"] = function() {
-    //   // console.log('controller: iframe loaded')
-    //   hi.loadingMap = false;
-    //   $scope.$apply();
-    // };
     $scope.$on('iframeLoaded', function() {
-      console.log('caught iframeLoaded')
+      // console.log('caught iframeLoaded')
       hi.loadingMap = false;
       $scope.$apply();
     })
-
-    // $scope.$on('new-hap:place-deselected', function() {
-    //   console.log('caught new-hap:place-deselected')
-    //   // hi.loadingMap = false;
-    //   // $scope.$apply();
-    // })
-
-    // $scope.$on('location-picker:location-picked', function() {
-    //   $timeout(function() {
-    //   console.log('location-picker:location-picked $scope.place = ', $scope.place);
-    //   console.log('location-picker:location-picked $scope.place.nickname = ', $scope.place.nickname);
-    //   $scope.place.address = $scope.location.address;
-    //    console.log('location-picker:location-picked $scope.place.address = ', $scope.place.address);
-    //
-    //   // var adjustedLocation = adjustLocation($scope.location);
-    //   //
-    //   // $timeout(function() {
-    //   //   console.log('PlaceController: about to get the map');
-    //   //   if (adjustedLocation && adjustedLocation.length) {
-    //   //     console.log('PlaceController: starting to get the map');
-    //   //     getMap(adjustedLocation)
-    //   //   }
-    //   // })
-    //
-    //   loadMap($scope.place.address);
-    // });
-    // });
-
-    // $scope.$on('places:place-selected', function() {
-    //   $timeout(function() {
-    //     loadMap($scope.place.address);
-    //   })
-    // });
-
-    // $scope.$on('new-hap:place-deselected', function() {
-    //   // console.log('caught new-hap:place-deselected');
-    //   $scope.map.url = "";
-    // });
 
 
     // // cleanup : #12 in http://www.toptal.com/angular-js/top-18-most-common-angularjs-developer-mistakes
@@ -97,7 +45,7 @@
         })
         .then(function() {
           $scope.mapPromise = $timeout(function() {
-              console.log('executing the promise');
+              // console.log('executing the promise');
               if (address && address.length) {
                 var adjustedAddress = address.replace(/ /g, "+");
                 //  getMap(adjustedAddress);
@@ -119,34 +67,13 @@
 
 
 
-    function handleDestroyEvent() {
-      console.log('cleanup in handleDestroyEvent');
-      $timeout.cancel($scope.mapPromise);
-      // // nullify the DOM-bound model
-      // scope.domElement = null;
-    };
 
-    function distroyForTesting() {
-      $timeout(function() {
-        console.log('calling $destroy manually for testing purposes');
-        $scope.$destroy();
-      });
-    }
-
-
-
-    // $scope.$watchCollection('$scope.location', function() {
-    //   var adjustedLocation = adjustLocation($scope.location);
-    //   console.log('PlaceController: adjustedLocation = ', adjustedLocation);
-    //
+    // function distroyForTesting() {
     //   $timeout(function() {
-    //     console.log('PlaceController: about to get the map');
-    //     if(adjustedLocation && adjustedLocation.length){
-    //       console.log('PlaceController: starting to get the map');
-    //       getMap(adjustedLocation)
-    //     }
-    //   }, 2000)
-    // }, true)
+    //     console.log('calling $destroy manually for testing purposes');
+    //     $scope.$destroy();
+    //   });
+    // }
 
 
 

@@ -26,47 +26,8 @@
           scope.$broadcast('iframeLoaded');
         };
 
-        // scope.$on('new-hap:place-deselected', function() {
-        //   // console.log('caught new-hap:place-deselected');
-        //   scope.map.url = "";
-        // });
-
-        // scope.$on('places:place-selected', function() {
-        //   $timeout(function() {
-        //     controller.loadMap(scope.place.address);
-        //   })
-        // });
-
-
-        // myIframe.addEventListener('load', function () { console.log(this.contentWindow.location); });
-
-        // element.bind("ready", function(){
-        //         controller.loadMap();
-        //       });
-
-        // scope.$apply(function() {
-        //   scope.$eval(controller.loadMap());
-        // });
-
-        // $timeout(function() {
-        //   console.log('PlaceController: about to get the map');
-        //   console.log('PlaceController: starting to get the map');
-        //   controller.loadMap()
-        // }, 2000);
-
-        // scope.$watch('address', function(address) {
-        //    console.log("ADDRESS changed");
-        //    console.log("place.address = ", scope.place);
-        //   if (scope.place && scope.place.address && scope.place.address.length) {
-        //     // console.log("there is a vailid address");
-        //     controller.loadMap(scope.place.address);
-        //   };
-        // }, true);
-
-
-
         scope.$watch('place', function(place) {
-          console.log("scope.place CHANGED");
+          // console.log("scope.place CHANGED");
           //  console.log("place.address = ", scope.place);
           $timeout(
               function() {
@@ -85,14 +46,10 @@
           controller.loadMap(scope.location.address);
         });
 
-        // cleanup : #12 in http://www.toptal.com/angular-js/top-18-most-common-angularjs-developer-mistakes
-        scope.$on('$destroy', controller.handleDestroyEvent());
+        // // cleanup : #12 in http://www.toptal.com/angular-js/top-18-most-common-angularjs-developer-mistakes
+        // scope.$on('$destroy', controller.handleDestroyEvent());
 
 
-        // scope.$applyAsync(function() {
-        //   console.log('$scope.$applyAsync');
-        //   controller.loadMap();
-        // });
 
       }
     };
