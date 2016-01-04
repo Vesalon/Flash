@@ -14,7 +14,7 @@
     hi.theHap = theHap;
     hi.resetTheLocation = resetTheLocation;
     hi.friends = [];
-    hi.guests = [];
+    hi.guestlist = [];
 
     // hi.clear = clear;
     //
@@ -85,6 +85,20 @@
       // console.log('firing new-hap:place-deselected');
       hi.theHap.location = undefined;
       $scope.$broadcast("new-hap:place-deselected");
+    };
+
+    hi.tester = function() {
+      console.log(hi.guestlist);
+    }
+
+    hi.toggle = function (item, list) {
+      var idx = list.indexOf(item);
+      if (idx > -1) list.splice(idx, 1);
+      else list.push(item);
+    };
+
+    hi.exists = function (item, list) {
+      return list.indexOf(item) > -1;
     };
 
   //   // Define variables for our Map object

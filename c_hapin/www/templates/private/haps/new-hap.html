@@ -125,7 +125,7 @@
                 <div ng-repeat="friend in hi.friends">
                   <input type="checkbox"
                       id="{{ friend.select.username }}"
-                      checklist-model="hi.guests"
+                      checklist-model="hi.guestlist"
                       checklist-value="friend">
                   {{ friend.select.username }}
                 </div>
@@ -134,16 +134,25 @@
 
           <md-list>
 
-            <md-subheader class="md-no-sticky">Guest</md-subheader>
-            <md-list-item ng-repeat="friend in hi.friends">
-              <p> {{ friend.select.username }} </p>
-              <md-checkbox class="md-secondary" checklist-model="hi.guests"></md-checkbox>
-            </md-list-item>
+            <md-subheader class="md-no-sticky">Friends</md-subheader>
+            <md-list-item ng-repeat="friend in hi.friends"
+                        ng-click="hi.toggle(friend, hi.guestlist)">
 
+              <p> {{ friend.select.username }} </p>
+
+              <md-checkbox class="md-secondary"
+                          ng-click="hi.toggle(friend, hi.guestlist)"
+                          ng-checked="hi.exists(friend, hi.guestlist)"
+                          id="{{ friend.select.username }}"></md-checkbox>
+
+
+            </md-list-item>
+            <pre>hi.guestlist = <span ng-bind="hi.guestlist"></span></pre>
             <md-divider></md-divider>
 
           </md-list>
 
+          <a class="btn btn-primary" ng-click="hi.tester()">log guestlist</a>
 
         </md-content>
       </md-tab>
