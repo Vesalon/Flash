@@ -17,13 +17,25 @@
 <!-- <div class="col-md-2">
   <input ng-model="query" placeholder="Search for...">
 </div> -->
-<md-input-container class="md-icon-float">
-  <input ng-model="query" placeholder="Search for...">
-</md-input-container>
+
+<md-button class="md-raised" ng-click="hi.newPlace($event)">
+  <md-icon class="md-secondary" aria-label="Edit" md-svg-icon='action:search'></md-icon>
+  new
+</md-button>
+
+<!-- <div ng-hide="mode == 'display';">
+  <p>
+    <location-picker id="location" ng-model="location" place="place" class="form-control" placeholder="Hap location" ng-required="true"></location-picker>
+  </p>
+</div> -->
 
 <md-list  ng-cloak>
-  <md-subheader class="md-no-sticky">My Places</md-subheader>
-  <md-list-item ng-click="hi.fireSelectedPlaceEvent($event, place)" ng-repeat="place in hi.places | filter:query">
+  <md-subheader class="md-no-sticky">My Places
+    <md-input-container class="md-icon-float">
+      <input ng-model="query" placeholder="filter">
+    </md-input-container>
+  </md-subheader>
+  <md-list-item ng-click="hi.fireSelectedPlaceEvent($event, place)" ng-repeat="place in (filteredPlaces = (hi.places | filter:query)) ">
     <p> <b> {{ place.nickname }} </b> <br> {{ place.address }}</p>
     <md-icon class="md-secondary" ng-click="hi.editPlace($event, place)" aria-label="Edit" md-svg-icon='editor:mode_edit'></md-icon>
     <md-divider></md-divider>

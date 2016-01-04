@@ -11,7 +11,21 @@
     var hi = this;
     hi.places = [];
     hi.editPlace = editPlace;
+    hi.newPlace = newPlace;
     hi.fireSelectedPlaceEvent = fireSelectedPlaceEvent;
+
+    // $scope.$watch('query',function(newQuery,oldQuery){
+    //    console.log('Places query = ', newQuery);
+    //  });
+    //
+    //  $scope.$watchCollection('filteredPlaces',function(newFilteredPlaces,oldFilteredPlaces){
+    //     if(!newFilteredPlaces || !newFilteredPlaces.length){
+    //       console.log('places:filtered-places-empty');
+    //       $scope.$broadcast('places:filtered-places-empty');
+    //     }
+    //   });
+
+
 
     activate();
 
@@ -96,6 +110,51 @@
             }
           }
           activate();
+        }, function() {
+          // $scope.status = 'You cancelled the dialog.';
+        });
+    };
+
+    function newPlace(ev, place) {
+      var newPlace;// = angular.copy(place);
+      var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+      $mdDialog.show({
+          controller: 'NewPlaceController',
+          //  controllerAs: 'hi',
+          // controller: ['$scope', 'place', 'uiGmapGoogleMapApi', function($scope, place, uiGmapGoogleMapApi) {
+          //   $scope.place = place;
+          //   console.log('inline controller: place=', $scope.place);
+          //     // Define variables for our Map object
+          //   var areaLat      = 44.2126995,
+          //       areaLng      = -100.2471641,
+          //       areaZoom     = 12;
+          //
+          //   uiGmapGoogleMapApi.then(function(maps) {
+          //     $scope.map     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
+          //     $scope.options = { scrollwheel: false };
+          //     var events = {
+          //           places_changed: function (searchBox) {}
+          //         }
+          //     $scope.searchbox = { template:"searchbox.template", events:events};
+          //   });
+          // }],
+          templateUrl: 'templates/private/places/newplace.html',
+          // template: '',
+          locals: {
+            //  place: place,
+            newPlace: newPlace,
+            // mode: 'edit'
+          },
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose: true,
+          fullscreen: useFullScreen,
+        })
+        .then(function(newPlace) {
+          // $scope.status = 'Your change is: "' + editedPlace.nickname + '".';
+          console.log('new place = ', newPlace);
+          hi.fireSelectedPlaceEvent(null, newPlace);
+          //activate();
         }, function() {
           // $scope.status = 'You cancelled the dialog.';
         });
