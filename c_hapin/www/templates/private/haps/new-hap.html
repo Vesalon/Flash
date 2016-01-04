@@ -117,10 +117,34 @@
         </md-content>
       </md-tab>
       <md-tab label="who">
-        <md-content class="md-padding">
+        <!-- <md-content class="md-padding">
           <h1 class="md-display-2">who</h1>
-          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu
-            orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+          <fieldset>
+            <div class="form-group">
+              <label for="hap__content">Guest List</label>
+                <div ng-repeat="friend in hi.friends">
+                  <input type="checkbox"
+                      id="{{ friend.select.username }}"
+                      checklist-model="hi.guests"
+                      checklist-value="friend">
+                  {{ friend.select.username }}
+                </div>
+            </div>
+          </fieldset> -->
+
+          <md-list>
+
+            <md-subheader class="md-no-sticky">Guest</md-subheader>
+            <md-list-item ng-repeat="friend in hi.friends">
+              <p> {{ friend.select.username }} </p>
+              <md-checkbox class="md-secondary" checklist-model="hi.guests"></md-checkbox>
+            </md-list-item>
+
+            <md-divider></md-divider>
+
+          </md-list>
+
+
         </md-content>
       </md-tab>
     </md-tabs>

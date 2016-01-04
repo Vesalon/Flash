@@ -5,14 +5,16 @@
     .module('hapin.haps.controllers')
     .controller('NewHapController', NewHapController);
 
-  NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places','$mdpDatePicker'];
+  NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places', '$mdpDatePicker', 'Friends'];
 
-  function NewHapController($scope, $state, Auth, Haps, Places, $mdpDatePicker) {
+  function NewHapController($scope, $state, Auth, Haps, Places, $mdpDatePicker, Friends) {
     var hi = this;
     hi.isAuthenticated = Auth.isAuthenticated();
     var theHap = new Object();
     hi.theHap = theHap;
     hi.resetTheLocation = resetTheLocation;
+    hi.friends = [];
+    hi.guests = [];
 
     // hi.clear = clear;
     //
@@ -29,9 +31,14 @@
     //  hi.showDatePicker();
 
       if (hi.isAuthenticated) {
-       Places.get()
+        Places.get()
           .then(placesSuccessFn, placesErrorFn);
+
+        Friends.get()
+          .then(friendsSuccessFn, friendsErrorFn);
       }
+
+      Friends.getUser(Auth.username()).then(friendsSuccessFn, friendsErrorFn);
 
        $scope.$on('place.created', function (event, place) {
          console.log('place.created ' + place);
@@ -48,6 +55,14 @@
       }
 
       function placesErrorFn(data, status, headers, config) {
+        console.log(data.error);
+      }
+
+      function friendsSuccessFn(data, status, headers, config) {
+        hi.friends = data.data;
+      }
+
+      function friendsErrorFn(data, status, headers, config) {
         console.log(data.error);
       }
 
