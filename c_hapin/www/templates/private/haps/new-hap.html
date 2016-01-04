@@ -132,10 +132,15 @@
             </div>
           </fieldset> -->
 
+
+          <md-input-container class="md-icon-float">
+            <input ng-model="friendsquery" placeholder="Search for...">
+          </md-input-container>
+
           <md-list>
 
             <md-subheader class="md-no-sticky">Friends</md-subheader>
-            <md-list-item ng-repeat="friend in hi.friends"
+            <md-list-item ng-repeat="friend in hi.friends | filter:friendsquery"
                         ng-click="hi.toggle(friend, hi.guestlist)">
 
               <p> {{ friend.select.username }} </p>
@@ -147,7 +152,6 @@
 
 
             </md-list-item>
-            <pre>hi.guestlist = <span ng-bind="hi.guestlist"></span></pre>
             <md-divider></md-divider>
 
           </md-list>
