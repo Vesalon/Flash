@@ -44,6 +44,7 @@
 
         var autocomplete = new google.maps.places.Autocomplete(input, {
           types: [] // all
+          // types: ['address', 'establishment']
         });
 
         var componentForm = {
@@ -73,10 +74,21 @@
 
           scope.$applyAsync(function() {
             // console.log('Location-picker-directive: entered scope.$applyAsync')
+            // var gName = (place.geomerty && place.geomery.name) ? place.geometry: '';
+            console.log('place = ', place);
+            // console.log('place.name = ', place.name);
+            // console.log('place.address = ', place.formatted_address);
+            // console.log('place.phone = ', place.formatted_phone_number);
+            var mName = place.name;
+            if (place.formatted_address.indexOf(place.name) >= 0) {
+              mName = null;
+            }
+            // console.log('mName = ', mName);
             controller.$setViewValue({
-              // place: place,
-              address: input.value,
-              name: name,
+              //  place: place,
+              address: place.formatted_address,
+              name: mName,
+              // input_value: input.value,
               //  lat: lat,
               //  lng: lng
             });

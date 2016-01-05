@@ -12,6 +12,7 @@
     //  var hi.mapPromise;
     hi.loadingMap = false;
     hi.loadMap = loadMap;
+    hi.formatForMap = formatForMap;
     // hi.handleDestroyEvent = handleDestroyEvent;
     // hi.distroyForTesting = distroyForTesting;
     //  hi.showMapSpinner = showMapSpinner;
@@ -39,18 +40,18 @@
     // });
 
 
-    function loadMap(address) {
+    function loadMap(input) {
       $timeout(function() {
           hi.loadingMap = true;
         })
         .then(function() {
           $scope.mapPromise = $timeout(function() {
               // console.log('executing the promise');
-              if (address && address.length) {
-                var adjustedAddress = address.replace(/ /g, "+");
+              if (input && input.length) {
+                var adjustedInput = input.replace(/ /g, "+");
                 //  getMap(adjustedAddress);
                 $scope.map = {
-                  url: $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=" + "AIzaSyChSSPsXPDeKLpm0-iYoeRq5Gdm2NoYwuo" + "&q=" + adjustedAddress + "&zoom=16")
+                  url: $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=" + "AIzaSyChSSPsXPDeKLpm0-iYoeRq5Gdm2NoYwuo" + "&q=" + adjustedInput + "&zoom=16")
                 }
               }
             })
@@ -65,7 +66,16 @@
         });
     };
 
-
+    function formatForMap(name, address){
+      var formatted;
+      if (name && name.length) {
+        formatted = name + ', ';
+      };
+      if (address && address.length) {
+        formatted = (formatted && formatted.length) ? formatted + ', ' + address : address;
+      };
+      return formatted;
+    }
 
 
     // function distroyForTesting() {

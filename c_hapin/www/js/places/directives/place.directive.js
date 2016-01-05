@@ -35,15 +35,22 @@
                 scope.$apply();
               })
             .then(function() {
-              if (scope.place && scope.place.address && scope.place.address.length) {
-                controller.loadMap(scope.place.address);
+              console.log('place = ', place);
+              if (scope.place) {
+                console.log('loading map by formatted place: ', controller.formatForMap(scope.place.name, scope.place.address));
+                controller.loadMap(controller.formatForMap(scope.place.name, scope.place.address));
               };
+
             })
         }, true);
 
         scope.$on('location-picker:location-picked', function() {
-          // console.log('directive caugth location-picker:location-picked location== ', scope.location);
-          controller.loadMap(scope.location.address);
+         console.log('directive caugth location-picker:location-picked location== ', scope.location);
+          // controller.loadMap(scope.location.address);
+          if (scope.location) {
+            console.log('loading map by formatted location: ', controller.formatForMap(scope.location.name, scope.location.address));
+            controller.loadMap(controller.formatForMap(scope.location.name, scope.location.address));
+          };
         });
 
         // // cleanup : #12 in http://www.toptal.com/angular-js/top-18-most-common-angularjs-developer-mistakes

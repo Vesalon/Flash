@@ -1,19 +1,22 @@
 <md-dialog aria-label="New Place" ng-cloak>
   <md-dialog-content>
+    <md-button class="md-icon-button" aria-label="Add to My Places">
+      <md-icon md-svg-icon="content:add" ng-click="add();" style="color: green;"></md-icon>
+    </md-button>
     <place place="newPlace" mode='new'></place>
 
   </md-dialog-content>
 
-  <md-dialog-actions>
+  <md-dialog-actions layout="row">
     <!-- <md-button ng-click="cancel()" class="md-primary"> Cancel </md-button>
     <md-button ng-click="save()" class="md-primary"> Save </md-button> -->
 
     <md-button class="md-icon-button" aria-label="Cancel">
       <md-icon md-svg-icon="content:clear" ng-click="cancel();" style="color: red;"></md-icon>
     </md-button>
-
-    <md-button class="md-icon-button" aria-label="Save">
-      <md-icon md-svg-icon="action:done" ng-click="save();" style="color: green;"></md-icon>
+    <span flex></span>
+    <md-button class="md-icon-button" aria-label="Done">
+      <md-icon md-svg-icon="action:done" ng-click="done();" style="color: green;" md-autofocus></md-icon>
     </md-button>
 
   </md-dialog-actions>

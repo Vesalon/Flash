@@ -12,9 +12,9 @@
    $scope.newPlace = newPlace;
 
 
-    $scope.save = function() {
+    $scope.done = function() {
       // $scope.place = angular.copy(placeCopy);
-       console.log('save: $scope.newPlace=',$scope.newPlace );
+       console.log('done: $scope.newPlace=',$scope.newPlace );
        $mdDialog.hide($scope.newPlace);
     };
 
@@ -22,7 +22,11 @@
       $mdDialog.cancel();
     };
 
+    $scope.add = function() {
+      // $scope.place = angular.copy(placeCopy);
+       console.log('adding: $scope.newPlace=',$scope.newPlace );
 
+    };
 
   }
 
