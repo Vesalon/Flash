@@ -17,7 +17,7 @@
       controller: 'LocationPickerController',
       restrict: 'E',
       require: 'ngModel',
-      template: '<input id="{{ id }}" type="text" class="{{ class }}" placeholder="{{ placeholder }}"  ng-model="place.address" />',
+      template: '<input id="{{ id }}" type="text" class="{{ class }}" placeholder="{{ placeholder }}"  ng-model="place.address"  ng-model-options="{ updateOn: &apos;blur&apos; }" />',
       scope: {
         id: '@',
         class: '@',

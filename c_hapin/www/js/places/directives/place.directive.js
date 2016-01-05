@@ -26,6 +26,8 @@
           scope.$broadcast('iframeLoaded');
         };
 
+        // this will exec every time a character is typed in location-picker
+        // which in turn will call loadMap() on every character
         scope.$watch('place', function(place) {
           // console.log("scope.place CHANGED");
           //  console.log("place.address = ", scope.place);
@@ -35,7 +37,7 @@
                 scope.$apply();
               })
             .then(function() {
-              console.log('place = ', place);
+            //  console.log('place = ', place);
               if (scope.place) {
                 console.log('loading map by formatted place: ', controller.formatForMap(scope.place.name, scope.place.address));
                 controller.loadMap(controller.formatForMap(scope.place.name, scope.place.address));
