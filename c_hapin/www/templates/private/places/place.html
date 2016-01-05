@@ -23,7 +23,7 @@
 
     <div ng-hide="mode == 'display';">
       <p>
-        <location-picker id="location" ng-model="location" place="place" class="form-control" placeholder="Hap location" ng-required="true"></location-picker>
+        <location-picker id="location" ng-model="location"   place="place" class="form-control" placeholder="{{ (place ? place.address : 'Hap location') }}"  ng-required="true"></location-picker>
         <button ng-click="hi.clear()">Clear</button>
         {{ location }}
       </p>

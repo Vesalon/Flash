@@ -17,12 +17,12 @@
       controller: 'LocationPickerController',
       restrict: 'E',
       require: 'ngModel',
-      template: '<input id="{{ id }}" type="text" class="{{ class }}" placeholder="{{ placeholder }}"  ng-model="place.address"  ng-model-options="{ updateOn: &apos;blur&apos; }" />',
+      template: '<input id="{{ id }}" type="text" class="{{ class }}" placeholder="{{ placeholder }}" />',
       scope: {
         id: '@',
         class: '@',
         placeholder: '@',
-        place: '='
+        // place: '='
       },
       // compile: function(element, attrs) {
       //   // if (!location) {
@@ -75,7 +75,7 @@
           scope.$applyAsync(function() {
             // console.log('Location-picker-directive: entered scope.$applyAsync')
             // var gName = (place.geomerty && place.geomery.name) ? place.geometry: '';
-            console.log('place = ', place);
+            // console.log('place = ', place);
             // console.log('place.name = ', place.name);
             // console.log('place.address = ', place.formatted_address);
             // console.log('place.phone = ', place.formatted_phone_number);
