@@ -19,7 +19,8 @@
             media-src * ;
             script-src 'self' 'unsafe-eval' https://maps.google.com https://maps.googleapis.com https://*.googleapis.com ;
             img-src 'self' https://csi.gstatic.com https://maps.gstatic.com https://*.googleapis.com data: ;
-            font-src 'self' https://fonts.gstatic.com
+            font-src 'self' https://fonts.gstatic.com ;
+            frame-src https://www.google.com
             ">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
@@ -44,13 +45,17 @@
 
   <div ui-view></div>
 
-  <script type="text/javascript" src="cordova.js"></script>
-  <!-- <script type="text/javascript" src="js/appconfig/hybrid.js"></script> -->
-
-  <script src="lib/modernizr/modernizr.js"></script>
-  <script src="lib/require/require.min.js" data-main="js/appconfig/loader"></script>
+  <!-- <script type="text/javascript" src="cordova.js"></script> -->
+  <!-- <script type="text/javascript" src="js/index.js"></script> -->
 
   <script src="lib/jquery/jquery.js"></script>
+
+  <script src="lib/modernizr/modernizr.js"></script>
+  <!-- Do not move moment under the require.js import since it will break -->
+  <script src='lib/node_modules/moment/moment.js'></script>
+  <script src="lib/require/require.min.js" data-main="js/appconfig/loader"></script>
+
+  <!-- <script src="lib/jquery/jquery.js"></script> -->
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular/angular-route.js"></script>
   <script src="lib/angular-ui/angular-ui-router.js"></script>
@@ -69,7 +74,7 @@
   <!-- // <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
         // <script type="text/javascript" src='http://rawgit.com/Logicify/jquery-locationpicker-plugin/master/dist/locationpicker.jquery.js'></script>
         //  -->
-  <!-- <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=places&language=en-US"></script> -->
+  <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=places&language=en-US"></script>
   <!-- <script src="lib/angular-google-maps/angular-google-maps.min.js"></script>
   <script src="lib/lodash/lodash.min.js"></script>
   <script src="lib/angular-simple-logger/angular-simple-logger.min.js"></script> -->
@@ -77,6 +82,7 @@
   <script src="lib/node_modules/swiped/dist/swiped.js"></script>
   <script src='lib/sc-date-time/dist/sc-date-time.js'></script>
   <script src='lib/mdPickers/mdPickers.min.js'></script>
+
 
   <script src="js/hapin.js"></script>
   <script src="js/hapin.routes.js"></script>
@@ -99,6 +105,15 @@
   <script src="js/haps/controllers/haps.controller.js"></script>
   <script src="js/haps/controllers/new-hap.controller.js"></script>
 
+  <script src="js/places/places.module.js"></script>
+  <script src="js/places/services/places.service.js"></script>
+  <script src="js/places/directives/places.directive.js"></script>
+  <script src="js/places/directives/place.directive.js"></script>
+  <script src="js/places/controllers/places.controller.js"></script>
+  <script src="js/places/controllers/place.controller.js"></script>
+  <script src="js/places/controllers/editplace.controller.js"></script>
+  <script src="js/places/controllers/newplace.controller.js"></script>
+
   <script src="js/friends/friends.module.js"></script>
   <script src="js/friends/services/friends.service.js"></script>
   <script src="js/friends/controllers/friends.controller.js"></script>
@@ -114,6 +129,7 @@
 
   <script src="js/utils/utils.module.js"></script>
   <script src="js/utils/map/directives/location-picker.directive.js"></script>
+  <script src="js/utils/map/controllers/location-picker.controller.js"></script>
 
   <!-- !!! MOCKING - REMOVE/ADD !!! -->
   <script src="lib/angular/angular-mocks.js"></script>
@@ -127,6 +143,8 @@
   <script src="js/dev/data/dev.friends.data.service.js"></script>
   <script src="js/dev/run/dev.profiles.run.js"></script>
   <script src="js/dev/data/dev.profiles.data.service.js"></script>
+  <script src="js/dev/run/dev.places.run.js"></script>
+  <script src="js/dev/data/dev.places.data.service.js"></script>
 
   <!-- !!! END - MOCKING - REMOVE/ADD !!! -->
 
