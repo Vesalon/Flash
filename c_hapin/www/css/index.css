@@ -188,3 +188,7 @@ h1 {
 .angular-google-map-container {
   height: 300px; // Or whatever pixel value you require :)
 }
+
+.img-circle {
+    border-radius: 50%;
+}

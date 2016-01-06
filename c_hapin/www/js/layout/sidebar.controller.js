@@ -11,6 +11,8 @@
     hi.logout = logout;
     hi.toggleLeft = buildToggler('left');
     hi.username = Auth.username();
+    hi.avatar = 'img/avatars/100-' + Auth.getIdentity().id + '.jpg';
+    //console.log('avatar=', hi.avatar);
 
     /**
      * Build handler to open/close a SideNav; when animation finishes

@@ -4,8 +4,8 @@
       <md-toolbar>
         <div class="md-toolbar-tools">
           <md-button class="md-icon-button" aria-label="Settings" ng-click="hi.toggleLeft()">
-            btn
-            <!-- <md-icon md-svg-icon="ion-android-menu"></md-icon> -->
+
+            <md-icon md-svg-icon="navigation:menu" aria-label="menu"></md-icon>
           </md-button>
           <h2 style="color:white;">
             <span>Toolbar with Icon Buttons</span>
@@ -18,19 +18,24 @@
     <section layout="row" flex="">
       <md-sidenav class="md-sidenav-left md-whiteframe-z2 menubar" md-component-id="left">
           <ul id="side-menu">
+            <li>
+              <img ng-src="{{hi.avatar}}" class="md-avatar img-circle"height="42" width="42"  alt="{{hi.username}}" />
+              {{hi.username}}
+            </li>
             <li ui-sref="site.private.content.haps" ng-click="hi.toggleLeft()">
+              <md-icon md-svg-icon="action:event" aria-label="haps"></md-icon>
               Haps
             </li>
             <li ui-sref="site.private.content.friends" ng-click="hi.toggleLeft()">
+              <md-icon md-svg-icon="social:people" aria-label="friends"></md-icon>
               Friends
             </li>
-            <li>
-              +{{hi.username}}
-            </li>
+
             <!-- <li ui-sref="site.public.index" ng-click="toggleLeft()">
               logout
             </li> -->
             <li>
+              <md-icon md-svg-icon="action:eject" aria-label="logout"></md-icon>
               <a href ng-click="hi.logout()">Logout</a>
             </li>
           </ul>

@@ -17,7 +17,12 @@
       controller: 'LocationPickerController',
       restrict: 'E',
       require: 'ngModel',
-      template: '<input id="{{ id }}" type="text" class="{{ class }}" placeholder="{{ placeholder }}" />',
+      // template: '<md-icon md-svg-icon="maps:place"></md-icon><input id="{{ id }}" type="text" class="{{ class }}" placeholder="{{ placeholder }}" />',
+        template: '<input id="{{ id }}" type="text" class="{{ class }}" placeholder="{{ placeholder }}" />',
+      // template: '<md-input-container class="md-icon-float flex-gt-sm">'
+      //         + '<md-icon md-svg-icon="maps:place" aria-label="where"></md-icon>'
+      //         + '<input id="{{ id }}" type="text" class="{{ class }}" placeholder="{{ placeholder }}" autocapitalize="off" autocorrect="off" />'
+      //         +'</md-input-container>',
       scope: {
         id: '@',
         class: '@',
