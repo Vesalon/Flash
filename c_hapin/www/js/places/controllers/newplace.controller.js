@@ -5,9 +5,9 @@
     .module('hapin.places.controllers')
     .controller('NewPlaceController', NewPlaceController);
 
-  NewPlaceController.$inject = ['$scope', 'newPlace', '$mdDialog'];
+  NewPlaceController.$inject = ['$scope', 'newPlace', '$mdDialog', '$rootScope', 'Auth', 'Places'];
 
-  function NewPlaceController($scope, newPlace, $mdDialog) {
+  function NewPlaceController($scope, newPlace, $mdDialog, $rootScope, Auth, Places) {
 
    $scope.newPlace = newPlace;
 
@@ -27,16 +27,31 @@
        console.log('adding: $scope.newPlace=',$scope.newPlace );
 
        $rootScope.$broadcast('place.created', {
-         select: hi.username,
-         alias: hi.alias,
+         nickname: $scope.newPlace.nickname,
+         name: $scope.newPlace.name,
+         address: $scope.newPlace.address,
          orig: {
            username: Auth.username()
          }
        });
 
-       Place.create($scope.newPlace.nickname, $scope.newPlace.name, $scope.newPlace.address, null,null)
-        .then(createFriendSuccessFn, createFriendErrorFn);
+       Places.create($scope.newPlace.nickname, $scope.newPlace.name, $scope.newPlace.address, null,null).then(createPlaceSuccessFn, createPlaceSuccessFn);
 
+       function createPlaceSuccessFn(data, status, headers, config) {
+           console.log('SUBMIT SUCCESS');
+           //Snackbar.show('Success! Friend added.');
+          //  $state.go('site.private.content.friends');
+       }
+
+       function createPlaceSuccessFn(data, status, headers, config) {
+         //console.log(data.status);
+         $rootScope.$broadcast('friend.created.error');
+        //  if(data.status === 400){
+        //    snackbar.create('the entered username is not valid');
+        //  }else{
+        //    snackbar.create('problem adding a new friend');
+        //  }
+       }
     };
 
   }

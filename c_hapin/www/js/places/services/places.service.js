@@ -25,13 +25,13 @@
 
     function create(nickname, name, address, lat, lon) {
       console.log(nickname, name, address, lat, lon);
-      // return $http.post('/api/v1/haps/', {
-      //   title: title,
-      //   desc: desc,
-      //   location: location,
-      //   time: time,
-      //   friend_ids: friendIds
-      // });
+      return $http.post('/api/v1/places/', {
+        nickname: nickname,
+        name: name,
+        address: address,
+        lat: lat,
+        lon: lon
+      });
     }
 
     function get() {
