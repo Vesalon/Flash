@@ -26,6 +26,17 @@
       // $scope.place = angular.copy(placeCopy);
        console.log('adding: $scope.newPlace=',$scope.newPlace );
 
+       $rootScope.$broadcast('place.created', {
+         select: hi.username,
+         alias: hi.alias,
+         orig: {
+           username: Auth.username()
+         }
+       });
+
+       Place.create($scope.newPlace.nickname, $scope.newPlace.name, $scope.newPlace.address, null,null)
+        .then(createFriendSuccessFn, createFriendErrorFn);
+
     };
 
   }

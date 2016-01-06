@@ -26,7 +26,6 @@
             address: sentData.address,
             lat: sentData.lat,
             lon: sentData.lon,
-            alias: sentData.alias,
             created_at: currDate,
             updated_at: currDate
           };
