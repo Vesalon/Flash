@@ -137,7 +137,7 @@
             <input ng-model="friendsquery" placeholder="Search for...">
           </md-input-container>
 
-          <md-list>
+          <!-- <md-list>
 
             <md-subheader class="md-no-sticky">Friends</md-subheader>
             <md-list-item ng-repeat="friend in hi.friends | filter:friendsquery"
@@ -153,6 +153,20 @@
 
             </md-list-item>
             <md-divider></md-divider>
+
+          </md-list> -->
+
+          <md-list>
+            <md-virtual-repeat-container style="height: 300px">
+              <md-list-item md-virtual-repeat="friend in hi.friends | filter:friendsquery"
+                            ng-click="hi.toggle(friend, hi.guestlist)">
+                <p> {{ friend.select.username }} </p>
+
+                <md-checkbox class="md-secondary"
+                            ng-click="hi.toggle(friend, hi.guestlist)"
+                            ng-checked="hi.exists(friend, hi.guestlist)"
+                            id="{{ friend.select.username }}"></md-checkbox>
+            </md-virtual-repeat-container>
 
           </md-list>
 
