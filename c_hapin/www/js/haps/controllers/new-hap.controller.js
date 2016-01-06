@@ -5,13 +5,14 @@
     .module('hapin.haps.controllers')
     .controller('NewHapController', NewHapController);
 
-  NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places','$mdpDatePicker', '$mdpTimePicker'];
+  NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places','$mdpDatePicker', '$mdpTimePicker', '$mdpPicker'];
 
-  function NewHapController($scope, $state, Auth, Haps, Places, $mdpDatePicker, $mdpTimePicker) {
+  function NewHapController($scope, $state, Auth, Haps, Places, $mdpDatePicker, $mdpTimePicker, $mdpPicker) {
     var hi = this;
     hi.isAuthenticated = Auth.isAuthenticated();
     hi.showDatePicker = showDatePicker;
     hi.showTimePicker = showTimePicker;
+	hi.showPicker = showPicker;
     $scope.currentDate = new Date();
     // hi.clear = clear;
     //
@@ -58,6 +59,12 @@
 
     function showTimePicker(ev) {
      	$mdpTimePicker(ev, $scope.currentDate).then(function(selectedDate) {
+         $scope.currentDate = selectedDate;
+       });;
+     }
+	 
+	function showPicker(ev) {
+     	$mdpPicker(ev, $scope.currentDate).then(function(selectedDate) {
          $scope.currentDate = selectedDate;
        });;
      }
