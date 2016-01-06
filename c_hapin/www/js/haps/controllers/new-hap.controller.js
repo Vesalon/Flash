@@ -12,6 +12,7 @@
     hi.isAuthenticated = Auth.isAuthenticated();
     var theHap = new Object();
     hi.theHap = theHap;
+    hi.showDatePicker = showDatePicker;
     hi.resetTheLocation = resetTheLocation;
 
     // hi.clear = clear;
