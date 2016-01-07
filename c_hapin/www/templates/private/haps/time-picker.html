@@ -1,11 +1,12 @@
-<md-dialog aria-label="" class="mdp-timepicker" ng-class="{ 'portrait': !$mdMedia('gt-xs') }"> 
-	<md-dialog-content layout-gt-xs="row" layout-wrap> 
-		<md-toolbar layout-gt-xs="column" layout-xs="row" layout-align="center center" flex class="mdp-timepicker-time md-hue-1 md-primary"> 
+<md-dialog aria-label="" class="mdp-timepicker" flex="5" ng-class="{ 'portrait': !$mdMedia('gt-xs') }"> 
+	<md-dialog-content layout="column" layout-wrap> 
+		<md-toolbar layout="column" layout-align="center center" class="mdp-timepicker-time md-hue-1 md-primary"> 
 			<div class="mdp-timepicker-selected-time"> 
-				<span ng-class="{ 'active': picker.currentView == picker.VIEW_HOURS }" ng-click="picker.currentView = picker.VIEW_HOURS">{{ picker.currentMoment.format("h") }}</span>:  
+				<span ng-class="{ 'active': picker.currentView == picker.VIEW_HOURS }" ng-click="picker.currentView = picker.VIEW_HOURS">{{ picker.currentMoment.format("hh") }}</span>
+				  :  
 				<span ng-class="{ 'active': picker.currentView == picker.VIEW_MINUTES }" ng-click="picker.currentView = picker.VIEW_MINUTES">{{ picker.currentMoment.format("mm") }}</span>
 			</div> 
-			<div layout="column" class="mdp-timepicker-selected-ampm">  
+			<div layout="row" class="mdp-timepicker-selected-ampm">  
 				<span ng-click="picker.setAM()" ng-class="{'active': picker.currentMoment.format('A') == 'AM' }">AM</span> 
 				<span ng-click="picker.setPM()" ng-class="{'active': picker.currentMoment.format('A') == 'PM' }">PM</span> 
 			</div>  
@@ -17,8 +18,8 @@
 			</div> 
 		</div> 
 		<div> 
-			<div layout="column" layout-align="start center"> 
-				<md-toolbar layout-align="start start" flex class="mdp-datepicker-date-wrapper md-hue-1 md-primary" layout="column"> 
+			<div layout="column" layout-align="center center"> 
+				<md-toolbar layout="column" layout-align="center center" flex class="mdp-datepicker-date-wrapper md-hue-1 md-primary" layout="column"> 
 					<span class="mdp-datepicker-year" ng-click="picker.showYear()" ng-class="{ 'active': picker.selectingYear }">{{ picker.currentMoment.format('YYYY') }}</span> 
 					<span class="mdp-datepicker-date" ng-click="picker.showCalendar()" ng-class="{ 'active': !picker.selectingYear }">{{ picker.currentMoment.format("ddd, MMM DD") }}</span>  
 				</md-toolbar>  

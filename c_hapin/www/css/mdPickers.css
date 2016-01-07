@@ -144,28 +144,34 @@
   width: 309px;
 }
 .mdp-timepicker .mdp-timepicker-time {
-  padding: 15px;
+  padding: 0px;
 }
 .mdp-timepicker .mdp-timepicker-selected-time {
-  font-size: 3rem;
-}
-.mdp-timepicker:not(.portrait) .mdp-timepicker-time {
-  width: 138px;
-}
-.mdp-timepicker.portrait .mdp-timepicker-selected-time {
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin-right: 1.5rem;
 }
-.mdp-timepicker-selected-time > span,
-.mdp-timepicker-selected-ampm > span {
+.mdp-timepicker.portrait .mdp-timepicker-selected-time {
+  font-size: 3.5rem;
+  margin-right: 1.5rem;
+}
+.mdp-timepicker-selected-time > span{
   outline: 0;
   opacity: 0.6;
 }
-.mdp-timepicker-selected-time > span:not(.active),
+.mdp-timepicker-selected-ampm > span {
+  outline: 0;
+  opacity: 0.6;
+  margin-right: 1.5rem;
+}
+.mdp-timepicker-selected-time > span:not(.active){
+  cursor: pointer;
+}
 .mdp-timepicker-selected-ampm > span:not(.active) {
   cursor: pointer;
 }
-.mdp-timepicker-selected-time > span.active,
+.mdp-timepicker-selected-time > span.active{
+  opacity: 1;
+}
 .mdp-timepicker-selected-ampm > span.active {
   opacity: 1;
 }
@@ -254,7 +260,7 @@
 .mdp-calendar-days .mdp-day-placeholder {
   width: 32px;
   height: 32px;
-  margin: 0 5px;
+  margin: 0 0px;
 }
 .mdp-calendar-days .md-button {
   cursor: pointer;
@@ -299,7 +305,6 @@
   opacity: 1;
 }
 .mdp-datepicker-year {
-  font-size: 0.9rem;
   opacity: 0.6;
   padding: 0;
   margin: 0;
@@ -393,12 +398,12 @@ mdp-calendar {
   display: block;
 }
 .mdp-calendar-week-days {
-  width: 100%;
+  width: 99%;
 }
 .mdp-calendar-week-days > * {
   margin: 0;
 }
 .mdp-calendar-days .md-button,
 .mdp-calendar-days .mdp-day-placeholder {
-  margin: 0;
+  margin: 1px;
 }
