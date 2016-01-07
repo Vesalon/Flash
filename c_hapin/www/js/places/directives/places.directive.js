@@ -10,10 +10,10 @@
     var directive = {
       controller: 'PlacesController',
       controllerAs: 'hi',
-      restrict: 'E',
+      restrict: 'A',
       require: 'ngModel',
       scope: {
-        places: '=',
+      //  places: '=',
         selectedPlace: '='
       },
       templateUrl: 'templates/private/places/places.html',

@@ -43,6 +43,33 @@
           return [200, places];
       });
 
+      //update
+      $httpBackend.whenPUT('/api/v1/places/')
+        .respond(function(method, url, data) {
+          // console.log('$httpBackend.whenPUT');
+          // console.log(data);
+          var sentData = angular.fromJson(data);
+
+          var origObj = DevAccountData.getByUsername(Auth.getIdentity().username);
+          var d = new Date();
+          var currDate = d.toUTCString();
+
+          var placeObj = {
+            id: sentData.id,
+            orig: origObj,
+            nickname: sentData.nickname,
+            name: sentData.name,
+            address: sentData.address,
+            lat: sentData.lat,
+            lon: sentData.lon,
+            created_at: sentData.created_at,
+            updated_at: currDate
+          };
+          // console.log(placeObj);
+          //var friend = angular.fromJson(data);
+          DevPlacesData.update(placeObj);
+          return [200, placeObj, {}];
+      });
 
 
     });

@@ -105,7 +105,8 @@
                 </md-card-title-media>
               </md-card-title> -->
               <md-card-content>
-                <place place="hi.theHap.location" mode='display'></place>
+                <!-- <place place="hi.theHap.location" mode='display'></place> -->
+                {{hi.theHap.location.nickname}}<br>{{hi.theHap.location.name}}<br>{{hi.theHap.location.address}}
               </md-card-content>
               <md-card-actions layout="row" layout-align="end center">
                 <md-button class="md-icon-button" aria-label="Favorite">
@@ -115,9 +116,15 @@
             </md-card>
           </div>
 
-          <div ng-hide="hi.theHap.location != undefined">
-            <places places="hi.placesList"></places>
+          <div>
+            <md-button class="md-raised" ng-click="hi.showPlaces($event)">
+              show places
+            </md-button>
           </div>
+
+          <!-- <div ng-hide="hi.theHap.location != undefined">
+            <places places="hi.placesList"></places>
+          </div> -->
 
           <!-- <p>
             <location-picker id="location" ng-model="location" class="form-control" placeholder="Hap location" ng-required="true"></location-picker>

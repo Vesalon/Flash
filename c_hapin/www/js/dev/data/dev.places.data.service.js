@@ -108,6 +108,8 @@
             all: all,
             create: create,
             getAccountPlaces: getAccountPlaces,
+            getAccountPlaceById: getAccountPlaceById,
+            update: update,
             //getAccountPlaceBySearchValue: getAccountPlaceBySearchValue,
       };
 
@@ -130,6 +132,28 @@
 
         console.log("aPlaces = ", aPlaces);
         return aPlaces;
+      }
+
+      function getAccountPlaceById(id) {
+        var aPlace = places.filter(function (a) {
+            return a.id === id
+              && (a.orig.username === Auth.getIdentity().username);
+          })[0];
+
+        console.log("aPlace = ", aPlace);
+        return aPlace;
+      }
+
+      function update(place){
+        var i = places.map(function(e) { return e.id; }).indexOf(place.id);
+        // console.log(i);
+        // console.log(places[i]);
+        places[i].nickname = place.nickname;
+        places[i].name = place.name;
+        places[i].address = place.address;
+        places[i].lat = place.lat;
+        places[i].lon = place.lon;
+        // console.log(places[i]);
       }
 
       // function getAccountPlaceBySearchValue(searchValue) {

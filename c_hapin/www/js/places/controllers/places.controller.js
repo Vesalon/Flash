@@ -5,10 +5,11 @@
     .module('hapin.places.controllers')
     .controller('PlacesController', PlacesController);
 
-  PlacesController.$inject = ['$scope', '$mdDialog', '$mdMedia', '$rootScope']
+  PlacesController.$inject = ['$scope', '$mdDialog', '$mdMedia', '$rootScope', 'Places', 'Auth']
 
-  function PlacesController($scope, $mdDialog, $mdMedia, $rootScope) {
+  function PlacesController($scope, $mdDialog, $mdMedia, $rootScope, Places, Auth) {
     var hi = this;
+    hi.isAuthenticated = Auth.isAuthenticated();
     hi.places = [];
     hi.editPlace = editPlace;
     hi.newPlace = newPlace;
@@ -30,10 +31,38 @@
     activate();
 
     function activate() {
+      console.log('hi.isAuthenticated=' , hi.isAuthenticated);
+      if (hi.isAuthenticated) {
+       Places.get()
+          .then(placesSuccessFn, placesErrorFn);
+      }
+
+
       // console.log('PlacesController.activate()');
       $scope.$watchCollection(function() {
-        return $scope.places;
+        return hi.places;
       }, render);
+
+
+       $scope.$on('place.created', function (event, place) {
+         console.log('place.created ' + place);
+         hi.places.unshift(place);
+       });
+
+       $scope.$on('place.created.error', function () {
+         console.log('place.created.erro!!!!');
+         hi.places.shift();
+       });
+
+      function placesSuccessFn(data, status, headers, config) {
+        console.log('placesSuccessFn' + data.data);
+        hi.places = data.data;
+      }
+
+      function placesErrorFn(data, status, headers, config) {
+        console.log(data.error);
+      }
+
     }
 
     /**
@@ -60,9 +89,11 @@
       // $scope.$emit('places:place-selected', {
       //   place: place
       // });
+      console.log('fired places:place-selected')
       $rootScope.$broadcast('places:place-selected', {
         place: place
       });
+      $mdDialog.hide();
     };
 
     function editPlace(ev, place) {
@@ -101,16 +132,21 @@
           fullscreen: useFullScreen,
         })
         .then(function(answer) {
+          console.log('DONE from editPlace in palces controller')
+          console.log(editedPlace)
+          // TODO: save edited place and update cache
+          Places.update(editedPlace);
           // $scope.status = 'Your change is: "' + editedPlace.nickname + '".';
           // refresh model
-          for (var i = 0; i < hi.places.length; ++i) {
-            if (hi.places[i].id == editedPlace.id) {
-              hi.places[i] = editedPlace;
-              break;
-            }
-          }
-          activate();
+          // for (var i = 0; i < hi.places.length; ++i) {
+          //   if (hi.places[i].id == editedPlace.id) {
+          //     hi.places[i] = editedPlace;
+          //     break;
+          //   }
+          // }
+          // activate();
         }, function() {
+          console.log('CANCEL from editPlace in palces controller')
           // $scope.status = 'You cancelled the dialog.';
         });
     };

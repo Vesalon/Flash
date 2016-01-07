@@ -13,6 +13,7 @@
       create: create,
       get: get,
       getSingle: getSingle,
+      update: update,
     //  accept: accept,
     };
 
@@ -24,7 +25,7 @@
     }
 
     function create(nickname, name, address, lat, lon) {
-      console.log(nickname, name, address, lat, lon);
+    //  console.log(nickname, name, address, lat, lon);
       return $http.post('/api/v1/places/', {
         nickname: nickname,
         name: name,
@@ -41,6 +42,18 @@
     function getSingle(hapId) {
     //  return $http.get('/api/v1/haps/' + hapId + '/');
     return $http.get('/api/v1/accounts/me/places/:' + placeId + '/');
+    }
+
+    function update(place) {
+      return $http.put('/api/v1/places/', place
+      // {
+      //   nickname: place.nickname,
+      //   name: place.name,
+      //   address: place.address,
+      //   lat: place.lat,
+      //   lon: place.lon
+      // }
+    );
     }
 
 

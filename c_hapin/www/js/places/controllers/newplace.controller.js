@@ -38,7 +38,7 @@
        Places.create($scope.newPlace.nickname, $scope.newPlace.name, $scope.newPlace.address, null,null).then(createPlaceSuccessFn, createPlaceSuccessFn);
 
        function createPlaceSuccessFn(data, status, headers, config) {
-           console.log('SUBMIT SUCCESS');
+           console.log('create place SUCCESS');
            //Snackbar.show('Success! Friend added.');
           //  $state.go('site.private.content.friends');
        }
