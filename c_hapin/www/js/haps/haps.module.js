@@ -6,6 +6,7 @@ angular
     //'hapin.haps.directives',
     'hapin.haps.services',
     // 'uiGmapgoogle-maps',
+    'hapin.haps.directives',
   ])
   // .config(function(uiGmapGoogleMapApiProvider) {
   //   uiGmapGoogleMapApiProvider.configure({
@@ -20,8 +21,8 @@ angular
 angular
   .module('hapin.haps.controllers', ['mdPickers','scDateTime']); //, ['checklist-model']);
 
-// angular
-//   .module('hapin.haps.directives', ['ngDialog']);
+angular
+  .module('hapin.haps.directives', []);
 
 angular
   .module('hapin.haps.services', []);

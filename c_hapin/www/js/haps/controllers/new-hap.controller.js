@@ -8,6 +8,7 @@
   NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places', '$mdpDatePicker', '$mdMedia', '$mdDialog'];
 
   function NewHapController($scope, $state, Auth, Haps, Places, $mdpDatePicker, $mdMedia, $mdDialog) {
+
     var hi = this;
     hi.isAuthenticated = Auth.isAuthenticated();
     var theHap = new Object();
@@ -15,6 +16,8 @@
     hi.showDatePicker = showDatePicker;
     hi.resetTheLocation = resetTheLocation;
     hi.showPlaces = showPlaces;
+    // hi.friends = [];
+    // hi.guestlist = [];
 
     // hi.clear = clear;
     //
@@ -58,6 +61,15 @@
         hi.theHap.location = arg.place;
         // console.log( hi.theHap);
         //  hi.placesList.unshift(place);
+      });
+
+      $scope.$on('guests:guest-selected', function (event, arg) {
+        // console.log('event places:place-selected was fired for ' );
+        hi.theHap.guestlist = arg.guestlist;
+        console.log(arg.guestlist);
+        console.log(hi.theHap.guestlist);
+        // console.log( hi.theHap);
+      //  hi.placesList.unshift(place);
       });
 
     }
@@ -140,8 +152,6 @@
     //       lng: null
     //     };
     //   };
-
-
 
   }
 

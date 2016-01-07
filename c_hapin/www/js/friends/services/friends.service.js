@@ -11,6 +11,7 @@ function Friends($http) {
     all: all,
     create: create,
     get: get,
+    getUser: getUser,
     getFriend: getFriend
   };
   return Friends;
@@ -29,6 +30,10 @@ function Friends($http) {
   function get() {
     // return $http.get('/api/v1/accounts/' + username + '/friends/');
     return $http.get('/api/v1/accounts/me/friends/');
+  }
+
+  function getUser(username) {
+    return $http.get('/api/v1/accounts/' + username + '/friends/');
   }
 
   function getFriend(searchValue) {
