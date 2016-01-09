@@ -38,8 +38,11 @@
       // if ($scope.returnToState)
       //    $state.go($scope.returnToState.name, $scope.returnToStateParams);
       // else $state.go('public.index');
-
-      $state.go('site.private.content.haps');
+      if(Auth.isAuthenticated()){
+        $state.go('site.private.content.haps');
+      }else{
+        console.log('login unsuccessful; show toast')
+      }
 
     }
 

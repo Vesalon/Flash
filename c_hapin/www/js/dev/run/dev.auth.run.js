@@ -16,7 +16,14 @@ angular.module('hapin')
         var o = angular.fromJson(data);
         //console.log(o); // {"email":"geo@a.com","password":"pass"}
         var account = DevAccountData.getByLogin(o.email, o.password);
-        return [200, account, {}];
+        console.log(account);
+        if(account){
+          console.log('account found');
+          return [200, account, {}];
+        }else{
+          console.log('no account found');
+          return [400, null, {}];
+        }
     });
 
     //register
