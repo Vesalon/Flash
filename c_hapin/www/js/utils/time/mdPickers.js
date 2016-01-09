@@ -3,7 +3,8 @@
 var module = angular.module("mdPickers", [
 	"ngMaterial",
 	"ngAnimate",
-	"ngAria"
+	"ngAria",
+	'quark.relativeDate'
 ]); 
 function TimePickerCtrl($scope, $mdDialog, currentDate, $mdMedia) {
 	var self = this;
