@@ -4,9 +4,9 @@
     .module('hapin.auth.controllers', [])
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$scope', '$state', 'Auth'];
+  LoginController.$inject = ['$scope', '$state', 'Auth', '$mdToast'];
 
-  function LoginController($scope, $state, Auth) {
+  function LoginController($scope, $state, Auth, $mdToast) {
     var hi = this;
     hi.login = login;
     hi.gotoRegister = gotoRegister;
@@ -38,10 +38,18 @@
       // if ($scope.returnToState)
       //    $state.go($scope.returnToState.name, $scope.returnToStateParams);
       // else $state.go('public.index');
+      
       if(Auth.isAuthenticated()){
         $state.go('site.private.content.haps');
       }else{
-        console.log('login unsuccessful; show toast')
+        console.log('login unsuccessful; show toast');
+        $mdToast.show(
+      $mdToast.simple()
+        .textContent('This is not a valid login!')
+       .position('top')
+        .hideDelay(3000)
+    );
+
       }
 
     }
