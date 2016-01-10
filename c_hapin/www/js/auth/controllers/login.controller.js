@@ -26,8 +26,22 @@
 
 
     function login() {
-      console.log("login() entered.")
-      Auth.login(hi.email, hi.password);
+      Auth.login(hi.email, hi.password)
+      .then(
+        function(){
+          if(Auth.isAuthenticated()){
+            $state.go('site.private.content.haps');
+          }else{
+            // console.log('login unsuccessful; show toast');
+            $mdToast.show(
+              $mdToast.simple()
+              .textContent('This is not a valid login!')
+              .position('top')
+              .hideDelay(3000)
+            );
+          }
+        }
+      )
 
       // // here, we fake authenticating and give a fake user
       // Principal.authenticate({
@@ -39,18 +53,18 @@
       //    $state.go($scope.returnToState.name, $scope.returnToStateParams);
       // else $state.go('public.index');
 
-      if(Auth.isAuthenticated()){
-        $state.go('site.private.content.haps');
-      }else{
-        console.log('login unsuccessful; show toast');
-        $mdToast.show(
-      $mdToast.simple()
-        .textContent('This is not a valid login!')
-       .position('top')
-        .hideDelay(3000)
-    );
-
-      }
+    //   if(Auth.isAuthenticated()){
+    //     $state.go('site.private.content.haps');
+    //   }else{
+    //     console.log('login unsuccessful; show toast');
+    //     $mdToast.show(
+    //   $mdToast.simple()
+    //     .textContent('This is not a valid login!')
+    //    .position('top')
+    //     .hideDelay(3000)
+    // );
+    //
+    //   }
 
     }
 

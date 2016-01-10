@@ -18,6 +18,7 @@
     hi.showPlaces = showPlaces;
     // hi.friends = [];
     // hi.guestlist = [];
+    // hi.theHap.guestlist = [];
 
     // hi.clear = clear;
     //
@@ -66,7 +67,7 @@
       $scope.$on('guests:guest-selected', function (event, arg) {
         // console.log('event places:place-selected was fired for ' );
         hi.theHap.guestlist = arg.guestlist;
-        console.log(arg.guestlist);
+        // console.log(arg.guestlist);
         console.log(hi.theHap.guestlist);
         // console.log( hi.theHap);
       //  hi.placesList.unshift(place);

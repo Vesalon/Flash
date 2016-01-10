@@ -22,8 +22,6 @@
           .then(friendsSuccessFn, friendsErrorFn);
       }
 
-      Friends.getUser(Auth.username()).then(friendsSuccessFn, friendsErrorFn);
-
       function friendsSuccessFn(data, status, headers, config) {
         hi.friends = data.data;
       }
@@ -52,8 +50,9 @@
     };
 
     hi.fireGuestSelectEvent = function(guest) {
+      // console.log(hi.guestlist);
       $rootScope.$broadcast('guests:guest-selected', {
-        gluestlist: hi.guestlist
+        guestlist: hi.guestlist
       });
     }
 
