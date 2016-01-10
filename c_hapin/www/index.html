@@ -49,14 +49,15 @@
   <!-- <script type="text/javascript" src="js/index.js"></script> -->
 
   <script src="lib/jquery/jquery.js"></script>
-
   <script src="lib/modernizr/modernizr.js"></script>
+  <!-- load angular before requirejs calls loader-->
+  <script src="lib/angular/angular.js"></script>
   <!-- Do not move moment under the require.js import since it will break -->
   <script src='lib/node_modules/moment/moment.js'></script>
   <script src="lib/require/require.min.js" data-main="js/appconfig/loader"></script>
 
   <!-- <script src="lib/jquery/jquery.js"></script> -->
-  <script src="lib/angular/angular.js"></script>
+  <!-- <script src="lib/angular/angular.js"></script> -->
   <script src="lib/angular/angular-route.js"></script>
   <script src="lib/angular-ui/angular-ui-router.js"></script>
   <script src="lib/angular/angular-cookies.js"></script>
