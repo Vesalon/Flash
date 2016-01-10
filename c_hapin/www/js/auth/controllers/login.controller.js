@@ -38,7 +38,7 @@
       // if ($scope.returnToState)
       //    $state.go($scope.returnToState.name, $scope.returnToStateParams);
       // else $state.go('public.index');
-      
+
       if(Auth.isAuthenticated()){
         $state.go('site.private.content.haps');
       }else{

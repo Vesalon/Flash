@@ -55,7 +55,7 @@ function config($stateProvider, $urlRouterProvider, stateHelperProvider) {
           controllerAs: 'hi',
         }
 
-      }
+      },
 
     })
     .state('site.private.content', {
@@ -69,25 +69,32 @@ function config($stateProvider, $urlRouterProvider, stateHelperProvider) {
       controller: 'HapsController',
       controllerAs: 'hi',
       url: '/haps',
+      authenticate: true,
     })
     .state('site.private.content.newhap', {
         templateUrl: 'templates/private/haps/new-hap.html',
         controller: 'NewHapController',
         controllerAs: 'hi',
         url: '/newhap',
+        authenticate: true,
       })
     .state('site.private.content.friends', {
       templateUrl: 'templates/private/friends/friends.html',
       controller: 'FriendsController',
       controllerAs: 'hi',
       url: '/friends',
+      authenticate: true,
     })
     .state('site.private.content.newfriend', {
       templateUrl: 'templates/private/friends/new-friend-account.html',
       controller: 'NewFriendAccountController',
       controllerAs: 'hi',
       url: '/newfriend',
+      authenticate: true,
     })
+
+    // Send to login if the URL was not found
+$urlRouterProvider.otherwise("/login");
 }
 
 // angular

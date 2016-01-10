@@ -32,10 +32,21 @@ angular.module('hapin', [
          'hapin.dev',
 ])
 
-  .run(function($httpBackend) {
+  .run(function($httpBackend, $rootScope, $state, Auth) {
     $httpBackend.whenGET(/templates\/\w+.*/).passThrough();
     $httpBackend.whenGET(/img\/\w+.*/).passThrough();
+
+    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+      if (toState.authenticate && !Auth.isAuthenticated()){
+        // User isn’t authenticated
+        console.log('User isn’t authenticated')
+        $state.transitionTo("site.public.login");
+        event.preventDefault();
+      }
+    });
+
   });
+
 
 // .run(['$rootScope', '$state', '$stateParams', 'Authorization', 'Principal',
 //     function($rootScope, $state, $stateParams, Authorization, Principal) {
