@@ -14,7 +14,8 @@
     hi.showTimePicker = showTimePicker;
 	hi.showPicker = showPicker;
     $scope.currentDate = new Date();
-	$scope.relativeDate = relativeDateFilter($scope.currentDate);
+	
+	$scope.currentDate.setHours($scope.currentDate.getHours() + 1);
     // hi.clear = clear;
     //
     // $scope.location = {

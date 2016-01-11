@@ -1,7 +1,7 @@
 <md-dialog aria-label="" class="mdp-timepicker" flex="5" ng-class="{ 'portrait': !$mdMedia('gt-xs') }"> 
 	<md-dialog-content layout="column" layout-wrap>
 		<md-tabs md-dynamic-height>
-			<md-tab label="{{currentDate | relativeDate}}">
+			<md-tab label="{{ picker.currentDate | relativeDate}}">
 				<md-toolbar layout="column" layout-align="center center" class="mdp-timepicker-time md-hue-1 md-primary"> 
 					<div class="mdp-timepicker-selected-time"> 
 						<span ng-class="{ 'active': picker.currentView == picker.VIEW_HOURS }" ng-click="picker.currentView = picker.VIEW_HOURS">{{ picker.currentMoment.format("hh") }}</span>
