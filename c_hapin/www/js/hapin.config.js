@@ -44,7 +44,7 @@ function config($locationProvider, $compileProvider, $mdIconProvider, $mdTheming
 
     $mdThemingProvider.theme('altTheme')
     .primaryPalette('cyan', {
-      'default': 'A200'
+      'default': 'A400'
     }) // specify primary color, all
                             // other color intentions will be inherited
                             // from default
