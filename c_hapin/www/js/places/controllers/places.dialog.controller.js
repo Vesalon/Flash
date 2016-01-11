@@ -38,15 +38,15 @@
   //   console.log(data.error);
   // }
 
-    $scope.save = function() {
-      // $scope.place = angular.copy(placeCopy);
-      // console.log('save: $scope.place=',$scope.place );
-       $mdDialog.hide();
-    };
-
-    $scope.cancel = function() {
-      $mdDialog.cancel();
-    };
+    // $scope.save = function() {
+    //   // $scope.place = angular.copy(placeCopy);
+    //   // console.log('save: $scope.place=',$scope.place );
+    //    $mdDialog.hide();
+    // };
+    //
+    // $scope.cancel = function() {
+    //   $mdDialog.cancel();
+    // };
 
   }
 

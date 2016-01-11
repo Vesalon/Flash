@@ -16,6 +16,7 @@
     hi.fireSelectedPlaceEvent = fireSelectedPlaceEvent;
     hi.fireCancelEvent = fireCancelEvent;
     hi.showFilter = false;
+    hi.cancelFilter = cancelFilter;
 
     // $scope.$watch('query',function(newQuery,oldQuery){
     //    console.log('Places query = ', newQuery);
@@ -33,7 +34,7 @@
     activate();
 
     function activate() {
-      console.log('hi.isAuthenticated=' , hi.isAuthenticated);
+      //console.log('hi.isAuthenticated=' , hi.isAuthenticated);
       if (hi.isAuthenticated) {
        Places.get()
           .then(placesSuccessFn, placesErrorFn);
@@ -47,22 +48,22 @@
 
 
        $scope.$on('place.created', function (event, place) {
-         console.log('place.created ' + place);
+        //  console.log('place.created ' + place);
          hi.places.unshift(place);
        });
 
        $scope.$on('place.created.error', function () {
-         console.log('place.created.erro!!!!');
+        //  console.log('place.created.erro!!!!');
          hi.places.shift();
        });
 
       function placesSuccessFn(data, status, headers, config) {
-        console.log('placesSuccessFn' + data.data);
+        // console.log('placesSuccessFn' + data.data);
         hi.places = data.data;
       }
 
       function placesErrorFn(data, status, headers, config) {
-        console.log(data.error);
+        // console.log(data.error);
       }
 
     }
@@ -105,6 +106,11 @@
       console.log('fired places:cancel')
       $rootScope.$broadcast('places:cancel');
       $mdDialog.cancel();
+    };
+
+    function cancelFilter() {
+      hi.showFilter = false;
+      $scope.query = "";
     };
 
     function editPlace(ev, place) {
