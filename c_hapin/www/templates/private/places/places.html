@@ -18,10 +18,33 @@
   <input ng-model="query" placeholder="Search for...">
 </div> -->
 
-<md-button class="md-raised" ng-click="hi.newPlace($event)">
-  <md-icon class="md-secondary" aria-label="Edit" md-svg-icon='action:search'></md-icon>
-  new
-</md-button>
+<md-toolbar md-theme="docs-dark">
+    <div class="md-toolbar-tools" flex layout="row" layout-align="center center">
+      <!-- <h1>favorite places</h1> -->
+      <md-button class="md-icon-button" aria-label="Back" layout-align="left">
+        <md-icon md-svg-icon="navigation:arrow_back" ng-click="hi.fireCancelEvent();" style="color: white;"></md-icon>
+      </md-button>
+
+      <md-button class="md-icon-button" aria-label="Filter" flex>
+        <md-icon md-svg-icon="content:filter_list" ng-click="hi.showFilter=true" ng-show="!hi.showFilter" style="color: white;"></md-icon>
+      </md-button>
+
+      <md-input-container ng-show="hi.showFilter" class="md-icon-float" flex layout-align="center" style="color:red;width: 50px;border-color:white" >
+        <input ng-show="hi.showFilter" ng-model="query" placeholder="filter" style="color:red;width: 50px;"  >
+      </md-input-container>
+
+      <md-button class="md-icon-button" aria-label="New" layout-align="right">
+        <md-icon md-svg-icon="action:search" ng-click="hi.newPlace($event)" style="color: white;"></md-icon>
+      </md-button>
+      <!-- <md-button class="md-flat" ng-click="hi.newPlace($event)">
+        <md-icon class="md-secondary" aria-label="new" md-svg-icon='action:search'></md-icon>
+        new
+      </md-button> -->
+
+    </div>
+  </md-toolbar>
+
+
 
 <!-- <div ng-hide="mode == 'display';">
   <p>
@@ -30,11 +53,8 @@
 </div> -->
 
 <md-list  ng-cloak>
-  <md-subheader class="md-no-sticky">My Places
-    <md-input-container class="md-icon-float">
-      <input ng-model="query" placeholder="filter">
-    </md-input-container>
-  </md-subheader>
+  <!-- <md-subheader class="md-no-sticky">My Places
+  </md-subheader> -->
   <md-list-item ng-click="hi.fireSelectedPlaceEvent($event, place)" ng-repeat="place in (filteredPlaces = (hi.places | filter:query)) ">
     <p> <b> {{ place.nickname }} </b> <br> {{ place.address }}</p>
     <md-icon class="md-secondary" ng-click="hi.editPlace($event, place)" aria-label="Edit" md-svg-icon='editor:mode_edit'></md-icon>

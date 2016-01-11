@@ -4,13 +4,13 @@ angular
   .module('hapin.config', [])
   .config(config);
 
-config.$inject = ['$locationProvider', '$compileProvider', '$mdIconProvider'];
+config.$inject = ['$locationProvider', '$compileProvider', '$mdIconProvider', '$mdThemingProvider'];
 
 /**
  * @name config
  * @desc Enable HTML5 routing
  */
-function config($locationProvider, $compileProvider, $mdIconProvider) {
+function config($locationProvider, $compileProvider, $mdIconProvider, $mdThemingProvider) {
   //   //$locationProvider.html5Mode(true);
   //   //  $locationProvider.hashPrefix('!');
   // // http://stackoverflow.com/questions/19974097/angularjs-and-phonegap-location-path-causes-subsequent-tempateurl-lookup-to-fa
@@ -29,6 +29,25 @@ function config($locationProvider, $compileProvider, $mdIconProvider) {
   //   libraries: 'places,geometry,visualization'
   // });
 
+  $mdThemingProvider.theme('default')
+    // .dark();
+    .primaryPalette('grey', {
+      'default': '800'
+    })
+    .accentPalette('deep-purple', {
+      'default': 'A200'
+    })
+    .warnPalette('yellow')
+    .backgroundPalette('grey', {
+      // 'default': '50'
+    });
+
+    $mdThemingProvider.theme('altTheme')
+    .primaryPalette('cyan', {
+      'default': 'A200'
+    }) // specify primary color, all
+                            // other color intentions will be inherited
+                            // from default
 
   $mdIconProvider
   // .defaultFontSet( 'fontawesome' )

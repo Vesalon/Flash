@@ -89,7 +89,8 @@
 
     function showPlaces(ev) {
       // var editedPlace = angular.copy(place);
-      var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+      var useFullScreen = true; //($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+      console.log('useFullScreen=',useFullScreen);
       $mdDialog.show({
           controller: 'PlacesDialogController',
           templateUrl: 'templates/private/places/placesDialog.html',

@@ -14,6 +14,8 @@
     hi.editPlace = editPlace;
     hi.newPlace = newPlace;
     hi.fireSelectedPlaceEvent = fireSelectedPlaceEvent;
+    hi.fireCancelEvent = fireCancelEvent;
+    hi.showFilter = false;
 
     // $scope.$watch('query',function(newQuery,oldQuery){
     //    console.log('Places query = ', newQuery);
@@ -94,6 +96,15 @@
         place: place
       });
       $mdDialog.hide();
+    };
+
+    function fireCancelEvent($event) {
+      // $scope.$emit('places:place-selected', {
+      //   place: place
+      // });
+      console.log('fired places:cancel')
+      $rootScope.$broadcast('places:cancel');
+      $mdDialog.cancel();
     };
 
     function editPlace(ev, place) {
