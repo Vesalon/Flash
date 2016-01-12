@@ -17,6 +17,9 @@
     hi.fireCancelEvent = fireCancelEvent;
     hi.showFilter = false;
     hi.cancelFilter = cancelFilter;
+    hi.cancelSearch = cancelSearch;
+    hi.showLocationPicker = false;
+    hi.cancelFilterAndSearch= cancelFilterAndSearch;
 
     // $scope.$watch('query',function(newQuery,oldQuery){
     //    console.log('Places query = ', newQuery);
@@ -110,6 +113,17 @@
 
     function cancelFilter() {
       hi.showFilter = false;
+      $scope.query = "";
+    };
+
+    function cancelSearch() {
+      hi.showLocationPicker = false;
+      // $scope.query = "";
+    };
+
+    function cancelFilterAndSearch() {
+      hi.showFilter = false;
+      hi.showLocationPicker = false;
       $scope.query = "";
     };
 

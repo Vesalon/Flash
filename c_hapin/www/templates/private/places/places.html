@@ -25,20 +25,27 @@
         <md-icon md-svg-icon="navigation:arrow_back" ng-click="hi.fireCancelEvent();" style="color: white;"></md-icon>
       </md-button>
 
-      <md-button ng-show="!hi.showFilter" class="md-icon-button" aria-label="Filter button" flex  layout-align="center">
+      <md-button ng-show="!hi.showLocationPicker && !hi.showFilter" class="md-icon-button" aria-label="Filter button" flex  layout-align="center">
         <md-icon md-svg-icon="content:filter_list" ng-click="hi.showFilter=true" ng-show="!hi.showFilter" style="color: white;"></md-icon>
       </md-button>
 
-      <md-input-container ng-show="hi.showFilter"  class="md-icon-float" flex layout="row" layout-align="center" style="color:red;"  >
-        <!-- md-autofocus doesn't work because of ng-show; using focus-on from Utils.helpers -->
-        <input  ng-model="query" focus-on="hi.showFilter" style="color:red;"  aria-label="Filter"  >
-        <md-button class="md-icon-button" aria-label="Close button" layout-align="right" aria-label="Close Filter" >
-          <md-icon md-svg-icon="content:clear" ng-click="hi.cancelFilter();" style="color: white;"></md-icon>
-        </md-button>
-      </md-input-container>
+      <!-- <md-input-container ng-show="hi.showFilter"  class="md-icon-float" flex layout="row" layout-align="center" style="color:red;"  >
+        <input  ng-model="query" focus-on="hi.showFilter" placeholder="filter" style="color:red;"  aria-label="Filter"  >
+      </md-input-container> -->
 
-      <md-button  class="md-icon-button" aria-label="New button" layout-align="right">
-        <md-icon md-svg-icon="action:search" ng-click="hi.newPlace($event)" style="color: white;"></md-icon>
+      <div ng-show="hi.showFilter" flex layout="row" layout-align="center" >
+        <!-- md-autofocus doesn't work because of ng-show; using focus-on from Utils.helpers -->
+        <input  ng-model="query" focus-on="hi.showFilter" class="form-control"  placeholder="Filter" style="color:red;"  aria-label="Filter"  >
+      </div>
+
+      <div ng-show="hi.showLocationPicker" flex layout="row" layout-align="center" >
+        <location-picker id="location" ng-model="location"    class="form-control" placeholder="Hap location"  ng-required="true" style="color:red;" ></location-picker>
+      </div>
+      <md-button ng-show="!hi.showLocationPicker && !hi.showFilter"  class="md-icon-button" aria-label="Search button" layout-align="right">
+        <md-icon md-svg-icon="action:search" ng-click="hi.showLocationPicker=true" style="color: white;"></md-icon>
+      </md-button>
+      <md-button ng-show="hi.showLocationPicker || hi.showFilter"  class="md-icon-button" layout-align="right" aria-label="Cancel Search" >
+        <md-icon md-svg-icon="content:clear" ng-click="hi.cancelFilterAndSearch();" style="color: white;"></md-icon>
       </md-button>
 
       <!-- <md-button class="md-flat" ng-click="hi.newPlace($event)">
@@ -46,12 +53,46 @@
         new
       </md-button> -->
 
-    
 
+
+    </div>
+
+    <div ng-hide="false" layout="row" layout-sm="column" layout-align="space-around" >
+      <md-progress-linear md-mode="indeterminate" style="color:black;" ></md-progress-linear>
     </div>
   </md-toolbar>
 
 
+  <div layout-align="center start" layout="row" layout-fill  style="position: absolute; z-index: 10;" >
+      <md-content class="md-whiteframe-z2" flex="90">
+        <!-- <p layout-margin>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis varius nibh, eget fringilla massa. Phasellus sollicitudin, tellus vel hendrerit commodo, eros purus placerat mi, a tristique orci lacus egestas lectus. Aenean congue rutrum suscipit. Aliquam erat volutpat. Sed sollicitudin dui sit amet sapien luctus tincidunt. In eu ipsum lectus. Duis bibendum auctor lorem hendrerit tempor. Aenean rhoncus, dui in mattis interdum, ex erat ultricies libero, ut tincidunt lectus ex finibus lacus. Integer iaculis, nunc tempus finibus cursus, elit eros dictum dolor, et dapibus lectus sapien at risus. Quisque ac metus in turpis malesuada rutrum sed quis quam. Mauris pulvinar dignissim nunc a laoreet. Nam a arcu at sem imperdiet iaculis.
+      </p> -->
+        <!-- <div ng-hide="false" layout="row" layout-sm="column" layout-align="space-around">
+          <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+        </div> -->
+        <!-- ng-hide="!hi.loadingMap"  -->
+
+        <!-- <div>
+          <iframe width="100%" height="100%" frameborder="0" style="border:0" ng-src={{map.url}} allowfullscreen>
+          </iframe>
+        </div> -->
+
+
+
+        <div layout="row" flex="100">
+          <md-button class="md-icon-button" aria-label="Cancel" layout-align="left">
+            <md-icon md-svg-icon="content:clear" ng-click="cancel();" style="color: red;"></md-icon>
+          </md-button>
+          <span flex></span>
+          <md-button class="md-icon-button" aria-label="Done" layout-align="right">
+            <md-icon md-svg-icon="action:done" ng-click="done();" style="color: green;" md-autofocus></md-icon>
+          </md-button>
+        </div>
+
+
+      </md-content>
+    </div>
 
 <!-- <div ng-hide="mode == 'display';">
   <p>
@@ -59,7 +100,7 @@
   </p>
 </div> -->
 
-<md-list  ng-cloak>
+<md-list  ng-cloak >
   <!-- <md-subheader class="md-no-sticky">My Places
   </md-subheader> -->
   <md-list-item ng-click="hi.fireSelectedPlaceEvent($event, place)" ng-repeat="place in (filteredPlaces = (hi.places | filter:query)) ">
