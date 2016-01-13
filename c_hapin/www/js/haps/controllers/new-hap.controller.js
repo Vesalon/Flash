@@ -6,9 +6,9 @@
     .controller('NewHapController', NewHapController);
 
 
-  NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places','$mdpPicker', 'relativeDateFilter'];
+  NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places','$mdpPicker', 'relativeDateFilter', '$mdMedia', '$mdDialog'];
 
-  function NewHapController($scope, $state, Auth, Haps, Places, $mdpPicker, relativeDateFilter) {
+  function NewHapController($scope, $state, Auth, Haps, Places, $mdpPicker, relativeDateFilter, $mdMedia, $mdDialog) {
     var hi = this;
     hi.isAuthenticated = Auth.isAuthenticated();
     var theHap = new Object();
@@ -17,6 +17,8 @@
     hi.showTimePicker = showTimePicker;
 	hi.showPicker = showPicker;
     $scope.currentDate = new Date();
+    hi.resetTheLocation = resetTheLocation;
+   hi.showPlaces = showPlaces;
 
 	$scope.currentDate.setHours($scope.currentDate.getHours() + 1);
     // hi.clear = clear;
@@ -91,6 +93,58 @@
          $scope.currentDate = selectedDate;
        });;
      }
+
+     function resetTheLocation() {
+      // console.log('firing new-hap:place-deselected');
+      hi.theHap.location = undefined;
+      //  $scope.$broadcast("new-hap:place-deselected");
+    };
+
+    function showPlaces(ev) {
+      // var editedPlace = angular.copy(place);
+      var useFullScreen = true; //($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+      console.log('useFullScreen=',useFullScreen);
+      $mdDialog.show({
+          controller: 'PlacesDialogController',
+          templateUrl: 'templates/private/places/placesDialog.html',
+          // template: '',
+          locals: {
+            //  place: place,
+            //  editedPlace: editedPlace,
+            // mode: 'edit'
+          },
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose: true,
+          fullscreen: useFullScreen,
+          // openFrom: '#left',
+          // closeTo: '#right',
+          openFrom: {
+            top: 50,
+            width: 30,
+            height: 80
+          },
+          closeTo: {
+            left: 1500
+          },
+        })
+        .then(function(answer) {
+          console.log('DONE from showPlaces in new hap')
+          // // $scope.status = 'Your change is: "' + editedPlace.nickname + '".';
+          // // refresh model
+          // for (var i = 0; i < hi.places.length; ++i) {
+          //   if (hi.places[i].id == editedPlace.id) {
+          //     hi.places[i] = editedPlace;
+          //     break;
+          //   }
+          // }
+          // activate();
+        }, function() {
+          console.log('CANCEL from showPlaces in new hap')
+          // $scope.status = 'You cancelled the dialog.';
+        });
+    };
+
 
   //   // Define variables for our Map object
   // var areaLat      = 44.2126995,
