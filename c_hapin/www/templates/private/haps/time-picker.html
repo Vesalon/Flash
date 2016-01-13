@@ -1,0 +1,88 @@
+<md-dialog aria-label="" class="mdp-timepicker" flex="5" ng-class="{ 'portrait': !$mdMedia('gt-xs') }"> 
+	<md-dialog-content layout="column" layout-wrap>
+		<md-tabs md-dynamic-height>
+			<md-tab label="{{ picker.currentDate | relativeDate}}">
+				<md-toolbar layout="column" layout-align="center center" class="mdp-timepicker-time md-hue-1 md-primary"> 
+					<div class="mdp-timepicker-selected-time"> 
+						<span ng-class="{ 'active': picker.currentView == picker.VIEW_HOURS }" ng-click="picker.currentView = picker.VIEW_HOURS">{{ picker.currentMoment.format("hh") }}</span>
+						:  
+						<span ng-class="{ 'active': picker.currentView == picker.VIEW_MINUTES }" ng-click="picker.currentView = picker.VIEW_MINUTES">{{ picker.currentMoment.format("mm") }}</span>
+					</div> 
+					<div layout="row" class="mdp-timepicker-selected-ampm">  
+						<span ng-click="picker.setAM()" ng-class="{'active': picker.currentMoment.format('A') == 'AM' }">AM</span> 
+						<span ng-click="picker.setPM()" ng-class="{'active': picker.currentMoment.format('A') == 'PM' }">PM</span> 
+					</div>  
+				</md-toolbar> 
+				<div> 
+					<div class="mdp-clock-switch-container" ng-switch="picker.currentView" layout layout-align="center center"> 
+					<mdp-clock class="mdp-animation-zoom" ng-model="picker.clockHours" type="hours" ng-switch-when="1"></mdp-clock> 
+					<mdp-clock class="mdp-animation-zoom" ng-model="picker.clockMinutes" type="minutes" ng-switch-when="2"></mdp-clock> 
+					</div> 
+				</div> 
+				<div> 
+					<div layout="column" layout-align="center center"> 
+						<md-toolbar layout="column" layout-align="center center" flex class="mdp-datepicker-date-wrapper md-hue-1 md-primary" layout="column"> 
+							<span class="mdp-datepicker-year" ng-click="picker.showYear()" ng-class="{ 'active': picker.selectingYear }">{{ picker.currentMoment.format('YYYY') }}</span> 
+							<span class="mdp-datepicker-date" ng-click="picker.showCalendar()" ng-class="{ 'active': !picker.selectingYear }">{{ picker.currentMoment.format("ddd, MMM DD") }}</span>  
+						</md-toolbar>  
+					</div>   
+					<div>  
+						<div class="mdp-datepicker-select-year mdp-animation-zoom" layout="column" ng-if="picker.selectingYear"> 
+							<md-virtual-repeat-container md-auto-shrink md-top-index="picker.yearTopIndex"> 
+								<div flex md-virtual-repeat="item in picker.yearItems" md-on-demand class="repeated-year"> 
+									<span class="md-button" ng-click="picker.selectYear(item)" md-ink-ripple ng-class="{ 'md-primary current': item == year }">{{ item }}</span> 
+								</div> 
+							</md-virtual-repeat-container> 
+						</div> 
+						<mdp-calendar ng-if="!picker.selectingYear" class="mdp-animation-zoom" date="picker.currentMoment"></mdp-calendar> 
+						<md-dialog-actions layout-align="end center" layout="row"> 
+							<md-button ng-click="picker.cancel()" aria-label="Cancel"> Cancel </md-button>
+							<md-button ng-click="picker.confirm()" aria-label="Save"> Save </md-button>
+						</md-dialog-actions> 
+					</div> 
+				</div>
+			</md-tab>
+			<md-tab label="Until">
+				<md-toolbar layout="column" layout-align="center center" class="mdp-timepicker-time md-hue-1 md-primary"> 
+					<div class="mdp-timepicker-selected-time"> 
+						<span ng-class="{ 'active': picker.currentView == picker.VIEW_HOURS }" ng-click="picker.currentView = picker.VIEW_HOURS">{{ picker.currentMoment.format("hh") }}</span>
+						:  
+						<span ng-class="{ 'active': picker.currentView == picker.VIEW_MINUTES }" ng-click="picker.currentView = picker.VIEW_MINUTES">{{ picker.currentMoment.format("mm") }}</span>
+					</div> 
+					<div layout="row" class="mdp-timepicker-selected-ampm">  
+						<span ng-click="picker.setAM()" ng-class="{'active': picker.currentMoment.format('A') == 'AM' }">AM</span> 
+						<span ng-click="picker.setPM()" ng-class="{'active': picker.currentMoment.format('A') == 'PM' }">PM</span> 
+					</div>  
+				</md-toolbar> 
+				<div> 
+					<div class="mdp-clock-switch-container" ng-switch="picker.currentView" layout layout-align="center center"> 
+					<mdp-clock class="mdp-animation-zoom" ng-model="picker.clockHours" type="hours" ng-switch-when="1"></mdp-clock> 
+					<mdp-clock class="mdp-animation-zoom" ng-model="picker.clockMinutes" type="minutes" ng-switch-when="2"></mdp-clock> 
+					</div> 
+				</div> 
+				<div> 
+					<div layout="column" layout-align="center center"> 
+						<md-toolbar layout="column" layout-align="center center" flex class="mdp-datepicker-date-wrapper md-hue-1 md-primary" layout="column"> 
+							<span class="mdp-datepicker-year" ng-click="picker.showYear()" ng-class="{ 'active': picker.selectingYear }">{{ picker.currentMoment.format('YYYY') }}</span> 
+							<span class="mdp-datepicker-date" ng-click="picker.showCalendar()" ng-class="{ 'active': !picker.selectingYear }">{{ picker.currentMoment.format("ddd, MMM DD") }}</span>  
+						</md-toolbar>  
+					</div>   
+					<div>  
+						<div class="mdp-datepicker-select-year mdp-animation-zoom" layout="column" ng-if="picker.selectingYear"> 
+							<md-virtual-repeat-container md-auto-shrink md-top-index="picker.yearTopIndex"> 
+								<div flex md-virtual-repeat="item in picker.yearItems" md-on-demand class="repeated-year"> 
+									<span class="md-button" ng-click="picker.selectYear(item)" md-ink-ripple ng-class="{ 'md-primary current': item == year }">{{ item }}</span> 
+								</div> 
+							</md-virtual-repeat-container> 
+						</div> 
+						<mdp-calendar ng-if="!picker.selectingYear" class="mdp-animation-zoom" date="picker.currentMoment"></mdp-calendar> 
+						<md-dialog-actions layout-align="end center" layout="row"> 
+							<md-button ng-click="picker.cancel()" aria-label="Cancel"> Cancel </md-button>
+							<md-button ng-click="picker.confirm()" aria-label="Save"> Save </md-button>
+						</md-dialog-actions> 
+					</div> 
+				</div>
+			</md-tab>
+		</md-tabs>
+	</md-dialog-content> 
+</md-dialog>

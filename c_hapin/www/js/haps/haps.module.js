@@ -19,7 +19,7 @@ angular
 
 
 angular
-  .module('hapin.haps.controllers', ['mdPickers','scDateTime']); //, ['checklist-model']);
+  .module('hapin.haps.controllers', ['mdPickers', 'quark.relativeDate', 'scDateTime']); //, ['checklist-model']);
 
 angular
   .module('hapin.haps.directives', []);
