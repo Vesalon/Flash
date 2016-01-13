@@ -20,6 +20,8 @@
     // hi.cancelSearch = cancelSearch;
     hi.showLocationPicker = false;
     hi.cancelFilterAndSearch= cancelFilterAndSearch;
+    hi.cancelMap = cancelMap;
+    hi.selectLocation = selectLocation;
     hi.loadingMap = false;
     hi.mapLoaded = false;
 
@@ -42,7 +44,7 @@
     $scope.$on('location-picker:location-picked', function() {
      console.log('directive caugth location-picker:location-picked location== ', $scope.location);
      hi.loadingMap = true;
-     
+
       // // controller.loadMap(scope.location.address);
       // if (scope.location) {
       //   // console.log('loading map by formatted location: ', controller.formatForMap(scope.location.name, scope.location.address));
@@ -136,16 +138,6 @@
       $mdDialog.cancel();
     };
 
-    // function cancelFilter() {
-    //   hi.showFilter = false;
-    //   $scope.query = "";
-    // };
-    //
-    // function cancelSearch() {
-    //   hi.showLocationPicker = false;
-    //   // $scope.query = "";
-    // };
-
     function cancelFilterAndSearch() {
       hi.showFilter = false;
       hi.showLocationPicker = false;
@@ -158,6 +150,27 @@
       hi.mapLoaded = false;
 
     };
+
+    function cancelMap() {
+      // hi.showFilter = false;
+      hi.showLocationPicker = true;
+      // $scope.query = "";
+      $scope.location = {
+        name: null,
+        address: null,
+      };
+      hi.loadingMap = false;
+      hi.mapLoaded = false;
+
+    };
+
+    function selectLocation(){
+      console.log('selected location = ', $scope.location);
+      fireSelectedPlaceEvent(null, {
+        name: $scope.location.name,
+        address: $scope.location.address
+      })
+    }
 
     function editPlace(ev, place) {
       var editedPlace = angular.copy(place);
