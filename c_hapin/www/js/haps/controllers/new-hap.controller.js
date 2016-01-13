@@ -5,35 +5,20 @@
     .module('hapin.haps.controllers')
     .controller('NewHapController', NewHapController);
 
-<<<<<<< HEAD
-  NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places', '$mdpDatePicker', '$mdMedia', '$mdDialog'];
 
-  function NewHapController($scope, $state, Auth, Haps, Places, $mdpDatePicker, $mdMedia, $mdDialog) {
-
-=======
   NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places','$mdpPicker', 'relativeDateFilter'];
 
   function NewHapController($scope, $state, Auth, Haps, Places, $mdpPicker, relativeDateFilter) {
->>>>>>> something
     var hi = this;
     hi.isAuthenticated = Auth.isAuthenticated();
     var theHap = new Object();
     hi.theHap = theHap;
     hi.showDatePicker = showDatePicker;
-<<<<<<< HEAD
-    hi.resetTheLocation = resetTheLocation;
-    hi.showPlaces = showPlaces;
-    // hi.friends = [];
-    // hi.guestlist = [];
-    // hi.theHap.guestlist = [];
-
-=======
     hi.showTimePicker = showTimePicker;
 	hi.showPicker = showPicker;
     $scope.currentDate = new Date();
 
 	$scope.currentDate.setHours($scope.currentDate.getHours() + 1);
->>>>>>> something
     // hi.clear = clear;
     //
     // $scope.location = {
