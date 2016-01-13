@@ -81,8 +81,8 @@
             // console.log('Location-picker-directive: entered scope.$applyAsync')
             // var gName = (place.geomerty && place.geomery.name) ? place.geometry: '';
             // console.log('place = ', place);
-            // console.log('place.name = ', place.name);
-            // console.log('place.address = ', place.formatted_address);
+            console.log('place.name = ', place.name);
+            console.log('place.address = ', place.formatted_address);
             // console.log('place.phone = ', place.formatted_phone_number);
             var mName = place.name;
             if (place.formatted_address.indexOf(place.name) >= 0) {
@@ -98,7 +98,9 @@
               //  lng: lng
             });
             //  http://stackoverflow.com/questions/26383507/listen-for-form-submit-event-in-directive
+            console.log('fired location-picker:location-picked' );
             $rootScope.$broadcast('location-picker:location-picked');
+
           });
         });
       }

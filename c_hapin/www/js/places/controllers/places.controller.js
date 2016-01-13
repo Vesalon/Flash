@@ -16,10 +16,17 @@
     hi.fireSelectedPlaceEvent = fireSelectedPlaceEvent;
     hi.fireCancelEvent = fireCancelEvent;
     hi.showFilter = false;
-    hi.cancelFilter = cancelFilter;
-    hi.cancelSearch = cancelSearch;
+    // hi.cancelFilter = cancelFilter;
+    // hi.cancelSearch = cancelSearch;
     hi.showLocationPicker = false;
     hi.cancelFilterAndSearch= cancelFilterAndSearch;
+    hi.loadingMap = false;
+    hi.mapLoaded = false;
+
+    $scope.location = {
+      name: null,
+      address: null,
+    };
 
     // $scope.$watch('query',function(newQuery,oldQuery){
     //    console.log('Places query = ', newQuery);
@@ -32,7 +39,25 @@
     //     }
     //   });
 
+    $scope.$on('location-picker:location-picked', function() {
+     console.log('directive caugth location-picker:location-picked location== ', $scope.location);
+     hi.loadingMap = true;
+     
+      // // controller.loadMap(scope.location.address);
+      // if (scope.location) {
+      //   // console.log('loading map by formatted location: ', controller.formatForMap(scope.location.name, scope.location.address));
+      //   // controller.loadMap(controller.formatForMap(scope.location.name, scope.location.address));
+      //   console.log('loading map by formatted location: ', $scope.location);
+      //   controller.loadMap($scope.location);
+      // };
+    });
 
+    $scope.$on('map-presenter:map-loaded', function() {
+      console.log('caught map-presenter:map-loaded');
+      hi.loadingMap = false;
+      hi.mapLoaded = true;
+      $scope.$apply();
+    })
 
     activate();
 
@@ -111,20 +136,27 @@
       $mdDialog.cancel();
     };
 
-    function cancelFilter() {
-      hi.showFilter = false;
-      $scope.query = "";
-    };
-
-    function cancelSearch() {
-      hi.showLocationPicker = false;
-      // $scope.query = "";
-    };
+    // function cancelFilter() {
+    //   hi.showFilter = false;
+    //   $scope.query = "";
+    // };
+    //
+    // function cancelSearch() {
+    //   hi.showLocationPicker = false;
+    //   // $scope.query = "";
+    // };
 
     function cancelFilterAndSearch() {
       hi.showFilter = false;
       hi.showLocationPicker = false;
       $scope.query = "";
+      $scope.location = {
+        name: null,
+        address: null,
+      };
+      hi.loadingMap = false;
+      hi.mapLoaded = false;
+
     };
 
     function editPlace(ev, place) {
