@@ -150,7 +150,7 @@
       };
       hi.loadingMap = false;
       hi.mapLoaded = false;
-
+      hi.mapMode = 'init'
     };
 
     function cancelMap() {
@@ -163,7 +163,8 @@
       };
       hi.loadingMap = false;
       hi.mapLoaded = false;
-
+      $scope.place = null;
+      hi.mapMode = 'init';
     };
 
     function done(){
@@ -191,10 +192,14 @@
       $scope.place = angular.copy(place);
       hi.mapMode = 'edit';
       hi.showLocationPicker = true;
+      hi.showFilter = false;
+
       $scope.location = {
         name: $scope.place.name,
         address: $scope.place.address
       }
+
+      hi.loadingMap = true;
 
     }
 
