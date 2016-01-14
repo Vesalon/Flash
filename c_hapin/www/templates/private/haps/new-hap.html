@@ -49,7 +49,23 @@
             </md-card>
           </div>
 
-          
+          <div ng-show="hi.theHap.guestlist != undefined" flex="50" flex-sm="100" flex-xs="100" layout="column">
+            <md-card>
+              <md-card-content>
+                <md-list>
+                  <md-list-item ng-repeat="guest in hi.theHap.guestlist">
+                    <p> {{ guest.select.username }} </p>
+                </md-list>
+              </md-card-content>
+              <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button" aria-label="Favorite">
+                  <md-icon md-svg-icon="content:clear" ng-click="hi.resetTheLocation();" style="color: red;"></md-icon>
+                </md-button>
+              </md-card-actions>
+            </md-card>
+          </div>
+
+
 
 
           <!-- <p>

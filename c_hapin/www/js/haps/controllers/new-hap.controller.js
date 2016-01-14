@@ -67,8 +67,8 @@
         //  hi.placesList.unshift(place);
       });
 
-      $scope.$on('guests:guest-selected', function (event, arg) {
-        // console.log('event places:place-selected was fired for ' );
+      $scope.$on('guests:guests-selected', function (event, arg) {
+        console.log('event guests:guests-selected was caught for ' );
         hi.theHap.guestlist = arg.guestlist;
         // console.log(arg.guestlist);
         console.log(hi.theHap.guestlist);

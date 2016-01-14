@@ -46,7 +46,8 @@
       if (idx > -1) list.splice(idx, 1);
       else list.push(item);
 
-      hi.fireGuestSelectEvent(item);
+      // don't fire it for every toggle; DONE button in the end will fire it
+      // hi.fireGuestSelectEvent(item);
 
     };
 
@@ -54,12 +55,12 @@
       return list.indexOf(item) > -1;
     };
 
-    hi.fireGuestSelectEvent = function(guest) {
-      // console.log(hi.guestlist);
-      $rootScope.$broadcast('guests:guest-selected', {
-        guestlist: hi.guestlist
-      });
-    }
+    // hi.fireGuestSelectEvent = function(guest) {
+    //   // console.log(hi.guestlist);
+    //   $rootScope.$broadcast('guests:guest-selected', {
+    //     guestlist: hi.guestlist
+    //   });
+    // }
 
     function cancelFilter(){
       hi.showFilter = false;
@@ -82,8 +83,8 @@
       //   place: place
       // });
       console.log('fired guests:guests-selected')
-      $rootScope.$broadcast('pguests:guests-selected', {
-        guests: hi.guestlist
+      $rootScope.$broadcast('guests:guests-selected', {
+        guestlist: hi.guestlist
       });
       $mdDialog.hide();
     };
