@@ -21,9 +21,11 @@
     hi.showLocationPicker = false;
     hi.cancelFilterAndSearch= cancelFilterAndSearch;
     hi.cancelMap = cancelMap;
-    hi.selectLocation = selectLocation;
+    hi.done = done;
     hi.loadingMap = false;
     hi.mapLoaded = false;
+    hi.mapMode = 'init';
+    // hi.locationpickerPlaceholder = "Hap location";
 
     $scope.location = {
       name: null,
@@ -164,68 +166,92 @@
 
     };
 
-    function selectLocation(){
+    function done(){
       console.log('selected location = ', $scope.location);
+
+      var nickname = (($scope.place && $scope.place.nickname) ? $scope.place.nickname : null);
+
       fireSelectedPlaceEvent(null, {
         name: $scope.location.name,
-        address: $scope.location.address
+        address: $scope.location.address,
+        nickname: nickname
       })
+
+      if(hi.mapMode == 'edit'){
+        $scope.place.name = $scope.location.name;
+        $scope.place.address = $scope.location.address;
+        $scope.place.nickname = nickname;
+        Places.update($scope.place);
+      }
+
     }
 
     function editPlace(ev, place) {
-      var editedPlace = angular.copy(place);
-      var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
-      $mdDialog.show({
-          controller: 'EditPlaceController',
-          //  controllerAs: 'hi',
-          // controller: ['$scope', 'place', 'uiGmapGoogleMapApi', function($scope, place, uiGmapGoogleMapApi) {
-          //   $scope.place = place;
-          //   console.log('inline controller: place=', $scope.place);
-          //     // Define variables for our Map object
-          //   var areaLat      = 44.2126995,
-          //       areaLng      = -100.2471641,
-          //       areaZoom     = 12;
-          //
-          //   uiGmapGoogleMapApi.then(function(maps) {
-          //     $scope.map     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
-          //     $scope.options = { scrollwheel: false };
-          //     var events = {
-          //           places_changed: function (searchBox) {}
-          //         }
-          //     $scope.searchbox = { template:"searchbox.template", events:events};
-          //   });
-          // }],
-          templateUrl: 'templates/private/places/editplace.html',
-          // template: '',
-          locals: {
-            //  place: place,
-            editedPlace: editedPlace,
-            // mode: 'edit'
-          },
-          parent: angular.element(document.body),
-          targetEvent: ev,
-          clickOutsideToClose: true,
-          fullscreen: useFullScreen,
-        })
-        .then(function(answer) {
-          console.log('DONE from editPlace in palces controller')
-          console.log(editedPlace)
-          // TODO: save edited place and update cache
-          Places.update(editedPlace);
-          // $scope.status = 'Your change is: "' + editedPlace.nickname + '".';
-          // refresh model
-          // for (var i = 0; i < hi.places.length; ++i) {
-          //   if (hi.places[i].id == editedPlace.id) {
-          //     hi.places[i] = editedPlace;
-          //     break;
-          //   }
-          // }
-          // activate();
-        }, function() {
-          console.log('CANCEL from editPlace in palces controller')
-          // $scope.status = 'You cancelled the dialog.';
-        });
-    };
+      // console.log('entered editPlace');
+      $scope.place = angular.copy(place);
+      hi.mapMode = 'edit';
+      hi.showLocationPicker = true;
+      $scope.location = {
+        name: $scope.place.name,
+        address: $scope.place.address
+      }
+
+    }
+
+    // function editPlace(ev, place) {
+    //   var editedPlace = angular.copy(place);
+    //   var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+    //   $mdDialog.show({
+    //       controller: 'EditPlaceController',
+    //       //  controllerAs: 'hi',
+    //       // controller: ['$scope', 'place', 'uiGmapGoogleMapApi', function($scope, place, uiGmapGoogleMapApi) {
+    //       //   $scope.place = place;
+    //       //   console.log('inline controller: place=', $scope.place);
+    //       //     // Define variables for our Map object
+    //       //   var areaLat      = 44.2126995,
+    //       //       areaLng      = -100.2471641,
+    //       //       areaZoom     = 12;
+    //       //
+    //       //   uiGmapGoogleMapApi.then(function(maps) {
+    //       //     $scope.map     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
+    //       //     $scope.options = { scrollwheel: false };
+    //       //     var events = {
+    //       //           places_changed: function (searchBox) {}
+    //       //         }
+    //       //     $scope.searchbox = { template:"searchbox.template", events:events};
+    //       //   });
+    //       // }],
+    //       templateUrl: 'templates/private/places/editplace.html',
+    //       // template: '',
+    //       locals: {
+    //         //  place: place,
+    //         editedPlace: editedPlace,
+    //         // mode: 'edit'
+    //       },
+    //       parent: angular.element(document.body),
+    //       targetEvent: ev,
+    //       clickOutsideToClose: true,
+    //       fullscreen: useFullScreen,
+    //     })
+    //     .then(function(answer) {
+    //       console.log('DONE from editPlace in palces controller')
+    //       console.log(editedPlace)
+    //       // TODO: save edited place and update cache
+    //       Places.update(editedPlace);
+    //       // $scope.status = 'Your change is: "' + editedPlace.nickname + '".';
+    //       // refresh model
+    //       // for (var i = 0; i < hi.places.length; ++i) {
+    //       //   if (hi.places[i].id == editedPlace.id) {
+    //       //     hi.places[i] = editedPlace;
+    //       //     break;
+    //       //   }
+    //       // }
+    //       // activate();
+    //     }, function() {
+    //       console.log('CANCEL from editPlace in palces controller')
+    //       // $scope.status = 'You cancelled the dialog.';
+    //     });
+    // };
 
     function newPlace(ev, place) {
       var newPlace;// = angular.copy(place);
