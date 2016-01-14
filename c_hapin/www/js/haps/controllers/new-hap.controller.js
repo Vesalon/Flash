@@ -20,6 +20,7 @@
     hi.resetTheLocation = resetTheLocation;
    hi.showPlaces = showPlaces;
    hi.showGuests = showGuests;
+   hi.showTitle = showTitle;
 
 	$scope.currentDate.setHours($scope.currentDate.getHours() + 1);
     // hi.clear = clear;
@@ -89,17 +90,15 @@
        });;
      }
 
-	function showPicker(ev) {
+	  function showPicker(ev) {
      	$mdpPicker(ev, $scope.currentDate).then(function(selectedDate) {
          $scope.currentDate = selectedDate;
-       });;
+       });
      }
 
      function resetTheLocation() {
-      // console.log('firing new-hap:place-deselected');
-      hi.theHap.location = undefined;
-      //  $scope.$broadcast("new-hap:place-deselected");
-    };
+       hi.theHap.location = undefined;
+    }
 
     function showPlaces(ev) {
       // var editedPlace = angular.copy(place);
@@ -172,6 +171,35 @@
 
         }, function() {
           console.log('CANCEL from showGuests in new hap')
+          // $scope.status = 'You cancelled the dialog.';
+        });
+
+    }
+
+    function showTitle(ev){
+      var useFullScreen = true; //($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+      console.log('useFullScreen=',useFullScreen);
+      $mdDialog.show({
+          template: '<md-dialog aria-label="Title and Description" ng-cloak><md-dialog-content> </md-dialog-content></md-dialog>',
+          locals: {},
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose: true,
+          fullscreen: useFullScreen,
+          openFrom: {
+            top: 50,
+            width: 30,
+            height: 80
+          },
+          closeTo: {
+            left: 1500
+          },
+        })
+        .then(function(answer) {
+          console.log('DONE from showTitle in new hap')
+
+        }, function() {
+          console.log('CANCEL from showTitle in new hap')
           // $scope.status = 'You cancelled the dialog.';
         });
 
