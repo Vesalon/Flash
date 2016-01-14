@@ -5,15 +5,18 @@
     .module('hapin.haps.controllers')
     .controller('GuestsController', GuestsController);
 
-  GuestsController.$inject = ['$scope', '$state', 'Auth', 'Friends', '$rootScope'];
+  GuestsController.$inject = ['$scope', '$state', 'Auth', 'Friends', '$rootScope', '$mdDialog'];
 
-  function GuestsController($scope, $state, Auth, Friends, $rootScope) {
+  function GuestsController($scope, $state, Auth, Friends, $rootScope, $mdDialog) {
     var hi = this;
     hi.isAuthenticated = Auth.isAuthenticated();
     hi.friends = [];
     hi.guestlist = [];
     hi.cancelFilter = cancelFilter;
     hi.showFilter = false;
+    hi.clearGuestlist = clearGuestlist;
+    hi.fireCancelEvent = fireCancelEvent;
+    hi.fireSelectedGuestsEvent = fireSelectedGuestsEvent;
 
     activate();
 
@@ -62,6 +65,28 @@
       hi.showFilter = false;
       $scope.friendsquery = "";
     }
+
+    function clearGuestlist(){
+      hi.guestlist = [];
+    }
+
+    function fireCancelEvent($event) {
+      console.log('fired guests:cancel')
+      hi.guestlist = [];
+      $rootScope.$broadcast('guests:cancel');
+      $mdDialog.cancel();
+    };
+
+    function fireSelectedGuestsEvent($event, place) {
+      // $scope.$emit('places:place-selected', {
+      //   place: place
+      // });
+      console.log('fired guests:guests-selected')
+      $rootScope.$broadcast('pguests:guests-selected', {
+        guests: hi.guestlist
+      });
+      $mdDialog.hide();
+    };
 
   }
 

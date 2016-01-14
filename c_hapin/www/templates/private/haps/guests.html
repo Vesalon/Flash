@@ -41,4 +41,16 @@
   </md-list>
 </md-virtual-repeat-container>
 
+<div  layout="row">
+        <md-button class="md-icon-button" aria-label="Cancel" layout-align="left">
+          <md-icon md-svg-icon="content:clear" ng-click="hi.clearGuestlist();" style="color: red;"></md-icon>
+        </md-button>
+
+        <span flex></span>
+
+        <md-button class="md-icon-button" aria-label="Done" layout-align="right">
+          <md-icon md-svg-icon="action:done" ng-click="hi.fireSelectedGuestsEvent();" style="color: green;" ></md-icon>
+        </md-button>
+  </div>
+
 <!-- <a class="btn btn-primary" ng-click="hi.tester()">see guestlist</a> -->
