@@ -12,6 +12,8 @@
     hi.isAuthenticated = Auth.isAuthenticated();
     hi.friends = [];
     hi.guestlist = [];
+    hi.cancelFilter = cancelFilter;
+    hi.showFilter = false;
 
     activate();
 
@@ -54,6 +56,11 @@
       $rootScope.$broadcast('guests:guest-selected', {
         guestlist: hi.guestlist
       });
+    }
+
+    function cancelFilter(){
+      hi.showFilter = false;
+      $scope.friendsquery = "";
     }
 
   }

@@ -146,15 +146,20 @@
       </md-tab>
 
 
-      <!-- <md-tab label="who"> -->
+
       <md-tab>
       <md-tab-label>
         <md-icon md-svg-icon='social:people' aria-label="who"></md-icon>
-        <!-- <div>where</div> -->
+
       </md-tab-label>
       <md-tab-body>
         <md-content class="md-padding">
-          <guests></guests>
+          <!-- <guests></guests> -->
+          <div>
+            <md-button class="md-raised" ng-click="hi.showGuests($event)">
+              show guests
+            </md-button>
+          </div>
         </md-content>
       </md-tab-body>
       </md-tab>
