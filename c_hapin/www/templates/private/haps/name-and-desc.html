@@ -1,0 +1,39 @@
+<md-dialog aria-label="Title and Description" ng-cloak>
+  <md-dialog-content layout-padding>
+
+    <md-toolbar md-theme="altTheme">
+      <!-- <md-dialog-actions > -->
+        <div class="md-toolbar-tools" layout-align="left">
+          <md-button class="md-icon-button" aria-label="Back button" >
+            <md-icon md-svg-icon="navigation:arrow_back" ng-click="cancel();" style="color: white;"></md-icon>
+          </md-button>
+        </div>
+        <!-- </md-dialog-actions> -->
+      </md-toolbar>
+
+    <md-input-container>
+      <label>Name</label>
+      <input ng-model="name">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label>Description</label>
+      <textarea ng-model="desc" columns="1" md-maxlength="150" rows="5"></textarea>
+    </md-input-container>
+
+    <md-dialog-actions layout="row">
+      <md-button class="md-icon-button" aria-label="Cancel" layout-align="left">
+        <md-icon md-svg-icon="content:clear" ng-click="cancel();" style="color: red;"></md-icon>
+      </md-button>
+      <span flex></span>
+      <!-- <md-button ng-click="answer(name)">
+       Not Useful
+      </md-button> -->
+      <md-button class="md-icon-button" aria-label="Done" layout-align="right">
+        <md-icon md-svg-icon="action:done" ng-click="hide();" style="color: green;" ></md-icon>
+      </md-button>
+    </md-dialog-actions>
+
+
+  </md-dialog-content>
+</md-dialog>

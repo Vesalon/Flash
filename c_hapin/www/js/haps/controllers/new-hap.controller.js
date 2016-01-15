@@ -20,7 +20,7 @@
     hi.resetTheLocation = resetTheLocation;
    hi.showPlaces = showPlaces;
    hi.showGuests = showGuests;
-   hi.showTitle = showTitle;
+   hi.showNameAndDesc = showNameAndDesc;
 
 	$scope.currentDate.setHours($scope.currentDate.getHours() + 1);
     // hi.clear = clear;
@@ -176,12 +176,28 @@
 
     }
 
-    function showTitle(ev){
+    function showNameAndDesc(ev){
       var useFullScreen = true; //($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
       console.log('useFullScreen=',useFullScreen);
       $mdDialog.show({
-          template: '<md-dialog aria-label="Title and Description" ng-cloak><md-dialog-content> </md-dialog-content></md-dialog>',
-          locals: {},
+          controller: function($scope, $mdDialog, name, desc){
+            $scope.name = name;
+            $scope.desc = desc;
+            $scope.hide = function() {
+              $mdDialog.hide({
+                name: $scope.name,
+                desc: $scope.desc
+              });
+            };
+            $scope.cancel = function() {
+              $mdDialog.cancel();
+            };
+          },
+          templateUrl: 'templates/private/haps/name-and-desc.html',
+          locals: {
+            name: hi.theHap.name,
+            desc: hi.theHap.desc
+          },
           parent: angular.element(document.body),
           targetEvent: ev,
           clickOutsideToClose: true,
@@ -195,11 +211,12 @@
             left: 1500
           },
         })
-        .then(function(answer) {
-          console.log('DONE from showTitle in new hap')
-
+        .then(function(data) {
+          console.log('DONE from showNameAndDesc in new hap; answer =', data);
+          hi.theHap.name = data.name;
+          hi.theHap.desc = data.desc;
         }, function() {
-          console.log('CANCEL from showTitle in new hap')
+          console.log('CANCEL from showNameAndDesc in new hap')
           // $scope.status = 'You cancelled the dialog.';
         });
 

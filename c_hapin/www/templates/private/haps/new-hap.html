@@ -4,7 +4,7 @@
     <md-content class="md-whiteframe-z2" flex="90" layout="row">
       <span flex="15"></span>
       <div flex="15" >
-        <md-icon md-svg-icon='action:label' ng-click="hi.showTitle()"  aria-label="name"></md-icon>
+        <md-icon md-svg-icon='action:label' ng-click="hi.showNameAndDesc()"  aria-label="name"></md-icon>
       </div>
       <div flex="15" >
         <md-icon md-svg-icon='action:schedule' ng-click="hi.showPicker($event)" aria-label="when"></md-icon>
@@ -25,6 +25,20 @@
   </md-content>
 
 
+          <div ng-show="hi.theHap.name != undefined || hi.theHap.desc != undefined" flex="50" flex-sm="100" flex-xs="100" layout="column">
+            <md-card>
+              <md-card-content>
+                {{hi.theHap.name}}
+                <br>
+                {{hi.theHap.desc}}
+              </md-card-content>
+              <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button" aria-label="Favorite">
+                  <md-icon md-svg-icon="content:clear" ng-click="hi.resetTheLocation();" style="color: red;"></md-icon>
+                </md-button>
+              </md-card-actions>
+            </md-card>
+          </div>
 
           <div ng-show="hi.theHap.location != undefined" flex="50" flex-sm="100" flex-xs="100" layout="column">
             <md-card>
