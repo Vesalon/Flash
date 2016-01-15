@@ -1,46 +1,41 @@
 <div ng-cloak >
 
   <div  layout-align="center start" layout="row" layout-fill  style="padding-bottom: 32px;" >
-    <md-content class="md-whiteframe-z2" flex="90" layout="row">
-      <span flex="15"></span>
-      <div flex="15" >
+    <md-content class="md-whiteframe-z2" flex="90" layout="row" layout-align="space-around center">
+
         <md-icon md-svg-icon='action:label' ng-click="hi.showNameAndDesc()"  aria-label="name"></md-icon>
-      </div>
-      <div flex="15" >
+
         <md-icon md-svg-icon='action:schedule' ng-click="hi.showPicker($event)" aria-label="when"></md-icon>
-      </div>
-      <div flex="15" >
+
         <md-icon md-svg-icon='maps:place' ng-click="hi.showPlaces($event)" aria-label="where"></md-icon>
-      </div>
-      <div flex="15" >
+
         <md-icon md-svg-icon='social:people' ng-click="hi.showGuests($event)" aria-label="who"></md-icon>
-      </div>
-      <div flex="15">
+
         <md-icon md-svg-icon='notification:more' aria-label="options"></md-icon>
-      </div>
     </md-content>
   </div>
   <md-content>
     <span flex></span>
   </md-content>
 
-
+<div layout="row" layout-wrap>
           <div ng-show="hi.theHap.name != undefined || hi.theHap.desc != undefined" flex="50" flex-sm="100" flex-xs="100" layout="column">
             <md-card>
+              <md-card-actions layout="row" layout-align="start right">
+                <span flex></span>
+                <md-button class="md-icon-button" aria-label="Favorite">
+                  <md-icon md-svg-icon="content:clear" ng-click="hi.resetTheLocation();" style="color: red;"></md-icon>
+                </md-button>
+              </md-card-actions>
               <md-card-content>
                 {{hi.theHap.name}}
                 <br>
                 {{hi.theHap.desc}}
               </md-card-content>
-              <md-card-actions layout="row" layout-align="end center">
-                <md-button class="md-icon-button" aria-label="Favorite">
-                  <md-icon md-svg-icon="content:clear" ng-click="hi.resetTheLocation();" style="color: red;"></md-icon>
-                </md-button>
-              </md-card-actions>
             </md-card>
           </div>
 
-          <div ng-show="hi.theHap.location != undefined" flex="50" flex-sm="100" flex-xs="100" layout="column">
+          <div ng-show="hi.theHap.location != undefined" flex="50" flex-sm="50" flex-xs="50" layout="column">
             <md-card>
               <!-- <md-card-title>
                 <md-card-title-text>
@@ -51,35 +46,39 @@
                   <div class="md-media-sm card-media"></div>
                 </md-card-title-media>
               </md-card-title> -->
+              <md-card-actions layout="row" layout-align="start right">
+                <span flex></span>
+                <!-- <div  layout-align="start right" >   -->
+                <md-button class="md-icon-button" aria-label="Favorite">
+                  <md-icon md-svg-icon="content:clear" ng-click="hi.resetTheLocation();" style="color: red;"></md-icon>
+                </md-button>
+              <!-- </div> -->
+              </md-card-actions>
               <md-card-content>
                 <!-- <place place="hi.theHap.location" mode='display'></place> -->
                 {{hi.theHap.location.nickname}}<br>{{hi.theHap.location.name}}<br>{{hi.theHap.location.address}}
               </md-card-content>
-              <md-card-actions layout="row" layout-align="end center">
-                <md-button class="md-icon-button" aria-label="Favorite">
-                  <md-icon md-svg-icon="content:clear" ng-click="hi.resetTheLocation();" style="color: red;"></md-icon>
-                </md-button>
-              </md-card-actions>
             </md-card>
           </div>
 
           <div ng-show="hi.theHap.guestlist != undefined" flex="50" flex-sm="50" flex-xs="50" layout="column">
             <md-card>
+              <md-card-actions layout="row" layout-align="start right">
+                <span flex></span>
+                <md-button class="md-icon-button" aria-label="Favorite">
+                  <md-icon md-svg-icon="content:clear" ng-click="hi.resetTheLocation();" style="color: red;"></md-icon>
+                </md-button>
+              </md-card-actions>
               <md-card-content>
                 <md-list>
                   <md-list-item ng-repeat="guest in hi.theHap.guestlist">
                     <p> {{ guest.select.username }} </p>
                 </md-list>
               </md-card-content>
-              <md-card-actions layout="row" layout-align="end center">
-                <md-button class="md-icon-button" aria-label="Favorite">
-                  <md-icon md-svg-icon="content:clear" ng-click="hi.resetTheLocation();" style="color: red;"></md-icon>
-                </md-button>
-              </md-card-actions>
             </md-card>
           </div>
 
-
+</div>
 
 
           <!-- <p>
