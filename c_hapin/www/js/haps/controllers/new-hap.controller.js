@@ -18,6 +18,8 @@
 	hi.showPicker = showPicker;
     $scope.currentDate = new Date();
     hi.resetTheLocation = resetTheLocation;
+    hi.resetTheGuests = resetTheGuests;
+    hi.resetTheNameAndDesc = resetTheNameAndDesc;
    hi.showPlaces = showPlaces;
    hi.showGuests = showGuests;
    hi.showNameAndDesc = showNameAndDesc;
@@ -99,6 +101,15 @@
      function resetTheLocation() {
        hi.theHap.location = undefined;
     }
+
+    function resetTheGuests() {
+      hi.theHap.guestlist = [];
+   }
+
+   function resetTheNameAndDesc() {
+     hi.theHap.name = undefined;
+     hi.theHap.desc = undefined;
+  }
 
     function showPlaces(ev) {
       // var editedPlace = angular.copy(place);
