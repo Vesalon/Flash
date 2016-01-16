@@ -68,6 +68,7 @@ function config($locationProvider, $compileProvider, $mdIconProvider, $mdTheming
     .iconSet('notification', 'img/icons/material-design/notification-icons.svg', 24)
     .iconSet('social', 'img/icons/material-design/social-icons.svg', 24)
     .iconSet('toggle', 'img/icons/material-design/toggle-icons.svg', 24)
+    .iconSet('other', 'img/icons/material-design-other/other-icons.svg', 24)
 
 
 }
