@@ -67,6 +67,16 @@ function HapsController($scope, $state, Auth, Haps) {
 
   }
 
+  $scope.onHapSwipeLeft = function(ev, hap) {
+    // console.log('hapid=', hap);
+      alert('You swiped LEFT hap: ' + hap.title);
+    };
+
+    $scope.onHapSwipeRight = function(ev, hap) {
+      // console.log('hapid=', hap);
+        alert('You swiped RIGHT hap: ' + hap.title);
+      };
+
   // function activate() {
   //   $scope.$watchCollection(function () { return $scope.haps; }, render);
   // }

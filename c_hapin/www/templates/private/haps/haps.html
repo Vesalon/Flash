@@ -1,30 +1,26 @@
-<div class="card">
-
-  <div class="content1">
-    <span class="title">My Haps</span>
-      <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-        <div ng-repeat="hap in hi.list | filter:query">
-          <p>
-          {{hap.title}}: {{hap.desc}}
-        </p>
-        </div>
-      </div> -->
-
-
-  <md-content>
-    <md-list>
-      <md-list-item class="md-3-line" ng-repeat="hap in hi.list | filter:query">
-        <div class="id{{hap.id}}">
-          <p>{{hap.title}}: {{hap.desc}}</p>
-        </div>
-        <md-divider ng-if="!$last"></md-divider>
-      </md-list-item>
-    </md-list>
-  </md-content>
-
-
-  </div>
+<md-content>
+<div>
+  <md-list>
+    <md-list-item ng-repeat="hap in hi.list | filter:query">
+      <md-card md-swipe-left="onHapSwipeLeft(null,hap)" md-swipe-right="onHapSwipeRight(null,hap)" layout-fill>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{hap.title}}</span>
+            <span class="md-subhead">{{hap.desc}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-sm card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-click="onHapSwipeLeft(null,hap)" >left</md-button>
+          <md-button ng-click="onHapSwipeRight(null,hap)">right</md-button>
+        </md-card-actions>
+      </md-card>
+    </md-list-item>
+  </md-list>
 </div>
+</md-content>
 
 <mfb-menu position="br" effect="zoomin" bgcolor="#F44336"
      active-icon="ion-android-add"
