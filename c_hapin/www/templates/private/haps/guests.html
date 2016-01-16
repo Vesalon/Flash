@@ -28,19 +28,30 @@
   </md-toolbar>
 
 <!-- <md-subheader class="md-no-sticky">Friends</md-subheader> -->
-<md-virtual-repeat-container style="height: 300px">
+<div  layout="row">
+  <div flex>
+    <md-subheader class="md-no-sticky">Friends</md-subheader>
+  <md-virtual-repeat-container style="height: 300px">
   <md-list>
     <md-list-item md-virtual-repeat="friend in hi.friends | filter:friendsquery"
-                  ng-click="hi.toggle(friend, hi.guestlist)">
+                  ng-click="hi.toggle(friend, hi.guestlist);hi.toggle(friend, hi.friends)">
       <p> {{ friend.select.username }} </p>
 
-      <md-checkbox class="md-secondary"
-                  ng-click="hi.toggle(friend, hi.guestlist)"
-                  ng-checked="hi.exists(friend, hi.guestlist)"
-                  id="{{ friend.select.username }}"></md-checkbox>
   </md-list>
 </md-virtual-repeat-container>
+</div>
+<div flex>
+  <md-subheader class="md-no-sticky">Guestlist</md-subheader>
+<md-virtual-repeat-container style="height: 300px">
+<md-list>
+  <md-list-item md-virtual-repeat="friend in hi.guestlist"
+                ng-click="hi.toggle(friend, hi.guestlist);hi.toggle(friend, hi.friends)">
+    <p> {{ friend.select.username }} </p>
 
+</md-list>
+</md-virtual-repeat-container>
+</div>
+</div>
 <div  layout="row">
         <md-button class="md-icon-button" aria-label="Cancel" layout-align="left">
           <md-icon md-svg-icon="content:clear" ng-click="hi.clearGuestlist();" style="color: red;"></md-icon>
@@ -51,6 +62,6 @@
         <md-button class="md-icon-button" aria-label="Done" layout-align="right">
           <md-icon md-svg-icon="action:done" ng-click="hi.fireSelectedGuestsEvent();" style="color: green;" ></md-icon>
         </md-button>
-  </div>
+</div>
 
 <!-- <a class="btn btn-primary" ng-click="hi.tester()">see guestlist</a> -->

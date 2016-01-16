@@ -41,7 +41,7 @@
       console.log(hi.guestlist);
     }
 
-    hi.toggle = function (item, list) {
+    hi.toggle = function(item, list) {
       var idx = list.indexOf(item);
       if (idx > -1) list.splice(idx, 1);
       else list.push(item);
