@@ -1,7 +1,7 @@
 <div ng-cloak >
 
-  <div  layout-align="center start" layout="row" layout-fill  style="padding-bottom: 32px;" >
-    <md-content class="md-whiteframe-z2" flex="90" layout="row" layout-align="space-around center">
+  <div  layout-align="center start" layout="row" layout-fill   style="position: relative;z-index: 20 !important;" >
+    <md-content class="md-toolbar-tools md-whiteframe-3dp" flex="100" layout="row" layout-align="space-around center" >
 
         <md-icon md-svg-icon='action:label' ng-click="hi.showNameAndDesc()"  aria-label="name"></md-icon>
 
@@ -11,11 +11,34 @@
 
         <md-icon md-svg-icon='social:people' ng-click="hi.showGuests($event)" aria-label="who"></md-icon>
 
-        <md-icon md-svg-icon='notification:more' aria-label="options"></md-icon>
+
+          <div>
+            <md-menu >
+              <md-button aria-label="Open options" class="md-icon-button" ng-click="hi.openOptionsMenu($mdOpenMenu, $event)">
+                <md-icon md-menu-origin md-svg-icon="notification:more"></md-icon>
+              </md-button>
+              <md-menu-content width="2">
+                <md-menu-item>
+                  <md-button ng-click="hi.showTodo($event)" layout-align="center center">
+                    <md-icon md-svg-icon="action:assignment" md-menu-align-target></md-icon>
+                  </md-button>
+                </md-menu-item>
+                <md-menu-item>
+              </md-menu-content>
+            </md-menu>
+          </div>
+
     </md-content>
   </div>
+
+  <!-- <div  layout-align="center start" layout="row" layout-fill  style="padding-bottom: 32px; position: relative; z-index: 15 !important;" >
+    <md-content class="md-toolbar-tools md-whiteframe-2dp" flex="100" layout="row" layout-align="space-around center" >
+        <md-icon md-svg-icon='action:assignment' aria-label="todo"></md-icon>
+    </md-content>
+  </div> -->
+
   <md-content>
-    <span flex></span>
+    <span flex style="height: 32px;" ></span>
   </md-content>
 
 <div layout="row" layout-wrap>

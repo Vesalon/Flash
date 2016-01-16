@@ -19,7 +19,7 @@
 </div> -->
 
 <md-toolbar md-theme="altTheme">
-    <div class="md-toolbar-tools" flex layout="row" layout-align="center center">
+    <div class="md-toolbar-tools md-whiteframe-3dp" flex layout="row" layout-align="center center" style="position: relative;z -index:30 !important;">
       <!-- <h1>favorite places</h1> -->
       <md-button class="md-icon-button" aria-label="Back button" layout-align="left">
         <md-icon md-svg-icon="navigation:arrow_back" ng-click="hi.fireCancelEvent();" style="color: white;"></md-icon>
@@ -57,7 +57,7 @@
   </md-toolbar>
 
 
-  <div ng-show="hi.loadingMap || hi.mapLoaded" layout-align="center start" layout="row" layout-fill  style="position: absolute; z-index: 10; " >
+  <div ng-show="hi.loadingMap || hi.mapLoaded" layout-align="center start" layout="row" layout-fill   style="position: absolute; z-index: 10;" >
       <md-content class="md-whiteframe-z2" flex="90" >
 
         <div flex layout="row" layout-align="center" >

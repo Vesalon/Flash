@@ -13,6 +13,7 @@
     hi.isAuthenticated = Auth.isAuthenticated();
     var theHap = new Object();
     hi.theHap = theHap;
+    hi.openOptionsMenu = openOptionsMenu;
     hi.showDatePicker = showDatePicker;
     hi.showTimePicker = showTimePicker;
 	hi.showPicker = showPicker;
@@ -23,6 +24,7 @@
    hi.showPlaces = showPlaces;
    hi.showGuests = showGuests;
    hi.showNameAndDesc = showNameAndDesc;
+   hi.showTodo = showTodo;
 
 	$scope.currentDate.setHours($scope.currentDate.getHours() + 1);
     // hi.clear = clear;
@@ -79,6 +81,11 @@
       });
 
     }
+
+    function openOptionsMenu($mdOpenMenu, ev) {
+      // originatorEv = ev;
+      $mdOpenMenu(ev);
+    };
 
     function showDatePicker(ev) {
       $mdpDatePicker(ev, $scope.currentDate).then(function(selectedDate) {
@@ -233,6 +240,36 @@
 
     }
 
+    function showTodo(ev){
+      var useFullScreen = true; //($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+      console.log('useFullScreen=',useFullScreen);
+      $mdDialog.show({
+          // controller: 'PlacesDialogController',
+          template: '<md-dialog aria-label="Guests" ng-cloak><md-dialog-content><todo></todo></md-dialog-content></md-dialog>',
+          // template: '',
+          locals: {},
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose: true,
+          fullscreen: useFullScreen,
+          openFrom: {
+            top: 50,
+            width: 30,
+            height: 80
+          },
+          closeTo: {
+            left: 1500
+          },
+        })
+        .then(function(answer) {
+          console.log('DONE from showGuests in new hap')
+
+        }, function() {
+          console.log('CANCEL from showGuests in new hap')
+          // $scope.status = 'You cancelled the dialog.';
+        });
+
+    }
 
   //   // Define variables for our Map object
   // var areaLat      = 44.2126995,
