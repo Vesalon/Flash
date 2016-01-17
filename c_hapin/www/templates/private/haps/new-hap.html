@@ -90,7 +90,7 @@
           </div>
 
           <div ng-show="hi.theHap.guestlist && hi.theHap.guestlist.length " flex="50" flex-sm="50" flex-xs="50" layout="column">
-            <md-card>
+            <md-card ng-click="$scope.temp = hi.theHap;hi.showGuests($event)">
               <md-card-actions layout="row" layout-align="start right">
                 <span flex></span>
                 <md-button class="md-icon-button" aria-label="Favorite">

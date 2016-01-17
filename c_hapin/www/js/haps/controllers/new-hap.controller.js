@@ -6,9 +6,9 @@
     .controller('NewHapController', NewHapController);
 
 
-  NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places','$mdpPicker', 'relativeDateFilter', '$mdMedia', '$mdDialog'];
+  NewHapController.$inject = ['$scope', '$state', 'Auth', 'Haps', 'Places','$mdpPicker', 'relativeDateFilter', '$mdMedia', '$mdDialog', 'sharedProp'];
 
-  function NewHapController($scope, $state, Auth, Haps, Places, $mdpPicker, relativeDateFilter, $mdMedia, $mdDialog) {
+  function NewHapController($scope, $state, Auth, Haps, Places, $mdpPicker, relativeDateFilter, $mdMedia, $mdDialog, sharedProp) {
     var hi = this;
     hi.isAuthenticated = Auth.isAuthenticated();
     var theHap = new Object();
@@ -166,6 +166,7 @@
     function showGuests(ev){
       var useFullScreen = true; //($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
       console.log('useFullScreen=',useFullScreen);
+      sharedProp.setHap(theHap);
       $mdDialog.show({
           // controller: 'PlacesDialogController',
           template: '<md-dialog aria-label="Guests" ng-cloak><md-dialog-content><guests></guests></md-dialog-content></md-dialog>',

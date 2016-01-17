@@ -5,9 +5,9 @@
     .module('hapin.haps.controllers')
     .controller('GuestsController', GuestsController);
 
-  GuestsController.$inject = ['$scope', '$state', 'Auth', 'Friends', '$rootScope', '$mdDialog'];
+  GuestsController.$inject = ['$scope', '$state', 'Auth', 'Friends', '$rootScope', '$mdDialog', 'sharedProp'];
 
-  function GuestsController($scope, $state, Auth, Friends, $rootScope, $mdDialog) {
+  function GuestsController($scope, $state, Auth, Friends, $rootScope, $mdDialog, sharedProp) {
     var hi = this;
     hi.isAuthenticated = Auth.isAuthenticated();
     hi.friends = [];
@@ -28,7 +28,27 @@
       }
 
       function friendsSuccessFn(data, status, headers, config) {
-        hi.friends = data.data;
+        var theHap = sharedProp.getHap();
+        // console.log(theHap);
+        if(theHap != undefined && theHap.guestlist != undefined && theHap.guestlist.length > 0) {
+          for(var i = 0; i < data.data.length; i++) {
+            var add = false;
+            for(var j = 0; j < theHap.guestlist.length; j++) {
+              if(theHap.guestlist[j].id == data.data[i].id) {
+                add = true;
+                break;
+              }
+            }
+            if(add) {
+              // console.log(data.data[i].alias + " is in guestlist");
+              hi.guestlist.push(data.data[i]);
+            } else {
+              hi.friends.push(data.data[i]);
+            }
+          }
+        } else {
+          hi.friends = data.data;
+        }
       }
 
       function friendsErrorFn(data, status, headers, config) {
