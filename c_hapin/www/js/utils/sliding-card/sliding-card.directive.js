@@ -72,8 +72,8 @@
         };
 
         $scope.onSwipeRight = function(ev) {
-          // console.log('hapid=', hap);
-          $scope.myValue=false;
+          console.log('You swiped RIGHT');
+          $scope.myValue=true;
             // alert('You swiped RIGHT');
           };
 
