@@ -69,12 +69,14 @@ function HapsController($scope, $state, Auth, Haps) {
 
   $scope.onHapSwipeLeft = function(ev, hap) {
     // console.log('hapid=', hap);
-      alert('You swiped LEFT hap: ' + hap.title);
+    $scope.moveDir='move-left';
+      // alert('You swiped LEFT hap: ' + hap.title);
     };
 
     $scope.onHapSwipeRight = function(ev, hap) {
       // console.log('hapid=', hap);
-        alert('You swiped RIGHT hap: ' + hap.title);
+      $scope.moveDir='move-right';
+        // alert('You swiped RIGHT hap: ' + hap.title);
       };
 
   // function activate() {

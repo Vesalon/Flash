@@ -1,15 +1,13 @@
 
 <div >
-<sliding-card headline="my headline" subhead="my subhead" ></sliding-card>
+<sliding-card headline="my headline" subhead="your subhead" leftbuttontext="left" rightbuttontext="right"></sliding-card>
 </div>
-<!-- <md-content> -->
+<md-content>
 
-<!-- <sliding-card headline="my headline" subhead="my subhead"></sliding-card> -->
-
-<!-- <div>
+<div>
   <md-list>
     <md-list-item ng-repeat="hap in hi.list | filter:query">
-      <md-card md-swipe-left="onHapSwipeLeft(null,hap)" md-swipe-right="onHapSwipeRight(null,hap)" style="width: 100%;" >
+      <md-card class='animate-slide' ng-class="moveDir"  md-swipe-left="onHapSwipeLeft(null,hap)" md-swipe-right="onHapSwipeRight(null,hap)" style="width: 100%;" >
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline">{{hap.title}}</span>
@@ -26,8 +24,31 @@
       </md-card>
     </md-list-item>
   </md-list>
-</div> -->
-<!-- </md-content> -->
+</div>
+ </md-content>
+
+<!-- <div>
+  <md-list>
+    <md-list-item ng-repeat="hap in hi.list | filter:query">
+      <md-card class='animate-slide' ng-class="moveDir"  md-swipe-left="onHapSwipeLeft(null,hap)" md-swipe-right="onHapSwipeRight(null,hap)" style="width: 100%;" >
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{hap.title}}</span>
+            <span class="md-subhead">{{hap.desc}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-sm card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-click="onHapSwipeLeft(null,hap)" >left</md-button>
+          <md-button ng-click="onHapSwipeRight(null,hap)">right</md-button>
+        </md-card-actions>
+      </md-card>
+    </md-list-item>
+  </md-list>
+</div>
+ </md-content> -->
 
 <mfb-menu position="br" effect="zoomin" bgcolor="#F44336"
      active-icon="ion-android-add"

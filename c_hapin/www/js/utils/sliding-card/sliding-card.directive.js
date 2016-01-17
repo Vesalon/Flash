@@ -5,15 +5,17 @@
     .module('hapin.utils.directives')
     .directive('slidingCard', slidingCard);
 
-  slidingCard.$inject = ['$rootScope', '$timeout'];
+  slidingCard.$inject = ['$rootScope', '$animate'];
 
-  function slidingCard($rootScope, $timeout) {
+  function slidingCard($rootScope, $animate) {
     return{
       restrict: 'E',
       templateUrl: 'templates/utils/sliding-card.html',
       scope: {
         headline: '@',
-        subhead: '@'
+        subhead: '@',
+        leftbuttontext: '@',
+        rightbuttontext: '@',
       },
       controller: 'SlidingCardController',
       //
@@ -66,14 +68,14 @@
       $scope.myValue=false;
 
       $scope.onSwipeLeft = function(ev) {
-        // console.log('hapid=', hap);
-        $scope.myValue=true;
+        console.log('You swiped LEFT');
+        // $scope.myValue=true;
           // alert('You swiped LEFT');
         };
 
         $scope.onSwipeRight = function(ev) {
           console.log('You swiped RIGHT');
-          $scope.myValue=true;
+          // $scope.myValue=true;
             // alert('You swiped RIGHT');
           };
 

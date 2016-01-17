@@ -194,61 +194,35 @@ h1 {
 }
 
 .animate-slide {
- -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
-    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
-    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
-    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
+ -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
   /*line-height:20px;*/
   opacity:1;
-  padding:10px;
+  /*padding:10px;*/
   /*border:1px solid black;*/
-  /*background:white;*/
-  position: absolute;
+  background:white;
+  position: relative;
   left: 0;
 }
 
-.animate-slide.ng-hide {
+/*.animate-slide.ng-hide {
   left: -100%;
   opacity:0;
   padding:0 10px;
-}
+}*/
 
-.animate-slide-left {
- -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
-    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
-    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
-    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
-  /*line-height:20px;*/
-  opacity:1;
-  padding:10px;
-  /*border:1px solid black;*/
-  /*background:white;*/
-  position: absolute;
-  left: 0;
-}
-
-.animate-slide-left.ng-hide {
+.animate-slide.move-left {
   left: -100%;
   opacity:0;
-  padding:0 10px;
+  /*padding:0 10px;*/
+  background: green;
 }
 
-.animate-slide-right {
- -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
-    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
-    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
-    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
-  /*line-height:20px;*/
-  opacity:1;
-  padding:10px;
-  /*border:1px solid black;*/
-  /*background:white;*/
-  position: absolute;
-  right: 0;
-}
-
-.animate-slide-right.ng-hide {
-  right: -100%;
+.animate-slide.move-right {
+  left: 100%;
   opacity:0;
   padding:0 10px;
+  background: red;
 }
