@@ -48,7 +48,7 @@
 
 <div layout="row" layout-wrap>
           <div ng-show="hi.theHap.name || hi.theHap.desc " flex="50" flex-sm="100" flex-xs="100" layout="column">
-            <md-card>
+            <md-card ng-click="hi.showNameAndDesc()">
               <md-card-actions layout="row" layout-align="start right">
                 <span flex></span>
                 <md-button class="md-icon-button" aria-label="Favorite">
