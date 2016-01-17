@@ -1,0 +1,26 @@
+<div >
+  <div ng-click="myValue=true" >LEFT</div>
+  <div  ng-click="myValue=false">RIGHT</div>
+  <!-- <div id="one" class='animate-slide'  ng-hide="myValue">
+      this is just a sample div -->
+      <md-card  class='animate-slide'  ng-hide="myValue" style="width: 100%;">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{headline}}</span>
+            <span class="md-subhead">{{subhead}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-sm card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-click="onSwipeLeft()" >left</md-button>
+          <md-button ng-click="onSwipeRight()">right</md-button>
+        </md-card-actions>
+      </md-card>
+  <!-- </div> -->
+  {{myValue}}
+
+
+
+</div>
