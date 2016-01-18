@@ -4,23 +4,20 @@
       <md-button class="md-icon-button" aria-label="Back button" layout-align="left">
         <md-icon md-svg-icon="navigation:arrow_back" ng-click="hi.fireCancelEvent();" style="color: white;"></md-icon>
       </md-button>
-
-      <!-- <div ng-show="hi.showFilter" flex layout-align="center" >
-        <input  ng-model="friendsquery" focus-on="hi.showFilter" class="form-control"  placeholder="Filter" style="color:red;"  aria-label="Filter"  >
-      </div>
-
-      <md-button ng-show="hi.showFilter"  class="md-icon-button" layout-align="right" aria-label="Cancel Filter" >
-        <md-icon md-svg-icon="content:clear" ng-click="hi.cancelFilter();" style="color: white;"></md-icon>
-      </md-button>
-
-      <div ng-hide="hi.showFilter" flex layout-align="center">
-        <span ></span>
-      </div>
-
-      <md-button ng-hide="hi.showFilter" class="md-icon-button" aria-label="Filter button"  layout-align="right">
-        <md-icon md-svg-icon="content:filter_list" ng-click="hi.showFilter=true" style="color: white;"></md-icon>
-      </md-button> -->
-
     </div>
-
   </md-toolbar>
+
+    <md-subheader class="md-no-sticky">List</md-subheader>
+      <md-virtual-repeat-container style="height: 300px">
+      <md-list>
+        <md-list-item md-virtual-repeat="item in hi.list">
+          <p> {{ item }} </p>
+      </md-list>
+    </md-virtual-repeat-container>
+
+    <form ng-submit="hi.add()">
+    <md-input-container>
+      <label>item</label>
+      <input type="text" ng-model="hi.item" name="item">
+    </md-input-container>
+  </form>
