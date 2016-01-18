@@ -12,6 +12,9 @@
       restrict: 'E',
       templateUrl: 'templates/utils/sliding-card.html',
       scope: {
+        object: '@',
+        type: '@',
+        value: '@',
         headline: '@',
         subhead: '@',
         leftbuttontext: '@',
@@ -62,22 +65,27 @@
     .module('hapin.utils.directives')
     .controller('SlidingCardController', SlidingCardController);
 
-    SlidingCardController.$inject = ['$scope', 'Auth', 'Places', '$sce', '$timeout'];
+    SlidingCardController.$inject = ['$scope', '$rootScope'];
 
-    function SlidingCardController($scope, Auth, Places, $sce, $timeout) {
-      $scope.myValue=false;
+    function SlidingCardController(scope, $rootScope) {
 
-      $scope.onSwipeLeft = function(ev) {
-        console.log('You swiped LEFT');
-        // $scope.myValue=true;
-          // alert('You swiped LEFT');
+      scope.onSwipeLeft = function(ev) {
+        console.log('You swiped LEFT for value=', scope.value);
+        scope.moveDir='move-left';
+        $rootScope.$broadcast('sliding-card:' + scope.type + '-swiped-left', {
+          value: scope.value,
+          object: scope.object
+        })
+      };
+
+        scope.onSwipeRight = function(ev) {
+          console.log('You swiped RIGHT for value=', scope.value);
+          scope.moveDir='move-right';
+          $rootScope.$broadcast('sliding-card:' + scope.type + '-swiped-right', {
+            value: scope.value,
+            object: scope.object
+          })
         };
-
-        $scope.onSwipeRight = function(ev) {
-          console.log('You swiped RIGHT');
-          // $scope.myValue=true;
-            // alert('You swiped RIGHT');
-          };
 
     }
 

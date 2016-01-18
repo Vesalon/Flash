@@ -1,27 +1,15 @@
-
+<!-- 
 <div >
 <sliding-card headline="my headline" subhead="your subhead" leftbuttontext="left" rightbuttontext="right"></sliding-card>
-</div>
+</div> -->
 <md-content>
 
-<div>
+<div >
   <md-list>
-    <md-list-item ng-repeat="hap in hi.list | filter:query">
-      <md-card class='animate-slide' ng-class="moveDir"  md-swipe-left="onHapSwipeLeft(null,hap)" md-swipe-right="onHapSwipeRight(null,hap)" style="width: 100%;" >
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">{{hap.title}}</span>
-            <span class="md-subhead">{{hap.desc}}</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-sm card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button ng-click="onHapSwipeLeft(null,hap)" >left</md-button>
-          <md-button ng-click="onHapSwipeRight(null,hap)">right</md-button>
-        </md-card-actions>
-      </md-card>
+    <md-list-item ng-repeat="hap in hi.list | filter:query" >
+      <sliding-card object="{{hap}}" type="hap" value="{{hap.id}}" headline="{{hap.title}}" subhead="{{hap.desc}}" leftbuttontext="left" rightbuttontext="right" flex >
+
+      </sliding-card >
     </md-list-item>
   </md-list>
 </div>

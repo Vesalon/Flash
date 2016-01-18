@@ -10,8 +10,8 @@
           </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button ng-click="moveDir='move-left'" >{{leftbuttontext}}</md-button>
-          <md-button ng-click="moveDir='move-right'">{{rightbuttontext}}</md-button>
+          <md-button ng-click="onSwipeLeft($event)" >{{leftbuttontext}}</md-button>
+          <md-button ng-click="onSwipeRight($event)">{{rightbuttontext}}</md-button>
         </md-card-actions>
       </md-card>
 
