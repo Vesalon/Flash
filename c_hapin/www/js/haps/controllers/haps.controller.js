@@ -51,6 +51,7 @@ function HapsController($scope, $state, Auth, Haps) {
       var hap = args.object;
       //TODO: accept hap;
       // hi.list.unshift(hap);
+
     });
 
     $scope.$on('sliding-card:hap-swiped-right', function(ev, args) {
@@ -59,6 +60,7 @@ function HapsController($scope, $state, Auth, Haps) {
       console.log('TODO: reject hap id=', id);
       // var hap = args.object;
       // console.log('hap=', args.object);
+
       // var index = -1;
       // for (var i = 0; i < hi.list.length; ++i) {
       //   if (hi.list[i].id == id) {
@@ -67,7 +69,8 @@ function HapsController($scope, $state, Auth, Haps) {
       //   }
       // }
       // hi.list.splice(index,1);
-      // // activate();
+
+      // activate();
       //TODO: reject hap
 
     });
