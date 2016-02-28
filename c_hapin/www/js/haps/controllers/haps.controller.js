@@ -11,7 +11,7 @@ function HapsController($scope, $state, Auth, Haps) {
   //  hi.col = [];
   hi.isAuthenticated = Auth.isAuthenticated();
   hi.list = [];
-  hi.swipelist = [];
+  // hi.swipelist = [];
   activate();
 
   function activate() {
@@ -24,23 +24,23 @@ function HapsController($scope, $state, Auth, Haps) {
     $scope.$on('hap.created', function(event, hap) {
       console.log('hap.created ' + friend);
       hi.list.unshift(hap);
-      hi.swipelist.unshift(Swiped.init({
-          query: '.id' + hap.id,
-          right: 400,
-          left: 400,
-          onOpen: function() {
-              this.destroy(true)
-          },
-          onClose: function() {
-              console.log('close')
-          }
-      }));
+      // hi.swipelist.unshift(Swiped.init({
+      //     query: '.id' + hap.id,
+      //     right: 400,
+      //     left: 400,
+      //     onOpen: function() {
+      //         this.destroy(true)
+      //     },
+      //     onClose: function() {
+      //         console.log('close')
+      //     }
+      // }));
     });
 
     $scope.$on('hap.created.error', function() {
       console.log('hap.created.error!!!!');
       hi.list.shift();
-      hi.swipelist.shift();
+      // hi.swipelist.shift();
     });
 
     $scope.$on('sliding-card:hap-swiped-left', function(ev, args) {
