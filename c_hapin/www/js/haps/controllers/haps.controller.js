@@ -43,41 +43,39 @@ function HapsController($scope, $state, Auth, Haps) {
       // hi.swipelist.shift();
     });
 
-    $scope.$on('sliding-card:hap-swiped-left', function(ev, args) {
+    $scope.$on('sliding-card-list:hap-swiped-left', function(ev, args) {
       // console.log('caught sliding-card:hap-swiped-left');
-      var id = args.value;
+      var id = args.id;
       console.log('TODO: accept hap id=', id);
-      // console.log('hap=', args.object);
-      var hap = args.object;
       //TODO: accept hap;
-      slideCardsUp(id);
     });
 
-    $scope.$on('sliding-card:hap-swiped-right', function(ev, args) {
+    $scope.$on('sliding-card-list:hap-swiped-right', function(ev, args) {
       // console.log('caught sliding-card:hap-swiped-right');
-      var id = args.value;
+      var id = args.id;
       console.log('TODO: reject hap id=', id);
-      var hap = args.object;
       //TODO: reject hap
-      slideCardsUp(id);
     });
 
-    function slideCardsUp(id){
-      console.log('entering slideCardsUp id=', id);
-      var index = -1;
-      for (var i = 0; i < hi.list.length; ++i) {
-        if (hi.list[i].id == id) {
-          index = i;
-          break;
-        }
-      }
-      hi.list.splice(index,1);
-      $scope.$apply();
-    }
+    // function slideCardsUp(id){
+    //   console.log('entering slideCardsUp id=', id);
+    //   var index = -1;
+    //   for (var i = 0; i < hi.list.length; ++i) {
+    //     if (hi.list[i].id == id) {
+    //       index = i;
+    //       break;
+    //     }
+    //   }
+    //   hi.list.splice(index,1);
+    //   $scope.$apply();
+    // }
 
     function hapsSuccessFn(data, status, headers, config) {
       console.log('enetering hapsSuccessFn');
       hi.list = data.data;
+      $scope.$broadcast('haps:list-updated', {list: hi.list});
+      console.log('raised event haps:list-updated');
+      // $scope.$apply();
       // for(var i = 0; i < hi.list.length; i++) {
       //   hi.swipelist = Swiped.init({
       //       query: '.id' + hi.list[i].id,

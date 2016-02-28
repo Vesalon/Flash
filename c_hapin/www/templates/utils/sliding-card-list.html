@@ -1,0 +1,14 @@
+<div>
+  <md-content>
+  <div >
+    <md-list>
+      <md-list-item ng-repeat="hap in cardList | filter:query" >
+        <sliding-card object="{{hap}}" type="hap" value="{{hap.id}}" headline="{{hap.title}}" subhead="{{hap.desc}}" leftbuttontext="left" rightbuttontext="right" flex >
+
+        </sliding-card >
+      </md-list-item>
+    </md-list>
+  </div>
+   </md-content>
+
+</div>

@@ -1,9 +1,10 @@
-<!-- 
+<!--
 <div >
 <sliding-card headline="my headline" subhead="your subhead" leftbuttontext="left" rightbuttontext="right"></sliding-card>
 </div> -->
-<md-content>
 
+
+<!-- <md-content>
 <div >
   <md-list>
     <md-list-item ng-repeat="hap in hi.list | filter:query" >
@@ -13,7 +14,10 @@
     </md-list-item>
   </md-list>
 </div>
- </md-content>
+ </md-content> -->
+
+<sliding-card-list cardList="hi.list" type='hap'>
+</sliding-card-list>
 
 <!-- <div>
   <md-list>
