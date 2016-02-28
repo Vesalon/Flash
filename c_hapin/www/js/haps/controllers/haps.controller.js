@@ -47,50 +47,51 @@ function HapsController($scope, $state, Auth, Haps) {
       // console.log('caught sliding-card:hap-swiped-left');
       var id = args.value;
       console.log('TODO: accept hap id=', id);
-      console.log('hap=', args.object);
+      // console.log('hap=', args.object);
       var hap = args.object;
       //TODO: accept hap;
-      // hi.list.unshift(hap);
-
+      slideCardsUp(id);
     });
 
     $scope.$on('sliding-card:hap-swiped-right', function(ev, args) {
       // console.log('caught sliding-card:hap-swiped-right');
       var id = args.value;
       console.log('TODO: reject hap id=', id);
-      // var hap = args.object;
-      // console.log('hap=', args.object);
-
-      // var index = -1;
-      // for (var i = 0; i < hi.list.length; ++i) {
-      //   if (hi.list[i].id == id) {
-      //     index = i;
-      //     break;
-      //   }
-      // }
-      // hi.list.splice(index,1);
-
-      // activate();
+      var hap = args.object;
       //TODO: reject hap
-
+      slideCardsUp(id);
     });
 
-    function hapsSuccessFn(data, status, headers, config) {
-      hi.list = data.data;
-      for(var i = 0; i < hi.list.length; i++) {
-        hi.swipelist = Swiped.init({
-            query: '.id' + hi.list[i].id,
-            right: 400,
-            left: 400,
-            onOpen: function() {
-                this.destroy(true)
-            },
-            onClose: function() {
-                console.log('close')
-            }
-        });
-        console.log(hi.swipelist[i]);
+    function slideCardsUp(id){
+      console.log('entering slideCardsUp id=', id);
+      var index = -1;
+      for (var i = 0; i < hi.list.length; ++i) {
+        if (hi.list[i].id == id) {
+          index = i;
+          break;
+        }
       }
+      hi.list.splice(index,1);
+      $scope.$apply();
+    }
+
+    function hapsSuccessFn(data, status, headers, config) {
+      console.log('enetering hapsSuccessFn');
+      hi.list = data.data;
+      // for(var i = 0; i < hi.list.length; i++) {
+      //   hi.swipelist = Swiped.init({
+      //       query: '.id' + hi.list[i].id,
+      //       right: 400,
+      //       left: 400,
+      //       onOpen: function() {
+      //           this.destroy(true)
+      //       },
+      //       onClose: function() {
+      //           console.log('close')
+      //       }
+      //   });
+      //   console.log(hi.swipelist[i]);
+      // }
     }
 
     function hapsErrorFn(data, status, headers, config) {

@@ -24,10 +24,11 @@
       //
       link: function(scope, element, attrs, controller) {
 
+        var card = element.find('md-card')[0];
+
         scope.onSwipeLeft = function(ev) {
           console.log('You swiped LEFT for value=', scope.value);
           // scope.moveDir='move-left'; // goes with ng-class="moveDir"  in the html
-          var card = element.find('md-card')[0];
           $animate.addClass(card, 'move-left')
           .then(function(){
               $rootScope.$broadcast('sliding-card:' + scope.type + '-swiped-left', {
@@ -42,7 +43,6 @@
         scope.onSwipeRight = function(ev) {
           console.log('You swiped right for value=', scope.value);
           // scope.moveDir='move-left'; // goes with ng-class="moveDir"  in the html
-          var card = element.find('md-card')[0];
           $animate.addClass(card, 'move-right')
           .then(function(){
               $rootScope.$broadcast('sliding-card:' + scope.type + '-swiped-right', {
