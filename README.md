@@ -37,6 +37,22 @@ in directory `Flash\flashweb\static` and `Flash\c_hapin\www\lib` (make sure you 
 
 ## Cordova CLI  - Platforms must be installed
 [guide](https://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html)
+Go to the directory where you maintain your source code, and run a command such as the following:
+    $ cordova create hello com.example.hello HelloWorld
+
+## Cordova version
+This was initially developed with Cordova version 5.2.0. Upgrading the version globaly for another project and this project is not tested.
+
+$ cordova -v
+5.2.0
+$ npm info cordova version
+6.2.0
+
+Use this syntax to install a specific version:
+$ sudo npm install -g cordova@3.1.0-0.2.0
+
+https://cordova.apache.org/docs/en/latest/guide/cli/
+
 
 ## Setting up android
 [Android SDK must be installed](http://cordova.apache.org/docs/en/2.5.0/guide_getting-started_android_index.md.html)
@@ -47,7 +63,7 @@ Define environmental variable ANDROID_HOME to point to Android SDK.
 
 Define more env vars ????
 
-Mac:
+<!-- Mac: -->
 
 ```
 $ export ANDROID_HOME=/Library/Android/sdk
@@ -56,6 +72,7 @@ $ export PATH=$PATH:$ANDROID_HOME/bin
 
 ## Setting up iOS
 [guide](http://cordova.apache.org/docs/en/2.5.0/guide_getting-started_ios_index.md.html)
+https://cordova.apache.org/docs/en/5.4.0/guide/platforms/ios/
 
 install Xcode from AppStore
 (to check if the full Xcode package is already installed:
@@ -69,6 +86,35 @@ to check if Command Line Tools are installed:
 
 if not, go [here](http://railsapps.github.io/xcode-command-line-tools.html)
 
+npm install -g ios-sim
+npm install -g ios-deploy
+
+$ cordova create hello com.example.hello "HelloWorld"
+$ cd hello
+$ cordova platform add ios
+$ cordova prepare              # or "cordova build"
+
+To deploy the app on a connected iOS device:
+  $ cordova run ios --device
+To deploy the app on a default iOS emulator:
+    $ cordova emulate ios
+
+    You can use
+    cordova run ios --list
+    to see all available targets and
+    cordova run ios --target=target_name
+    to run application on a specific device or emulator
+    (for example, cordova run ios --target="iPhone-6").
+
+You can also use cordova run --help to see additional build and run options.
+
+##Ripple
+install ripple:
+npm install -g ripple-emulator
+
+run in ripple:
+cordova prepare android
+ripple emulate
 
 
 

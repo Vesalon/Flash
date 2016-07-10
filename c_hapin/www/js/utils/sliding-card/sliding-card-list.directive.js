@@ -18,12 +18,14 @@
       // controller: 'SlidingCardController',
       //
       link: function(scope, element, attrs, controller) {
-        // console.log('entering slideingCardList link function: cardList=', scope.cardList);
+        // console.log('entering slideingCardList link function: element=', element);
 
         scope.$on('haps:list-updated', function(ev, args) {
           console.log('caught event haps:list-updated');
           scope.cardList = args.list;
           // console.log('entering slideingCardList link function: cardList=', scope.cardList);
+          console.log('entering haps:list-updated link function: element=', element);
+
         });
 
         scope.$on('sliding-card:hap-swiped-left', function(ev, args) {
@@ -53,6 +55,7 @@
               break;
             }
           }
+          // $scope.$broadcast('haps:list-updated', {list: hi.list});
           scope.cardList.splice(index,1);
           scope.$apply();
         }
